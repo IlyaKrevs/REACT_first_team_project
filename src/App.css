@@ -97,10 +97,17 @@ h6 {
 
 .App {}
 
-.headerTop {
-  margin: 0 auto;
-
+.header {
   width: 1240px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.headerTop {
+  padding-left: 12px;
+  padding-right: 12px;
+
+
   height: 72px;
 
   color: hsla(0, 0%, 100%, .48);
@@ -112,11 +119,13 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
 }
 
 .headerTop__left {
   display: flex;
   gap: 35px;
+  z-index: 5;
 }
 
 .nav__container {
@@ -127,6 +136,9 @@ h6 {
 
 .nav__item {}
 
+.headerTop__right {
+  z-index: 5;
+}
 
 .user__container {
   display: flex;
@@ -159,12 +171,14 @@ h6 {
   display: flex;
   align-items: center;
   gap: 10px;
+
 }
 
 .user__item__img {
   width: 16px;
   height: 16px;
   fill: hsla(0, 0%, 100%, .48);
+
 }
 
 .user__avatar {
@@ -182,4 +196,85 @@ h6 {
   width: 20px;
   height: 20px;
   fill: hsla(0, 0%, 100%, .48);
+}
+
+.headerDropDown {
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+
+  z-index: 2;
+  background: #1f1b2e;
+
+  border-radius: 12px;
+  box-shadow: 0 20px 96px #12101b;
+}
+
+.headerDropDown__body {
+  margin-top: 68px;
+  padding: 32px;
+
+  border-top: 1px solid hsla(0, 0%, 100%, .1);
+
+  height: 392px;
+  display: grid;
+  grid-template: 1fr / 2fr 1fr 3fr;
+
+
+  font-size: 15px;
+  font-style: normal;
+  line-height: 20px;
+  font-weight: 500;
+  color: hsla(0, 0%, 100%, .48);
+}
+
+.headerDropDown__double {}
+
+.dropDownList {}
+
+.dropDownList__title {
+  padding: 10px 0;
+  color: white;
+
+  font-weight: 700;
+
+}
+
+.dropDownList__itemsContainer {
+  display: flex;
+  max-height: 320px;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.dropDownList__item {
+  padding-bottom: 8px;
+}
+
+.headerDropDown__rightSide {}
+
+.compilation__container {
+  display: flex;
+  gap: 16px;
+}
+
+.mainAxisSplitter {
+  height: 330px;
+  width: 2px;
+  background-color: hsla(0, 0%, 100%, .1);
+}
+
+.mobileSplitter {
+  background-color: #fff;
+  height: 20px;
+  width: 2px;
+}
+
+.rightSide__itemsContainer {
+  min-height: 100%;
+}
+
+.compilation__item {
+  padding-bottom: 5px;
 }

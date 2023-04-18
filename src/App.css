@@ -1,0 +1,185 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font-family: Arial, sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+
+
+
+
+
+  background-color: rgba(16, 14, 25, 1);
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+
+.App {}
+
+.headerTop {
+  margin: 0 auto;
+
+  width: 1240px;
+  height: 72px;
+
+  color: hsla(0, 0%, 100%, .48);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerTop__left {
+  display: flex;
+  gap: 35px;
+}
+
+.nav__container {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.nav__item {}
+
+
+.user__container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+
+.subscribeButton {
+  padding: 7px 11px;
+  height: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px;
+
+  color: #fff;
+
+
+  border-radius: 8px;
+  background-image: linear-gradient(270deg, #ea003d, #c447ff);
+}
+
+.user__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user__item__img {
+  width: 16px;
+  height: 16px;
+  fill: hsla(0, 0%, 100%, .48);
+}
+
+.user__avatar {
+  width: 48px;
+  height: 48px;
+  border: 2px solid hsla(0, 0%, 100%, .48);
+  border-radius: 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user__avatar__img {
+  width: 20px;
+  height: 20px;
+  fill: hsla(0, 0%, 100%, .48);
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import iviLogo from '../img/ivi_logo.svg';
+import iviLogo from '../../img/ivi_logo.svg';
 
 const Header = () => {
     return (

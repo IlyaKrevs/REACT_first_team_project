@@ -1,6 +1,5 @@
 import React from 'react';
-const iviLogo = require('../../img/ivi_logo.svg')
-
+import iviLogo from '../img/ivi_logo.svg';
 
 const Header = () => {
     return (

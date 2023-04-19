@@ -217,7 +217,6 @@ h6 {
 
   border-top: 1px solid hsla(0, 0%, 100%, .1);
 
-  height: 392px;
   display: grid;
   grid-template: 1fr / 2fr 1fr 3fr;
 
@@ -252,16 +251,20 @@ h6 {
   padding-bottom: 8px;
 }
 
-.headerDropDown__rightSide {}
+.headerDropDown__rightSide {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+}
 
 .compilation__container {
   display: flex;
   gap: 16px;
+  height: 100%;
 }
 
 .mainAxisSplitter {
-  height: 330px;
-  width: 2px;
+  width: 1px;
   background-color: hsla(0, 0%, 100%, .1);
 }
 
@@ -277,4 +280,51 @@ h6 {
 
 .compilation__item {
   padding-bottom: 5px;
+}
+
+
+.subscribeItemContainer {
+  display: flex;
+  height: 100%;
+  width: 244px;
+
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.subscribeItemAnimation {
+  height: 264px;
+  width: 244px;
+  border-radius: 8px;
+
+  background-color: #312b45;
+
+  position: relative;
+}
+
+.subscribeItemButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 40px;
+
+  border: 1px solid #312b45;
+  background-color: #312b45;
+  border-radius: 8px;
+
+  color: white;
+
+  font-weight: 700;
+
+  padding: 9px 15px;
+
+  gap: 8px;
+}
+
+.subscribeItemButton__img {
+  height: 16px;
+  width: 16px;
+
+  fill: white;
 }

@@ -34,10 +34,9 @@ const Footer = () => {
                                 <div className='dropDownList__item'>Артхаус</div>
                                 <div className='dropDownList__item'>Артхаус</div>
                             </div>
-
-                            <div className='footer__colorLink'>
-                                Активация сертификата
-                            </div>
+                        </div>
+                        <div className='footer__colorLink'>
+                            Активация сертификата
                         </div>
                     </div>
 

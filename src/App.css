@@ -620,7 +620,7 @@ h6 {
 
 .carousel__itemEMPTY {
   height: 215px;
-  width: 140px;
+  min-width: 140px;
   border-radius: 8px;
 
   display: flex;

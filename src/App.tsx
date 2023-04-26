@@ -1,28 +1,22 @@
 import React from 'react';
 
 import './App.css';
-import Header from './Components/Header/Header';
-import Footer from './Components/Footer/Footer';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import PersonPage from "./pages/PersonPage/PersonPage";
 
-import Carousel from './Components/UI/Carousel';
+import Carousel from './components/UI/Carousel';
 
 function App() {
-  return (
-    <div className="App">
+    return (
+        <div className="App">
+            <Carousel/>
 
-
-      <Carousel />
-
-
-
-      <Header />
-      <Footer />
-
-
-
-
-    </div>
-  );
+            <Header/>
+            <PersonPage/>
+            <Footer/>
+        </div>
+    );
 }
 
 export default App;

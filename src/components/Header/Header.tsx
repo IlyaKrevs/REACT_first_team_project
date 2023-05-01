@@ -2,10 +2,12 @@ import iviLogo from "../../img/ivi_logo.svg";
 import { ROUTE } from "../../router";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
+import { Wrapper } from "components/Wrapper/Wrapper";
 
 const Header = () => {
   return (
     <div className="header">
+      <Wrapper>
       <div className="headerTop">
         <div className="headerTop__left">
           <div className="logo__container">
@@ -15,7 +17,7 @@ const Header = () => {
             <div className="nav__item">Мой Иви</div>
             <div className="nav__item">Что нового</div>
             <div className="nav__item">
-              <Link to={ROUTE.MOVIES} className={styles.baskLink}>
+              <Link to={ROUTE.MOVIES} className={styles.link}>
                 Фильмы
               </Link>
             </div>
@@ -147,6 +149,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      </Wrapper>
     </div>
   );
 };

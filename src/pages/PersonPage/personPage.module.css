@@ -1,7 +1,5 @@
 .personPage {
     padding: 20px 0 100px;
-    width: 80vw;
-    margin: 0 auto;
 }
 
 .back {
@@ -29,10 +27,6 @@
     font-size: 30px;
 }
 
-.container {
-    width: 50%;
-    margin: 0 auto;
-}
 
 .filmographyList {
 

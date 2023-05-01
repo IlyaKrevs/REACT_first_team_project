@@ -4,8 +4,9 @@ import PersonHeader from "../../components/PersonHeader/PersonHeader"
 import Filmography from '../../components/Filmography/Filmography';
 import Back from '../../components/UI/Back/Back';
 import Carousel from '../../components/UI/Carousel';
+import { Wrapper } from 'components';
 
-const PersonPage = () => {
+export const PersonPage = () => {
 
     const movieExample = {
         id: 1,
@@ -17,56 +18,56 @@ const PersonPage = () => {
         enProfession: "en en en en"
     }
     return (
-       <section className={styles.personPage}>
-            <Carousel />
-            <div className='container'>
-                <div className={styles.back}>
-                    <Back>Назад</Back>
-                </div>
-                <div className={styles.container}>
-                    <PersonHeader
-                        name="Джейми Фокс"
-                        avatar="https://thumbs.dfs.ivi.ru/storage38/contents/8/e/24e1139aa5f577b53513c3baaebecd.jpg/120x144/?q=85"
-                        enName="Имя (EN)" />
-                    <div className={styles.filmography}>
-                        <div className={styles.content}>
-                            <div className={styles.title}>
-                                Полная фильмография
-                                <span className={styles.fullFilm}>1 фильм</span>
+        <section className={styles.personPage}>
+            <Wrapper>
+                <Carousel />
+                <div className='container'>
+                    <div className={styles.back}>
+                        <Back>Назад</Back>
+                    </div>
+                    <div className={styles.container}>
+                        <PersonHeader
+                            name="Джейми Фокс"
+                            avatar="https://thumbs.dfs.ivi.ru/storage38/contents/8/e/24e1139aa5f577b53513c3baaebecd.jpg/120x144/?q=85"
+                            enName="Имя (EN)" />
+                        <div className={styles.filmography}>
+                            <div className={styles.content}>
+                                <div className={styles.title}>
+                                    Полная фильмография
+                                    <span className={styles.fullFilm}>1 фильм</span>
+                                </div>
+
                             </div>
+                            <div className={styles.filmographyList}>
+                                <div className={styles.filmographyContent}>
 
-                        </div>
-                        <div className={styles.filmographyList}>
-                            <div className={styles.filmographyContent}>
+                                    <Filmography
+                                        key="1"
+                                        movie={movieExample} />
+                                    <Filmography
+                                        key="2"
+                                        movie={movieExample} />
+                                    <Filmography
+                                        key="3"
+                                        movie={movieExample} />
+                                    <Filmography
+                                        key="4"
+                                        movie={movieExample} />
+                                    <Filmography
+                                        key="5"
+                                        movie={movieExample} />
 
-                                <Filmography
-                                    key="1"
-                                    movie={movieExample} />
-                                <Filmography
-                                    key="2"
-                                    movie={movieExample} />
-                                <Filmography
-                                    key="3"
-                                    movie={movieExample} />
-                                <Filmography
-                                    key="4"
-                                    movie={movieExample} />
-                                <Filmography
-                                    key="5"
-                                    movie={movieExample} />
-
-                                <button
-                                    className={styles.btn}
-                                >
-                                    Еще 1 фильм
-                                </button>
+                                    <button
+                                        className={styles.btn}
+                                    >
+                                        Еще 1 фильм
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </Wrapper>
         </section>
     )
 }
-
-export default PersonPage;

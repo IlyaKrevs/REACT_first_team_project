@@ -1,8 +1,8 @@
 * {
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
   border: 0;
-  font-family: Arial, sans-serif;
+  font-family: iviSans,Arial,Helvetica,Helvetica Neue,FreeSans,sans-serif;
 }
 
 *,
@@ -33,7 +33,7 @@ aside {
 html,
 body {
   height: 100%;
-  width: 100%;
+  max-width: 1366px;
   font-size: 100%;
   line-height: 1;
   font-size: 14px;
@@ -98,9 +98,7 @@ h6 {
 /* //////////////////////////////////////////////////////////////////////////////////// */
 
 .header {
-  width: 1240px;
   position: relative;
-  margin: 0 auto;
 }
 
 .headerTop {
@@ -197,6 +195,7 @@ h6 {
 }
 
 .headerDropDown {
+  display: none;
   position: absolute;
   top: 0;
   width: 100%;

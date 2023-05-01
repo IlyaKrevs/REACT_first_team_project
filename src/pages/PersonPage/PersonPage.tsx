@@ -3,6 +3,7 @@ import styles from './personPage.module.css';
 import PersonHeader from "../../components/PersonHeader/PersonHeader"
 import Filmography from '../../components/Filmography/Filmography';
 import Back from '../../components/UI/Back/Back';
+import Carousel from '../../components/UI/Carousel';
 
 const PersonPage = () => {
 
@@ -16,7 +17,8 @@ const PersonPage = () => {
         enProfession: "en en en en"
     }
     return (
-        <section className={styles.personPage}>
+       <section className={styles.personPage}>
+            <Carousel />
             <div className='container'>
                 <div className={styles.back}>
                     <Back>Назад</Back>
@@ -25,8 +27,7 @@ const PersonPage = () => {
                     <PersonHeader
                         name="Джейми Фокс"
                         avatar="https://thumbs.dfs.ivi.ru/storage38/contents/8/e/24e1139aa5f577b53513c3baaebecd.jpg/120x144/?q=85"
-                        enName="Имя (EN)"
-                    />
+                        enName="Имя (EN)" />
                     <div className={styles.filmography}>
                         <div className={styles.content}>
                             <div className={styles.title}>
@@ -40,24 +41,19 @@ const PersonPage = () => {
 
                                 <Filmography
                                     key="1"
-                                    movie={movieExample}
-                                />
+                                    movie={movieExample} />
                                 <Filmography
-                                    key="1"
-                                    movie={movieExample}
-                                />
+                                    key="2"
+                                    movie={movieExample} />
                                 <Filmography
-                                    key="1"
-                                    movie={movieExample}
-                                />
+                                    key="3"
+                                    movie={movieExample} />
                                 <Filmography
-                                    key="1"
-                                    movie={movieExample}
-                                />
+                                    key="4"
+                                    movie={movieExample} />
                                 <Filmography
-                                    key="1"
-                                    movie={movieExample}
-                                />
+                                    key="5"
+                                    movie={movieExample} />
 
                                 <button
                                     className={styles.btn}

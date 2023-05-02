@@ -5,4 +5,6 @@ export * from './Breadcrumb/Breadcrumb';
 export * from './Filmography/Filmography';
 export * from './PersonHeader/PersonHeader';
 export * from "./Wrapper/Wrapper";
+export * from "./Filter/Filter";
+
 

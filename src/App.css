@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=IviSans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arial:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Helvetica&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Free+Sans&display=swap');
+
 * {
   padding: 0;
   margin: 0 auto;
   border: 0;
-  font-family: iviSans,Arial,Helvetica,Helvetica Neue,FreeSans,sans-serif;
+  font-family: 'Arial', 'Helvetica', 'Helvetica Neue', 'FreeSans', sans-serif;
 }
 
 *,

@@ -1,0 +1,12 @@
+.filter {
+    box-sizing: border-box;
+    background-color: #1f1b2e;
+    padding: 16px;
+    border-radius: 6px;
+    margin-top: 12px;
+}
+
+.list {
+    display: flex;
+    width: 100%;
+}

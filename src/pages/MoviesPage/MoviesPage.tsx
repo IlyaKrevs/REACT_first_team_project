@@ -1,4 +1,4 @@
-import { Wrapper } from 'components';
+import { Filter, Wrapper } from 'components';
 import styles from './styles.module.css';
 import { Link } from 'react-router-dom';
 import { ROUTE } from 'router';
@@ -56,6 +56,7 @@ export const MoviesPage = () => {
           )}
         </div>
       </div>
+      <Filter />
     </Wrapper>
   )
 }

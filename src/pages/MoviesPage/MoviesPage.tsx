@@ -1,8 +1,10 @@
-import { Filter, Wrapper } from 'components';
+import { ButtonFilter, Filter, Wrapper } from 'components';
 import styles from './styles.module.css';
 import { Link } from 'react-router-dom';
 import { ROUTE } from 'router';
 import { useState } from 'react';
+import { Button } from 'stories/Button';
+import Carousel from 'components/UI/Carousel';
 
 export const MoviesPage = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -57,6 +59,7 @@ export const MoviesPage = () => {
         </div>
       </div>
       <Filter />
+      <ButtonFilter />
     </Wrapper>
   )
 }

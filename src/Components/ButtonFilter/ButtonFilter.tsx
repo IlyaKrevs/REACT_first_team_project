@@ -1,57 +1,31 @@
-import { useState } from 'react';
 import styles from './styles.module.css';
+import React from 'react';
 
-export const ButtonFilter = () => {
-    const [isSubscribed, setIsSubscribed] = useState(false);
-    const [isOriginal, setIsOriginal] = useState(false);
-    const [isNewest, setIsNewest] = useState(false);
-    const [isPopular, setIsPopular] = useState(false);
-  
-    const handleSubscriptionFilter = () => {
-      setIsSubscribed(!isSubscribed);
-    };
-  
-    const handleOriginalFilter = () => {
-      setIsOriginal(!isOriginal);
-    };
-  
-    const handleNewestFilter = () => {
-      setIsNewest(!isNewest);
-    };
-  
-    const handlePopularFilter = () => {
-      setIsPopular(!isPopular);
-    };
-  
-    return (
-      <section className={styles.filter}>
-        <div className={styles.list}>
-          <button
-            className={`${styles.btn} ${isSubscribed ? styles.active : ''}`}
-            onClick={handleSubscriptionFilter}>
-            <div className={styles.plus} />
-            <div className={styles.text}>По подписке</div>
-          </button>
-          <button
-            className={`${styles.btn} ${isOriginal ? styles.active : ''}`}
-            onClick={handleOriginalFilter}>
-            <div className={styles.plus} />
-            <div className={styles.text}>На языке оригинала</div>
-          </button>
-          <button
-            className={`${styles.btn} ${isNewest ? styles.active : ''}`}
-            onClick={handleNewestFilter}>
-            <div className={styles.plus} />
-            <div className={styles.text}>Самые новые</div>
-          </button>
-          <button
-            className={`${styles.btn} ${isPopular ? styles.active : ''}`}
-            onClick={handlePopularFilter}>
-            <div className={styles.plus} />
-            <div className={styles.text}>Самые популярные</div>
-          </button>
-        </div>
-      </section>
-    );
-  };
+type FiltersProps = {
+  value: number;
+  onChangeFilter: (idx: number) => void;
+  onResetFilters: () => void;
+};
+
+const filters = ['По подписке', 'На языке оригинала', 'Самые новые', 'Самые популярные'];
+
+export const ButtonFilter: React.FC<FiltersProps> = React.memo(({ value, onChangeFilter, onResetFilters }) => (
+  <section className={styles.filter}>
+    <div className={styles.list}>
+      <ul className={styles.list}>
+        {filters.map((filterName, i) => (
+          <li key={i} onClick={() => onChangeFilter(i)} className={`${value === i ? styles.active : styles.btn}`}>
+          {filterName}
+          </li>
+        ))}
+      </ul>
+    </div>
+    <button className={styles.wrapper} onClick={onResetFilters}>
+       <div className={styles.cancel}/>
+       <div className={styles.title}>Сбросить фильтры</div>
+     </button>
+  </section>
+));
+
+
   

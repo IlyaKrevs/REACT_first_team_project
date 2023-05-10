@@ -1,12 +1,19 @@
-import { ButtonFilter, Filter, Wrapper } from 'components';
+import { ButtonFilter, Filter, FilterDropdown, Wrapper } from 'components';
 import styles from './styles.module.css';
 import { Link } from 'react-router-dom';
 import { ROUTE } from 'router';
 import { useState } from 'react';
-import { Button } from 'stories/Button';
-import Carousel from 'components/UI/Carousel';
 
-export const MoviesPage = () => {
+export const MoviesPage: React.FC = () => {
+  const [value, setValue] = useState<number>(0);
+
+  const handleChangeFilter = (filter: number) => {
+    setValue(filter);
+  };
+
+  const handleResetFilters = () => {
+    setValue(0);
+  };
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleText = () => {
@@ -59,7 +66,8 @@ export const MoviesPage = () => {
         </div>
       </div>
       <Filter />
-      <ButtonFilter />
+      <ButtonFilter value={value} onChangeFilter={handleChangeFilter} onResetFilters={handleResetFilters} />
+      <FilterDropdown />
     </Wrapper>
   )
 }

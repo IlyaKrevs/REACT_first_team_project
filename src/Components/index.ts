@@ -7,6 +7,7 @@ export * from './PersonHeader/PersonHeader';
 export * from "./Wrapper/Wrapper";
 export * from "./Filter/Filter";
 export * from "./ButtonFilter/ButtonFilter";
+export * from "./FilterDropdown/FilterDropdown";
 
 
 

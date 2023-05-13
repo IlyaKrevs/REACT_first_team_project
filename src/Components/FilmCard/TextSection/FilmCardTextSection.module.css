@@ -1,0 +1,29 @@
+.container {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition-property: color;
+    white-space: nowrap;
+}
+
+.title {
+    color: #d9d7e0;
+
+    font-size: 15px;
+    font-weight: 700;
+
+
+    font-style: normal;
+    line-height: 20px;
+
+    height: 20px;
+}
+
+.extra {
+    color: #a5a1b2;
+
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    height: 16px;
+    line-height: 16px;
+}

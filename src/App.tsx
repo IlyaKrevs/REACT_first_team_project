@@ -1,26 +1,42 @@
 import React from 'react';
 
 import './App.css';
+import Clause from './Components/Clause/Clause';
+import ClauseUL from './Components/Clause/ClauseUL/ClauseUL';
 
+import FilmCardImageSection from './Components/FilmCard/ImageSection/FilmCardImageSection';
+import FilmCard from './Components/FilmCard/FilmCard';
 
-
-import FilmCard from './Components/Carousel/Items/FilmCard/FilmCard';
-import FilterContainer from './Components/FilterContainer/FilterContainer';
-import BIGSlider from './Components/BIGSlider/BIGSlider';
-import HomePageClause from './Components/HomePageClause/HomePageClause';
-import RadioContainer from './Components/RadioContainer/RadioContainer';
-import SortDropMenu from './Components/SortDropMenu/SortDropMenu';
-import Carousel from './Components/UI/Carousel';
 
 
 function App() {
+
+  let myLI = <ClauseUL liArr={['123', '123', '123', '123', '123', '123']} />
+
+  let myTEMP = <Clause title={{
+    text: 'HELLO WORLD',
+    type: 'big',
+  }}
+    description={{
+      text: ['hello', 'world', myLI, 'PIZDEC YA MOZG'],
+      type: 'classic',
+    }} />
+
+
+
+
+
+
   return (
     <div className="App">
+      <div className="mainWrapper">
 
 
 
+        <FilmCard />
 
 
+      </div>
     </div>
   );
 }

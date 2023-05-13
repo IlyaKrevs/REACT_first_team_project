@@ -1,0 +1,36 @@
+.hoverContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(7, 5, 14, .8);
+    z-index: 2;
+
+
+    width: 100%;
+    padding-right: 30px;
+
+
+    transition: .2s;
+
+    opacity: 0;
+}
+
+.hoverContainer:hover {
+    opacity: 1;
+}
+
+.propsContainer {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    width: 100%;
+    padding-right: 35px;
+}

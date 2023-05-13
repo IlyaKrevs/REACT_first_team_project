@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "NEED__REWORK/Footer", "NEED__REWORK/FilterContainer", "NEED__REWORK/Gallery", "NEED__REWORK/Header", "NEED__REWORK/HomePageClause", "NEED__REWORK/PageSection", "NEED__REWORK/RadioContainer", "NEED__REWORK/SortDropMenu", "NEED__REWORK/UI", "NEED__REWORK/HeaderBar", "NEED__REWORK/FilmCardHover"  ]
 }

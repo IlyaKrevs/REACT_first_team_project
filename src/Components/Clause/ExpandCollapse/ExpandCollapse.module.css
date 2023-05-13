@@ -1,0 +1,8 @@
+.toggle {
+    color: hsla(0, 0%, 100%, .88);
+    cursor: pointer;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+}

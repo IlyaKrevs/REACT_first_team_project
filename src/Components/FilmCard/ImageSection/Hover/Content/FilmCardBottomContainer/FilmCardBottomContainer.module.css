@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.text {
+    color: #d9d7e0;
+
+    font-size: 13px;
+    font-weight: 400;
+
+    font-style: normal;
+    line-height: 16px;
+}

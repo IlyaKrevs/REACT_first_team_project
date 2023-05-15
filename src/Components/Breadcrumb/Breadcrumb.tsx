@@ -14,7 +14,7 @@ export const Breadcrumb = () => {
 
         return (
           <span key={pathname}>
-            <Link to={routeTo}>{pathname}</Link>
+            <Link to={routeTo} className={styles.link}>{pathname}</Link>
             {!isLast && ' / '}
           </span>
         );

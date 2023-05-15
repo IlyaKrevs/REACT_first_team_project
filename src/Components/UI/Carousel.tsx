@@ -1,5 +1,4 @@
-import React from 'react';
-import orangeCow from '../../img/orange_cow.jpg';
+import orangeCow from '../../assets/img/orange_cow.jpg';
 
 
 const Carousel = () => {

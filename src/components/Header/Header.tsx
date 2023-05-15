@@ -1,4 +1,4 @@
-import iviLogo from "../../img/ivi_logo.svg";
+import iviLogo from "../../assets/img/ivi_logo.svg";
 import { ROUTE } from "../../router";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";

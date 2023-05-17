@@ -1,10 +1,9 @@
-import React from 'react';
-import styles from './personPage.module.css';
-import PersonHeader from "../../components/PersonHeader/PersonHeader"
-import Filmography from '../../components/Filmography/Filmography';
-import Back from '../../components/UI/Back/Back';
-import Carousel from '../../components/UI/Carousel';
 import { Wrapper } from 'components';
+import styles from './styles.module.css';
+import Back from 'components/UI/Back/Back';
+import PersonHeader from 'components/PersonHeader/PersonHeader';
+import Filmography from 'components/Filmography/Filmography';
+
 
 export const PersonPage = () => {
 
@@ -20,7 +19,6 @@ export const PersonPage = () => {
     return (
         <section className={styles.personPage}>
             <Wrapper>
-                <Carousel />
                 <div className='container'>
                     <div className={styles.back}>
                         <Back>Назад</Back>

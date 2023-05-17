@@ -6,12 +6,17 @@
     height: 100%;
     z-index: 1001;
     opacity: 1;
+    overflow: hidden;
     background-color: rgba(7, 5, 14, .96);
 }
-
+  
+.modal-open {
+    overflow: hidden;
+  }
+  
 .modalContent {
     position: absolute;
-    top: 50%;
+    top: 40%;
     right: 40%;
 }
 
@@ -74,7 +79,6 @@
 
 .selector a {
     width: 52px;
-    padding: 8px 0;
     -webkit-transition-duration: .2s;
     -o-transition-duration: .2s;
     transition-duration: .2s;
@@ -92,9 +96,13 @@
 
     &:hover {
         color: #fff;
-        background-color: red;
+        background-color: #ea003d;
+        box-shadow: 0 4px 16px rgba(234,0,61,.32);
         border-radius: 12px;
-
+        height: 52px;
+        padding: 8px 0;
+        border-radius: 12px;
+        margin: 0;
     }
 }
 
@@ -119,3 +127,37 @@
 .right {
     margin-right: 8px;
 }
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 72px;
+  height: 72px;
+  margin-left: 0;
+  margin-bottom: 24px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 4px solid #73a32f;
+  background-color: transparent;
+}
+
+.message {
+    font-size: 40px;
+    line-height: 44px;
+    font-weight: 900;
+    font-style: normal;
+    color: #fff;
+}
+
+.checkmark {
+    width: 50%;
+    height: 30%;
+    border: 4px solid #73a32f;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-45deg);
+    margin-bottom: 10px;
+    position: relative;
+  }
+  

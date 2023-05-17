@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './personHeader.module.css';
+import styles from './styles.module.css';
 
 type PropsType = {
     avatar: string

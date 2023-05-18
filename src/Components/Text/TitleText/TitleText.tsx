@@ -16,6 +16,8 @@ const TitleText = ({ text, type }: TitleTextProps) => {
         myType = classes.typeBig
     } else if (type === 'medium') {
         myType = classes.typeMedium
+    } else if (type === 'small') {
+        myType = classes.typeSmall
     }
 
     return (

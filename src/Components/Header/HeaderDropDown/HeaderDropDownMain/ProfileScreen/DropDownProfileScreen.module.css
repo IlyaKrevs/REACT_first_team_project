@@ -1,0 +1,38 @@
+.mainContainer {
+    display: grid;
+    grid-template: 1fr /2fr 1fr;
+
+    min-height: 244px;
+}
+
+.mainContent {
+    display: grid;
+    grid-template: repeat(2, 110px) / repeat(4, 170px);
+    gap: 24px;
+}
+
+.sideContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    border-left: 1px solid rgba(100%, 100%, 100%, .16);
+
+    padding-left: 25px;
+}
+
+.settingsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+}
+
+.settingsText {
+    transition: .2s;
+    cursor: pointer;
+}
+
+.settingsText:hover {
+    color: white;
+}

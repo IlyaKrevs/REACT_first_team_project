@@ -1,0 +1,5 @@
+.content {
+    display: flex;
+    padding: 48px 0;
+    border-top: 1px solid hsla(0, 0%, 100%, .1);
+}

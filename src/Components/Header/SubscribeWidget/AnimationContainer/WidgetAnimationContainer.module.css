@@ -1,0 +1,9 @@
+.animationContainer {
+    height: 264px;
+    width: 244px;
+    border-radius: 8px;
+
+    background-color: #312b45;
+
+    position: relative;
+}

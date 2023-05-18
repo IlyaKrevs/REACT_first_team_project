@@ -19,19 +19,19 @@ const FilmCardHoverBtnContainer = () => {
     let ruTEXT = ['Смотреть позже', 'Похожее', 'Уже смотрел, оценить', 'Не нравится такое',];
     let enTEXT = ['Bookmark', 'Similar', 'Rate', 'Dislike',];
 
-    let printTEXT = ruTEXT;
+    let currentText = ruTEXT;
 
 
     let btnsArr = [bookmarkBtn, similarBtn, rateBtn, dislikeBtn];
 
     let myArr = [];
 
+
     for (let i = 0; i < btnsArr.length; i++) {
         myArr.push({
             icon: btnsArr[i],
-            text: printTEXT[i],
+            text: currentText[i],
         })
-
     }
 
     return (

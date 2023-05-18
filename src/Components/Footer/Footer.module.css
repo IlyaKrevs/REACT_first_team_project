@@ -1,0 +1,9 @@
+.footer {
+    margin-top: 1000px;
+    color: hsla(0, 0%, 100%, .48);
+}
+
+.container {
+    width: 1240px;
+    margin: 0 auto;
+}

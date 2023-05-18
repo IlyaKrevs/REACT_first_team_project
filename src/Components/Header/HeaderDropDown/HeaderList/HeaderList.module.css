@@ -1,0 +1,16 @@
+.mainList {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+
+    max-height: 100%;
+    justify-content: space-between;
+}
+
+.listContainer {
+    display: flex;
+    max-height: 320px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+}

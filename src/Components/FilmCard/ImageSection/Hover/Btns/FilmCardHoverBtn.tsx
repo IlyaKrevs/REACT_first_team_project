@@ -7,14 +7,38 @@ interface BtnProps {
     tooltipText: string,
 }
 
+
 const FilmCardHoverBtn = ({ icon, tooltipText }: BtnProps) => {
+
+    const { useState } = React;
+
+    let [isShow, setIsShow] = useState(false)
+
+    function showToolptip() {
+        setIsShow(true)
+    }
+
+    function hideTooltip() {
+        setIsShow(false)
+    }
+
+
     return (
-        <div className={classes.btn}>
+        <div
+            onMouseEnter={showToolptip}
+            onMouseLeave={hideTooltip}
+            className={classes.btnContainer} >
+
             {icon}
-            <div className={classes.tooltip}>
-                {tooltipText}
-            </div>
-        </div>
+
+            {isShow &&
+                <div
+                    onMouseEnter={hideTooltip}
+                    className={classes.tooltip} >
+                    {tooltipText}
+                </div >
+            }
+        </div >
     );
 };
 

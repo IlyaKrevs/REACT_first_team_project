@@ -93,7 +93,7 @@ h6 {
 
 .mainWrapper {
   background-color: rgba(16, 14, 25, 1);
-  height: 100vh;
+
 }
 
 
@@ -232,7 +232,23 @@ h6 {
   color: hsla(0, 0%, 100%, .48);
 }
 
-.headerDropDown__double {}
+
+.movieProps {
+  display: grid;
+  grid-template: 1fr / 2fr 1fr 3fr;
+}
+
+.headerDropDown__double {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.headerDropDOwn__single {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
 .dropDownList {
   display: flex;
@@ -242,13 +258,6 @@ h6 {
 
   max-height: 100%;
   justify-content: space-between;
-
-
-  font-size: 15px;
-  font-style: normal;
-  line-height: 20px;
-  font-weight: 500;
-  color: hsla(0, 0%, 100%, .48);
 
 }
 
@@ -264,10 +273,15 @@ h6 {
   max-height: 320px;
   flex-direction: column;
   flex-wrap: wrap;
+  gap: 8px;
 }
 
 .dropDownList__item {
-  padding-bottom: 8px;
+  cursor: pointer;
+}
+
+.dropDownList__item:hover {
+  color: white;
 }
 
 .headerDropDown__rightSide {
@@ -287,7 +301,7 @@ h6 {
   background-color: hsla(0, 0%, 100%, .1);
 }
 
-.mobileSplitter {
+.movingSplitter {
   background-color: #fff;
   height: 20px;
   width: 2px;
@@ -307,8 +321,8 @@ h6 {
   height: 100%;
   width: 244px;
 
-  justify-content: space-between;
   flex-direction: column;
+  gap: 30px;
 }
 
 .subscribeItemAnimation {
@@ -353,6 +367,7 @@ h6 {
 .footer {
 
   margin-top: 1000px;
+  color: hsla(0, 0%, 100%, .48);
 }
 
 .footer__container {
@@ -369,11 +384,16 @@ h6 {
 .footer__column {
   display: flex;
   flex-direction: column;
+
 }
 
 .columnSize__small {
   padding: 0 12px;
   width: 25%;
+}
+
+.btns_gap {
+  gap: 10px;
 }
 
 .footer__colorLink {
@@ -1448,3 +1468,80 @@ h6 {
 
   background-color: #fff;
 }
+
+
+
+
+
+/* /////////////////////////////////////////// */
+
+
+.dropDownTVPLUS {
+  display: flex;
+  min-height: 328px;
+  gap: 30px;
+}
+
+.tvplusSideContent {
+  width: 20%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mainContent {
+  min-height: 100%;
+  width: 100%;
+  border-left: 1px solid hsla(0, 0%, 100%, .1);
+  padding-left: 50px;
+
+
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+/* ////////////////////////////////////////////////////////////// */
+
+
+.notifyContainer {
+  height: 212px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 24px;
+}
+
+.notifyImgContainer {
+  height: 56px;
+  width: 56px;
+  opacity: 0.32;
+
+  fill: rgb(255, 255, 255);
+}
+
+
+
+/* ///////////////////////////////////////////////////////////////// */
+
+
+.profileContainer {
+  display: grid;
+  grid-template: 1fr /2fr 1fr;
+
+  min-height: 244px;
+}
+
+.profileMainContent {
+  display: grid;
+  grid-template: repeat(2, auto) / repeat(4, minmax(155px, 1fr));
+  gap: 24px;
+}
+
+.profileSideContent {}

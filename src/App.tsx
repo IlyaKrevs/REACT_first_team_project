@@ -4,26 +4,19 @@ import './App.css';
 import Clause from './Components/Clause/Clause';
 import ClauseUL from './Components/Clause/ClauseUL/ClauseUL';
 
-import FilmCardImageSection from './Components/FilmCard/ImageSection/FilmCardImageSection';
+import iviLogо from './img/ivi_logo.svg';
+import HeaderList from './Components/Header/HeaderDropDown/HeaderList/HeaderList';
+import MovingList from './Components/Header/HeaderDropDown/MovingList/MovingList';
+import Footer from './Components/Footer/Footer';
+import HeaderNavContainer from './Components/Header/HeaderTop/HeaderNavContainer/HeaderNavContainer';
+import HeaderUserContainer from './Components/Header/HeaderTop/HeaderUserPanel/HeaderUserContainer/HeaderUserContainer';
+import HeaderTop from './Components/Header/HeaderTop/HeaderTop';
 import FilmCard from './Components/FilmCard/FilmCard';
-
+import RectangleBtn from './Components/Buttons/RectangleBtn/RectangleBtn';
+import Header from './Components/Header/Header';
 
 
 function App() {
-
-  let myLI = <ClauseUL liArr={['123', '123', '123', '123', '123', '123']} />
-
-  let myTEMP = <Clause title={{
-    text: 'HELLO WORLD',
-    type: 'big',
-  }}
-    description={{
-      text: ['hello', 'world', myLI, 'PIZDEC YA MOZG'],
-      type: 'classic',
-    }} />
-
-
-
 
 
 
@@ -33,11 +26,19 @@ function App() {
 
 
 
-        <FilmCard />
+        <Header />
+
+
+
+
+
+
+        <Footer />
+
 
 
       </div>
-    </div>
+    </div >
   );
 }
 

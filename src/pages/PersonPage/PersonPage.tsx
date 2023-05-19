@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './personPage.module.css';
-import PersonHeader from "../../components/PersonHeader/PersonHeader"
-import Filmography from '../../components/Filmography/Filmography';
-import Back from '../../components/UI/Back/Back';
+import Back from '../../Components/UI/Back/Back';
+import PersonHeader from '../../Components/PersonHeader/PersonHeader';
+import FilmographyItem from '../../Components/Filmography/Filmography';
+
 
 const PersonPage = () => {
 
@@ -38,23 +39,23 @@ const PersonPage = () => {
                         <div className={styles.filmographyList}>
                             <div className={styles.filmographyContent}>
 
-                                <Filmography
+                                <FilmographyItem
                                     key="1"
                                     movie={movieExample}
                                 />
-                                <Filmography
+                                <FilmographyItem
                                     key="1"
                                     movie={movieExample}
                                 />
-                                <Filmography
+                                <FilmographyItem
                                     key="1"
                                     movie={movieExample}
                                 />
-                                <Filmography
+                                <FilmographyItem
                                     key="1"
                                     movie={movieExample}
                                 />
-                                <Filmography
+                                <FilmographyItem
                                     key="1"
                                     movie={movieExample}
                                 />

@@ -1,16 +1,17 @@
 import React from 'react';
 
 import styles from './filmography.module.css';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-import ButtonLink from '../../components/UI/ButtonLink/ButtonLink';
-import {IPersonFilms} from '../../types/IPersonFilms';
+
+import { IPersonFilms } from '../../types/IPersonFilms';
+import ButtonLink from '../UI/ButtonLink/ButtonLink';
 
 type PropsType = {
     movie: IPersonFilms
 }
 
-const FilmographyItem: React.FC<PropsType> = ({movie}) => {
+const FilmographyItem: React.FC<PropsType> = ({ movie }) => {
 
     return (
         <NavLink

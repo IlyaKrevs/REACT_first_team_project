@@ -1,0 +1,66 @@
+.filmographyList {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+.item {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.photo {
+    min-width: 80px;
+    height: 123px;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(270deg, #ea003d 0, #c447ff 100%);
+}
+
+.body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-left: 15px;
+}
+
+.info {
+    width: 60%;
+    padding-right: 10px;
+}
+
+.title {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 500;
+    font-style: normal;
+    color: #fff;;
+    margin-bottom: 5px;
+    word-wrap: break-word;
+}
+
+.rating {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+    font-style: normal;
+    color: #a5a1b2;
+}
+
+.rating > span {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+    font-style: normal;
+    color: #a5a1b2;
+}
+
+.btn {
+    width: 140px;
+    height: 40px;
+}

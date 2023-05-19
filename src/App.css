@@ -590,7 +590,32 @@ h6 {
 }
 
 
-/* //////////////////////////////////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////////// */
+
+.carouselMainContainer {
+  position: relative;
+
+  height: 300px;
+}
+
+
+.carouselVIEW {
+  margin: -25px;
+  overflow: hidden;
+}
+
+.carouselLENTA {
+  overflow: hidden;
+  display: flex;
+  gap: 27px;
+
+  padding: 25px;
+}
+
+
+
+
+
 
 
 .carousel__viewPort {
@@ -601,23 +626,38 @@ h6 {
 }
 
 
+
 .carousel__container {
   display: flex;
   gap: 18px;
   overflow: hidden;
+
+  margin: -25px;
+  padding: 25px;
 }
 
 .carousel__arrowContainer {
   position: absolute;
   top: 40%;
-  width: 20px;
+  /* width: 20px;
   height: 20px;
   border-bottom: 4px solid hsla(0, 0%, 100%, .72);
   border-right: 4px solid hsla(0, 0%, 100%, .72);
-  transform: skew(-10deg, -10deg);
+  transform: skew(-10deg, -10deg); */
 
 }
 
+.carouselLeftArrow {
+  position: absolute;
+  top: calc(50% - 20px);
+  left: -25px;
+}
+
+.carouselRightArrow {
+  position: absolute;
+  top: calc(50% - 20px);
+  right: -25px;
+}
 
 .leftArrow {
   left: -25px;
@@ -670,6 +710,10 @@ h6 {
   line-height: 20px;
   color: #a5a1b2;
 }
+
+
+
+
 
 
 .carousel__item__imgSection {

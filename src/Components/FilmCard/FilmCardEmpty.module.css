@@ -1,0 +1,30 @@
+.emptyItem {
+    height: 238px;
+    min-width: 154px;
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1f1b2e;
+
+    cursor: pointer;
+    transition: .2s;
+}
+
+.emptyItemText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    color: #a5a1b2;
+}
+
+.emptyItem:hover {
+    transform: scale(1.05);
+}

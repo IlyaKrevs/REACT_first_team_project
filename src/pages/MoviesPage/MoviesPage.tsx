@@ -1,7 +1,8 @@
-import { ButtonFilter, Filter, Wrapper } from 'Components';
 import styles from './styles.module.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { ButtonFilter, Filter, } from '../../Components';
+import { Wrapper } from '../../Components/Wrapper/Wrapper';
 
 export const MoviesPage: React.FC = () => {
   const [value, setValue] = useState<number>(0);

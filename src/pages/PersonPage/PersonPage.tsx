@@ -3,7 +3,7 @@ import styles from './personPage.module.css';
 import Back from '../../Components/UI/Back/Back';
 import PersonHeader from '../../Components/PersonHeader/PersonHeader';
 import FilmographyItem from '../../Components/Filmography/Filmography';
-import { Wrapper } from 'Components';
+import { Wrapper } from '../../Components/Wrapper/Wrapper';
 
 
 
@@ -45,27 +45,27 @@ export const PersonPage = () => {
                             <div className={styles.filmographyList}>
                                 <div className={styles.filmographyContent}>
 
-                                <FilmographyItem
-                                    key="1"
-                                    movie={movieExample}
-                                />
-                                <FilmographyItem
-                                    key="1"
-                                    movie={movieExample}
-                                />
-                                <FilmographyItem
-                                    key="1"
-                                    movie={movieExample}
-                                />
-                                <FilmographyItem
-                                    key="1"
-                                    movie={movieExample}
-                                />
-                                <FilmographyItem
-                                    key="1"
-                                    movie={movieExample}
-                                />
-                                    
+                                    <FilmographyItem
+                                        key="1"
+                                        movie={movieExample}
+                                    />
+                                    <FilmographyItem
+                                        key="1"
+                                        movie={movieExample}
+                                    />
+                                    <FilmographyItem
+                                        key="1"
+                                        movie={movieExample}
+                                    />
+                                    <FilmographyItem
+                                        key="1"
+                                        movie={movieExample}
+                                    />
+                                    <FilmographyItem
+                                        key="1"
+                                        movie={movieExample}
+                                    />
+
 
                                     <button
                                         className={styles.btn}

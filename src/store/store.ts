@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
-import movieReducer from './slice/moviesSlice'; 
+import movieReducer from './slice/moviesSlice';
 
 export const store = configureStore({
     reducer: {

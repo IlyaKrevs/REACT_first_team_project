@@ -1,14 +1,15 @@
+import './App.css';
+
 import { RouterProvider } from 'react-router-dom';
 import { router } from './router';
-import './App.css';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { setAllMovies } from 'store/slice/moviesSlice';
+import { setAllMovies } from './store/slice/moviesSlice';
 
 export const App = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-     useEffect(() => {
+  useEffect(() => {
     fetch('http://localhost:12123/api/films')
       .then(response => response.json())
       .then(data => {
@@ -19,8 +20,12 @@ export const App = () => {
       });
   }, []);
 
-    return (
+  return (
+    <div className="App">
+      <div className="mainWrapper">
         <RouterProvider router={router} />
-    );
+      </div>
+    </div>
+  );
 }
 

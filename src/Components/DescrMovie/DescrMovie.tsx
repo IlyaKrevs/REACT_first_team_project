@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom';
 import styles from './styles.module.css';
-import { actor } from 'assets';
-import { ROUTE } from 'router';
+
+
 import { useState } from 'react';
-import { RatingModal } from 'components/RatingModal/RatingModal';
+import { ROUTE } from '../../router';
+import { RatingModal } from '../RatingModal/RatingModal';
+import { actor } from '../../assets';
+
 
 export const DescrMovie = () => {
   const [showDetails, setShowDetails] = useState(false);
@@ -15,11 +18,11 @@ export const DescrMovie = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
-      setModalOpen(true);
+    setModalOpen(true);
   };
 
   const closeModal = () => {
-      setModalOpen(false);
+    setModalOpen(false);
   };
 
   return (
@@ -117,11 +120,11 @@ export const DescrMovie = () => {
         )}
       </div>
       <div className={styles.rating} onClick={openModal}>
-       <div className={styles.ratingWrap}>
-        <div className={styles.figure}>6,7</div>
-        <div className={styles.ratingIvi}>Рейтинг Иви</div>
-       </div>
-       <button className={styles.number}>6.0</button>
+        <div className={styles.ratingWrap}>
+          <div className={styles.figure}>6,7</div>
+          <div className={styles.ratingIvi}>Рейтинг Иви</div>
+        </div>
+        <button className={styles.number}>6.0</button>
       </div>
       {isModalOpen && <RatingModal closeModal={closeModal} />}
 

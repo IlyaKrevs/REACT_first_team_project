@@ -1,6 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './styles.module.css';
-import { Wrapper } from 'components/Wrapper/Wrapper';
+import { Wrapper } from '../Wrapper/Wrapper';
+
+
+
+
+
 
 export const Breadcrumb = () => {
   const location = useLocation();

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import styles from './styles.module.css';
-import { Wrapper } from 'components/Wrapper/Wrapper';
+import { Wrapper } from '../Wrapper/Wrapper';
+
+
 
 interface IProps {
     closeModal: () => void;

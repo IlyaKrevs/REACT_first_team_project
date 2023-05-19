@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './FilmCardImageWrapper.module.css'
-import orangeCow from '../../../../img/orange_cow.jpg'
+import orangeCow from './../../../../assets/img/orange_cow.jpg'
 
 
 interface ImageWrapperProps {

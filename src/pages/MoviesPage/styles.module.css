@@ -1,5 +1,5 @@
 .title {
-    font-family: 'IviSans', 'Arial', 'Helvetica', 'Helvetica Neue', 'FreeSans', sans-serif;
+    font-family: 'Arial';
     color: white;
     font-size: 40px;
     line-height: 44px;
@@ -26,9 +26,7 @@
     color: #a5a1b2;
 }
 
-p {
-    margin-top: 8px;
-}
+
 
 .btn {
     padding: 8px 0;

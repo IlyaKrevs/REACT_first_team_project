@@ -1,0 +1,23 @@
+.wrapper {
+    display: flex;
+    gap: 32px;
+    padding-bottom: 24px;
+}
+
+.descr {
+    background-color: #100e19;
+    overflow: hidden;
+}
+
+.title {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+    font-style: normal;
+    color: #fff;
+    margin-bottom: 24px;
+}
+
+.person {
+    margin: 24px 0;
+}

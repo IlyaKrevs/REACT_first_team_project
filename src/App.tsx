@@ -2,13 +2,9 @@ import React from 'react';
 
 import './App.css';
 
-import HeaderNavContainer from './Components/Header/HeaderTop/HeaderNavContainer/HeaderNavContainer';
-import RectangleBtn from './Components/Buttons/RectangleBtn/RectangleBtn';
 import Header from './Components/Header/Header';
 import PageSection from './Components/PageSection/PageSection';
 import Footer from './Components/Footer/Footer';
-import FilmCard from './Components/FilmCard/FilmCard';
-import FilmCardEmpty from './Components/FilmCard/FilmCardEmpty';
 import Carousel from './Components/Carousel/Carousel';
 
 

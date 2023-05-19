@@ -1,0 +1,16 @@
+.mainContainer {
+    display: grid;
+    grid-template: 1fr / 2fr 1fr 3fr;
+}
+
+.leftSideItemContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.rightSideContainer {
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+}

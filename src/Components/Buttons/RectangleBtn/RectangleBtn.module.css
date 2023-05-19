@@ -1,0 +1,56 @@
+.btnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 40px;
+
+
+    border-radius: 8px;
+
+    color: white;
+    font-weight: 700;
+    padding: 9px 15px;
+    gap: 8px;
+    transition: .4s;
+    cursor: pointer;
+}
+
+.imageContainer {
+    height: 16px;
+    width: 16px;
+
+    fill: white;
+}
+
+.darkColor {
+    background-color: #1f1b2e;
+    border: 1px solid #1f1b2e;
+}
+
+.darkColor:hover {
+    background-color: #312b45;
+    border: 1px solid #1f1b2e;
+}
+
+
+.lightColor {
+    background-color: #312b45;
+    border: 1px solid #312b45;
+}
+
+.lightColor:hover {
+    background-color: #403859;
+    border: 1px solid #403859;
+}
+
+
+.redColor {
+    background-color: #ea003d;
+    border: 1px solid #ea003d;
+}
+
+.redColor:hover {
+    background-color: #e4285a;
+    border: 1px solid #e4285a;
+}

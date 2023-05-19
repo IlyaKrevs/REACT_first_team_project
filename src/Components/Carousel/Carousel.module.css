@@ -1,0 +1,29 @@
+.mainContainer {
+    position: relative;
+    margin: -12px;
+}
+
+
+.viewPort {
+    overflow: hidden;
+    padding: 50px 12px;
+    width: 100%;
+}
+
+.lenta {
+    display: flex;
+    gap: 27px;
+    transition: .5s;
+}
+
+.leftArrowContainer {
+    position: absolute;
+    top: calc(50% - 20px);
+    left: -25px;
+}
+
+.rightArrowContainer {
+    position: absolute;
+    top: calc(50% - 20px);
+    right: -25px;
+}

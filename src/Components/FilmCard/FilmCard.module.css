@@ -1,0 +1,15 @@
+.item {
+    min-width: 154px;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    cursor: pointer;
+    transition: .2s;
+}
+
+.item:hover {
+    transform: scale(1.05);
+}

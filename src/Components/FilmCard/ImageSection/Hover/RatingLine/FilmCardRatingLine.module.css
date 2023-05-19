@@ -1,0 +1,25 @@
+.mainLine {
+    position: relative;
+    width: 100%;
+
+    background-color: rgba(165, 161, 178, .32);
+}
+
+.progressLine {
+    position: absolute;
+    top: 0;
+
+    width: 55%;
+
+    background-color: red;
+}
+
+.bigLine {
+    height: 4px;
+    border-radius: 2px;
+}
+
+.smallLine {
+    height: 2px;
+    border-radius: 1px;
+}

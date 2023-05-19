@@ -1,0 +1,25 @@
+.mainContainer {
+    display: flex;
+    gap: 16px;
+    height: 100%;
+}
+
+.itemsContainer {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mainAxisSplitter {
+    width: 1px;
+    background-color: hsla(0, 0%, 100%, .1);
+}
+
+.movingSplitter {
+    background-color: #fff;
+    height: 20px;
+    width: 2px;
+
+    transition: .2s;
+}

@@ -1,0 +1,27 @@
+.mainContainer {
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+
+    z-index: 2;
+    background: #1f1b2e;
+
+    border-radius: 12px;
+    box-shadow: 0 20px 96px #12101b;
+}
+
+.innerContainer {
+    margin-top: 68px;
+    padding: 32px;
+
+    border-top: 1px solid hsla(0, 0%, 100%, .1);
+
+    color: hsla(0, 0%, 100%, .48);
+
+    font-style: normal;
+    font-size: 15px;
+
+    line-height: 20px;
+    font-weight: 500;
+}

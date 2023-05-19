@@ -1,0 +1,16 @@
+.item {
+    color: hsla(0, 0%, 100%, .48);
+
+    font-style: normal;
+    font-weight: 700;
+
+    font-size: 15px;
+    line-height: 20px;
+
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.item:hover {
+    color: white;
+}

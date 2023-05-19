@@ -1,0 +1,21 @@
+.mainContainer {
+    height: 212px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 24px;
+}
+
+.iconContainer {
+    height: 56px;
+    width: 56px;
+    opacity: 0.32;
+
+    fill: rgb(255, 255, 255);
+}
+
+.text {}

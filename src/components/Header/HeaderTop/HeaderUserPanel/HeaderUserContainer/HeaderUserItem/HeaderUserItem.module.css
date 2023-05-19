@@ -1,0 +1,23 @@
+.mainContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    transition: .4s;
+    cursor: pointer;
+}
+
+.imgContainer {
+    width: 16px;
+    height: 16px;
+    fill: hsla(0, 0%, 100%, .48);
+    transition: .4s;
+}
+
+.mainContainer:hover {
+    color: white;
+
+    .imgContainer {
+        fill: white;
+    }
+}

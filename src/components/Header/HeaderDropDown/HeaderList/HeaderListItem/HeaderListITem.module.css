@@ -1,0 +1,8 @@
+.liItem {
+    cursor: pointer;
+    transition: .2s;
+}
+
+.liItem:hover {
+    color: white;
+}

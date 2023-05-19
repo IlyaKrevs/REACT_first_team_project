@@ -1,0 +1,49 @@
+.mainContainer {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    padding: 0 12px;
+    gap: 10px;
+
+    border-radius: 8px;
+    background-color: #1f1b2e;
+
+    width: fit-content;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.mainContainer:hover {
+    background-color: #312b45;
+}
+
+.imgContainer {
+    display: flex;
+    height: 100%;
+    width: 20px;
+    fill: white;
+}
+
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.special {
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    height: 12px;
+    line-height: 12px;
+    color: hsla(0, 0%, 100%, .72);
+}
+
+.mainText {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    height: 20px;
+    line-height: 20px;
+    color: #fff;
+}

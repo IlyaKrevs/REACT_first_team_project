@@ -1,0 +1,17 @@
+.liItem {
+    color: hsla(0, 0%, 100%, .48);
+
+    font-style: normal;
+    font-weight: 500;
+
+    font-size: 15px;
+    line-height: 20px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.liItem:hover {
+    color: white;
+}

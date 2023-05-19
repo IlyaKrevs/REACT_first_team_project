@@ -1,0 +1,24 @@
+.subscribeButton {
+    padding: 7px 11px;
+    height: 32px;
+
+    width: fit-content;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+
+    color: #fff;
+
+
+    border-radius: 8px;
+    background-image: linear-gradient(270deg, #ea003d, #c447ff);
+
+
+    cursor: pointer;
+}

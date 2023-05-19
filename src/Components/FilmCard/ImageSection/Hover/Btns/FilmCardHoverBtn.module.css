@@ -1,0 +1,49 @@
+.btnContainer {
+    fill: white;
+    width: 20px;
+    height: 20px;
+    z-index: 90;
+
+    position: relative;
+}
+
+
+.tooltip {
+    position: absolute;
+
+    bottom: calc(100% + 10px);
+
+    left: -10px;
+
+
+    height: 20px;
+
+    z-index: 155;
+
+    padding: 5px 7px;
+
+    border-radius: 4px;
+    white-space: nowrap;
+    overflow: visible;
+
+    color: white;
+    background-color: #312b45;
+
+    font-size: 12px;
+}
+
+.tooltip::after {
+    content: '';
+
+    position: absolute;
+    z-index: 155;
+    bottom: -9px;
+    left: 10px;
+
+
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 11px solid #312b45;
+}

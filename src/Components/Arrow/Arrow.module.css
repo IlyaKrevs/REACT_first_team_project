@@ -1,0 +1,35 @@
+.arrow {
+    width: 20px;
+    height: 20px;
+
+    border-bottom: 4px solid hsla(0, 0%, 100%, .4);
+    border-right: 4px solid hsla(0, 0%, 100%, .4);
+
+    transform: skew(-10deg, -10deg);
+
+    transition: .2s;
+    cursor: pointer;
+}
+
+.arrow:hover {
+
+    border-bottom: 4px solid hsla(0, 0%, 100%, 1);
+    border-right: 4px solid hsla(0, 0%, 100%, 1);
+}
+
+
+.leftDirection {
+    rotate: 135deg;
+}
+
+.upDirection {
+    rotate: 225deg;
+}
+
+.rightDirection {
+    rotate: 315deg;
+}
+
+.downDirection {
+    rotate: 45deg;
+}

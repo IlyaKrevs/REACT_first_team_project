@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 import { IPersonFilms } from '../../types/IPersonFilms';
 import ButtonLink from '../UI/ButtonLink/ButtonLink';
 
+
 type PropsType = {
     movie: IPersonFilms
 }

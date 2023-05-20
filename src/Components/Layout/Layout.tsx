@@ -1,20 +1,17 @@
 import { Outlet } from "react-router-dom";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-import PageSection from "../PageSection/PageSection";
-import Carousel from "../Carousel/Carousel";
-import FilmCard from "../FilmCard/FilmCard";
+import Header from "../aKrevs/Header/Header";
+import Carousel from "../aKrevs/Carousel/Carousel";
+import Footer from "../aKrevs/Footer/Footer";
+import PageSection from "../aKrevs/PageSection/PageSection";
+
 
 export const Layout = () => {
   return (
     <>
       <Header />
 
-      <PageSection>
+      <Outlet />
 
-        <Carousel />
-
-      </PageSection>
       <Footer />
     </>
   );

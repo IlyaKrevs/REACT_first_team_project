@@ -1,5 +1,5 @@
 export interface MoviesState {
- all: MovieState[];
+  all: MovieState[];
 }
 
 export interface MovieState {

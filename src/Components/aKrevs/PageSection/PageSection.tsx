@@ -10,8 +10,8 @@ interface PageSectionItem {
 
 const PageSection = ({ children }: PageSectionItem) => {
     return (
-        <section className={classes.pageSection}>
-            <div className={classes.pageSection__container}>
+        <section className={classes.mainContainer}>
+            <div className={classes.innerContainer}>
                 {children}
             </div>
         </section>

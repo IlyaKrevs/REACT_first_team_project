@@ -1,10 +1,10 @@
 import styles from './styles.module.css';
 import { Link } from 'react-router-dom';
 
-import Carousel from '../../Components/Carousel/Carousel';
 import { DescrMovie, VideoPlayer } from '../../Components';
 import { ROUTE } from '../../router';
 import { Wrapper } from '../../Components/Wrapper/Wrapper';
+import Carousel from '../../Components/aKrevs/Carousel/Carousel';
 
 export const WatchPage = () => {
   const videoUrl = 'https://www.youtube.com/watch?v=di-VTrW7Kr0';

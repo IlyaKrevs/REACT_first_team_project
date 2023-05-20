@@ -2,8 +2,9 @@ import React from 'react';
 import classes from './Arrow.module.css';
 
 interface ArrowProps {
-    direction: string,
+    direction: 'left' | 'up' | 'right' | 'down',
 }
+
 
 const Arrow = ({ direction }: ArrowProps) => {
 

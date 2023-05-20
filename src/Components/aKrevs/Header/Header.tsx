@@ -4,6 +4,11 @@ import classes from './Header.module.css';
 import HeaderTop from './HeaderTop/HeaderTop';
 import ClauseUL from '../Clause/ClauseUL/ClauseUL';
 import Clause from '../Clause/Clause';
+import HeaderDropDownMain from './HeaderDropDown/HeaderDropDownMain/HeaderDropDownMain';
+import DropDownMovieScreen from './HeaderDropDown/HeaderDropDownMain/MovieScreen/DropDownMovieScreen';
+import DropDownNotifyScreen from './HeaderDropDown/HeaderDropDownMain/NotifyScreen/DropDownNotifyScreen';
+import DropDownProfileScreen from './HeaderDropDown/HeaderDropDownMain/ProfileScreen/DropDownProfileScreen';
+import DropDownTVPlusScreen from './HeaderDropDown/HeaderDropDownMain/TVPlusScreen/DropDownTVPlusScreen';
 
 
 
@@ -37,32 +42,19 @@ const Header = () => {
 
       <HeaderTop />
 
-      {/* <HeaderDropDownMain>
+      {/* <HeaderDropDownMain> */}
 
-                <DropDownMovieScreen firstList={mytemp15} secondList={mytemp3} thirdList={mytemp3} moveList={mytemp12} />
+        {/* <DropDownMovieScreen firstList={mytemp15} secondList={mytemp3} thirdList={mytemp3} moveList={mytemp12} /> */}
 
-            </HeaderDropDownMain> */}
-
-      {/* 
-            <HeaderDropDownMain>
-
-                <DropDownTVPlusScreen sideContent={myTVPLUSTemp} />
-
-            </HeaderDropDownMain> */}
+        {/* <DropDownTVPlusScreen sideContent={myTVPLUSTemp} /> */}
 
 
-      {/* <HeaderDropDownMain>
-
-                <DropDownNotifyScreen />
-
-            </HeaderDropDownMain> */}
+        {/* <DropDownNotifyScreen /> */}
 
 
-      {/* <HeaderDropDownMain>
+        {/* <DropDownProfileScreen /> */}
 
-                <DropDownProfileScreen />
-
-            </HeaderDropDownMain> */}
+      {/* </HeaderDropDownMain> */}
 
     </div>
 

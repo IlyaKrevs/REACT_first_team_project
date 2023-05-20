@@ -3,7 +3,7 @@ import classes from './RectangleBtn.module.css';
 
 interface RectangleBtnProps {
     icon?: React.ReactNode,
-    color: string,
+    color: 'light' | 'dark' | 'red',
     text: string,
 }
 

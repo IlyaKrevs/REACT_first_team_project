@@ -1,10 +1,10 @@
-.pageSection {
+.mainContainer {
     display: flex;
     flex-direction: column;
     padding: 24px 0;
 }
 
-.pageSection__container {
+.innerContainer {
     width: 1240px;
     margin: 0 auto;
 }

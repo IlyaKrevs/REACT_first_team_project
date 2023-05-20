@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './HeaderTop.module.css';
 
-import iviLogо from './../../../assets/img/ivi_logo.svg';
+import iviLogо from '../../../../assets/img/ivi_logo.svg';
 
 import HeaderNavContainer from './HeaderNavContainer/HeaderNavContainer';
 import HeaderUserContainer from './HeaderUserPanel/HeaderUserContainer/HeaderUserContainer';

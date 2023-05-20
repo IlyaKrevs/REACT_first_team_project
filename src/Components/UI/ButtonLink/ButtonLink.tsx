@@ -1,6 +1,6 @@
-import React, {ButtonHTMLAttributes} from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import styles from '../ButtonLink/buttonLink.module.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     option?: 'primary';
@@ -14,17 +14,17 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const ButtonLink = React.memo<ButtonProps>(
     ({
-         className,
-         option = 'primary',
-         round,
-         large,
-         transparent,
-         small,
-         children,
-         to,
-         onClick,
-         ...props
-     }) => {
+        className,
+        option = 'primary',
+        round,
+        large,
+        transparent,
+        small,
+        children,
+        to,
+        onClick,
+        ...props
+    }) => {
         const clazz = styles.button;
 
         if (to != null) {

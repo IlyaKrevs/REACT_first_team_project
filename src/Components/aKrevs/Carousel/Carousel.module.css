@@ -13,7 +13,7 @@
 .lenta {
     display: flex;
     gap: 27px;
-    transition: .5s;
+    transition: .8s;
 }
 
 .leftArrowContainer {

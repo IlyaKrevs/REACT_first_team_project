@@ -6,6 +6,9 @@ import iviLogо from '../../../../assets/img/ivi_logo.svg';
 import HeaderNavContainer from './HeaderNavContainer/HeaderNavContainer';
 import HeaderUserContainer from './HeaderUserPanel/HeaderUserContainer/HeaderUserContainer';
 
+
+
+
 const HeaderTop = () => {
     return (
         <div className={classes.headerTop}>

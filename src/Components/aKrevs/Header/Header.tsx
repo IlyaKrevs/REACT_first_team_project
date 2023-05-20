@@ -9,6 +9,9 @@ import DropDownMovieScreen from './HeaderDropDown/HeaderDropDownMain/MovieScreen
 import DropDownNotifyScreen from './HeaderDropDown/HeaderDropDownMain/NotifyScreen/DropDownNotifyScreen';
 import DropDownProfileScreen from './HeaderDropDown/HeaderDropDownMain/ProfileScreen/DropDownProfileScreen';
 import DropDownTVPlusScreen from './HeaderDropDown/HeaderDropDownMain/TVPlusScreen/DropDownTVPlusScreen';
+import { useDispatch, useSelector } from 'react-redux';
+import { string } from 'prop-types';
+import { setCurrentHover } from '../../../store/slice/hoverSlice';
 
 
 
@@ -26,14 +29,64 @@ const Header = () => {
     }} />
 
 
-  let mytemp15 = ['Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус',];
+  let first1 = ['Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус',];
+  let first2 = ['Артхаус', 'Артхаус', 'Артхаус',];
+  let first3 = ['Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки',];
 
-  let mytemp3 = ['Артхаус', 'Артхаус', 'Артхаус',];
 
-
-  let mytemp12 = ['Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки',];
 
   let myTVPLUSTemp = ['ТВ-каналы', 'ТВ-каналы', 'ТВ-каналы', 'ТВ-каналы', 'ТВ-каналы',]
+
+
+
+  let second1 = ['Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check',];
+  let second2 = ['Check', 'Check', 'Check',];
+  let second3 = ['Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check',];
+
+
+
+
+  let third1 = ['ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal',];
+  let third2 = ['ystal', 'ystal', 'ystal',];
+  let third3 = ['ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal',];
+
+
+
+  const dispatch = useDispatch();
+  function hideDropDown() {
+    dispatch(setCurrentHover({ value: '' }));
+  }
+
+
+  const selector = useSelector((state: any) => state.hover.currentState);
+
+
+  let showFirstList = [''];
+  let showSecondList = [''];
+  let showThirdList = [''];
+  let showMoveist = [''];
+
+  if (selector === 'Films') {
+    showFirstList = first1
+    showSecondList = first2
+    showThirdList = first2
+    showMoveist = first3
+  } else if (selector === 'Series') {
+    showFirstList = second1
+    showSecondList = second2
+    showThirdList = second2
+    showMoveist = second3
+  } else if (selector === 'Cartoon') {
+    showFirstList = third1
+    showSecondList = third2
+    showThirdList = third2
+    showMoveist = third3
+  } else if (selector === 'TV+') {
+    showFirstList = myTVPLUSTemp
+    showSecondList = myTVPLUSTemp
+    showThirdList = myTVPLUSTemp
+    showMoveist = myTVPLUSTemp
+  }
 
 
 
@@ -41,21 +94,21 @@ const Header = () => {
     <div className={classes.headerContainer}>
 
       <HeaderTop />
+      {selector !== '' &&
+        <HeaderDropDownMain onMouseLeave={() => hideDropDown()} >
 
-      {/* <HeaderDropDownMain> */}
+          <DropDownMovieScreen firstList={showFirstList} secondList={showSecondList} thirdList={showThirdList} moveList={showMoveist} />
 
-        {/* <DropDownMovieScreen firstList={mytemp15} secondList={mytemp3} thirdList={mytemp3} moveList={mytemp12} /> */}
-
-        {/* <DropDownTVPlusScreen sideContent={myTVPLUSTemp} /> */}
-
-
-        {/* <DropDownNotifyScreen /> */}
+          {/* <DropDownTVPlusScreen sideContent={myTVPLUSTemp} /> */}
 
 
-        {/* <DropDownProfileScreen /> */}
+          {/* <DropDownNotifyScreen /> */}
 
-      {/* </HeaderDropDownMain> */}
 
+          {/* <DropDownProfileScreen /> */}
+
+        </HeaderDropDownMain>
+      }
     </div>
 
   );

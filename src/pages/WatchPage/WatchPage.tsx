@@ -11,7 +11,7 @@ export const WatchPage = () => {
 
   return (
     <div className={styles.descr}>
-      <Wrapper>
+      {/* <Wrapper>
         <div className={styles.wrapper}>
           <VideoPlayer videoUrl={videoUrl} />
           <DescrMovie />
@@ -26,7 +26,7 @@ export const WatchPage = () => {
           </Link>
 
         </div>
-      </Wrapper>
+      </Wrapper> */}
     </div>
   )
 }

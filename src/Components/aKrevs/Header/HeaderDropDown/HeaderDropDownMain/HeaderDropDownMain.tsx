@@ -3,11 +3,12 @@ import classes from './HeaderDropDownMain.module.css';
 
 interface DropDownMain {
     children: React.ReactNode,
+    onMouseLeave: () => void,
 }
 
-const HeaderDropDownMain = ({ children }: DropDownMain) => {
+const HeaderDropDownMain = ({ children, onMouseLeave }: DropDownMain) => {
     return (
-        <div className={classes.mainContainer}>
+        <div onMouseLeave={onMouseLeave} className={classes.mainContainer}>
             <div className={classes.innerContainer}>
                 {children}
             </div>

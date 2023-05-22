@@ -1,5 +1,4 @@
 import React from 'react';
-import bigPhoto from '../../img/bigSLIDERPHOTO.jpg'
 
 
 const BIGSlider = () => {
@@ -9,7 +8,7 @@ const BIGSlider = () => {
 
 
                 <div className="bigSlider__carouselItem">
-                    <img className='bigSlider__IMAGE' src={bigPhoto} alt="bigPhoto" />
+                    <img className='bigSlider__IMAGE' src='{#}' alt="bigPhoto" />
 
                     <div className='bigSlider__carouselCONTENT'>
                         <div className='bigSlider__carouselItem__title'>Создано Иви</div>

@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import movieReducer from './slice/moviesSlice';
-import hoverReducer from './slice/hoverSlice';
+import showDropDownSlice from './slice/HeaderSlices/showDropDownSlice';
+import movingListSlice from "./slice/HeaderSlices/movingListSlice";
 
 export const store = configureStore({
     reducer: {
         movies: movieReducer,
-        hover: hoverReducer,
+        showDropDown: showDropDownSlice,
+        movingList: movingListSlice,
     },
 });
 

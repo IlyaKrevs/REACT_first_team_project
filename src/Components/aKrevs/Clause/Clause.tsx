@@ -6,8 +6,14 @@ import classes from './Clause.module.css'
 import ExpandCollapse from './ExpandCollapse/ExpandCollapse';
 
 interface ClauseProps {
-    title?: { text: string, type: string },
-    description: { text: (string | any)[], type: string },
+    title?: {
+        text: string,
+        type: 'big' | 'medium' | 'small',
+    },
+    description: {
+        text: (string | any)[],
+        type: string
+    },
 }
 
 const Clause = ({ title, description }: ClauseProps) => {

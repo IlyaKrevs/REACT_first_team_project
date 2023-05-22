@@ -10,6 +10,9 @@ import HeaderUserContainer from './HeaderUserPanel/HeaderUserContainer/HeaderUse
 
 
 const HeaderTop = () => {
+
+
+
     return (
         <div className={classes.headerTop}>
             <div className={classes.leftContainer}>

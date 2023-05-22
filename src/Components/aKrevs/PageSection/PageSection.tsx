@@ -8,7 +8,7 @@ interface PageSectionItem {
 }
 
 
-const PageSection = ({ children }: PageSectionItem) => {
+const PageSection = ({ children, }: PageSectionItem) => {
     return (
         <section className={classes.mainContainer}>
             <div className={classes.innerContainer}>

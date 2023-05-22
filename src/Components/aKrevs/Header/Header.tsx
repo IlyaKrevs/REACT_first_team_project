@@ -9,9 +9,8 @@ import DropDownMovieScreen from './HeaderDropDown/HeaderDropDownMain/MovieScreen
 import DropDownNotifyScreen from './HeaderDropDown/HeaderDropDownMain/NotifyScreen/DropDownNotifyScreen';
 import DropDownProfileScreen from './HeaderDropDown/HeaderDropDownMain/ProfileScreen/DropDownProfileScreen';
 import DropDownTVPlusScreen from './HeaderDropDown/HeaderDropDownMain/TVPlusScreen/DropDownTVPlusScreen';
-import { useDispatch, useSelector } from 'react-redux';
-import { string } from 'prop-types';
-import { setCurrentHover } from '../../../store/slice/hoverSlice';
+import { useSelector } from 'react-redux';
+
 
 
 
@@ -52,40 +51,39 @@ const Header = () => {
 
 
 
-  const dispatch = useDispatch();
-  function hideDropDown() {
-    dispatch(setCurrentHover({ value: '' }));
-  }
 
 
-  const selector = useSelector((state: any) => state.hover.currentState);
 
+  const selector = useSelector((state: any) => state.showDropDown);
+
+  let temp1 = selector.currentType;
+  let temp2 = selector.currentPosition;
 
   let showFirstList = [''];
   let showSecondList = [''];
   let showThirdList = [''];
   let showMoveist = [''];
 
-  if (selector === 'Films') {
-    showFirstList = first1
-    showSecondList = first2
-    showThirdList = first2
-    showMoveist = first3
-  } else if (selector === 'Series') {
-    showFirstList = second1
-    showSecondList = second2
-    showThirdList = second2
-    showMoveist = second3
-  } else if (selector === 'Cartoon') {
-    showFirstList = third1
-    showSecondList = third2
-    showThirdList = third2
-    showMoveist = third3
-  } else if (selector === 'TV+') {
-    showFirstList = myTVPLUSTemp
-    showSecondList = myTVPLUSTemp
-    showThirdList = myTVPLUSTemp
-    showMoveist = myTVPLUSTemp
+  if (temp2 === 'Films') {
+    showFirstList = first1;
+    showSecondList = first2;
+    showThirdList = first2;
+    showMoveist = first3;
+  } else if (temp2 === 'Series') {
+    showFirstList = second1;
+    showSecondList = second2;
+    showThirdList = second2;
+    showMoveist = second3;
+  } else if (temp2 === 'Cartoon') {
+    showFirstList = third1;
+    showSecondList = third2;
+    showThirdList = third2;
+    showMoveist = third3;
+  } else if (temp2 === 'TV+') {
+    showFirstList = third2;
+    showSecondList = third2;
+    showThirdList = third2;
+    showMoveist = third2;
   }
 
 
@@ -94,21 +92,29 @@ const Header = () => {
     <div className={classes.headerContainer}>
 
       <HeaderTop />
-      {selector !== '' &&
-        <HeaderDropDownMain onMouseLeave={() => hideDropDown()} >
 
-          <DropDownMovieScreen firstList={showFirstList} secondList={showSecondList} thirdList={showThirdList} moveList={showMoveist} />
+      {temp1 &&
+        <HeaderDropDownMain>
 
-          {/* <DropDownTVPlusScreen sideContent={myTVPLUSTemp} /> */}
+          {temp1 === 'movies' &&
+            <DropDownMovieScreen firstList={showFirstList} secondList={showSecondList} thirdList={showThirdList} moveList={showMoveist} />
+          }
 
+          {temp1 === 'TV+' &&
+            < DropDownTVPlusScreen sideContent={myTVPLUSTemp} />
+          }
 
-          {/* <DropDownNotifyScreen /> */}
+          {temp1 === 'Notify' &&
+            < DropDownNotifyScreen />
+          }
 
-
-          {/* <DropDownProfileScreen /> */}
+          {temp1 === 'Profile' &&
+            <DropDownProfileScreen />
+          }
 
         </HeaderDropDownMain>
       }
+
     </div>
 
   );

@@ -2,8 +2,8 @@
     width: 20px;
     height: 20px;
 
-    border-bottom: 4px solid hsla(0, 0%, 100%, .4);
-    border-right: 4px solid hsla(0, 0%, 100%, .4);
+    border-bottom: 4px solid hsla(0, 0%, 100%, .5);
+    border-right: 4px solid hsla(0, 0%, 100%, .5);
 
     transform: skew(-10deg, -10deg);
 

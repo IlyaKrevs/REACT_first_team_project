@@ -1,14 +1,19 @@
 import React from 'react';
 import classes from './HeaderDropDownMain.module.css';
+import { useDispatch } from 'react-redux';
+import { resetCurrentHover } from '../../../../../store/slice/HeaderSlices/showDropDownSlice';
 
 interface DropDownMain {
     children: React.ReactNode,
-    onMouseLeave: () => void,
 }
 
-const HeaderDropDownMain = ({ children, onMouseLeave }: DropDownMain) => {
+const HeaderDropDownMain = ({ children, }: DropDownMain) => {
+
+    let dispatch = useDispatch();
+    let resetHover = () => dispatch(resetCurrentHover(''));
+
     return (
-        <div onMouseLeave={onMouseLeave} className={classes.mainContainer}>
+        <div onMouseLeave={resetHover} className={classes.mainContainer}>
             <div className={classes.innerContainer}>
                 {children}
             </div>

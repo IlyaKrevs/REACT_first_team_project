@@ -5,7 +5,7 @@ import HeaderUserAvatar from './HeaderUserAvatar/HeaderUserAvatar';
 import HeaderUserItem from './HeaderUserItem/HeaderUserItem';
 import SpecialColorBtn from '../../../../Buttons/SpecialColorBtn/SpecialColorBtn';
 import { useDispatch } from 'react-redux';
-import { setCurrentHover } from '../../../../../../store/slice/hoverSlice';
+import { setCurrentHover } from '../../../../../../store/slice/HeaderSlices/showDropDownSlice';
 
 
 
@@ -23,8 +23,13 @@ const HeaderUserContainer = () => {
 
     const dispatch = useDispatch();
 
-    function setHoverDispatch(params: string) {
-        dispatch(setCurrentHover({ value: params }))
+    function setHoverDispatch(typeParams: string, posParams: string) {
+        dispatch(setCurrentHover({
+            value: {
+                currentType: typeParams,
+                currentPosition: posParams,
+            }
+        }))
     }
 
     return (
@@ -36,11 +41,11 @@ const HeaderUserContainer = () => {
             <HeaderUserItem icon={findIcon} text='Поиск' />
 
             <HeaderUserItem
-                onMouseEnter={() => setHoverDispatch('Notify')}
+                onMouseEnter={() => setHoverDispatch('Notify', 'Notify')}
                 icon={alertIcon} />
 
             <HeaderUserAvatar
-                onMouseEnter={() => setHoverDispatch('Profile')}
+                onMouseEnter={() => setHoverDispatch('Profile', 'Profile')}
             />
         </div>
     );

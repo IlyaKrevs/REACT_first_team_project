@@ -1,0 +1,95 @@
+.colorFirst {
+    background-color: rgb(107, 21, 21);
+}
+
+.colorSecond {
+    background-color: rgb(66, 147, 31);
+}
+
+.colorThird {
+    background-color: rgb(151, 145, 30);
+}
+
+.colorFourth {
+    background-color: rgb(41, 29, 150);
+}
+
+.colorFiveth {
+    background-color: rgb(151, 28, 153);
+}
+
+.mainContainer {
+    position: relative;
+
+    min-width: 1216px;
+    height: 525px;
+
+    border-radius: 24px;
+    padding: 40px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.titleTextContainer {
+    display: flex;
+    justify-content: center;
+
+    color: white;
+
+    font-weight: 700;
+    font-size: 48px;
+}
+
+.descriptionTextContainer {
+    height: 100%;
+
+    color: white;
+
+    font-weight: 500px;
+    font-size: 20px;
+
+    display: grid;
+
+    grid-template: 80px 1fr 1fr / 1fr 1fr;
+
+}
+
+.descriptionBig {
+    padding: 30px 50px;
+
+    font-size: 40px;
+}
+
+.descriptionItem {
+    padding: 25px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.name {
+    font-size: 35px;
+}
+
+.socialItem {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    cursor: pointer;
+}
+
+.socialItem:hover {
+    color: rgb(47, 147, 151);
+}
+
+.socialIcon {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+
+
+    background-color: black;
+    fill: white;
+}

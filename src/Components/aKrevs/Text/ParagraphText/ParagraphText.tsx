@@ -8,8 +8,6 @@ interface ParagraphTextProps {
 
 const ParagraphText = ({ text, type }: ParagraphTextProps) => {
 
-    console.log(type)
-
     let myType;
 
     if (type === 'classic') {

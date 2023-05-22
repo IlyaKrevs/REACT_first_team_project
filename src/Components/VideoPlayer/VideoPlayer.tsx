@@ -12,16 +12,16 @@ export const VideoPlayer = ({ videoUrl }: IProps) => {
       <div className={styles.userButtons}>
         <div className={styles.wrapper}>
           <div className={styles.trailer}>
-            <button className={styles.btn}/>
+            <button className={styles.btn} />
             Трейлер
           </div>
           <div className={styles.favorite}></div>
           <div className={styles.download}></div>
         </div>
-        <div className={styles.freeMovies}>
+        {/*<div className={styles.freeMovies}>
           <a className={styles.link}/>
           Бесплатные фильмы
-        </div>
+         </div>*/}
       </div>
     </div>
   );

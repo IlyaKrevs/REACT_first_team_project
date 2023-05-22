@@ -1,6 +1,7 @@
 .wrapper {
     display: flex;
     gap: 32px;
+    align-items: center;
     padding-bottom: 24px;
 }
 
@@ -9,7 +10,7 @@
     overflow: hidden;
 }
 
-.title {
+.titleMov {
     font-size: 24px;
     line-height: 28px;
     font-weight: 700;
@@ -18,6 +19,97 @@
     margin-bottom: 24px;
 }
 
+.title {
+  position: relative;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+  font-style: normal;
+  color: #fff;
+  margin-bottom: 24px;
+}
+
+.title a {
+  text-decoration: none;
+  position: relative;
+}
+
+.title a::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.248);
+    transition: background-color 0.3s ease; /* Добавлено для плавного перехода цвета */
+  }
+  
+.title a:hover::after {
+    background-color: white;
+}
+  
 .person {
-    margin: 24px 0;
+    margin-bottom: 8px;
+    padding: 24px 0;
+}
+
+.linkTitle {
+    color: #fff;
+}
+
+.carousel {
+    margin-bottom: 8px;
+    padding: 24px 0;
+}
+
+.icon {
+    flex: 0 0 16px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    margin-left: 24px;
+}
+
+.text {
+    color: #a5a1b2;
+    font-size: 15px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 16px;
+    margin-bottom: 24px;
+}
+
+.wrap {
+    display: flex;
+    align-items: center;
+}
+
+.clause {
+    margin-top: 8px;
+}
+
+.description p {
+    width: 50%;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 22px;
+    margin-bottom: 16px;
+}
+
+.toggle {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    font-style: normal;
+    cursor: pointer;
+    margin-top: 8px;
+    margin-bottom: 24px;
+    color: rgba(255, 255, 255, .48);
+
+    &:hover {
+        color: rgba(255, 255, 255, .88);
+    }
 }

@@ -1,12 +1,9 @@
 import { Link } from 'react-router-dom';
-import styles from './styles.module.css';
-
-
 import { useState } from 'react';
 import { ROUTE } from '../../router';
 import { RatingModal } from '../RatingModal/RatingModal';
 import { actor } from '../../assets';
-
+import styles from './styles.module.css';
 
 export const DescrMovie = () => {
   const [showDetails, setShowDetails] = useState(false);

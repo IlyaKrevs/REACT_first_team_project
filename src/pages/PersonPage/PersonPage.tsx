@@ -1,14 +1,8 @@
-import React from 'react';
-import styles from './personPage.module.css';
 import Back from '../../Components/UI/Back/Back';
 import PersonHeader from '../../Components/PersonHeader/PersonHeader';
 import FilmographyItem from '../../Components/Filmography/Filmography';
 import { Wrapper } from '../../Components/Wrapper/Wrapper';
-
-
-
-
-
+import styles from './personPage.module.css';
 
 
 export const PersonPage = () => {

@@ -1,6 +1,4 @@
-import React from 'react';
 import classes from './Carousel.module.css';
-
 import FilmCard from '../FilmCard/FilmCard';
 import FilmCardEmpty from '../FilmCard/FilmCardEmpty';
 import Arrow from '../Arrow/Arrow';
@@ -13,10 +11,7 @@ const Carousel = () => {
             </div>
 
             <div className={classes.viewPort}>
-
-
                 <div className={classes.lenta}>
-
                     <FilmCard />
                     <FilmCard />
                     <FilmCard />
@@ -24,18 +19,13 @@ const Carousel = () => {
                     <FilmCardEmpty />
                     <FilmCardEmpty />
                     <FilmCardEmpty />
-
                     <FilmCard />
                     <FilmCard />
                     <FilmCard />
                     <FilmCard />
                     <FilmCard />
                     <FilmCard />
-
-
-
                 </div>
-
             </div>
 
             <div className={classes.rightArrowContainer}>

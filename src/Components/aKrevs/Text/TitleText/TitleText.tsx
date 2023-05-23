@@ -3,7 +3,7 @@ import classes from './TitleText.module.css'
 
 interface TitleTextProps {
     text: string,
-    type: string,
+    type: 'big' | 'medium' | 'small',
 }
 
 

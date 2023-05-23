@@ -1,0 +1,12 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.galleryTitleContainer {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+
+}

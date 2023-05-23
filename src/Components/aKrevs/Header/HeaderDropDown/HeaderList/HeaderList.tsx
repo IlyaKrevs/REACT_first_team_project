@@ -6,7 +6,7 @@ import HeaderListItem from './HeaderListItem/HeaderListItem';
 
 interface HeaderListProps {
     title?: {
-        titleType: string,
+        titleType: 'big' | 'medium' | 'small',
         titleText: string,
     }
     items: string[],

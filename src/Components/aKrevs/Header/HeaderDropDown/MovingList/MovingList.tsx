@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './MovingList.module.css'
 import MovingListItem from './MovingListItem/MovingListItem';
+import { useSelector } from 'react-redux';
 
 interface MovingListProps {
     items: string[],
@@ -8,12 +9,11 @@ interface MovingListProps {
 
 const MovingList = ({ items }: MovingListProps) => {
 
-    const { useState } = React;
-    let [hoverPos, setHoverPos] = useState(0);
+    let currentPos = useSelector((state: any) => state.movingList.movingItemPos)
 
 
     let movingStyle = {
-        marginTop: (hoverPos * 28) + 'px',
+        marginTop: (currentPos * 28) + 'px',
     }
 
     return (
@@ -26,7 +26,7 @@ const MovingList = ({ items }: MovingListProps) => {
 
             <ul className={classes.itemsContainer}>
                 {items.map((elem, index) => {
-                    return <MovingListItem text={elem} position={index} setHoverPos={setHoverPos} hoverPos={hoverPos} />
+                    return <MovingListItem text={elem} position={index} />
                 })}
             </ul>
         </div>

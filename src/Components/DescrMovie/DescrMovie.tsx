@@ -27,14 +27,14 @@ export const DescrMovie = () => {
       <h1 className={styles.title}>30 Seconds To Mars</h1>
       <div className={styles.info}>
         <ul className={styles.list}>
-          <li className={styles.item}>2023</li>
-          <li className={styles.item}>1 ч. 17 мин.</li>
-          <li className={styles.item}>16+</li>
+          <li className={styles.item}>2023&nbsp;</li>
+          <li className={styles.item}>1 ч. 17 мин.&nbsp;</li>
+          <li className={styles.item}>16+&nbsp;</li>
         </ul>
         <ul className={styles.list}>
-          <li className={styles.item}>США</li>
-          <li className={styles.item}>Триллер</li>
-          <li className={styles.item}>Зарубежный</li>
+          <li className={styles.item}>США&nbsp;</li>
+          <li className={styles.item}>Триллер&nbsp;</li>
+          <li className={styles.item}>Зарубежный&nbsp;</li>
         </ul>
         <ul className={styles.list}>
           <div className={styles.icons}>FullHD</div>

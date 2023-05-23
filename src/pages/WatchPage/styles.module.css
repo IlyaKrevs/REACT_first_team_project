@@ -42,7 +42,7 @@
     width: 100%;
     height: 1px;
     background-color: rgba(255, 255, 255, 0.248);
-    transition: background-color 0.3s ease; /* Добавлено для плавного перехода цвета */
+    transition: background-color 0.3s ease; 
   }
   
 .title a:hover::after {
@@ -64,12 +64,13 @@
 }
 
 .icon {
-    flex: 0 0 16px;
-    top: 0;
+    color: #ff542e;
     width: 16px;
     height: 16px;
-    margin-right: 8px;
-    margin-left: 24px;
+    margin: 8px 24px;
+    position: absolute;
+    top: 0;
+    left: 5%;
 }
 
 .text {
@@ -79,37 +80,13 @@
     font-style: normal;
     line-height: 16px;
     margin-bottom: 24px;
+    left: 38px;
+    position: relative;
 }
 
 .wrap {
     display: flex;
     align-items: center;
-}
+    position: relative;
 
-.clause {
-    margin-top: 8px;
-}
-
-.description p {
-    width: 50%;
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 22px;
-    margin-bottom: 16px;
-}
-
-.toggle {
-    font-size: 15px;
-    line-height: 22px;
-    font-weight: 400;
-    font-style: normal;
-    cursor: pointer;
-    margin-top: 8px;
-    margin-bottom: 24px;
-    color: rgba(255, 255, 255, .48);
-
-    &:hover {
-        color: rgba(255, 255, 255, .88);
-    }
 }

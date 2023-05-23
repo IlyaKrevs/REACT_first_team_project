@@ -1,0 +1,55 @@
+/* Стили для контейнера слайдера */
+.wrapper {
+    position: relative;
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .slick-track {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    transition: transform 0.5s ease;
+  }
+  
+  .slick-list {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Стили для активного слайда */
+  .slick-slide.slick-active {
+    display: block;
+  }
+  
+  /* Стили для кнопок "следующий" и "предыдущий" слайд */
+  .slick-prev,
+  .slick-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+    cursor: pointer;
+    background-color: #fff;
+  }
+  
+  /* Стили для кнопки "следующий" слайд */
+  .slick-next {
+    right: 10px;
+    color: #fff;
+  }
+  
+  /* Стили для кнопки "предыдущий" слайд */
+  .slick-prev {
+    left: 10px;
+  }
+    

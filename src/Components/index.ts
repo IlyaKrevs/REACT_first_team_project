@@ -8,6 +8,10 @@ export * from "./DescrMovie/DescrMovie";
 export * from "./RatingModal/RatingModal";
 export * from "./Person/Person";
 export * from "./Trailer/Trailer";
+export * from "./PlotMovie/PlotMovie";
+export * from "./MovieCarousel/MovieCarousel";
+
+
 
 
 

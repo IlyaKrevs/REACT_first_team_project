@@ -7,9 +7,18 @@ const BigSlider = () => {
 
     const { useState, useEffect } = React;
 
+    let didMountTimeout: any;
+
+    useEffect(() => {
+        didMountTimeout = setTimeout(oneLeftMove, 5000);
+        return () => clearTimeout(didMountTimeout)
+    },)
+
+
     let oneStep = 1236;
     let noneStyle = 'none 0s ease 0s';
     let styleTransition = '3s';
+    let transitionTimeMS = 3000;
 
 
     let basicArray = [
@@ -36,7 +45,9 @@ const BigSlider = () => {
         setTranslateX(oneStep * direction);
 
         let myTimeout = setTimeout(() => {
+
             setTransitionTime(noneStyle);
+
             setShowArr((item) => {
                 let myArr = item.slice()
                 let firstItem = myArr[0];
@@ -44,23 +55,57 @@ const BigSlider = () => {
                 myArr.push(firstItem);
                 return myArr
             })
+
             setTranslateX(0);
+
             clearTimeout(myTimeout);
-        }, 3000);
+
+        }, transitionTimeMS);
+    }
+    function oneRightMove() {
+        let direction = 1;
+
+        setTransitionTime(styleTransition);
+
+        setTranslateX(oneStep * direction);
+
+        let myTimeout = setTimeout(() => {
+
+            setTransitionTime(noneStyle);
+
+            setShowArr((item) => {
+                let myArr = item.slice()
+                let lastItem = myArr[myArr.length - 1];
+                myArr.pop();
+                myArr.unshift(lastItem);
+                return myArr
+            })
+
+            setTranslateX(0);
+
+            clearTimeout(myTimeout);
+
+        }, transitionTimeMS);
     }
 
-    useEffect(() => {
-        let myTimeOut = setTimeout(oneLeftMove, 5000);
-        return () => {
-            clearTimeout(myTimeOut)
-        }
-    },)
+
+
+    function onClickLeftMove() {
+
+        clearTimeout(didMountTimeout);
+        oneLeftMove();
+    }
+    function onClickRightMove() {
+        clearTimeout(didMountTimeout);
+        oneRightMove();
+    }
 
     return (
         <div className={classes.mainContainer}>
-            <div className={classes.darkContainer}>
-                <div onClick={oneLeftMove} className={classes.arrowContainerLeft}>
-                    <Arrow direction='left' />
+            <div onClick={onClickLeftMove}
+                className={classes.darkContainer}>
+                <div className={classes.arrowContainerLeft}>
+                    <Arrow size='big' direction='left' />
                 </div>
             </div>
             <div className={classes.viewPort}>
@@ -75,9 +120,9 @@ const BigSlider = () => {
 
             </div>
 
-            <div className={classes.darkContainer}>
+            <div onClick={onClickRightMove} className={classes.darkContainer}>
                 <div className={classes.arrowContainerRight}>
-                    <Arrow direction='right' />
+                    <Arrow size='big' direction='right' />
                 </div>
 
             </div>

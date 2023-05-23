@@ -3,7 +3,7 @@ import classes from './ParagraphText.module.css'
 
 interface ParagraphTextProps {
     text: string,
-    type: string,
+    type: 'classic',
 }
 
 const ParagraphText = ({ text, type }: ParagraphTextProps) => {

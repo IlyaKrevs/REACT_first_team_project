@@ -1,27 +1,29 @@
 import React from 'react';
 import classes from './Carousel.module.css';
 
-import FilmCard from '../FilmCard/FilmCard';
 import FilmCardEmpty from '../FilmCard/FilmCardEmpty';
 import Arrow from '../Arrow/Arrow';
 
 interface CarouselProps {
-    type: 'classic',
+    type: 'classic' | 'top10',
+    children: React.ReactNode[],
+    emptyItem?: boolean,
 }
 
 
-const Carousel = ({ type }: CarouselProps) => {
+const Carousel = ({ type, children, emptyItem = false }: CarouselProps) => {
 
-    function make20items() {
+    // i have no idea how calculate this params, bcs can't get FilmCard width and count items in line (for calculate full lenght line)
+    let oneClickMovingLenght: number;
+    let maxMoveLenght: number = 0;
 
-        let myArr = [];
-
-        for (let i = 0; i < 20; i++) {
-            myArr.push(<FilmCard />)
-        }
-        return myArr;
+    if (type === 'classic') {
+        oneClickMovingLenght = 1086;
+        maxMoveLenght = -2534;
+    } if (type === 'top10') {
+        oneClickMovingLenght = 1004;
+        maxMoveLenght = -1250;
     }
-
 
 
 
@@ -30,13 +32,7 @@ const Carousel = ({ type }: CarouselProps) => {
     const { useState } = React;
     let [marginLeftState, setMarginLeftState] = useState(0);
 
-    // i have no idea how calculate this params, bcs can't get FilmCard width and count items in line (for calculate full lenght line)
-    let oneClickMovingLenght: number;
-    let maxMoveLenght: number = 0;
-    if (type === 'classic') {
-        oneClickMovingLenght = 1086;
-        maxMoveLenght = -2534;
-    }
+
 
     function leftMove() {
         if ((marginLeftState - oneClickMovingLenght) >= maxMoveLenght) {
@@ -58,7 +54,7 @@ const Carousel = ({ type }: CarouselProps) => {
         <div className={classes.mainContainer}>
             {marginLeftState < 0 &&
                 <div onClick={() => rightMove()} className={classes.leftArrowContainer}>
-                    <Arrow direction='left' />
+                    <Arrow size='big' direction='left' />
                 </div>}
 
             <div className={classes.viewPort}>
@@ -66,9 +62,8 @@ const Carousel = ({ type }: CarouselProps) => {
 
                 <div style={{ marginLeft: marginLeftState }} className={classes.lenta}>
 
-                    {make20items()}
-                    <FilmCardEmpty />
-
+                    {children}
+                    {emptyItem && <FilmCardEmpty />}
 
                 </div>
 
@@ -76,7 +71,7 @@ const Carousel = ({ type }: CarouselProps) => {
 
             {marginLeftState > maxMoveLenght &&
                 <div onClick={() => leftMove()} className={classes.rightArrowContainer}>
-                    <Arrow direction='right' />
+                    <Arrow size='big' direction='right' />
                 </div>}
         </div>
     );

@@ -7,7 +7,7 @@
 }
 
 .colorThird {
-    background-color: rgb(151, 145, 30);
+    background-color: rgb(151, 28, 153);
 }
 
 .colorFourth {
@@ -15,7 +15,7 @@
 }
 
 .colorFiveth {
-    background-color: rgb(151, 28, 153);
+    background-color: rgb(151, 145, 30);
 }
 
 .mainContainer {
@@ -59,37 +59,4 @@
     padding: 30px 50px;
 
     font-size: 40px;
-}
-
-.descriptionItem {
-    padding: 25px 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.name {
-    font-size: 35px;
-}
-
-.socialItem {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-
-    cursor: pointer;
-}
-
-.socialItem:hover {
-    color: rgb(47, 147, 151);
-}
-
-.socialIcon {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-
-
-    background-color: black;
-    fill: white;
 }

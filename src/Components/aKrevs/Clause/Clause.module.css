@@ -1,5 +1,19 @@
+.clauseContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+}
+
 .clauseStyle {
     display: flex;
     flex-direction: column;
     gap: 8px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.homeWidth {
+    width: 71%;
 }

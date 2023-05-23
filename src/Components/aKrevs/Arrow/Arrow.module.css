@@ -1,20 +1,17 @@
 .arrow {
-    width: 20px;
-    height: 20px;
-
-    border-bottom: 4px solid hsla(0, 0%, 100%, .5);
-    border-right: 4px solid hsla(0, 0%, 100%, .5);
-
     transform: skew(-10deg, -10deg);
 
     transition: .2s;
     cursor: pointer;
+
+    border-color: hsla(0, 0%, 100%, .5);
+
+    border-bottom-style: solid;
+    border-right-style: solid;
 }
 
 .arrow:hover {
-
-    border-bottom: 4px solid hsla(0, 0%, 100%, 1);
-    border-right: 4px solid hsla(0, 0%, 100%, 1);
+    border-color: hsla(0, 0%, 100%, 1);
 }
 
 
@@ -32,4 +29,18 @@
 
 .downDirection {
     rotate: 45deg;
+}
+
+.bigSize {
+    width: 20px;
+    height: 20px;
+
+    border-width: 4px;
+}
+
+.mediumSize {
+    width: 13px;
+    height: 13px;
+
+    border-width: 3px;
 }

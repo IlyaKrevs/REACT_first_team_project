@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Footer.module.css';
+
 import FooterContentItem from './FooterContentItem/FooterContentItem';
 import HeaderList from '../Header/HeaderDropDown/HeaderList/HeaderList';
 import FooterColumnItem from './FooterColumnItem/FooterColumnItem';

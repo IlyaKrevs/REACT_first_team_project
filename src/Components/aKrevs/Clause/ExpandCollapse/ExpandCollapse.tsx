@@ -2,10 +2,30 @@ import React from 'react';
 
 import classes from './ExpandCollapse.module.css'
 
-const ExpandCollapse = () => {
+interface ExpandCollapseProps {
+    status: boolean,
+    onClick: () => void;
+}
+
+const ExpandCollapse = ({ status, onClick }: ExpandCollapseProps) => {
+
+    let textRU = {
+        show: 'Развернуть',
+        hide: 'Свернуть',
+    }
+
+    let textENG = {
+        show: 'Expand',
+        hide: 'Collapse',
+    }
+
+    let currentText = textRU;
+
+
+
     return (
-        <div className={classes.toggle}>
-            Развернуть/Свернуть
+        <div onClick={onClick} className={classes.toggle}>
+            {status ? currentText.show : currentText.hide}
         </div>
     );
 };

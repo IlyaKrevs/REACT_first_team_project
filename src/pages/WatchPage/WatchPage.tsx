@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
-import { DescrMovie, MovieCarousel, Person, PlotMovie, Trailer, VideoPlayer } from '../../Components';
+import { Comments, DescrMovie, MovieCarousel, Person, PlotMovie, Trailer, VideoPlayer } from '../../Components';
 import { ROUTE } from '../../router';
 import { Wrapper } from '../../Components/Wrapper/Wrapper';
-import Carousel from '../../Components/aKrevs/Carousel/Carousel';
 import styles from './styles.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import Carousel from '../../Components/aKrevs/Carousel/Carousel';
 
 export const WatchPage = () => {
   const videoUrl = 'https://www.youtube.com/watch?v=di-VTrW7Kr0';
- 
+
   return (
     <div className={styles.descr}>
       <Wrapper>
@@ -19,7 +19,7 @@ export const WatchPage = () => {
         </div>
         <div className={styles.carousel}>
           <h2 className={styles.titleMov}>С фильмом «Идеальная жена» смотрят</h2>
-          <Carousel />
+          <Carousel type={'classic'} children={[]} />
         </div>
         <div className={styles.person}>
           <h2 className={styles.title}>
@@ -41,7 +41,7 @@ export const WatchPage = () => {
         </div>
         <div className={styles.person}>
           <h2 className={styles.title}>Фильм в подборках</h2>
-           <MovieCarousel />
+          <MovieCarousel />
         </div>
         <div className={styles.person}>
           <div className={styles.wrap}>
@@ -50,6 +50,23 @@ export const WatchPage = () => {
             <div className={styles.text}>Осторожно, спойлеры</div>
           </div>
           <PlotMovie />
+        </div>
+        <div className={styles.person}>
+          <div className={styles.list}>
+            <div className={styles.wrap}>
+              <h2 className={styles.title}>
+                <Link to={ROUTE.PERSON} className={styles.linkTitle}>
+                  <span className={styles.linkTitle}>Отзывы</span>
+                </Link>
+              </h2>
+              <div className={styles.quantity}>12</div>
+            </div>
+            <Link to={ROUTE.COMMENTS} className={styles.linkTitle}>
+              <button className={styles.btn}>Оставить отзыв</button>
+            </Link>
+          </div>
+          <div className={styles.subtitle}>о фильме</div>
+          <Comments />
         </div>
       </Wrapper>
     </div>

@@ -3,10 +3,11 @@ import classes from './Arrow.module.css';
 
 interface ArrowProps {
     direction: 'left' | 'up' | 'right' | 'down',
+    size: 'big' | 'medium' | 'small'
 }
 
 
-const Arrow = ({ direction }: ArrowProps) => {
+const Arrow = ({ direction, size }: ArrowProps) => {
 
     let changeDir;
 
@@ -20,8 +21,20 @@ const Arrow = ({ direction }: ArrowProps) => {
         changeDir = classes.downDirection;
     }
 
+
+
+    let changeSize;
+
+    if (size === 'big') {
+        changeSize = classes.bigSize;
+    } else if (size === 'medium') {
+        changeSize = classes.mediumSize;
+    } else if (size === 'small') {
+        changeSize = classes.rightDirection;
+    }
+
     return (
-        <div className={[classes.arrow, changeDir].join(' ')}>
+        <div className={[classes.arrow, changeDir, changeSize].join(' ')}>
 
         </div>
 

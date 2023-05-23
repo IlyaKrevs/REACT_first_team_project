@@ -3,11 +3,13 @@ import classes from './HeaderNavItem.module.css'
 
 interface NavItemProps {
     children: React.ReactNode,
+    onMouseEnter?: () => void,
+    onMouseLeave?: () => void,
 }
 
-const HeaderNavItem = ({ children }: NavItemProps) => {
+const HeaderNavItem = ({ children, onMouseEnter, onMouseLeave }: NavItemProps) => {
     return (
-        <div className={classes.item}>
+        <div onMouseLeave={onMouseLeave} onMouseEnter={onMouseEnter} className={classes.item}>
             {children}
         </div>
 

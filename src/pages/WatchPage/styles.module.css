@@ -1,5 +1,6 @@
 .wrapper {
     display: flex;
+    justify-content: space-between;
     gap: 32px;
     align-items: center;
     padding-bottom: 24px;
@@ -89,4 +90,49 @@
     align-items: center;
     position: relative;
 
+}
+
+.quantity {
+    position: absolute;
+    top: 0;
+    right: -20px;
+    color: #a5a1b2;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    font-style: normal;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 16px;
+}
+
+.list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+    font-style: normal;
+    color: #fff;
+    height: 32px;
+    border: 1px solid rgba(255,255,255,.32);
+    border-radius: 8px;
+    padding: 7px 11px;
+    background-color: transparent;
+    cursor: pointer;
+    &:hover {
+     border: 1px solid white;
+    }
+}
+
+.subtitle {
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 400;
+    font-style: normal;
+    color: #a5a1b2;
 }

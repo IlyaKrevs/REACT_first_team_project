@@ -3,4 +3,5 @@ export enum ROUTE {
     MOVIES = "movies",
     WATCH = "watch",
     PERSON = "person",
+    COMMENTS = "comments",
   }

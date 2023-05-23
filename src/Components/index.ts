@@ -10,6 +10,7 @@ export * from "./Person/Person";
 export * from "./Trailer/Trailer";
 export * from "./PlotMovie/PlotMovie";
 export * from "./MovieCarousel/MovieCarousel";
+export * from "./Comments/Comments";
 
 
 

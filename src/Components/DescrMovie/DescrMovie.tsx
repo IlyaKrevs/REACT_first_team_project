@@ -99,7 +99,7 @@ export const DescrMovie = () => {
                 </div>
                 <div className={styles.options}>
                   <div className={styles.film}>Изображение и звук.
-                    <span> Фактическое качество зависит от устройства и ограничений правообладателя.</span>
+                    <span className={styles.descrText}> Фактическое качество зависит от устройства и ограничений правообладателя.</span>
                   </div>
                   <div className={styles.badges}>
                     <div className={styles.icons}>FullHD</div>

@@ -4,11 +4,11 @@ import { ROUTE } from '../../router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsDown, faThumbsUp } from '@fortawesome/free-regular-svg-icons';
 import { useState } from 'react';
+import { Registration } from '../Registration/Registration';
 
 export const Comments = () => {
     const [showModal, setShowModal] = useState(false);
-
-    const handleIconClick = () => {
+    const handleClose = () => {
         setShowModal(true);
     };
 
@@ -20,21 +20,20 @@ export const Comments = () => {
                     <div className={styles.text}>Чудесный и добрый фильм! Фильм о простых и добрых людях)</div>
                     <div className={styles.date}>4 августа 2022</div>
                 </div>
-                <div className={styles.vote}>
-                    <button className={styles.btn} onClick={handleIconClick}>
-                        <FontAwesomeIcon icon={faThumbsUp} className={styles.icon} />
-                    </button>
-                    <div className={styles.value}>4</div>
-                    <button className={styles.btn} onClick={handleIconClick}>
-                        <FontAwesomeIcon icon={faThumbsDown} className={styles.icon} />
-                    </button>
-                </div>
             </Link>
+            <div className={styles.vote}>
+                <button className={styles.btn} onClick={handleClose}>
+                    <FontAwesomeIcon icon={faThumbsUp} className={styles.icon} />
+                </button>
+                <div className={styles.value}>4</div>
+                <button className={styles.btn} onClick={handleClose}>
+                    <FontAwesomeIcon icon={faThumbsDown} className={styles.icon} />
+                </button>
+            </div>
 
             {showModal && (
-                <div className={styles.modal}>
-                    
-                </div>
+                <Registration onClose={handleClose}>
+                </Registration>
             )}
         </div>
     )

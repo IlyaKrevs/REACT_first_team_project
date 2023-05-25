@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Arrow.module.css';
 
 interface ArrowProps {
-    direction: 'left' | 'up' | 'right' | 'down',
+    direction: 'left' | 'up' | 'right' | 'down' | string,
     size: 'big' | 'medium' | 'small'
 }
 
@@ -30,7 +30,7 @@ const Arrow = ({ direction, size }: ArrowProps) => {
     } else if (size === 'medium') {
         changeSize = classes.mediumSize;
     } else if (size === 'small') {
-        changeSize = classes.rightDirection;
+        changeSize = classes.smallSize;
     }
 
     return (

@@ -1,0 +1,65 @@
+.mainContainer {
+    width: 200px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 100px;
+
+    cursor: pointer;
+
+}
+
+.imageProps {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.toggleContainer {
+    position: relative;
+    display: flex;
+
+}
+
+.imageContainer {
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+
+    width: 70px;
+
+    border-radius: 30px;
+    background-color: #1f1b2e;
+    overflow: hidden;
+
+    border: 2px solid white;
+
+}
+
+.chosenLanguage {
+    color: rgb(94, 133, 253);
+    transition: .2s;
+}
+
+.hideElem {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+
+    height: 30px;
+    width: 31px;
+    border-radius: 50%;
+
+    background-color: #1f1b2e;
+
+    z-index: 5;
+
+    border: none;
+    transition: .2s;
+}
+
+.englishChoose {
+    margin-left: 35px;
+}

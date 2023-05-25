@@ -29,24 +29,30 @@ const BigSlider = () => {
         <BigSliderItem color='fiveth' />,
     ];
 
+
     let [showArr, setShowArr] = useState(basicArray)
-
     let [transitionTime, setTransitionTime] = useState(noneStyle);
-
     let [translateX, setTranslateX] = useState(0);
+    let [didClick, setDidClick] = useState(false);
 
 
 
     function oneLeftMove() {
+        if (didClick) return;
+        setDidClick(true);
+
+
+
         let direction = -1;
 
         setTransitionTime(styleTransition);
-
         setTranslateX(oneStep * direction);
+
 
         let myTimeout = setTimeout(() => {
 
             setTransitionTime(noneStyle);
+
 
             setShowArr((item) => {
                 let myArr = item.slice()
@@ -56,22 +62,30 @@ const BigSlider = () => {
                 return myArr
             })
 
-            setTranslateX(0);
 
+
+            setTranslateX(0);
+            setDidClick(false)
             clearTimeout(myTimeout);
 
         }, transitionTimeMS);
     }
     function oneRightMove() {
+        if (didClick) return;
+        setDidClick(true);
+
+
+
         let direction = 1;
 
         setTransitionTime(styleTransition);
-
         setTranslateX(oneStep * direction);
+
 
         let myTimeout = setTimeout(() => {
 
             setTransitionTime(noneStyle);
+
 
             setShowArr((item) => {
                 let myArr = item.slice()
@@ -82,7 +96,7 @@ const BigSlider = () => {
             })
 
             setTranslateX(0);
-
+            setDidClick(false)
             clearTimeout(myTimeout);
 
         }, transitionTimeMS);

@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './HeaderNavContainer.module.css'
 import HeaderNavItem from './HeaderNavItem/HeaderNavItem';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { resetCurrentHover, setCurrentHover } from '../../../../../store/slice/HeaderSlices/showDropDownSlice';
 import { resetMovingItemPos } from '../../../../../store/slice/HeaderSlices/movingListSlice';
 
@@ -13,7 +13,15 @@ const HeaderNavContainer = () => {
     let navRU = ['Мой Иви', 'Что нового', 'Фильмы', 'Сериалы', 'Мультфильмы', 'TV+',];
     let navENG = ['My ivi', 'News', 'Films', 'Series', 'Cartoon', 'TV+',];
 
-    let currentLanguage = navRU;
+    let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian)
+
+
+    let currentLanguage;
+    if (isRussian) {
+        currentLanguage = navRU;
+    } else {
+        currentLanguage = navENG;
+    }
 
 
     let dispatch = useDispatch();

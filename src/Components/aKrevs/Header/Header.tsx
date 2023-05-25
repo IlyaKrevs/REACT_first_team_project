@@ -42,7 +42,7 @@ const Header = () => {
 
 
 
-  const selector = useSelector((state: any) => state.showDropDown);
+  const selector = useSelector((state: any) => state.HeaderShowDropDown);
 
   let temp1 = selector.currentType;
   let temp2 = selector.currentPosition;

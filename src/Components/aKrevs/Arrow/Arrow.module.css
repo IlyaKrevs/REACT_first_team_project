@@ -44,3 +44,10 @@
 
     border-width: 3px;
 }
+
+.smallSize {
+    height: 5px;
+    width: 5px;
+
+    border-width: 3px;
+}

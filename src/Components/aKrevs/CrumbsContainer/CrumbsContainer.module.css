@@ -1,0 +1,49 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+
+    gap: 30px;
+
+}
+
+.crumbsUL {
+    display: flex;
+    gap: 5px;
+    color: rgba(255, 255, 255, .56);
+
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+.headerBar__textInfo {
+    font-size: 40px;
+    line-height: 44px;
+    font-weight: 700;
+    font-style: normal;
+    color: white;
+}
+
+.filtersTitle {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.paramsContainer {
+    display: flex;
+    gap: 5px;
+
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 400;
+    font-style: normal;
+    color: #a5a1b2;
+}
+
+.paramsItem:not(:last-child)::after {
+    content: ',';
+}

@@ -1,0 +1,36 @@
+.mainContainer {
+    display: flex;
+    width: fit-content;
+
+    flex-direction: column;
+    gap: 10px;
+
+    position: relative;
+}
+
+
+.currentSelectionContainer {
+    display: flex;
+    align-items: center;
+
+
+    gap: 12px;
+    cursor: pointer;
+}
+
+.iconContainer {
+    width: 16px;
+    height: 16px;
+    fill: white;
+
+    rotate: 270deg;
+}
+
+.currentSelectionValue {
+    color: white;
+
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 700;
+    font-style: normal;
+}

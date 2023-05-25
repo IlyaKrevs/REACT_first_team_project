@@ -27,6 +27,7 @@
 
 .text {
     text-align: center;
+    width: 250px;
 
     color: #a5a1b2;
     font-size: 15px;

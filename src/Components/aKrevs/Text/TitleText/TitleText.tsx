@@ -3,7 +3,7 @@ import classes from './TitleText.module.css'
 
 interface TitleTextProps {
     text: string,
-    type: 'big' | 'medium' | 'small',
+    type: 'big' | 'medium' | 'small' | 'moviePage',
 }
 
 
@@ -18,6 +18,8 @@ const TitleText = ({ text, type }: TitleTextProps) => {
         myType = classes.typeMedium
     } else if (type === 'small') {
         myType = classes.typeSmall
+    } else if (type === 'moviePage') {
+        myType = classes.moviePage
     }
 
     return (

@@ -1,0 +1,47 @@
+.mainContainer {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+
+    cursor: pointer;
+
+    color: rgba(217, 215, 224, .8);
+
+    fill: none;
+}
+
+.mainContainer:hover {
+    color: rgba(217, 215, 224, 1);
+
+    fill: rgba(217, 215, 224, .5);
+}
+
+.hiddenInput {
+    display: none;
+}
+
+.textContainer {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.iconContainer {
+    width: 16px;
+    height: 16px;
+}
+
+.checkedStyle {
+    color: white;
+    fill: white;
+}
+
+.checkedStyle:hover {
+    color: white;
+    fill: white;
+}

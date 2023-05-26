@@ -4,11 +4,17 @@ import classes from './FilterDropDownList.module.css';
 import FiltersCheckboxContainer from '../../FiltersCheckboxContainer/FiltersCheckboxContainer';
 import Arrow from '../../../Arrow/Arrow';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleShowGenre } from '../../../../../store/slice/MoviesPageSlices/FiltersByGenreSlice';
+import { setCurrentViewScreen } from '../../../../../store/slice/MoviesPageSlices/FilterBySlice';
 
-const FilterItemDropDownList = () => {
 
-    let hideStatus = useSelector((state: any) => state.MoviesFilterByGenre.currentHideStatus);
+interface FilterItemDropDownListProps {
+    basicTitle: string,
+}
+
+const FilterItemDropDownList = ({ basicTitle }: FilterItemDropDownListProps) => {
+
+    let currentViewScreen = useSelector((state: any) => state.MoviesFilterBy.currentViewScreen);
+    let currentFiltersParams = useSelector((state: any) => state.MoviesFilterBy.currentFiltersParams)
 
     let dispatch = useDispatch();
 
@@ -16,7 +22,7 @@ const FilterItemDropDownList = () => {
 
     let isOpen;
     let arrowDirection;
-    if (!hideStatus) {
+    if (currentViewScreen === basicTitle) {
         isOpen = classes.isOpenStyle
         arrowDirection = 'up'
     } else {
@@ -25,21 +31,28 @@ const FilterItemDropDownList = () => {
 
 
     return (
-        <div onClick={() => {
-            dispatch(toggleShowGenre(null))
+        <div onClick={(e) => {
+            e.stopPropagation();
+            dispatch(setCurrentViewScreen({ value: basicTitle }))
         }}
             className={[classes.mainContainer, isOpen].join(' ')}>
             <div className={classes.basicContent}>
                 <div className={classes.basicTitle}>
-                    Жанры
+                    {basicTitle}
+                    <div className={classes.subTitle}>
+                        {currentFiltersParams.join(', ')}
+                    </div>
                 </div>
+
                 <Arrow size='medium' direction={arrowDirection} />
             </div>
 
 
-            <div hidden={hideStatus} className={classes.dropDownContainer}>
-                <FiltersCheckboxContainer />
-            </div>
+            {currentViewScreen === basicTitle &&
+                <div className={classes.dropDownContainer}>
+                    <FiltersCheckboxContainer />
+                </div>
+            }
         </div>
     );
 };

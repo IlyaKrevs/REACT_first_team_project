@@ -6,7 +6,9 @@ import FilterItemDropDownList from './FilterItem/FilterItemDropDownList/FilterIt
 const FiltersContainer = () => {
     return (
         <div className={classes.mainContainer}>
-            <FilterItemDropDownList />
+            <FilterItemDropDownList basicTitle='Жанры' />
+            <FilterItemDropDownList basicTitle='Годы' />
+            <FilterItemDropDownList basicTitle='Страны' />
         </div>
     );
 };

@@ -28,5 +28,6 @@
 }
 
 .rightContainer {
+    width: 40%;
     z-index: 55;
 }

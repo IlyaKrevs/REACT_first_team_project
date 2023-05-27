@@ -37,8 +37,6 @@ aside {
 
 html,
 body {
-  height: 100%;
-  width: 100%;
   font-size: 100%;
   line-height: 1;
   font-size: 14px;
@@ -1139,6 +1137,7 @@ h6 {
 .bredCrumbs__itemLINK {
   box-shadow: 0 2px 0 #7e798f, inset 0 0 0 #7e798f;
   color: #fff;
+  opacity: 1;
 }
 
 .headerBar__textInfo {
@@ -1163,16 +1162,18 @@ h6 {
 /* /////////////////////////////////////////////////////////////////// */
 
 .sort__container {
-  width: 1240px;
-  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
+
 
 .sortDropMenu {
   display: flex;
   align-items: center;
 
 
-  gap: 8px;
+  gap: 12px;
   cursor: pointer;
 }
 
@@ -1590,3 +1591,5 @@ h6 {
 }
 
 .profileSideContent {}
+
+

@@ -10,26 +10,79 @@ import FooterWidget from './FooterWidget/FooterWidget';
 import FooterDownloadContainer from './FooterDownloadContainer/FooterDownloadContainer';
 import ParagraphText from '../Text/ParagraphText/ParagraphText';
 import FooterSocialContainer from './FooterSocialContainer/FooterSocialContainer';
+import { useSelector } from 'react-redux';
 
 const Footer = () => {
 
-    let footerAboutRU = ['О компании', 'Вакансии', 'Программа бета-тестирования', 'Информация для партнёров', 'Размещение рекламы', 'Пользовательское соглашение', 'Политика конфиденциальности', 'Комплаенс',];
-    let footerAboutENG = ['About company', 'Vacancy', 'Beta-testing programm', 'Info for partners', 'Advertising placement', 'User agreement', 'Privacy Policy', 'Complaints',];
+    let aboutRU = ['О компании', 'Вакансии', 'Программа бета-тестирования', 'Информация для партнёров', 'Размещение рекламы', 'Пользовательское соглашение', 'Политика конфиденциальности', 'Комплаенс',];
+    let aboutENG = ['About company', 'Vacancy', 'Beta-testing programm', 'Info for partners', 'Advertising placement', 'User agreement', 'Privacy Policy', 'Complaints',];
+    let aboutTitleRU = 'О нас';
+    let aboutTitleENG = 'About us';
+
+
+    let divisionsRU = ['Мой Иви', 'Что нового', 'Фильмы', 'Сериалы', 'Мультфильмы', 'TV+', 'Что посмотреть',];
+    let divisionsENG = ['My ivi', 'What news?', 'Films', 'Series', 'Cartoons', 'TV+', 'What to see?',];
+    let divisionTitleRU = 'Разделы';
+    let divisionTitleENG = 'Divisions';
+
+
+    let supportRU = ['Мы всегда готовы вам помочь.', 'Наши операторы онлайн 24/7',];
+    let supportENG = ['We are always ready to help you.', 'Our operators are online 24/7',];
+    let supportTitleRU = 'Служба поддержки';
+    let supportTitleENG = 'Supports';
+
+
+    let askRU = ['ask.ivi.ru', 'Ответы на вопросы',];
+    let askENG = ['ask.ivi.ru', 'Answers on questions',];
+
+    let specialLinkRU = 'Активация сертификата';
+    let specialLinkENG = 'Certificate activation';
 
 
 
-    let footerDivisionsRU = ['Мой Иви', 'Что нового', 'Фильмы', 'Сериалы', 'Мультфильмы', 'TV+', 'Что посмотреть',];
-    let footerDivisionsENG = ['My ivi', 'What news?', 'Films', 'Series', 'Cartoons', 'TV+', 'What to see?',];
+    let currentAbout;
+    let currentAboutTitle;
+
+    let currentDivision;
+    let currentDivisionTitle;
+
+    let currentSupport;
+    let currentSupportTitle;
+
+    let currentAsk;
+
+    let currentSpecialLink;
 
 
+    let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian);
 
-    let footerSupportRU = ['Мы всегда готовы вам помочь.', 'Наши операторы онлайн 24/7',];
-    let footerSupportENG = ['We are always ready to help you.', 'Our operators are online 24/7',];
+    if (isRussian) {
+        currentAbout = aboutRU;
+        currentAboutTitle = aboutTitleRU;
 
+        currentDivision = divisionsRU;
+        currentDivisionTitle = divisionTitleRU;
 
+        currentSupport = supportRU;
+        currentSupportTitle = supportTitleRU;
 
-    let footerAskRU = ['ask.ivi.ru', 'Ответы на вопросы',];
-    let footerAskENG = ['ask.ivi.ru', 'Answers on questions',];
+        currentAsk = askRU;
+
+        currentSpecialLink = specialLinkRU;
+    } else {
+        currentAbout = aboutENG;
+        currentAboutTitle = aboutTitleENG;
+
+        currentDivision = divisionsENG;
+        currentDivisionTitle = divisionTitleENG;
+
+        currentSupport = supportENG;
+        currentSupportTitle = supportTitleENG;
+
+        currentAsk = askENG;
+
+        currentSpecialLink = specialLinkENG;
+    }
 
     return (
         <div className={classes.footer}>
@@ -41,9 +94,9 @@ const Footer = () => {
                     <FooterColumnItem columnSize='small'>
 
                         <HeaderList title={{
-                            titleText: 'О нас',
+                            titleText: currentAboutTitle,
                             titleType: 'small',
-                        }} items={footerAboutRU} />
+                        }} items={currentAbout} />
 
                     </FooterColumnItem>
 
@@ -51,12 +104,12 @@ const Footer = () => {
                     <FooterColumnItem columnSize='small'>
 
                         <HeaderList title={{
-                            titleText: 'Разделы',
+                            titleText: currentDivisionTitle,
                             titleType: 'small',
-                        }} items={footerDivisionsRU} />
+                        }} items={currentDivision} />
 
 
-                        <SpecialColorLink text='Активация сертификата' />
+                        <SpecialColorLink text={currentSpecialLink} />
 
                     </FooterColumnItem>
 
@@ -64,14 +117,14 @@ const Footer = () => {
                     <FooterColumnItem columnSize='small' specialGap={true}>
 
                         <HeaderList title={{
-                            titleText: 'Служба поддержки',
+                            titleText: currentSupportTitle,
                             titleType: 'small',
-                        }} items={footerSupportRU} />
+                        }} items={currentSupport} />
 
 
                         <FooterSupBtnsContainer />
 
-                        <HeaderList items={footerAskRU} />
+                        <HeaderList items={currentAsk} />
 
                     </FooterColumnItem>
 

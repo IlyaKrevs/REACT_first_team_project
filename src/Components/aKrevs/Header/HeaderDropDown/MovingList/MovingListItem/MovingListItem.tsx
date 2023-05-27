@@ -11,7 +11,7 @@ interface MovingListItemProps {
 
 const MovingListItem = ({ text, position, }: MovingListItemProps) => {
 
-    const currentPos = useSelector((state: any) => state.movingList.movingItemPos)
+    const currentPos = useSelector((state: any) => state.HeaderMovingList.movingItemPos)
 
     let dispatch = useDispatch();
 

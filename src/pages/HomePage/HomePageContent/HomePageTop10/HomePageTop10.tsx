@@ -48,7 +48,7 @@ const HomePageTop10 = () => {
         return myArr;
     }
 
-    function make10items() {
+    function make10itemsArr() {
 
         let myArr: React.ReactNode[] = [];
 
@@ -61,11 +61,11 @@ const HomePageTop10 = () => {
 
 
     return (
-        <div>
+        <>
             <Carousel type='top10'>
-                {make10items()}
+                {make10itemsArr()}
             </Carousel>
-        </div>
+        </>
     );
 };
 

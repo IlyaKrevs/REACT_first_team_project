@@ -19,8 +19,8 @@ const HeaderList = ({ title, items }: HeaderListProps) => {
             {title && <TitleText type={title.titleType} text={title.titleText} />}
 
             <ul className={classes.listContainer}>
-                {items.map(elem => {
-                    return <HeaderListItem text={elem} />
+                {items.map((elem, key) => {
+                    return <HeaderListItem key={key} text={elem} />
                 })}
             </ul>
         </div >

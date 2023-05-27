@@ -1,22 +1,27 @@
-import { ReactNode, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import styles from './styles.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { Link } from "react-router-dom";
 
 interface IProps {
     children: ReactNode;
-    onClose: () => void;
+    onClick: () => void;
 }
 
-export const Registration = ({ children, onClose }: IProps) => {
-    const [close, setClose] = useState(false);
-    const handleClose = () => {
-        setClose(true);
-        onClose();
+export const Registration = ({ children, onClick }: IProps) => {
+    const [email, setEmail] = useState('');
+    const [isButtonEnabled, setIsButtonEnabled] = useState(false);
 
-        if (close) {
-            return null;
-        }
+    const handleEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const inputValue = e.target.value;
+        setEmail(inputValue);
+        setIsButtonEnabled(inputValue.trim().length > 0);
+    }
+
+    const handleClose = () => {
+        onClick();
+        
     }
 
     return ( 
@@ -35,8 +40,26 @@ export const Registration = ({ children, onClose }: IProps) => {
                             <div className={styles.subtitle}>чтобы поставить лайк</div>
                         </div>
                         <div className={styles.input}>
-                         <FontAwesomeIcon icon={faUser} style={{color: "#1f1b2e",}} className={styles.icon}/>                            
-                         <input className={styles.login} placeholder="Через email или телефон"/>
+                            <FontAwesomeIcon icon={faUser} style={{color: "rgba(31,27,46,.16)"}} className={styles.icon}/>                            
+                            <input className={styles.login} 
+                                placeholder="Через email или телефон"
+                                value={email}
+                                onChange={handleEmailInput}
+                            />
+                        </div>
+                        <div className={styles.list}>
+                            <button className={styles.btn} disabled={!isButtonEnabled}>Продолжить</button>
+                            <div className={styles.privacy}>
+                                Нажимая «Продолжить», я соглашаюсь
+                                <br />
+                                с
+                                &nbsp;
+                                <Link to='/privacy-policy' className={styles.text}>Политикой конфиденциальности</Link>
+                                <br />
+                                и
+                                &nbsp;
+                                <Link to='/user-agreement' className={styles.text}>Пользовательским соглашением</Link>
+                            </div>
                         </div>
                     </form>
                 </div>

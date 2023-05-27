@@ -92,9 +92,9 @@
 
 .photo {
     position: absolute;
-    left: 0;
+    left: 6px;
     right: 0;
-    top: 10%;
+    top: 6px;
     bottom: 0;
     object-fit: cover;
     width: 44px;

@@ -28,3 +28,13 @@
     font-size: 15px;
     line-height: 20px;
 }
+
+.moviePage {
+    color: white;
+
+    font-style: normal;
+    font-weight: 700;
+
+    font-size: 40px;
+    line-height: 44px;
+}

@@ -1,27 +1,23 @@
 import ReactPlayer from 'react-player';
 import styles from './styles.module.css';
+import { useSelector } from 'react-redux';
+import { getTrailer, useAppSelector } from '../../store';
 
-interface IProps {
-  videoUrl: string;
-}
+export const VideoPlayer = () => {
+const trailer = useAppSelector(getTrailer);
 
-export const VideoPlayer = ({ videoUrl }: IProps) => {
   return (
     <div className={styles.video}>
-      <ReactPlayer url={videoUrl} controls={true} />
+      <ReactPlayer url={trailer} controls={true} />
       <div className={styles.userButtons}>
         <div className={styles.wrapper}>
           <div className={styles.trailer}>
             <button className={styles.btn} />
-            Трейлер
+            {}Трейлер
           </div>
           <div className={styles.favorite}></div>
           <div className={styles.download}></div>
         </div>
-        {/*<div className={styles.freeMovies}>
-          <a className={styles.link}/>
-          Бесплатные фильмы
-         </div>*/}
       </div>
     </div>
   );

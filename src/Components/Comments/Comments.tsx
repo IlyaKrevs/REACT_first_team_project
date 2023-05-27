@@ -9,7 +9,7 @@ import { Registration } from '../Registration/Registration';
 export const Comments = () => {
     const [showModal, setShowModal] = useState(false);
     const handleClose = () => {
-        setShowModal(true);
+        setShowModal((prevShowModal) => !prevShowModal);
     };
 
     return (
@@ -32,7 +32,7 @@ export const Comments = () => {
             </div>
 
             {showModal && (
-                <Registration onClose={handleClose}>
+                <Registration onClick={handleClose}>
                 </Registration>
             )}
         </div>

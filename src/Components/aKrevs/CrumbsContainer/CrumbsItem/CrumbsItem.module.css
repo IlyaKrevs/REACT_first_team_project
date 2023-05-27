@@ -1,0 +1,16 @@
+.crumbsLiItem:not(:first-child)::before {
+    content: '/';
+    color: rgba(255, 255, 255, .56);
+    padding-right: 5px;
+}
+
+.crumbsLink {
+    box-shadow: 0 2px 0 #7e798f, inset 0 0 0 #7e798f;
+    color: white;
+    transition: .5s;
+}
+
+.crumbsLink:hover {
+    box-shadow: 0 0 0 #7e798f, inset 0 -20px 0 #7e798f;
+
+}

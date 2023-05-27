@@ -9,7 +9,7 @@ interface MovingListProps {
 
 const MovingList = ({ items }: MovingListProps) => {
 
-    let currentPos = useSelector((state: any) => state.movingList.movingItemPos)
+    let currentPos = useSelector((state: any) => state.HeaderMovingList.movingItemPos)
 
 
     let movingStyle = {

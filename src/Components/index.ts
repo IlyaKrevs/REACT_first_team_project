@@ -13,6 +13,10 @@ export * from "./MovieCarousel/MovieCarousel";
 export * from "./Comments/Comments";
 export * from ".//Registration/Registration";
 export * from "./Portal/Portal";
+export * from "./Reviews/Reviews";
+export * from "./AllDevices/AllDevices";
+
+
 
 
 

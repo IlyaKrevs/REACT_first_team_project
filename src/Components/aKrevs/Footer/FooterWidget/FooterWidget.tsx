@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './FooterWidget.module.css';
+import { useSelector } from 'react-redux';
 
 const FooterWidget = () => {
 
@@ -8,7 +9,15 @@ const FooterWidget = () => {
     let widgetTextRU = 'Смотрите фильмы, сериалы и мультфильмы без рекламы';
     let widgetTextENG = 'Watch movies, series and cartoons without ads';
 
-    let showTEXT = widgetTextRU;
+    let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian);
+
+    let currentText;
+    if (isRussian) {
+        currentText = widgetTextRU;
+    } else {
+        currentText = widgetTextENG
+    }
+
 
     return (
         <div className={classes.container}>
@@ -19,7 +28,7 @@ const FooterWidget = () => {
             </div>
 
             <div className={classes.text}>
-                {showTEXT}
+                {currentText}
             </div>
         </div>
     );

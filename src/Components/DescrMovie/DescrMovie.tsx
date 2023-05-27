@@ -4,9 +4,21 @@ import { ROUTE } from '../../router';
 import { RatingModal } from '../RatingModal/RatingModal';
 import { actor } from '../../assets';
 import styles from './styles.module.css';
+import { getMovie, useAppSelector } from '../../store';
 
-export const DescrMovie = () => {
+interface IProps {
+  nameRU: string,
+  year: number,
+  duration: number,
+  ageRating: string,
+  idCountry: number,
+  rating: number,
+  text: string,
+}
+
+export const DescrMovie = ({nameRU, year, duration, ageRating, idCountry, rating, text}: IProps) => {
   const [showDetails, setShowDetails] = useState(false);
+  const movie = useAppSelector(getMovie); 
 
   const toggleDetails = () => {
     setShowDetails(!showDetails);
@@ -22,17 +34,18 @@ export const DescrMovie = () => {
     setModalOpen(false);
   };
 
+  
   return (
     <div className={styles.descr}>
-      <h1 className={styles.title}>30 Seconds To Mars</h1>
+      <h1 className={styles.title}>{nameRU}</h1>
       <div className={styles.info}>
         <ul className={styles.list}>
-          <li className={styles.item}>2023&nbsp;</li>
-          <li className={styles.item}>1 ч. 17 мин.&nbsp;</li>
-          <li className={styles.item}>16+&nbsp;</li>
+          <li className={styles.item}>{year}&nbsp;</li>
+          <li className={styles.item}>{duration}&nbsp;</li>
+          <li className={styles.item}>{ageRating}&nbsp;</li>
         </ul>
         <ul className={styles.list}>
-          <li className={styles.item}>США&nbsp;</li>
+          <li className={styles.item}>{idCountry}&nbsp;</li>
           <li className={styles.item}>Триллер&nbsp;</li>
           <li className={styles.item}>Зарубежный&nbsp;</li>
         </ul>
@@ -42,7 +55,7 @@ export const DescrMovie = () => {
       </div>
       <div className={styles.wrapper}>
         <div className={styles.wrap}>
-          <div className={styles.inner}>6,9</div>
+          <div className={styles.inner}>{rating}</div>
           <div className={styles.text}>Рейтинг Иви</div>
         </div>
         <Link to={ROUTE.PERSON} className={styles.link}>

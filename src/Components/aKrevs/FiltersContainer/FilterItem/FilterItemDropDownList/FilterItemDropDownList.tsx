@@ -5,17 +5,16 @@ import FiltersCheckboxContainer from '../../FiltersCheckboxContainer/FiltersChec
 import Arrow from '../../../Arrow/Arrow';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentViewScreen } from '../../../../../store/slice/MoviesPageSlices/FilterBySlice';
-
+import FiltersRadioContainer from '../../FiltersRadioContainer/FiltersRadioContainer';
 
 interface FilterItemDropDownListProps {
     basicTitle: string,
+    dropDownType: 'checkbox' | 'radio',
 }
 
-const FilterItemDropDownList = ({ basicTitle }: FilterItemDropDownListProps) => {
+const FilterItemDropDownList = ({ basicTitle, dropDownType }: FilterItemDropDownListProps) => {
 
     let currentViewScreen = useSelector((state: any) => state.MoviesFilterBy.currentViewScreen);
-    let currentFiltersParams = useSelector((state: any) => state.MoviesFilterBy.currentFiltersParams)
-
     let dispatch = useDispatch();
 
 
@@ -30,6 +29,29 @@ const FilterItemDropDownList = ({ basicTitle }: FilterItemDropDownListProps) => 
     }
 
 
+
+    const { useState } = React;
+
+    let emptyArr: string[] = [];
+    let [localCheckBoxValue, setLocalCheckboxValue] = useState(emptyArr);
+
+    function setLocalFiltersCALLBACK(value: string): void {
+        let myArr = [...localCheckBoxValue];
+        if (myArr.includes(value)) {
+            myArr = myArr.filter(item => item !== value)
+            setLocalCheckboxValue(myArr);
+        } else {
+            myArr.push(value)
+            setLocalCheckboxValue(myArr)
+        }
+    }
+
+    let [localRadioValue, setLocalRadioValue] = useState('');
+
+    function setLocalRadioValueCALLBACK(arg: string) {
+        setLocalRadioValue(arg)
+    }
+
     return (
         <div onClick={(e) => {
             e.stopPropagation();
@@ -40,7 +62,7 @@ const FilterItemDropDownList = ({ basicTitle }: FilterItemDropDownListProps) => 
                 <div className={classes.basicTitle}>
                     {basicTitle}
                     <div className={classes.subTitle}>
-                        {currentFiltersParams.join(', ')}
+                        {localCheckBoxValue.join(', ') || localRadioValue}
                     </div>
                 </div>
 
@@ -50,7 +72,17 @@ const FilterItemDropDownList = ({ basicTitle }: FilterItemDropDownListProps) => 
 
             {currentViewScreen === basicTitle &&
                 <div className={classes.dropDownContainer}>
-                    <FiltersCheckboxContainer />
+                    {dropDownType === 'checkbox' &&
+                        <FiltersCheckboxContainer
+                            callback={setLocalFiltersCALLBACK}
+                            currentState={localCheckBoxValue}
+                        />}
+
+                    {dropDownType === 'radio' &&
+                        <FiltersRadioContainer
+                            callback={setLocalRadioValueCALLBACK}
+                            currentState={localRadioValue}
+                        />}
                 </div>
             }
         </div>

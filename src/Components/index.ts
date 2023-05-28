@@ -15,6 +15,11 @@ export * from ".//Registration/Registration";
 export * from "./Portal/Portal";
 export * from "./Reviews/Reviews";
 export * from "./AllDevices/AllDevices";
+export * from "./MainMovies/styles.module.css";
+export * from "./FullFilmography/FullFilmography";
+export * from "./Tabs/Tabs";
+
+
 
 
 

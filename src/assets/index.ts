@@ -5,7 +5,9 @@ import personPhoto from "./img/personPhoto.jpg";
 import tv from "./img/tv.png";
 import ipad from "./img/ipad.png";
 import poster from "./img/poster.jpeg";
+import movie from "./img/movie.jpeg";
+
 
 export {
-    plus, dramma, actor, personPhoto, tv, ipad, poster
+    plus, dramma, actor, personPhoto, tv, ipad, poster, movie
 };

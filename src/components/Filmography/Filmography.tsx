@@ -1,29 +1,30 @@
 import React from 'react';
-
 import styles from './filmography.module.css';
-import { NavLink } from 'react-router-dom';
-
-
+import { Link } from 'react-router-dom';
 import { IPersonFilms } from '../../types/IPersonFilms';
-import ButtonLink from '../UI/ButtonLink/ButtonLink';
+import { ROUTE } from '../../router';
 
 
-type PropsType = {
-    movie: IPersonFilms
+interface IProps {
+    movie: IPersonFilms;
 }
 
-const FilmographyItem: React.FC<PropsType> = ({ movie }) => {
+const FilmographyItem: React.FC<IProps> = ({ movie }) => {
 
     return (
-        <NavLink
-            to={`/MoviePage/${movie.id}/${movie.name}`}
+        <Link
+            to={`/${ROUTE.WATCH}/:id`}
             className={styles.item}
         >
             <div className={styles.photo}>
-                <div className={styles.img}></div>
+                <img src={movie.image} alt='movie' className={styles.img}/>
             </div>
             <div className={styles.body}>
                 <div className={styles.info}>
+                    {movie.year &&
+                        <div className={styles.year}>
+                            <span>2023</span>
+                        </div>}
                     <div className={styles.title}>
                         {
                             movie.name.length > 16
@@ -38,14 +39,13 @@ const FilmographyItem: React.FC<PropsType> = ({ movie }) => {
                         </span>
                     </div>}
                 </div>
-                <ButtonLink
-                    to={`/MoviePage/${movie.id}/${movie.name}`}
+                <button
                     className={styles.btn}
                 >
-                    Смотреть
-                </ButtonLink>
+                    Поподробнее
+                </button>
             </div>
-        </NavLink>
+        </Link>
     )
 }
 export default FilmographyItem;

@@ -3,12 +3,12 @@ import { AllDevices, Comments, DescrMovie, MovieCarousel, Person, PlotMovie, Rev
 import { ROUTE } from '../../router';
 import styles from './styles.module.css';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getMovie, getMovieDetails, useAppDispatch, useAppSelector } from '../../store';
 import Carousel from '../../Components/aKrevs/Carousel/Carousel';
 import { Wrapper } from '../../Components/Wrapper/Wrapper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Gallery from '../../Components/aKrevs/Gallery/Gallery';
 
 export const WatchPage = () => {
   const dispatch = useAppDispatch();
@@ -34,7 +34,7 @@ export const WatchPage = () => {
         </div>
         <div className={styles.carousel}>
           <h2 className={styles.titleMov}>С фильмом «Идеальная жена» смотрят</h2>
-          <Carousel type={'classic'} children={[]} />
+          <Gallery/>
         </div>
         <div className={styles.person}>
           <h2 className={styles.title}>
@@ -42,9 +42,7 @@ export const WatchPage = () => {
               Актёры и создатели
             </Link>
           </h2>
-          <Link to={ROUTE.PERSON}>
-            <Person />
-          </Link>
+          <Person />
         </div>
         <div className={styles.person}>
           <h2 className={styles.title}>

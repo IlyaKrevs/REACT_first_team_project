@@ -61,6 +61,26 @@
 }
 
 .btn {
-    width: 140px;
     height: 40px;
+    border-width: 1px;
+    border-radius: 8px;
+    padding: 9px 15px;
+    color: #fff;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    font-style: normal;
+    background-color: #1f1b2e;
+    &:hover {
+        background-color: #28243a;
+        transition-duration: .4s;
+    }
+}
+
+.year {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 500;
+    font-style: normal;
+    color: #fff;
 }

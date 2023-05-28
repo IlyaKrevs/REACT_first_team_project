@@ -1,0 +1,31 @@
+.mainContainer {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+}
+
+.mainContainer:hover {
+    color: white;
+}
+
+.iconContainer {
+    height: 16px;
+    width: 16px;
+    fill: none;
+}
+
+.mainContainer:hover {
+    .iconContainer {
+        fill: rgba(217, 215, 224, .8);
+    }
+
+    .isChosen {
+        fill: white;
+    }
+}
+
+.isChosen {
+    color: white;
+    fill: white;
+}

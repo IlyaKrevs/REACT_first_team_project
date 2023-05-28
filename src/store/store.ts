@@ -4,10 +4,8 @@ import LanguageSwitchSlice from "./slice/HeaderSlices/LanguageSwitchSlice";
 
 import showDropDownSlice from './slice/HeaderSlices/showDropDownSlice';
 import movingListSlice from "./slice/HeaderSlices/movingListSlice";
-import MoviesSortBySlice from './slice/MoviesPageSlices/SortBySlice';
-import FiltersByGenreSlice from "./slice/MoviesPageSlices/FiltersByGenreSlice";
-import { movieReducer } from "./slice/movieSlice";
-
+import MoviesFilterBy from './slice/MoviesPageSlices/FilterBySlice'
+import { movieReducer } from "./slice";
 
 
 export const store = configureStore({
@@ -16,8 +14,7 @@ export const store = configureStore({
         LanguageSwitch: LanguageSwitchSlice,
         HeaderShowDropDown: showDropDownSlice,
         HeaderMovingList: movingListSlice,
-        MoviesSortBy: MoviesSortBySlice,
-        MoviesFilterByGenre: FiltersByGenreSlice,
+        MoviesFilterBy: MoviesFilterBy,
     },
 });
 

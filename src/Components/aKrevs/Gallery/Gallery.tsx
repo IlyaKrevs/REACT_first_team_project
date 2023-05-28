@@ -25,11 +25,6 @@ const Gallery = () => {
     return (
         <div className={classes.mainContainer}>
 
-            <div className={classes.galleryTitleContainer}>
-                <TitleText type='medium' text={ruText} />
-                <Arrow size='medium' direction='right' />
-            </div>
-
             <Carousel children={make20items()} type='classic' emptyItem={true} />
 
         </div>

@@ -46,10 +46,10 @@
 .hideElem {
     position: absolute;
     top: 2px;
-    left: 2px;
+    left: 1px;
 
     height: 30px;
-    width: 31px;
+    width: 32px;
     border-radius: 50%;
 
     background-color: #1f1b2e;
@@ -61,5 +61,5 @@
 }
 
 .englishChoose {
-    margin-left: 35px;
+    margin-left: 36px;
 }

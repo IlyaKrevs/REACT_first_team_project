@@ -1,5 +1,10 @@
 .personPage {
-    padding: 20px 0 100px;
+  margin-bottom: 24px;
+}
+
+.wrapper {
+    width: 50%;
+    margin-left: 25%;
 }
 
 .back {
@@ -27,13 +32,8 @@
     font-size: 30px;
 }
 
-
-.filmographyList {
-
-}
-
-.filmographyContent {
-    padding: 20px 0;
+.biography {
+    margin-top: 40px;
 }
 
 .title {
@@ -42,22 +42,28 @@
     line-height: 28px;
     font-weight: 700;
     font-style: normal;
-    margin-bottom: 20px;
-    cursor: pointer;
 }
 
-.fullFilm {
-    font-size: 15px;
-    line-height: 20px;
+.descr {
     font-weight: 400;
-    color: #a5a1b2;
-    margin-left: 5px;
-}
-
-.btn {
     font-size: 15px;
-    line-height: 20px;
-    font-weight: 500;
+    line-height: 22px;
     font-style: normal;
+    margin-top: 16px;
+    color: #d9d7e0;
 }
 
+.toggle {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    font-style: normal;
+    cursor: pointer;
+    margin-top: 8px;
+    margin-bottom: 24px;
+    color: rgba(255, 255, 255, .48);
+
+    &:hover {
+        color: rgba(255, 255, 255, .88);
+    }
+}

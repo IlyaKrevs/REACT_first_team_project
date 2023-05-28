@@ -1,8 +1,10 @@
 import React from 'react';
 import classes from './SortDropDownItem.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentSortType } from '../../../../../store/slice/MoviesPageSlices/SortBySlice';
 
+
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentSortParams, } from '../../../../../store/slice/MoviesPageSlices/FilterBySlice';
+import { resetCurrentViewScreen } from '../../../../../store/slice/MoviesPageSlices/FilterBySlice';
 interface SortDropDownItemProps {
     text: string,
 }
@@ -10,7 +12,7 @@ interface SortDropDownItemProps {
 const SortDropDownItem = ({ text }: SortDropDownItemProps) => {
 
     let dispatch = useDispatch();
-    let currentSortBy = useSelector((state: any) => state.MoviesSortBy.currentSortType);
+    let currentSortBy = useSelector((state: any) => state.MoviesFilterBy.currentSortParams);
 
 
     let isSelected;
@@ -18,17 +20,20 @@ const SortDropDownItem = ({ text }: SortDropDownItemProps) => {
         isSelected = true;
     }
 
-    function setCurrentSortBy(param: string) {
-        dispatch(setCurrentSortType({ value: param }))
-    }
-
     return (
-        <div onClick={() => setCurrentSortBy(text)} className={classes.mainContainer}>
+        <div
+            onClick={(e) => {
+                e.stopPropagation();
+                dispatch(setCurrentSortParams({ value: text }))
+                dispatch(resetCurrentViewScreen(''))
+            }
+            }
+            className={classes.mainContainer} >
             {isSelected && <div className={classes.selectedItem}></div>}
             <span>
                 {text}
             </span>
-        </div>
+        </div >
     );
 };
 

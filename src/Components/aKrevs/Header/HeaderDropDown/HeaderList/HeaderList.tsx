@@ -9,19 +9,26 @@ interface HeaderListProps {
         titleType: 'big' | 'medium' | 'small',
         titleText: string,
     }
-    items: string[],
+    items: any,
 }
 
+
+
 const HeaderList = ({ title, items }: HeaderListProps) => {
+
+
+
+
     return (
         <div className={classes.mainList}>
 
             {title && <TitleText type={title.titleType} text={title.titleText} />}
 
             <ul className={classes.listContainer}>
-                {items.map(elem => {
-                    return <HeaderListItem text={elem} />
+                {items.map((elem: any) => {
+                    return <HeaderListItem fullObj={elem.id} />
                 })}
+
             </ul>
         </div >
     );

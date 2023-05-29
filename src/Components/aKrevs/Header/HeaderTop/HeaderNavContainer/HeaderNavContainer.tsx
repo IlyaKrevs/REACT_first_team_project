@@ -71,7 +71,7 @@ const HeaderNavContainer = () => {
                 children={currentLanguage[4]} />
 
             <HeaderNavItem
-                onMouseEnter={() => comboFunc('movies', 'TV+')}
+                onMouseEnter={() => comboFunc('TV+', 'TV+')}
                 children={currentLanguage[5]} />
         </div>
     );

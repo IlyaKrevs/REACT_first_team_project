@@ -3,18 +3,22 @@ import classes from './DropDownMovieScreen.module.css';
 
 import HeaderList from '../../HeaderList/HeaderList';
 import MovingList from '../../MovingList/MovingList';
-import RectangleBtn from '../../../../Buttons/RectangleBtn/RectangleBtn';
 import SubscribeWidget from '../../../SubscribeWidget/SubscribeWidget';
+import { useSelector } from 'react-redux';
 
 
 interface DropDownMovieScreenProps {
-    firstList: string[],
+    firstList: any,
     secondList: string[],
     thirdList: string[],
     moveList: string[],
 }
 
 const DropDownMovieScreen = ({ firstList, secondList, thirdList, moveList }: DropDownMovieScreenProps) => {
+
+    let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian)
+
+
     return (
         <div className={classes.mainContainer}>
 
@@ -24,7 +28,7 @@ const DropDownMovieScreen = ({ firstList, secondList, thirdList, moveList }: Dro
                 <HeaderList title={
                     {
                         titleType: 'small',
-                        titleText: 'Жанры',
+                        titleText: isRussian ? 'Жанры' : 'Genre',
                     }
                 }
                     items={firstList} />
@@ -35,14 +39,14 @@ const DropDownMovieScreen = ({ firstList, secondList, thirdList, moveList }: Dro
 
                 <HeaderList title={{
                     titleType: 'small',
-                    titleText: 'Janri',
+                    titleText: isRussian ? '123' : '456',
                 }}
                     items={secondList} />
 
 
                 <HeaderList title={{
                     titleType: 'small',
-                    titleText: 'Janri',
+                    titleText: isRussian ? '234' : '567',
                 }}
                     items={thirdList} />
 

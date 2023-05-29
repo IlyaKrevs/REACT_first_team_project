@@ -5,7 +5,6 @@ import styles from './styles.module.css';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
 import { getMovie, getMovieDetails, useAppDispatch, useAppSelector } from '../../store';
-import Carousel from '../../Components/aKrevs/Carousel/Carousel';
 import { Wrapper } from '../../Components/Wrapper/Wrapper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Gallery from '../../Components/aKrevs/Gallery/Gallery';
@@ -22,19 +21,20 @@ export const WatchPage = () => {
     }
   }, [dispatch, id]);
 
-  console.log(movie)
-
-
   return (
     <div className={styles.descr}>
       <Wrapper>
         <div className={styles.wrapper}>
-          <VideoPlayer />
-          <DescrMovie nameRU={''} year={0} duration={0} ageRating={''} idCountry={0} rating={0} text={''} />
+          <div className={styles.videoPlayerContainer}>
+            <VideoPlayer />
+          </div>
+          <div className={styles.descriptionContainer}>
+            <DescrMovie nameRU={''} year={0} duration={0} ageRating={''} idCountry={0} rating={0} text={''} />
+          </div>
         </div>
         <div className={styles.carousel}>
           <h2 className={styles.titleMov}>С фильмом «Идеальная жена» смотрят</h2>
-          <Gallery/>
+          <Gallery />
         </div>
         <div className={styles.person}>
           <h2 className={styles.title}>
@@ -97,7 +97,7 @@ export const WatchPage = () => {
           </div>
           <Reviews />
         </div>
-        <AllDevices/>
+        <AllDevices />
       </Wrapper>
     </div>
   )

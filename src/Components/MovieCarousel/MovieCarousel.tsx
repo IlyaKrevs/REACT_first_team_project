@@ -1,9 +1,9 @@
-import { Trailer } from '..';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styles from './styles.module.css';
 import { useState } from 'react';
+import { SelectionMovie } from '..';
 
 export const MovieCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -12,32 +12,33 @@ export const MovieCarousel = () => {
     setCurrentSlide(index);
   };
 
-  const trailers = [
+  
+  const movies = [
     {
-      videoId: '1',
+      movie: '1',
       title: 'Trailer 1 ochen dlinnoe opisanie',
     },
     {
-      videoId: '2',
+      movie: '2',
       title: 'Trailer 2',
     },
     {
-      videoId: '3',
+      movie: '3',
       title: 'Trailer 3',
     },
     {
-      videoId: '4',
+      movie: '4',
       title: 'Trailer 4',
     },
     {
-      videoId: '5',
+      movie: '5',
       title: 'Trailer 5',
     },
   ];
 
   const CustomPrevArrow = ({ onClick }: { onClick: () => void }) => {
-    if (currentSlide === 0) { // Проверяем, если текущий слайд равен 0, значит, мы находимся на первом слайде, и стрелка должна быть скрыта
-      return null; // Возвращаем null, чтобы стрелка не отображалась
+    if (currentSlide === 0) { 
+      return null; 
     }
     return (
       <div
@@ -49,15 +50,15 @@ export const MovieCarousel = () => {
           onClick();
         }}
       >
-        <span className={styles.arrow}>&#8249;</span> {/* Здесь используется левая стрелка "&#8249;" */}
+        <span className={styles.arrow}>&#8249;</span> 
       </div>
     );
   };
 
 
   const CustomNextArrow = ({ onClick }: { onClick: () => void }) => {
-    if (currentSlide === trailers.length - 1) { // Проверяем, если текущий слайд равен последнему, значит, мы находимся на последнем слайде, и стрелка должна быть скрыта
-      return null; // Возвращаем null, чтобы стрелка не отображалась
+    if (currentSlide === movies.length - 1) { 
+      return null;
     }
     return (
       <div
@@ -69,7 +70,7 @@ export const MovieCarousel = () => {
           onClick();
         }}
       >
-        <span className={styles.arrow}>&#8250;</span> {/* Здесь используется правая стрелка "&#8250;" */}
+        <span className={styles.arrow}>&#8250;</span>
       </div>
     );
   };
@@ -79,7 +80,7 @@ export const MovieCarousel = () => {
     <Slider
       arrows
       infinite
-      slidesToShow={Math.min(4, trailers.length)}
+      slidesToShow={Math.min(4, movies.length)}
       slidesToScroll={1}
       autoplaySpeed={2000}
       initialSlide={0}
@@ -87,8 +88,8 @@ export const MovieCarousel = () => {
       prevArrow={<CustomPrevArrow onClick={() => { }} />}
       nextArrow={<CustomNextArrow onClick={() => { }} />}
     >
-      {trailers.map((trailer) => (
-        <Trailer key={trailer.videoId} videoId={trailer.videoId} />
+      {movies.map(() => (
+        <SelectionMovie/>
       ))}
     </Slider>
   );

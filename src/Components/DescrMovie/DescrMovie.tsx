@@ -4,7 +4,7 @@ import { ROUTE } from '../../router';
 import { RatingModal } from '../RatingModal/RatingModal';
 import { actor } from '../../assets';
 import styles from './styles.module.css';
-import { getMovie, useAppSelector } from '../../store';
+import { getMovie, getText, useAppSelector } from '../../store';
 
 interface IProps {
   nameRU: string,
@@ -16,9 +16,9 @@ interface IProps {
   text: string,
 }
 
-export const DescrMovie = ({nameRU, year, duration, ageRating, idCountry, rating, text}: IProps) => {
+export const DescrMovie = ({nameRU, year, duration, ageRating, idCountry, rating }: IProps) => {
   const [showDetails, setShowDetails] = useState(false);
-  const movie = useAppSelector(getMovie); 
+  const text = useAppSelector(getText); 
 
   const toggleDetails = () => {
     setShowDetails(!showDetails);
@@ -85,10 +85,7 @@ export const DescrMovie = ({nameRU, year, duration, ageRating, idCountry, rating
       </div>
       <div className={styles.descrFilm}>
         <div className={styles.film}>
-          <p>Вожатые Кайрат, Болат и Дастан воссоединяются, чтобы возобновить работу детского лагеря после пандемии.
-            Их планам мешает дочь инвестора Жанна, которая хочет продать «Ауыл Кэмп», не приносящий прибыли.
-            Душевная комедия для всей семьи.
-          </p>
+          <p>{text}</p>
           {!showDetails && (
             <div className={styles.toggle} onClick={toggleDetails}>
               Детали о фильме
@@ -96,15 +93,7 @@ export const DescrMovie = ({nameRU, year, duration, ageRating, idCountry, rating
           )}
           {showDetails && (
             <>
-              <p>Летний лагерь «Ауыл Кэмп» всегда был любимым местом отдыха детей из Казахстана, но после пандемии коронавируса учреждение почти не приносит прибыли.
-                Жанна, дочь инвестора, хочет закрыть лагерь, но троица вожатых убеждает её повременить с решением. Кайрат, Болат и Дастан намерены вернуть месту былую славу.
-                Друзьям предстоит объединить разобщённых детей, приехавших отдохнуть, и спасти «Ауыл Кэмп».
-              </p>
-              <p>Чтобы узнать, как будут развиваться события, смотри онлайн на Иви «Каникулы off-line 3».
-              </p>
-              <p>Приглашаем посмотреть фильм «Каникулы off-line 3 (на казахском языке с русскими субтитрами)»
-                в нашем онлайн-кинотеатре в хорошем HD качестве. Приятного просмотра!
-              </p>
+              <p>{text}</p>
               <div className={styles.component}>
                 <div className={styles.options}>
                   <div className={styles.film}>Языки</div>

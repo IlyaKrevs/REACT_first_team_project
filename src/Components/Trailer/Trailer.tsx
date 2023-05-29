@@ -1,5 +1,6 @@
 import { FunctionComponent, useState } from 'react';
 import styles from './styles.module.css';
+import { getTrailer, useAppSelector } from '../../store';
 
 interface IProps {
     videoId: string;
@@ -7,6 +8,7 @@ interface IProps {
 
 export const Trailer: FunctionComponent<IProps> = ({ videoId }) => {
     const [isExpanded, setIsExpanded] = useState(false);
+    const trailer = useAppSelector(getTrailer);
 
     const handlePlayClick = () => {
         setIsExpanded(true);
@@ -35,7 +37,7 @@ export const Trailer: FunctionComponent<IProps> = ({ videoId }) => {
                 <div className={styles.modal}>
                     <div className={styles.modalContent}>
                         <iframe className={styles.frame}
-                            src={`https://www.ivi.tv/watch/511528`}
+                            src={trailer}
                             allowFullScreen
                             title="Trailer"
                         ></iframe>

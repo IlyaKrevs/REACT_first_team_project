@@ -18,6 +18,8 @@ export * from "./AllDevices/AllDevices";
 export * from "./MainMovies/styles.module.css";
 export * from "./FullFilmography/FullFilmography";
 export * from "./Tabs/Tabs";
+export * from "./SelectionMovie/SelectionMovie";
+
 
 
 

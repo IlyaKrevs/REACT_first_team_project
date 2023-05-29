@@ -123,6 +123,7 @@
     line-height: 22px;
     color: rgba(255, 255, 255, .72);
     margin-top: 16px;
+    overflow: hidden;
 
 }
 

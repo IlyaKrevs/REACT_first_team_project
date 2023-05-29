@@ -1,10 +1,22 @@
 .wrapper {
-    display: flex;
-    justify-content: space-between;
-    gap: 32px;
+    position: relative;
+    width: 100%;
     align-items: center;
     padding-bottom: 24px;
 }
+
+  
+  .videoPlayerContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .descriptionContainer {
+    position: relative;
+    left: 60%;
+  }
+  
 
 .descr {
     background-color: #100e19;

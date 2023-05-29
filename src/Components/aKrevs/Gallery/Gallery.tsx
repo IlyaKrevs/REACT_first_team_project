@@ -1,9 +1,6 @@
-import React from 'react';
 import classes from './Gallery.module.css';
 
 import Carousel from '../Carousel/Carousel';
-import TitleText from '../Text/TitleText/TitleText';
-import Arrow from '../Arrow/Arrow';
 import FilmCard from '../FilmCard/FilmCard';
 
 const Gallery = () => {
@@ -16,7 +13,7 @@ const Gallery = () => {
         let myArr = [];
 
         for (let i = 0; i < 20; i++) {
-            myArr.push(<FilmCard />)
+            myArr.push(<FilmCard key={i} />);
         }
         return myArr;
     }

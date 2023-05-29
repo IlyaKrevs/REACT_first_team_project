@@ -5,7 +5,7 @@ export const getMovieDetails = createAsyncThunk<IMovieDetails, number, { rejectV
   'movies/getMovieDetails',
   async (id: number, {rejectWithValue}) => {
     try {
-      const response = await fetch(`http://localhost:12120/api/films/${id}`);
+      const response = await fetch(`http://localhost:12120/api/film-info/film/1`);
       const data = await response.json();
       return data;
     } catch (error) {

@@ -52,9 +52,9 @@ const Clause = ({ title, description, showStyle }: ClauseProps) => {
 
 
             <div className={classes.clauseStyle}>
-                {showContent.map(item => {
+                {showContent.map((item, index) => {
                     if (typeof item === 'string') {
-                        return <ParagraphText text={item} type={description.type} />
+                        return <ParagraphText key={index} text={item} type={description.type} />
                     } else {
                         return item;
                     }

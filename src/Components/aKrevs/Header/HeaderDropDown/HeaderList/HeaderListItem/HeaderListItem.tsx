@@ -3,28 +3,36 @@ import classes from './HeaderListITem.module.css'
 import { useSelector } from 'react-redux';
 
 interface liProps {
-    fullObj: any
+    fullObj: string | any
 }
 
 const HeaderListItem = ({ fullObj }: liProps) => {
 
-    // let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian);
+    let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian);
 
-    // let currentText;
-    // let showText;
+    let currentText;
+    let showText;
 
-    // if (fullObj.nameEN | fullObj.nameRU) {
-    //     if (isRussian) {
-    //         currentText = fullObj.nameRU;
-    //     } else {
-    //         currentText = fullObj.nameEN
-    //     }
-    //     showText = currentText[0].toUpperCase() + currentText.slice(1);
-    // }
+    if (fullObj.nameEN || fullObj.nameRU) {
+
+        if (isRussian) {
+            currentText = fullObj.nameRU;
+        } else {
+            currentText = fullObj.nameEN
+        }
+        let firstLetter = currentText[0].toUpperCase();
+        let otherText = currentText.slice(1);
+
+        showText = firstLetter + otherText;
+    } else {
+        showText = fullObj
+    }
+
+
+
     return (
         <li className={classes.liItem}>
-            {/* {showText ? showText : fullObj} */}
-            {fullObj}
+            {showText}
         </li>
     );
 };

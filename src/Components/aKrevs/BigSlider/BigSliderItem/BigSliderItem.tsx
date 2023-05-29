@@ -53,8 +53,12 @@ const BigSliderItem = ({ color }: BigSliderItemProps) => {
                 <div className={classes.descriptionBig}>Front-end:</div>
                 <div className={classes.descriptionBig}>Back-end:</div>
 
-                {objArr.map(item => {
-                    return <BigSliderDescriptionItem name={item.name} github={item.github} telegram={item.telegram} />
+                {objArr.map((item, index) => {
+                    return <BigSliderDescriptionItem
+                        key={index}
+                        name={item.name}
+                        github={item.github}
+                        telegram={item.telegram} />
                 })}
             </div>
         </div>

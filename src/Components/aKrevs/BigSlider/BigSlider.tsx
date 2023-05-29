@@ -22,11 +22,11 @@ const BigSlider = () => {
 
 
     let basicArray = [
-        <BigSliderItem color='first' />,
-        <BigSliderItem color='second' />,
-        <BigSliderItem color='third' />,
-        <BigSliderItem color='fourth' />,
-        <BigSliderItem color='fiveth' />,
+        <BigSliderItem key={1} color='first' />,
+        <BigSliderItem key={2} color='second' />,
+        <BigSliderItem key={3} color='third' />,
+        <BigSliderItem key={4} color='fourth' />,
+        <BigSliderItem key={5} color='fiveth' />,
     ];
 
 

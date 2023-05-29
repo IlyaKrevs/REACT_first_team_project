@@ -13,8 +13,8 @@ const FilmCardHoverTopContainer = () => {
             <div className={classes.text}>8,1</div>
             <div className={classes.ratingContainer}>
 
-                {progressArr.map(item => {
-                    return <FilmCardRatingLine size={thisSize} progressValue={item} />
+                {progressArr.map((item, index) => {
+                    return <FilmCardRatingLine key={index} size={thisSize} progressValue={item} />
                 })}
             </div>
 

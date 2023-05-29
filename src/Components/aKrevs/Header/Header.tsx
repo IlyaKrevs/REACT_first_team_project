@@ -7,21 +7,21 @@ import DropDownMovieScreen from './HeaderDropDown/HeaderDropDownMain/MovieScreen
 import DropDownNotifyScreen from './HeaderDropDown/HeaderDropDownMain/NotifyScreen/DropDownNotifyScreen';
 import DropDownProfileScreen from './HeaderDropDown/HeaderDropDownMain/ProfileScreen/DropDownProfileScreen';
 import DropDownTVPlusScreen from './HeaderDropDown/HeaderDropDownMain/TVPlusScreen/DropDownTVPlusScreen';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { setAllGenresFromServer } from '../../../store/slice/serverDataSlice/genresSlice';
-
+import { useSelector } from 'react-redux';
 
 
 const Header = () => {
 
   const isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian);
 
-
   const showDropDownSelector = useSelector((state: any) => state.HeaderShowDropDown);
 
   let currentType = showDropDownSelector.currentType;
   let currentPosition = showDropDownSelector.currentPosition;
+
+
+
+
 
   const { useState, useEffect } = React;
 
@@ -39,6 +39,9 @@ const Header = () => {
   }, [])
 
 
+
+
+
   let first2 = createEmptyTextArr(3, isRussian ? 'Текст2' : 'Text2')
   let first3 = createEmptyTextArr(12, isRussian ? 'Текст3' : 'Text3')
 
@@ -52,7 +55,6 @@ const Header = () => {
 
 
   let myTVPLUSTemp = createEmptyTextArr(5, isRussian ? 'Текст10' : 'Text10')
-
 
 
   function createEmptyTextArr(arrLength: number, arrText: string) {

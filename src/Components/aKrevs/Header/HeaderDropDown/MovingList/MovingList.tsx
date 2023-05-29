@@ -26,7 +26,7 @@ const MovingList = ({ items }: MovingListProps) => {
 
             <ul className={classes.itemsContainer}>
                 {items.map((elem, index) => {
-                    return <MovingListItem text={elem} position={index} />
+                    return <MovingListItem text={elem} position={index} key={index} />
                 })}
             </ul>
         </div>

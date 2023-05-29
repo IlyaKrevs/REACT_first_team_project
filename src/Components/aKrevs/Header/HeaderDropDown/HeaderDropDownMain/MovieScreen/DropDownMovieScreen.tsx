@@ -25,13 +25,14 @@ const DropDownMovieScreen = ({ firstList, secondList, thirdList, moveList }: Dro
             <div className={classes.leftSideItemContainer}>
 
 
-                <HeaderList title={
+                < HeaderList title={
                     {
                         titleType: 'small',
                         titleText: isRussian ? 'Жанры' : 'Genres',
                     }
                 }
                     items={firstList} />
+
 
             </div>
 

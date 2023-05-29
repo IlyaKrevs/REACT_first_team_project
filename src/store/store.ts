@@ -6,7 +6,9 @@ import LanguageSwitchSlice from "./slice/HeaderSlices/LanguageSwitchSlice";
 import movieReducer from './slice/moviesSlice';
 import showDropDownSlice from './slice/HeaderSlices/showDropDownSlice';
 import movingListSlice from "./slice/HeaderSlices/movingListSlice";
-import MoviesFilterBy from './slice/MoviesPageSlices/FilterBySlice'
+import MoviesFilterBy from './slice/MoviesPageSlices/FilterBySlice';
+import serverDataGenres from './slice/serverDataSlice/genresSlice';
+
 
 
 export const store = configureStore({
@@ -16,6 +18,7 @@ export const store = configureStore({
         HeaderShowDropDown: showDropDownSlice,
         HeaderMovingList: movingListSlice,
         MoviesFilterBy: MoviesFilterBy,
+        AllGenres: serverDataGenres,
     },
 });
 

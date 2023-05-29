@@ -25,7 +25,9 @@ const Header = () => {
 
   const { useState, useEffect } = React;
 
-  let [allGenresArr, setAllGenresArr] = useState();
+
+  let myEmptyArr: any[] = [];
+  let [allGenresArr, setAllGenresArr] = useState(myEmptyArr);
 
   let giveMeAllGernresArr = () => {
     fetch('http://localhost:12120/api/genres')
@@ -102,7 +104,7 @@ const Header = () => {
       {currentType &&
         <HeaderDropDownMain>
 
-          {currentType === 'movies' &&
+          {currentType === 'movies' && allGenresArr.length &&
             <DropDownMovieScreen
               firstList={showFirstList}
               secondList={showSecondList}

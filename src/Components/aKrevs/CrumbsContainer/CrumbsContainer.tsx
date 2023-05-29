@@ -28,8 +28,8 @@ const CrumbsContainer = () => {
     return (
         <div className={classes.mainContainer}>
             <ul className={classes.crumbsUL}>
-                {mapArr.map(item => {
-                    return <CrumbsItem text={item.text} link={item.link} />
+                {mapArr.map((item, index) => {
+                    return <CrumbsItem key={index} text={item.text} link={item.link} />
                 }
                 )}
             </ul>

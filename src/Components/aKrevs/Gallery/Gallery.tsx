@@ -16,7 +16,7 @@ const Gallery = () => {
         let myArr = [];
 
         for (let i = 0; i < 20; i++) {
-            myArr.push(<FilmCard />)
+            myArr.push(<FilmCard key={i} />)
         }
         return myArr;
     }

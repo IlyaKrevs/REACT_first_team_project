@@ -28,7 +28,7 @@ const DropDownMovieScreen = ({ firstList, secondList, thirdList, moveList }: Dro
                 <HeaderList title={
                     {
                         titleType: 'small',
-                        titleText: isRussian ? 'Жанры' : 'Genre',
+                        titleText: isRussian ? 'Жанры' : 'Genres',
                     }
                 }
                     items={firstList} />

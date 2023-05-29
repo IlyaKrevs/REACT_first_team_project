@@ -36,8 +36,8 @@ const FilmCardHoverBtnContainer = () => {
 
     return (
         <div className={classes.btnContainer}>
-            {myArr.map(item => {
-                return <FilmCardHoverBtn icon={item.icon} tooltipText={item.text} />
+            {myArr.map((item, index) => {
+                return <FilmCardHoverBtn key={index} icon={item.icon} tooltipText={item.text} />
             })}
         </div>
 

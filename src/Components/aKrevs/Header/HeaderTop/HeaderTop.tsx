@@ -5,6 +5,7 @@ import iviLogо from '../../../../assets/img/ivi_logo.svg';
 
 import HeaderNavContainer from './HeaderNavContainer/HeaderNavContainer';
 import HeaderUserContainer from './HeaderUserPanel/HeaderUserContainer/HeaderUserContainer';
+import { Link } from 'react-router-dom';
 
 
 
@@ -16,10 +17,12 @@ const HeaderTop = () => {
     return (
         <div className={classes.headerTop}>
             <div className={classes.leftContainer}>
-                <div className={classes.logoContainer}>
-                    <img src={iviLogо} alt="iviLogo" />
-                </div>
 
+                <Link to='/'>
+                    <div className={classes.logoContainer}>
+                        <img src={iviLogо} alt="iviLogo" />
+                    </div>
+                </Link>
 
                 <HeaderNavContainer />
 

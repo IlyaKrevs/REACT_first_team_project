@@ -5,16 +5,19 @@ import classes from './FilmCardImageSection.module.css'
 import FilmCardImageWrapper from './Image/FilmCardImageWrapper';
 import FilmCardHoverContainer from './Hover/FilmCardHoverContainer';
 import FilmCardAgeBage from './AgeBage/FilmCardAgeBage';
+import { FilmCardProps } from '../FilmCard';
 
-const FilmCardImageSection = () => {
+
+
+const FilmCardImageSection = ({ fullObj }: FilmCardProps) => {
     return (
         <div className={classes.imgSection}>
 
-            <FilmCardImageWrapper />
+            <FilmCardImageWrapper fullObj={fullObj} />
 
-            <FilmCardHoverContainer />
+            <FilmCardHoverContainer fullObj={fullObj} />
 
-            <FilmCardAgeBage />
+            <FilmCardAgeBage fullObj={fullObj} />
         </div>
     );
 };

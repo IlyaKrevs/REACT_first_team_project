@@ -6,8 +6,9 @@ import FilmCardHoverMiddleContainer from './Content/FilmCardHoverMiddleContainer
 import FilmCardHoverBtnContainer from './Btns/FilmCardHoverBtnContainer';
 import FilmCardHoverContentItem from './Content/FilmCardHoverContentItem';
 import FilmCardBottomContainer from './Content/FilmCardBottomContainer/FilmCardBottomContainer';
+import { FilmCardProps } from '../../FilmCard';
 
-const FilmCardHoverContainer = () => {
+const FilmCardHoverContainer = ({ fullObj }: FilmCardProps) => {
     return (
         <div className={classes.hoverContainer}>
 
@@ -17,16 +18,16 @@ const FilmCardHoverContainer = () => {
             <div className={classes.propsContainer}>
 
                 <FilmCardHoverContentItem >
-                    <FilmCardHoverTopContainer />
+                    <FilmCardHoverTopContainer fullObj={fullObj} />
                 </FilmCardHoverContentItem>
 
                 <FilmCardHoverContentItem >
-                    <FilmCardHoverMiddleContainer />
+                    <FilmCardHoverMiddleContainer fullObj={fullObj} />
                 </FilmCardHoverContentItem>
 
 
                 <FilmCardHoverContentItem >
-                    <FilmCardBottomContainer />
+                    <FilmCardBottomContainer fullObj={fullObj} />
                 </FilmCardHoverContentItem>
 
             </div>

@@ -1,3 +1,4 @@
 .imgSection {
     position: relative;
+    min-height: 231px;
 }

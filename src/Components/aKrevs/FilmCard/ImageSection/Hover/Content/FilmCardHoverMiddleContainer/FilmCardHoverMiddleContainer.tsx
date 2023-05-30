@@ -3,25 +3,23 @@ import React from 'react';
 import classes from './FilmCardHoverMiddleContainer.module.css'
 import { text } from 'stream/consumers';
 import FilmCardRatingLine from '../../RatingLine/FilmCardRatingLine';
+import { FilmCardProps } from '../../../../FilmCard';
 
 
-interface MiddleProps {
-    text?: string,
-    currentProgress?: number,
-}
 
-const FilmCardHoverMiddleContainer = ({ text, currentProgress }: MiddleProps) => {
+
+const FilmCardHoverMiddleContainer = ({ fullObj }: FilmCardProps) => {
 
     let thisSize = 'big';
-    let thisProgress = 55;
+    let thisProgress = Math.trunc(fullObj.rating * 10);
 
     return (
         <div className={classes.container}>
             <div className={classes.text}>
-                {text || 'сюжет'}
+                {'сюжет'}
             </div>
 
-            <FilmCardRatingLine size={thisSize} progressValue={currentProgress || thisProgress} />
+            <FilmCardRatingLine size={thisSize} progressValue={thisProgress} />
         </div>
     );
 };

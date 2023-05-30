@@ -1,6 +1,7 @@
 import FilmCardHoverBtn from './FilmCardHoverBtn';
 
 import classes from './FilmCardHoverBtnContainer.module.css'
+import { useSelector } from 'react-redux';
 
 
 const FilmCardHoverBtnContainer = () => {
@@ -15,10 +16,18 @@ const FilmCardHoverBtnContainer = () => {
 
 
 
+
     let ruTEXT = ['Смотреть позже', 'Похожее', 'Уже смотрел, оценить', 'Не нравится такое',];
     let enTEXT = ['Bookmark', 'Similar', 'Rate', 'Dislike',];
 
-    let currentText = ruTEXT;
+
+    let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian)
+    let currentText;
+    if (isRussian) {
+        currentText = ruTEXT;
+    } else {
+        currentText = enTEXT;
+    }
 
 
     let btnsArr = [bookmarkBtn, similarBtn, rateBtn, dislikeBtn];

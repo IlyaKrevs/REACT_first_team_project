@@ -1,22 +1,35 @@
 import React from 'react';
 
 import classes from './FilmCardTextSection.module.css'
+import { FilmCardProps } from '../FilmCard';
+import { useSelector } from 'react-redux';
 
-interface TextSectionProps {
-    name?: string,
-    extra?: string,
-}
 
-const FilmCardTextSection = ({ name, extra }: TextSectionProps) => {
+
+const FilmCardTextSection = ({ fullObj }: FilmCardProps) => {
+
+    let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian);
+
+    let nameText;
+    let extraText;
+
+    if (isRussian) {
+        nameText = fullObj.nameRU;
+        extraText = 'Бесплатно';
+    } else {
+        nameText = fullObj.nameEN;
+        extraText = 'Free';
+    }
+
     return (
         <div className={classes.container}>
 
             <div className={classes.title}>
-                {name || 'Оранжевая корова'}
+                {nameText}
             </div>
 
             <div className={classes.extra}>
-                {extra || 'Бесплатно'}
+                {extraText}
             </div>
         </div>
     );

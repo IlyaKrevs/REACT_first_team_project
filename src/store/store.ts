@@ -4,17 +4,22 @@ import LanguageSwitchSlice from "./slice/HeaderSlices/LanguageSwitchSlice";
 
 import showDropDownSlice from './slice/HeaderSlices/showDropDownSlice';
 import movingListSlice from "./slice/HeaderSlices/movingListSlice";
+import serverDataGenres from './slice/serverDataSlice/genresSlice';
+
 import MoviesFilterBy from './slice/MoviesPageSlices/FilterBySlice'
-import { movieReducer } from "./slice";
+import { movieDetailsReducer } from "./slice";
+import { movieInfoReducer } from "./slice/movieInfoSlice";
 
 
 export const store = configureStore({
     reducer: {
-        movie: movieReducer,
+        movieDetails: movieDetailsReducer,
+        movieInfo: movieInfoReducer,
         LanguageSwitch: LanguageSwitchSlice,
         HeaderShowDropDown: showDropDownSlice,
         HeaderMovingList: movingListSlice,
         MoviesFilterBy: MoviesFilterBy,
+        AllGenres: serverDataGenres,
     },
 });
 

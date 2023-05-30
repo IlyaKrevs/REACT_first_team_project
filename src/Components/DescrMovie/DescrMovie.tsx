@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { FunctionComponent, useState } from 'react';
 import { ROUTE } from '../../router';
 import { RatingModal } from '../RatingModal/RatingModal';
 import { actor } from '../../assets';
 import styles from './styles.module.css';
-import { getMovie, getText, useAppSelector } from '../../store';
+import { getMovie, useAppSelector } from '../../store';
+import { getText } from '../../store/selector';
 
-interface IProps {
+interface Props {
   nameRU: string,
   year: number,
   duration: number,
@@ -16,7 +17,7 @@ interface IProps {
   text: string,
 }
 
-export const DescrMovie = ({nameRU, year, duration, ageRating, idCountry, rating }: IProps) => {
+export const DescrMovie: FunctionComponent<Props> = ({nameRU, year, duration, ageRating, idCountry, rating }) => {
   const [showDetails, setShowDetails] = useState(false);
   const text = useAppSelector(getText); 
 
@@ -34,7 +35,6 @@ export const DescrMovie = ({nameRU, year, duration, ageRating, idCountry, rating
     setModalOpen(false);
   };
 
-  
   return (
     <div className={styles.descr}>
       <h1 className={styles.title}>{nameRU}</h1>

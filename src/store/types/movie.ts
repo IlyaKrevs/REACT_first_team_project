@@ -9,10 +9,17 @@ export interface IMovieDetails  {
   rating: number,
   countRating: number,
   idCountry: number,
-  text: string,
-  trailerLink: string,
   idFilm: number,
   error: string | null,
   loading: boolean,
   movieDetails: IMovieDetails | null;
+}
+
+export interface IMovieInfo  {
+  id: number,
+  text: string,
+  trailerLink: string,
+  error: string | null,
+  loading: boolean,
+  movieInfo: IMovieInfo | null;
 }

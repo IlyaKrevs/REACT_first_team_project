@@ -1,1 +1,3 @@
-export * from './movieSlice';
+export * from './movieDetailsSlice';
+export * from './movieInfoSlice';
+

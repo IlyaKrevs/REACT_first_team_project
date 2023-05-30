@@ -20,6 +20,42 @@ import number0 from '../../../../assets/img/top10/number0.svg';
 
 const HomePageTop10 = () => {
 
+    let bodyAsk =
+    {
+        "part": 1,
+        "typeSorting": "ration"
+    }
+
+
+    const { useState, useEffect } = React;
+
+    let emptyArr: any = [];
+    let [top10Arr, setTop10Arr] = useState(emptyArr);
+
+    let giveMeTop10FilmsArr = () => {
+        fetch('http://localhost:12120/api/films/filter', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bodyAsk)
+        })
+            .then(response => response.json())
+            .then(data => {
+                setTop10Arr(data)
+                console.log(data)
+            })
+    };
+
+    useEffect(() => {
+        giveMeTop10FilmsArr()
+
+    }, [])
+
+
+
+
+
     let imageArr = [orangeCow, orangeCow, orangeCow, orangeCow, orangeCow, orangeCow, orangeCow, orangeCow, orangeCow, orangeCow]
 
     let numberArr = [number1, number2, number3, number4, number5, number6, number7, number8, number9, number0]
@@ -39,7 +75,7 @@ const HomePageTop10 = () => {
             };
 
             myArr.push({
-                image: imageArr[i],
+                image: top10Arr[i].imageName,
                 firstNumber: myNumber,
                 secondNumber: myTemp,
             })
@@ -52,8 +88,8 @@ const HomePageTop10 = () => {
 
         let myArr: React.ReactNode[] = [];
 
-        createTop10ItemsObject().map(item => {
-            myArr.push(<Top10Item image={item.image} firstNumber={item.firstNumber} secondNumber={item.secondNumber} />)
+        createTop10ItemsObject().map((item, index) => {
+            myArr.push(<Top10Item key={index} image={item.image} firstNumber={item.firstNumber} secondNumber={item.secondNumber} />)
         })
 
         return myArr;
@@ -63,7 +99,7 @@ const HomePageTop10 = () => {
     return (
         <>
             <Carousel type='top10'>
-                {make10itemsArr()}
+                {top10Arr.length && make10itemsArr()}
             </Carousel>
         </>
     );

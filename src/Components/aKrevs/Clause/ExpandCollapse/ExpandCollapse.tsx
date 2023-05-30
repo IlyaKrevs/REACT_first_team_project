@@ -1,6 +1,7 @@
 import React from 'react';
 
 import classes from './ExpandCollapse.module.css'
+import { useSelector } from 'react-redux';
 
 interface ExpandCollapseProps {
     status: boolean,
@@ -8,6 +9,8 @@ interface ExpandCollapseProps {
 }
 
 const ExpandCollapse = ({ status, onClick }: ExpandCollapseProps) => {
+
+    let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian)
 
     let textRU = {
         show: 'Развернуть',
@@ -19,7 +22,7 @@ const ExpandCollapse = ({ status, onClick }: ExpandCollapseProps) => {
         hide: 'Collapse',
     }
 
-    let currentText = textRU;
+    let currentText = isRussian ? textRU : textENG;
 
 
 

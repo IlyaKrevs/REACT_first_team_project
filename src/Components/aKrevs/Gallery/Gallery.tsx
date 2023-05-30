@@ -14,6 +14,7 @@ const Gallery = () => {
 
         for (let i = 0; i < 20; i++) {
             myArr.push(<FilmCard key={i} />);
+            myArr.push(<FilmCard key={i} />)
         }
         return myArr;
     }

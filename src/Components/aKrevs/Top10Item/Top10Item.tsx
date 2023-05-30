@@ -12,7 +12,7 @@ interface Top10ItemProps {
 const Top10Item = ({ image, firstNumber, secondNumber, }: Top10ItemProps) => {
     return (
         <div className={classes.mainContainer}>
-            <img className={classes.imgContainer} src={image} />
+            <img className={classes.imgContainer} src={'http://localhost:12120/api/films/images/' + image} />
             <div className={classes.imageFade}>
                 <div className={classes.numberPlace}>
                     <img className={classes.numberImage} src={firstNumber} />

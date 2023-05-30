@@ -28,7 +28,6 @@ const DropDownTVPlusScreen = ({ sideContent }: DropDownTVPlusScreen) => {
 
 
             <div className={classes.mainContent}>
-                asdasdasdasdasdА
 
 
                 <SubscribeWidget />

@@ -9,66 +9,88 @@ import DropDownTVPlusScreen from './HeaderDropDown/HeaderDropDownMain/TVPlusScre
 import { useSelector } from 'react-redux';
 
 
-
-
 const Header = () => {
 
-  let first1 = ['Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус', 'Артхаус',];
-  let first2 = ['Артхаус', 'Артхаус', 'Артхаус',];
-  let first3 = ['Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки', 'Новинки',];
+  const isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian);
 
+  const showDropDownSelector = useSelector((state: any) => state.HeaderShowDropDown);
 
-
-  let myTVPLUSTemp = ['ТВ-каналы', 'ТВ-каналы', 'ТВ-каналы', 'ТВ-каналы', 'ТВ-каналы',]
-
-
-
-  let second1 = ['Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check',];
-  let second2 = ['Check', 'Check', 'Check',];
-  let second3 = ['Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check', 'Check',];
-
-
-
-
-  let third1 = ['ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal',];
-  let third2 = ['ystal', 'ystal', 'ystal',];
-  let third3 = ['ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal', 'ystal',];
+  let currentType = showDropDownSelector.currentType;
+  let currentPosition = showDropDownSelector.currentPosition;
 
 
 
 
 
+  const { useState, useEffect } = React;
 
-  const selector = useSelector((state: any) => state.HeaderShowDropDown);
 
-  let temp1 = selector.currentType;
-  let temp2 = selector.currentPosition;
+  let myEmptyArr: any[] = [];
+  let [allGenresArr, setAllGenresArr] = useState(myEmptyArr);
 
-  let showFirstList = [''];
-  let showSecondList = [''];
-  let showThirdList = [''];
-  let showMoveist = [''];
+  let giveMeAllGernresArr = () => {
+    fetch('http://localhost:12120/api/genres')
+      .then(response => response.json())
+      .then(data => setAllGenresArr(data));
+  }
 
-  if (temp2 === 'Films') {
-    showFirstList = first1;
+
+  useEffect(() => {
+    giveMeAllGernresArr();
+  }, [])
+
+
+
+
+
+  let first2 = createEmptyTextArr(3, isRussian ? 'Текст2' : 'Text2')
+  let first3 = createEmptyTextArr(12, isRussian ? 'Текст3' : 'Text3')
+
+  let second1 = createEmptyTextArr(22, isRussian ? 'Текст4' : 'Text4')
+  let second2 = createEmptyTextArr(3, isRussian ? 'Текст5' : 'Text5')
+  let second3 = createEmptyTextArr(12, isRussian ? 'Текст6' : 'Text6')
+
+  let third1 = createEmptyTextArr(22, isRussian ? 'Текст7' : 'Text7')
+  let third2 = createEmptyTextArr(3, isRussian ? 'Текст8' : 'Text8')
+  let third3 = createEmptyTextArr(12, isRussian ? 'Текст9' : 'Text9')
+
+
+  let myTVPLUSTemp = createEmptyTextArr(5, isRussian ? 'Текст10' : 'Text10')
+
+
+  function createEmptyTextArr(arrLength: number, arrText: string) {
+    let myArr = [];
+
+    for (let i = 0; i < arrLength; i++) {
+      myArr.push(arrText)
+    }
+    return myArr;
+  }
+
+
+
+  let emptyArr: any = [];
+
+  let showFirstList = emptyArr;
+  let showSecondList = emptyArr;
+  let showThirdList = emptyArr;
+  let showMoveist = emptyArr;
+
+  if (currentPosition === 'Films') {
+    showFirstList = allGenresArr;
     showSecondList = first2;
     showThirdList = first2;
     showMoveist = first3;
-  } else if (temp2 === 'Series') {
+  } else if (currentPosition === 'Series') {
     showFirstList = second1;
     showSecondList = second2;
     showThirdList = second2;
     showMoveist = second3;
-  } else if (temp2 === 'Cartoon') {
+  } else if (currentPosition === 'Cartoon') {
     showFirstList = third1;
     showSecondList = third2;
     showThirdList = third2;
     showMoveist = third3;
-  } else if (temp2 === 'TV+') {
-    showFirstList = third2;
-    showSecondList = third2;
-    showThirdList = third2;
-    showMoveist = third2;
   }
 
 
@@ -78,22 +100,27 @@ const Header = () => {
 
       <HeaderTop />
 
-      {temp1 &&
+      {currentType &&
         <HeaderDropDownMain>
 
-          {temp1 === 'movies' &&
-            <DropDownMovieScreen firstList={showFirstList} secondList={showSecondList} thirdList={showThirdList} moveList={showMoveist} />
+          {currentType === 'movies' && allGenresArr.length &&
+            <DropDownMovieScreen
+              firstList={showFirstList}
+              secondList={showSecondList}
+              thirdList={showThirdList}
+              moveList={showMoveist} />
           }
 
-          {temp1 === 'TV+' &&
-            < DropDownTVPlusScreen sideContent={myTVPLUSTemp} />
+          {currentType === 'TV+' &&
+            < DropDownTVPlusScreen
+              sideContent={myTVPLUSTemp} />
           }
 
-          {temp1 === 'Notify' &&
+          {currentType === 'Notify' &&
             < DropDownNotifyScreen />
           }
 
-          {temp1 === 'Profile' &&
+          {currentType === 'Profile' &&
             <DropDownProfileScreen />
           }
 

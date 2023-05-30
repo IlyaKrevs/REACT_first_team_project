@@ -1,9 +1,12 @@
 import { FunctionComponent, useState } from 'react';
 import styles from './styles.module.css';
-import { getTrailer, useAppSelector } from '../../store';
+import { useAppSelector } from '../../store';
+import { IMovieDetails } from '../../store/types/movie';
+import { getTrailer } from '../../store/selector';
 
 interface IProps {
     videoId: string;
+    //image: IMovieDetails;
 }
 
 export const Trailer: FunctionComponent<IProps> = ({ videoId }) => {
@@ -24,7 +27,7 @@ export const Trailer: FunctionComponent<IProps> = ({ videoId }) => {
                 <div className={styles.container} onClick={handlePlayClick}>
                     <img
                         className={styles.picture}
-                        src={`https://thumbs.dfs.ivi.ru/storage6/contents/2/d/48739c662594e29cc5a5ac2ba6589c.jpg/784x440/?q=85`}
+                        src={''}
                         alt="Trailer Thumbnail"
                     />
                     <div className={styles.title}>

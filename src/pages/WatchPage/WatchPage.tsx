@@ -4,32 +4,49 @@ import { ROUTE } from '../../router';
 import styles from './styles.module.css';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
-import { getMovie, getMovieDetails, useAppDispatch, useAppSelector } from '../../store';
+import { getMovieDetails, getMovieInfo, useAppDispatch, useAppSelector } from '../../store';
 import { Wrapper } from '../../Components/Wrapper/Wrapper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Gallery from '../../Components/aKrevs/Gallery/Gallery';
+import { getMovie, getTrailer } from '../../store/selector';
+import { debug } from 'console';
 
-export const WatchPage = () => {
+interface IProps {
+  nameRU: string,
+  year: number,
+  duration: number,
+  ageRating: string,
+  idCountry: number,
+  rating: number,
+  text: string,
+}
+
+export const WatchPage = ({nameRU, year, duration, ageRating, idCountry, rating, text }: IProps) => {
   const dispatch = useAppDispatch();
   const { id } = useParams();
+  const trailer = useAppSelector(getTrailer);
   const movie = useAppSelector(getMovie);
 
   useEffect(() => {
     if (id) {
       const movieId = parseInt(id, 10);
       dispatch(getMovieDetails(movieId));
+      dispatch(getMovieInfo(movieId));
     }
+    console.log(movie);
   }, [dispatch, id]);
+
+  console.log(trailer);
 
   return (
     <div className={styles.descr}>
       <Wrapper>
         <div className={styles.wrapper}>
           <div className={styles.videoPlayerContainer}>
-            <VideoPlayer />
+            {trailer ? <VideoPlayer url={trailer} /> : ''}
           </div>
           <div className={styles.descriptionContainer}>
-            <DescrMovie nameRU={''} year={0} duration={0} ageRating={''} idCountry={0} rating={0} text={''} />
+            <DescrMovie nameRU={nameRU} year={year} duration={duration} ageRating={ageRating} idCountry={idCountry} rating={rating} text={text}/>
           </div>
         </div>
         <div className={styles.carousel}>
@@ -50,7 +67,7 @@ export const WatchPage = () => {
               <span className={styles.linkTitle}>Трейлеры</span>
             </Link> и доп. материалы
           </h2>
-          <Trailer videoId={''}/>
+          <Trailer videoId={''} />
         </div>
         <div className={styles.person}>
           <h2 className={styles.title}>Фильм в подборках</h2>

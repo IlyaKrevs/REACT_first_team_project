@@ -16,7 +16,7 @@ export const router = createBrowserRouter(
       <Route path={ROUTE.HOME} element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path={ROUTE.MOVIES} element={<MoviesPage />} />
-        <Route path={`/${ROUTE.WATCH}/:id`} element={<WatchPage />} />
+        <Route path={`/${ROUTE.WATCH}/:id`} element={<WatchPage nameRU={""} year={0} duration={0} ageRating={""} idCountry={0} rating={0} text={""} />} />
         <Route
           path={`/${ROUTE.WATCH}/:id/${ROUTE.PERSON}`}
           element={<PersonPage />}

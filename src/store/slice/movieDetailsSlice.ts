@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { IMovieDetails } from "../types/movie";
 import { getMovieDetails } from "../actions/movies";
 
@@ -13,16 +13,14 @@ const initialState: IMovieDetails = {
   rating: 0,
   countRating: 0,
   idCountry: 0,
-  text: '',
-  trailerLink: '',
   idFilm: 0,
   loading: false,
   error: null,
   movieDetails: null, 
 };
 
-const movieSlice = createSlice({
-  name: "movie",
+const movieDetailsSlice = createSlice({
+  name: "movieDetails",
   initialState, 
   reducers: {},
   extraReducers: (builder) => {
@@ -43,8 +41,8 @@ const movieSlice = createSlice({
 });
 
 export const {
-  reducer: movieReducer,
-} = movieSlice
+  reducer: movieDetailsReducer,
+} = movieDetailsSlice
  
 
 

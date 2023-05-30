@@ -20,27 +20,7 @@ const Header = () => {
   let currentPosition = showDropDownSelector.currentPosition;
 
 
-
-
-
-  const { useState, useEffect } = React;
-
-
-  let myEmptyArr: any[] = [];
-  let [allGenresArr, setAllGenresArr] = useState(myEmptyArr);
-
-  let giveMeAllGernresArr = () => {
-    fetch('http://localhost:12120/api/genres')
-      .then(response => response.json())
-      .then(data => setAllGenresArr(data));
-  }
-
-
-  useEffect(() => {
-    giveMeAllGernresArr();
-  }, [])
-
-
+  let allGenresSelector = useSelector((state: any) => state.AllGenres.allServerGenres)
 
 
 
@@ -78,7 +58,7 @@ const Header = () => {
   let showMoveist = emptyArr;
 
   if (currentPosition === 'Films') {
-    showFirstList = allGenresArr;
+    showFirstList = allGenresSelector;
     showSecondList = first2;
     showThirdList = first2;
     showMoveist = first3;
@@ -104,7 +84,7 @@ const Header = () => {
       {currentType &&
         <HeaderDropDownMain>
 
-          {currentType === 'movies' && allGenresArr.length &&
+          {currentType === 'movies' && allGenresSelector.length &&
             <DropDownMovieScreen
               firstList={showFirstList}
               secondList={showSecondList}

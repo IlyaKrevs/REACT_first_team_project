@@ -23,7 +23,7 @@ const HomePageTop10 = () => {
     let bodyAsk =
     {
         "part": 1,
-        "typeSorting": "ration"
+        "typeSorting": "rating",
     }
 
 
@@ -43,8 +43,8 @@ const HomePageTop10 = () => {
             .then(response => response.json())
             .then(data => {
                 setTop10Arr(data)
-                console.log(data)
             })
+            .catch(err => console.log(`Error msg: ${err}`))
     };
 
     useEffect(() => {
@@ -56,7 +56,6 @@ const HomePageTop10 = () => {
 
 
 
-    let imageArr = [orangeCow, orangeCow, orangeCow, orangeCow, orangeCow, orangeCow, orangeCow, orangeCow, orangeCow, orangeCow]
 
     let numberArr = [number1, number2, number3, number4, number5, number6, number7, number8, number9, number0]
 
@@ -65,11 +64,12 @@ const HomePageTop10 = () => {
         let myTemp = null;
         let myNumber;
         let myArr = [];
+        let maxLength = 10;
 
 
-        for (let i = 0; i < imageArr.length; i++) {
+        for (let i = 0; i < maxLength; i++) {
             myNumber = numberArr[i];
-            if (i === (imageArr.length - 1)) {
+            if (i === (maxLength - 1)) {
                 myTemp = number0;
                 myNumber = number1;
             };

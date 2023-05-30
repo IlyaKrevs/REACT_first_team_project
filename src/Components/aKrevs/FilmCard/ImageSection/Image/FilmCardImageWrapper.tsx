@@ -1,17 +1,15 @@
 import React from 'react';
 
 import classes from './FilmCardImageWrapper.module.css'
-import orangeCow from '../../../../../assets/img/orange_cow.jpg'
+import { FilmCardProps } from '../../FilmCard';
 
 
-interface ImageWrapperProps {
-    imageSrc?: string,
-}
 
-const FilmCardImageWrapper = ({ imageSrc }: ImageWrapperProps) => {
+
+const FilmCardImageWrapper = ({ fullObj }: FilmCardProps) => {
     return (
         <div className={classes.wrapper}>
-            <img className={classes.imageProps} src={imageSrc || orangeCow} />
+            <img className={classes.imageProps} src={'http://localhost:12120/api/films/images/' + fullObj.imageName} />
         </div>
     );
 };

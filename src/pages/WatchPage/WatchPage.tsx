@@ -9,19 +9,8 @@ import { Wrapper } from '../../Components/Wrapper/Wrapper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Gallery from '../../Components/aKrevs/Gallery/Gallery';
 import { getMovie, getTrailer } from '../../store/selector';
-import { debug } from 'console';
 
-interface IProps {
-  nameRU: string,
-  year: number,
-  duration: number,
-  ageRating: string,
-  idCountry: number,
-  rating: number,
-  text: string,
-}
-
-export const WatchPage = ({nameRU, year, duration, ageRating, idCountry, rating, text }: IProps) => {
+export const WatchPage = () => {
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const trailer = useAppSelector(getTrailer);
@@ -36,7 +25,7 @@ export const WatchPage = ({nameRU, year, duration, ageRating, idCountry, rating,
     console.log(movie);
   }, [dispatch, id]);
 
-  console.log(trailer);
+  console.log(movie);
 
   return (
     <div className={styles.descr}>
@@ -46,7 +35,7 @@ export const WatchPage = ({nameRU, year, duration, ageRating, idCountry, rating,
             {trailer ? <VideoPlayer url={trailer} /> : ''}
           </div>
           <div className={styles.descriptionContainer}>
-            <DescrMovie nameRU={nameRU} year={year} duration={duration} ageRating={ageRating} idCountry={idCountry} rating={rating} text={text}/>
+           {movie && <DescrMovie nameRU={movie.nameRU} year={0} duration={0} ageRating={''} idCountry={0} rating={0} text={''} />}
           </div>
         </div>
         <div className={styles.carousel}>

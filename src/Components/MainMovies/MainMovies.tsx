@@ -5,7 +5,11 @@ export const MainMovies = () => {
   return (
     <div className={styles.main}>
       <div className={styles.title}>Главные фильмы</div>
-      <Gallery/>
+      <Gallery children={[]} titleText={{
+        id: 0,
+        nameRU: '',
+        nameEN: ''
+      }}/>
     </div>
   )
 }

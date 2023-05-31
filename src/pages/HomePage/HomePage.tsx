@@ -5,12 +5,11 @@ import TeaserBtnsContainer from './HomePageContent/TeaserBtnsContainer/TeaserBtn
 import HomePageClause from './HomePageContent/HomePageClause/HomePageClause';
 import HomePageTop10 from './HomePageContent/HomePageTop10/HomePageTop10';
 import FilmCard from '../../Components/aKrevs/FilmCard/FilmCard';
+import React from 'react';
 
 
 const HomePage = () => {
 
-<<<<<<< HEAD
-=======
     const { useState, useEffect } = React;
 
 
@@ -77,7 +76,6 @@ const HomePage = () => {
 
 
 
->>>>>>> 127f6ec208cd31cfcf52992ad3c6bdc9adf2f858
     return (
         <>
             <BigSlider />
@@ -90,22 +88,10 @@ const HomePage = () => {
                 <HomePageTop10 />
             </PageSection>
 
-<<<<<<< HEAD
-            <PageSection >
-                <Gallery />
-            </PageSection>
-
-=======
->>>>>>> 127f6ec208cd31cfcf52992ad3c6bdc9adf2f858
             <PageSection>
                 <HomePageClause />
             </PageSection>
 
-<<<<<<< HEAD
-            <PageSection >
-                <Gallery />
-            </PageSection>
-=======
 
             {showGallery.length === howMuchGallery && showGallery.map(item => {
                 return <PageSection>
@@ -113,7 +99,6 @@ const HomePage = () => {
                 </PageSection>
             })}
 
->>>>>>> 127f6ec208cd31cfcf52992ad3c6bdc9adf2f858
         </>
     );
 };

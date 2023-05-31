@@ -26,3 +26,4 @@ export const getMovieDetails = createAsyncThunk<IMovieDetails, number, { rejectV
   }
 );
 
+

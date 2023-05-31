@@ -22,10 +22,8 @@ export const WatchPage = () => {
       dispatch(getMovieDetails(movieId));
       dispatch(getMovieInfo(movieId));
     }
-    console.log(movie);
-  }, [dispatch, id]);
 
-  console.log(movie);
+  }, [dispatch, id]);
 
   return (
     <div className={styles.descr}>
@@ -35,12 +33,21 @@ export const WatchPage = () => {
             {trailer ? <VideoPlayer url={trailer} /> : ''}
           </div>
           <div className={styles.descriptionContainer}>
-           {movie && <DescrMovie nameRU={movie.nameRU} year={0} duration={0} ageRating={''} idCountry={0} rating={0} text={''} />}
+            {movie && <DescrMovie
+            members={[]} {...movie}
+            text={''}
+            country={{
+              nameRU: movie.country.nameRU
+            }}/>}
           </div>
         </div>
         <div className={styles.carousel}>
           <h2 className={styles.titleMov}>С фильмом «Идеальная жена» смотрят</h2>
-          <Gallery />
+          <Gallery children={[]} titleText={{
+            id: 0,
+            nameRU: '',
+            nameEN: ''
+          }} />
         </div>
         <div className={styles.person}>
           <h2 className={styles.title}>

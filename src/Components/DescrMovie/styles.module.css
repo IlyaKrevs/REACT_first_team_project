@@ -177,8 +177,6 @@
     padding: 10px;
     color: rgba(255, 255, 255, .88);
     cursor: pointer;
-  
-
 }
 
 .ratingWrap {
@@ -198,7 +196,10 @@
     font-weight: 700;
     font-style: normal;
     padding: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+  
 
 .ratingIvi {
     font-size: 15px;

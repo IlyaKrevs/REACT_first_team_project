@@ -14,14 +14,42 @@ const initialState: IMovieDetails = {
   countRating: 0,
   idCountry: 0,
   idFilm: 0,
-  loading: false,
   error: null,
-  movieDetails: null, 
+  loading: false,
+  movieDetails: null,
+  genres: [
+    {
+      id: 7,
+      nameRU: '',
+      nameEN: '',
+      createdAt: '',
+      updatedAt: '',
+      FilmGenre: {
+        id: 1,
+        idFilm: 1,
+        idGenre: 7,
+      },
+    },
+  ],
+  country: {
+    id: 0,
+    nameRU: '',
+    nameEN: '',
+    createdAt: '',
+    updatedAt: '',
+  },
 };
+
+initialState.genres = initialState.genres.map((genre) => ({
+  ...genre,
+  nameRU: String(genre.nameRU),
+}));
+
+initialState.country.nameRU = String(initialState.country.nameRU);
 
 const movieDetailsSlice = createSlice({
   name: "movieDetails",
-  initialState, 
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -42,7 +70,4 @@ const movieDetailsSlice = createSlice({
 
 export const {
   reducer: movieDetailsReducer,
-} = movieDetailsSlice
- 
-
-
+} = movieDetailsSlice;

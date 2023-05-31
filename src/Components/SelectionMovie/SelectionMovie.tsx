@@ -1,5 +1,9 @@
-import { FunctionComponent } from 'react';
 import styles from './styles.module.css';
+import { IMovieDetails } from '../../store/types/movie';
+
+interface IProps {
+    movie: IMovieDetails;
+}
 
 export const SelectionMovie = () => {
 
@@ -8,7 +12,7 @@ export const SelectionMovie = () => {
             <div className={styles.container}>
                     <img
                         className={styles.picture}
-                        src={`https://thumbs.dfs.ivi.ru/storage6/contents/2/d/48739c662594e29cc5a5ac2ba6589c.jpg/784x440/?q=85`}
+                        src={''}
                         alt=""
                     />
                     <div className={styles.title}>

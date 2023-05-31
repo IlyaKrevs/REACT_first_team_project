@@ -89,7 +89,7 @@ export const MovieCarousel = () => {
       nextArrow={<CustomNextArrow onClick={() => { }} />}
     >
       {movies.map(() => (
-        <SelectionMovie/>
+        <SelectionMovie />
       ))}
     </Slider>
   );

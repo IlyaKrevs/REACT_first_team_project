@@ -2,24 +2,40 @@ import { Link } from 'react-router-dom';
 import { FunctionComponent, useState } from 'react';
 import { ROUTE } from '../../router';
 import { RatingModal } from '../RatingModal/RatingModal';
-import { actor } from '../../assets';
 import styles from './styles.module.css';
-import { getMovie, useAppSelector } from '../../store';
+import { useAppSelector } from '../../store';
 import { getText } from '../../store/selector';
+import { MovieDetailsMembers } from '../../store/types';
 
 interface Props {
-  nameRU: string,
-  year: number,
-  duration: number,
-  ageRating: string,
-  idCountry: number,
-  rating: number,
-  text: string,
+  nameRU: string;
+  year: number;
+  duration: number;
+  ageRating: string;
+  idCountry: number;
+  rating: number;
+  text: string;
+  genres: {
+    id: number;
+    nameRU: string;
+    nameEN: string;
+    createdAt: string;
+    updatedAt: string;
+    FilmGenre: {
+      id: number;
+      idFilm: number;
+      idGenre: number;
+    };
+  }[];
+  country: {
+    nameRU: string;
+  };
+  members: MovieDetailsMembers[];
 }
 
-export const DescrMovie: FunctionComponent<Props> = ({nameRU, year, duration, ageRating, idCountry, rating }) => {
+export const DescrMovie: FunctionComponent<Props> = ({ nameRU, year, duration, ageRating, rating, genres, country: { nameRU: countryNameRU }, members }) => {
   const [showDetails, setShowDetails] = useState(false);
-  const text = useAppSelector(getText); 
+  const text = useAppSelector(getText);
 
   const toggleDetails = () => {
     setShowDetails(!showDetails);
@@ -34,54 +50,43 @@ export const DescrMovie: FunctionComponent<Props> = ({nameRU, year, duration, ag
   const closeModal = () => {
     setModalOpen(false);
   };
-
+  
   return (
-    <div className={styles.descr}>
-      <h1 className={styles.title}>{nameRU}</h1>
-      <div className={styles.info}>
-        <ul className={styles.list}>
-          <li className={styles.item}>{year}&nbsp;</li>
-          <li className={styles.item}>{duration}&nbsp;</li>
-          <li className={styles.item}>{ageRating}&nbsp;</li>
-        </ul>
-        <ul className={styles.list}>
-          <li className={styles.item}>{idCountry}&nbsp;</li>
-          <li className={styles.item}>Триллер&nbsp;</li>
-          <li className={styles.item}>Зарубежный&nbsp;</li>
-        </ul>
-        <ul className={styles.list}>
-          <div className={styles.icons}>FullHD</div>
-        </ul>
-      </div>
-      <div className={styles.wrapper}>
-        <div className={styles.wrap}>
-          <div className={styles.inner}>{rating}</div>
-          <div className={styles.text}>Рейтинг Иви</div>
+    <>
+      <div className={styles.descr}>
+        <h1 className={styles.title}>{nameRU}</h1>
+        <div className={styles.info}>
+          <ul className={styles.list}>
+            {[year, duration, ageRating].map((item) => (
+              <li key={item} className={styles.item}>{item}&nbsp;</li>
+            ))}
+          </ul>
+          <ul className={styles.list}>
+            <li className={styles.item}>{countryNameRU}&nbsp;</li>
+            {genres.map(({ id, nameRU }) => (
+              <li key={id} className={styles.item}>{nameRU}&nbsp;</li>
+            ))}
+          </ul>
+          <ul className={styles.list}>
+            <div className={styles.icons}>FullHD</div>
+          </ul>
         </div>
-        <Link to={ROUTE.PERSON} className={styles.link}>
-          <div className={styles.inner}>
-            <img className={styles.photo} src={actor} alt='photo' />
+        <div className={styles.wrapper}>
+          <div className={styles.wrap}>
+            <div className={styles.inner}>{rating}</div>
+            <div className={styles.text}>Рейтинг Иви</div>
           </div>
-          <div className={styles.name}>Еламан Есентаев</div>
-        </Link>
-        <Link to={ROUTE.PERSON} className={styles.link}>
-          <div className={styles.inner}>
-            <img className={styles.photo} src={actor} alt='photo' />
-          </div>
-          <div className={styles.name}>Еламан Есентаев</div>
-        </Link>
-        <Link to={ROUTE.PERSON} className={styles.link}>
-          <div className={styles.inner}>
-            <img className={styles.photo} src={actor} alt='photo' />
-          </div>
-          <div className={styles.name}>Еламан Есентаев</div>
-        </Link>
-        <Link to={ROUTE.PERSON} className={styles.link}>
-          <div className={styles.inner}>
-            <img className={styles.photo} src={actor} alt='photo' />
-          </div>
-          <div className={styles.name}>Еламан Есентаев</div>
-        </Link>
+          {members && members.map(({ id, member: { nameRU, imageName }, idProfession }) => (
+            idProfession === 4 && (
+
+              <Link key={id} to={ROUTE.PERSON} className={styles.link}>
+                <div className={styles.inner}>
+                  {imageName && <img className={styles.photo} src={imageName} alt='photo' />}
+                </div>
+                <div className={styles.name}>{nameRU}</div>
+              </Link>
+            )))}
+        </div>
       </div>
       <div className={styles.descrFilm}>
         <div className={styles.film}>
@@ -95,21 +100,32 @@ export const DescrMovie: FunctionComponent<Props> = ({nameRU, year, duration, ag
             <>
               <p>{text}</p>
               <div className={styles.component}>
-                <div className={styles.options}>
-                  <div className={styles.film}>Языки</div>
-                  <div className={styles.values}>Казахский</div>
-                </div>
-                <div className={styles.options}>
-                  <div className={styles.film}>Изображение и звук.
-                    <span className={styles.descrText}> Фактическое качество зависит от устройства и ограничений правообладателя.</span>
+                {[
+                  {
+                    title: 'Языки',
+                    value: 'Казахский',
+                  },
+                  {
+                    title: (
+                      <div className={styles.descrText}>
+                        <span className={styles.film}>Изображение и звук.</span> Фактическое качество зависит от устройства и ограничений правообладателя.
+                      </div>
+                    ),
+                    icons: ['FullHD', 'HD', '1080', '720'],
+                  },
+                ].map((item, index) => (
+                  <div key={index} className={styles.options}>
+                    <div className={styles.film}>{item.title}</div>
+                    {item.value && <div className={styles.values}>{item.value}</div>}
+                    {item.icons && (
+                      <div className={styles.badges}>
+                        {item.icons.map((icon, index) => (
+                          <div key={index} className={styles.icons}>{icon}</div>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                  <div className={styles.badges}>
-                    <div className={styles.icons}>FullHD</div>
-                    <div className={styles.icons}>HD</div>
-                    <div className={styles.icons}>1080</div>
-                    <div className={styles.icons}>720</div>
-                  </div>
-                </div>
+                ))}
               </div>
             </>
           )}
@@ -120,13 +136,12 @@ export const DescrMovie: FunctionComponent<Props> = ({nameRU, year, duration, ag
       </div>
       <div className={styles.rating} onClick={openModal}>
         <div className={styles.ratingWrap}>
-          <div className={styles.figure}>6,7</div>
+          <div className={styles.figure}>{rating}</div>
           <div className={styles.ratingIvi}>Рейтинг Иви</div>
         </div>
-        <button className={styles.number}>6.0</button>
+        <button className={styles.number}>ценить</button>
       </div>
       {isModalOpen && <RatingModal closeModal={closeModal} />}
-
-    </div>
+    </>
   );
 };

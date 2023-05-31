@@ -5,9 +5,94 @@ import PageSection from '../../Components/aKrevs/PageSection/PageSection';
 import SortDropMenu from '../../Components/aKrevs/SortDropMenu/SortDropMenu';
 import CrumbsContainer from '../../Components/aKrevs/CrumbsContainer/CrumbsContainer';
 import FiltersContainer from '../../Components/aKrevs/FiltersContainer/FiltersContainer';
+import FilmCard, { FilmCardProps } from '../../Components/aKrevs/FilmCard/FilmCard';
+import { useSelector } from 'react-redux';
+import RectangleBtn from '../../Components/aKrevs/Buttons/RectangleBtn/RectangleBtn';
 
+interface queryBody {
+    part: number,
+
+    idArr: number[] | null,
+    idCountriesArr: number[] | null,
+    ratingStart: number | null,
+    countRatingStart: number | null,
+    yearStart: number | null,
+    yearEnd: number | null,
+    arrMembers: {
+        idMember: number | null,
+        idProfession: number | null,
+    }[] | null,
+    typeSorting: 'rating' | 'countRating' | 'year' | 'alphabetRU' | 'alphabetEN' | null,
+}
 
 const MoviesPage = () => {
+    let currentBtnText;
+    let btnTextRu = 'Показать ещё';
+    let btnTextEN = 'Show more'
+    let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian)
+
+    if (isRussian) {
+        currentBtnText = btnTextRu;
+    } else {
+        currentBtnText = btnTextEN;
+    }
+
+
+    const { useState, useEffect } = React;
+
+    let [currentPart, setCurrentPart] = useState(1);
+
+    let emptyArr: any = []
+    let [currentShowArr, setCurrentShowArr] = useState(emptyArr);
+
+
+
+    let sortingType = useSelector((state: any) => state.MoviesFilterBy.currentSortParams.queryParam)
+
+
+    let queryBody: queryBody = {
+        part: currentPart,
+
+        idArr: null,
+        idCountriesArr: null,
+        ratingStart: null,
+        countRatingStart: null,
+        yearStart: null,
+        yearEnd: null,
+        arrMembers: null,
+        typeSorting: sortingType,
+    }
+
+
+    async function giveMeFilms(askBody: queryBody) {
+
+        let emptyArr: any = []
+        let generatedStateArr: any = [];
+
+        await await fetch('http://localhost:12120/api/films/filter', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(askBody)
+        })
+            .then(response => response.json())
+            .then(data => {
+                emptyArr = data;
+            })
+
+        for (let i = 0; i < emptyArr.length; i++) {
+            generatedStateArr.push(<FilmCard key={i} fullObj={emptyArr[i]} />)
+        }
+
+        setCurrentShowArr(generatedStateArr)
+    }
+
+    useEffect(() => {
+        giveMeFilms(queryBody);
+    }, [sortingType])
+
+
     return (
         <>
             <PageSection>
@@ -21,6 +106,18 @@ const MoviesPage = () => {
 
             <PageSection>
                 <FiltersContainer />
+            </PageSection>
+
+
+            <PageSection>
+                <div className={classes.specialContainer}>
+                    <div className={classes.moviesPageShowFilms}>
+                        {currentShowArr && currentShowArr}
+                    </div>
+                    <div onClick={() => giveMeFilms(queryBody)}>
+                        <RectangleBtn text={currentBtnText} color='light' />
+                    </div>
+                </div>
             </PageSection>
         </>
     );

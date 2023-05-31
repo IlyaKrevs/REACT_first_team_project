@@ -22,12 +22,12 @@ const Gallery = ({ children, titleText }: GalleryProps) => {
     let currentText;
 
     if (isRussian) {
-
-
         currentText = titleText.nameRU[0].toUpperCase() + titleText.nameRU.slice(1);
     } else {
         currentText = titleText.nameEN[0].toUpperCase() + titleText.nameEN.slice(1);
     }
+
+
 
     return (
         <div className={classes.mainContainer}>
@@ -37,7 +37,7 @@ const Gallery = ({ children, titleText }: GalleryProps) => {
                 <Arrow size='medium' direction='right' />
             </div>
 
-            <Carousel children={children} type='classic' emptyItem={true} />
+            <Carousel children={children} emptyItem={true} />
 
         </div>
     );

@@ -5,74 +5,80 @@ import FilmCardEmpty from '../FilmCard/FilmCardEmpty';
 import Arrow from '../Arrow/Arrow';
 
 interface CarouselProps {
-    type: 'classic' | 'top10',
-    children: React.ReactNode[],
+    children: React.ReactNode[] | null,
     emptyItem?: boolean,
 }
 
 
-const Carousel = ({ type, children, emptyItem = false }: CarouselProps) => {
+const Carousel = ({ children, emptyItem = false }: CarouselProps) => {
 
-    // i have no idea how calculate this params, bcs can't get FilmCard width and count items in line (for calculate full lenght line)
+    const { useState, createRef, useEffect } = React;
+    let [translateXState, setTranslateXState] = useState(0);
+
+    let viewPortRef: any = createRef();
+    let lentaRef: any = createRef();
+
+    let viewPortWidth: any;
+    let lentaScrollWidth: any;
+    let lentaViewWidth: any;
+
     let oneClickMovingLenght: number;
-    let maxMoveLenght: number = 0;
-
-    if (type === 'classic') {
-        oneClickMovingLenght = 1086;
-        maxMoveLenght = -2534;
-    } if (type === 'top10') {
-        oneClickMovingLenght = 1004;
-        maxMoveLenght = -1250;
-    }
+    let maxMoveLenght: any;
 
 
+    useEffect(() => {
+        viewPortWidth = viewPortRef.current.clientWidth;
+        lentaScrollWidth = lentaRef.current.scrollWidth;
+        lentaViewWidth = lentaRef.current.clientWidth;
+
+        oneClickMovingLenght = viewPortWidth;
+        maxMoveLenght = lentaScrollWidth - lentaViewWidth;
+    }, [viewPortRef, lentaRef])
 
 
-
-    const { useState } = React;
-    let [marginLeftState, setMarginLeftState] = useState(0);
-
+    let [endScroll, setEndSroll] = useState(false);
 
 
     function leftMove() {
-        if ((marginLeftState - oneClickMovingLenght) >= maxMoveLenght) {
-            setMarginLeftState(marginLeftState - oneClickMovingLenght);
+        if ((translateXState - oneClickMovingLenght) > -maxMoveLenght) {
+            setTranslateXState(translateXState - oneClickMovingLenght);
         } else {
-            setMarginLeftState(maxMoveLenght)
+            setTranslateXState(-maxMoveLenght)
+            setEndSroll(true)
         }
     }
 
     function rightMove() {
-        if ((marginLeftState + oneClickMovingLenght) <= 0) {
-            setMarginLeftState(marginLeftState + oneClickMovingLenght);
+        if ((translateXState + oneClickMovingLenght) <= 0) {
+            setTranslateXState(translateXState + oneClickMovingLenght);
+            setEndSroll(false)
         } else {
-            setMarginLeftState(0);
+            setTranslateXState(0);
         }
     }
 
     return (
         <div className={classes.mainContainer}>
-            {marginLeftState < 0 &&
-                <div onClick={() => rightMove()} className={classes.leftArrowContainer}>
-                    <Arrow size='big' direction='left' />
-                </div>}
+            {!(translateXState < 0) ? null : <div onClick={() => rightMove()} className={classes.leftArrowContainer}>
+                <Arrow size='big' direction='left' />
+            </div>}
 
-            <div className={classes.viewPort}>
+            <div ref={viewPortRef} className={classes.viewPort}>
 
 
-                <div style={{ marginLeft: marginLeftState }} className={classes.lenta}>
+                <div ref={lentaRef}
+                    style={{ transform: `translateX(${translateXState}px)` }}
+                    className={classes.lenta}>
 
                     {children}
                     {emptyItem && <FilmCardEmpty />}
 
                 </div>
-
             </div>
 
-            {marginLeftState > maxMoveLenght &&
-                <div onClick={() => leftMove()} className={classes.rightArrowContainer}>
-                    <Arrow size='big' direction='right' />
-                </div>}
+            {endScroll ? null : <div onClick={() => leftMove()} className={classes.rightArrowContainer}>
+                <Arrow size='big' direction='right' />
+            </div>}
         </div>
     );
 };

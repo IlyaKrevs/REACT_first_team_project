@@ -7,24 +7,45 @@ import { setCurrentSortParams, } from '../../../../../store/slice/MoviesPageSlic
 import { resetCurrentViewScreen } from '../../../../../store/slice/MoviesPageSlices/FilterBySlice';
 interface SortDropDownItemProps {
     text: string,
+    queryParam: string,
 }
 
-const SortDropDownItem = ({ text }: SortDropDownItemProps) => {
+const SortDropDownItem = ({ text, queryParam }: SortDropDownItemProps) => {
+
+    const { useEffect } = React;
 
     let dispatch = useDispatch();
     let currentSortBy = useSelector((state: any) => state.MoviesFilterBy.currentSortParams);
 
+    let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian)
 
-    let isSelected;
-    if (currentSortBy === text) {
+    let isSelected: any;
+    if (currentSortBy.queryParam === queryParam) {
         isSelected = true;
     }
+
+
+    // useEffect(() => {
+    //     if (isSelected) {
+    //         dispatch(setCurrentSortParams({
+    //             value: {
+    //                 showText: currentSortBy.showText,
+    //                 queryParam: currentSortBy.queryParam,
+    //             }
+    //         }))
+    //     }
+    // }, [isRussian])
 
     return (
         <div
             onClick={(e) => {
                 e.stopPropagation();
-                dispatch(setCurrentSortParams({ value: text }))
+                dispatch(setCurrentSortParams({
+                    value: {
+                        showText: text,
+                        queryParam: queryParam,
+                    }
+                }))
                 dispatch(resetCurrentViewScreen(''))
             }
             }

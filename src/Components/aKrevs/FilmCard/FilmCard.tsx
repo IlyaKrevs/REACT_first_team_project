@@ -39,8 +39,6 @@ const FilmCard = ({ fullObj }: FilmCardProps) => {
 
 
 
-
-
     return (
         <div className={classes.item}>
 

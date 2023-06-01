@@ -49,7 +49,6 @@ const HomePageTop10 = () => {
 
     useEffect(() => {
         giveMeTop10FilmsArr()
-
     }, [])
 
 
@@ -98,8 +97,8 @@ const HomePageTop10 = () => {
 
     return (
         <>
-            <Carousel type='top10'>
-                {top10Arr.length && make10itemsArr()}
+            <Carousel>
+                {!top10Arr.length ? null : make10itemsArr()}
             </Carousel>
         </>
     );

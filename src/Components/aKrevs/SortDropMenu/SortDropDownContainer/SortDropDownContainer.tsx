@@ -2,19 +2,42 @@ import React from 'react';
 import classes from './SortDropDownContainer.module.css';
 
 import SortDropDownItem from './SortDropDownItem/SortDropDownItem';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentSortParams } from '../../../../store/slice/MoviesPageSlices/FilterBySlice';
 
-
-interface SortDropDownContainerProps {
-    selectArr: string[],
+export interface SortDropDownContainerProps {
+    sortParamsObject: {
+        sortTypeRU: string[],
+        sortTypeEN: string[],
+        sortQueryParamRU: string[],
+        sortQueryParamEN: string[],
+    }
 }
 
 
-const SortDropDownContainer = ({ selectArr }: SortDropDownContainerProps) => {
+
+const SortDropDownContainer = ({ sortParamsObject }: SortDropDownContainerProps) => {
+
+
+    let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian);
+
 
     let textRU = 'Сортировать по';
     let textENG = 'Sort by';
-    let currentLanguage = textRU;
 
+    let currentLanguage;
+    let currentArrText: any[];
+    let currentArrQuery: any[];
+
+    if (isRussian) {
+        currentLanguage = textRU;
+        currentArrText = sortParamsObject.sortTypeRU;
+        currentArrQuery = sortParamsObject.sortQueryParamRU
+    } else {
+        currentLanguage = textENG;
+        currentArrText = sortParamsObject.sortTypeEN
+        currentArrQuery = sortParamsObject.sortQueryParamEN
+    }
 
 
 
@@ -22,8 +45,8 @@ const SortDropDownContainer = ({ selectArr }: SortDropDownContainerProps) => {
         <div className={classes.mainContainer}>
             <div className={classes.dropDownNotActiveItem}>{currentLanguage}</div>
 
-            {selectArr.map(item => {
-                return <SortDropDownItem text={item} />
+            {currentArrText.map((item, index) => {
+                return <SortDropDownItem text={item} queryParam={currentArrQuery[index]} />
             })}
 
         </div>

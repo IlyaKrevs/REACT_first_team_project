@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { resetCurrentHover, setCurrentHover } from '../../../../../store/slice/HeaderSlices/showDropDownSlice';
 import { resetMovingItemPos } from '../../../../../store/slice/HeaderSlices/movingListSlice';
 import { Link } from 'react-router-dom';
+import { ROUTE } from '../../../../../router';
 
 
 
@@ -50,7 +51,7 @@ const HeaderNavContainer = () => {
     return (
         <div className={classes.container}>
 
-            <Link to='/'>
+            <Link to={ROUTE.HOME}>
                 <HeaderNavItem
                     onMouseEnter={resetHover}
                     children={currentLanguage[0]} />
@@ -60,7 +61,7 @@ const HeaderNavContainer = () => {
                 onMouseEnter={resetHover}
                 children={currentLanguage[1]} />
 
-            <Link to='/movies'>
+            <Link to={ROUTE.MOVIES}>
                 <HeaderNavItem
                     onMouseEnter={() => comboFunc('movies', 'Films')}
                     children={currentLanguage[2]} />

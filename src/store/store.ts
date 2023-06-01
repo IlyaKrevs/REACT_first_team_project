@@ -9,13 +9,16 @@ import serverDataGenres from './slice/serverDataSlice/genresSlice';
 import MoviesFilterBy from './slice/MoviesPageSlices/FilterBySlice'
 import { movieDetailsReducer } from "./slice";
 import { movieInfoReducer } from "./slice/movieInfoSlice";
+import { moviesReducer } from "./slice/moviesSlice";
+import { movieDetailsMembersReducer } from "./slice/movieDetailsMembers";
 
 
 export const store = configureStore({
     reducer: {
         movieDetails: movieDetailsReducer,
         movieInfo: movieInfoReducer,
-        movieDetailsMember: movieDetailsReducer,
+        movies: moviesReducer,
+        movieDetailsMember: movieDetailsMembersReducer,
         LanguageSwitch: LanguageSwitchSlice,
         HeaderShowDropDown: showDropDownSlice,
         HeaderMovingList: movingListSlice,

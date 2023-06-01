@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { MovieDetailsMembers } from "../types";
 
-export const getMovieDetailsMembers= createAsyncThunk<MovieDetailsMembers, number, { rejectValue: string }>(
+export const getMovieDetailsMembers= createAsyncThunk<MovieDetailsMembers[], number, { rejectValue: string }>(
     'movies/getMovieDetailsMembers',
     async (id: number, {rejectWithValue}) => {
       try {

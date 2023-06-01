@@ -1,18 +1,17 @@
 import styles from './styles.module.css';
-import { IMovieDetails } from '../../store/types/movie';
 
 interface IProps {
-    movie: IMovieDetails;
+    image: string;
 }
 
-export const SelectionMovie = () => {
+export const SelectionMovie = ({ image }:IProps) => {
 
     return (
         <div className={styles.selection}>
             <div className={styles.container}>
                     <img
                         className={styles.picture}
-                        src={''}
+                        src={`http://localhost:12120/api/films/images/${image}`}
                         alt=""
                     />
                     <div className={styles.title}>

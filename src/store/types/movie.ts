@@ -50,3 +50,19 @@ export interface IMovieInfo  {
   movieInfo: IMovieInfo | null;
 }
 
+export interface IMovie {
+  id: number;
+  nameRU: string;
+  nameEN: string;
+  year: number;
+  ageRating: string;
+  duration: number;
+  imageName: string;
+  rating: number;
+  countRating: number;
+  idCountry: number;
+}
+
+export interface IMovies {
+  movies: IMovie[];
+}

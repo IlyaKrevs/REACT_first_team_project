@@ -1,0 +1,38 @@
+.photo {
+    border-radius: 8px;
+    width: 130px;
+    height: 200px;
+}
+
+.title {
+    color: #fff;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+    font-style: normal;
+    margin-top: 40px;
+    padding: 12px 0;
+}
+
+.title {
+    color: #d9d7e0;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    font-style: normal;
+    height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 0;
+    transition-property: color;
+}
+
+.subtitle {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+    height: 16px;
+    color: #a5a1b2;
+    opacity: 1;
+}

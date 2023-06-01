@@ -21,5 +21,6 @@ export interface MovieDetailsMembers {
       createdAt: string;
       updatedAt: string;
     };
-  }
+    movieDetailsMembers: MovieDetailsMembers;
+}
   

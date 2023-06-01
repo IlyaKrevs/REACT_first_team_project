@@ -21,6 +21,7 @@ export const router = createBrowserRouter(
           path={`/${ROUTE.WATCH}/:id/${ROUTE.PERSON}`}
           element={<PersonPage />}
         />
+        <Route path={`/${ROUTE.PERSON}/:id`} element={<PersonPage />}/>
         <Route path={`/${ROUTE.WATCH}/${ROUTE.COMMENTS}`} element={<PersonPage />} />
       </Route>
     </>

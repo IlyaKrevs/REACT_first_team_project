@@ -4,23 +4,27 @@ import { ROUTE } from '../../router';
 import styles from './styles.module.css';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
-import { getMovieDetails, getMovieInfo, useAppDispatch, useAppSelector } from '../../store';
+import { getAllMovies, getMovieDetails, getMovieInfo, useAppDispatch, useAppSelector } from '../../store';
 import { Wrapper } from '../../Components/Wrapper/Wrapper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Gallery from '../../Components/aKrevs/Gallery/Gallery';
-import { getMovie, getTrailer } from '../../store/selector';
+import { getMovie, getMovieMembers, getTrailer } from '../../store/selector';
+import { getMovieDetailsMembers } from '../../store/actions/members';
 
 export const WatchPage = () => {
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const trailer = useAppSelector(getTrailer);
   const movie = useAppSelector(getMovie);
+  const members = useAppSelector(getMovieMembers);
 
   useEffect(() => {
     if (id) {
       const movieId = parseInt(id, 10);
       dispatch(getMovieDetails(movieId));
       dispatch(getMovieInfo(movieId));
+      dispatch(getMovieDetailsMembers(movieId));
+      dispatch(getAllMovies(1));
     }
 
   }, [dispatch, id]);
@@ -34,7 +38,7 @@ export const WatchPage = () => {
           </div>
           <div className={styles.descriptionContainer}>
             {movie && <DescrMovie
-            members={[]} {...movie}
+            members={members} {...movie}
             text={''}
             country={{
               nameRU: movie.country.nameRU
@@ -63,7 +67,7 @@ export const WatchPage = () => {
               <span className={styles.linkTitle}>Трейлеры</span>
             </Link> и доп. материалы
           </h2>
-          <Trailer videoId={''} />
+          {movie && <Trailer videoId={''} image={movie?.imageName} />}
         </div>
         <div className={styles.person}>
           <h2 className={styles.title}>Фильм в подборках</h2>

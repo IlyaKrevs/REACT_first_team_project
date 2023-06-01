@@ -4,41 +4,19 @@ import 'slick-carousel/slick/slick-theme.css';
 import styles from './styles.module.css';
 import { useState } from 'react';
 import { SelectionMovie } from '..';
+import { useAppSelector } from '../../store';
+import { getMovies } from '../../store/selector';
 
 export const MovieCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-
+  const movies = useAppSelector(getMovies);
   const handleSlideChange = (index: number) => {
     setCurrentSlide(index);
   };
 
-  
-  const movies = [
-    {
-      movie: '1',
-      title: 'Trailer 1 ochen dlinnoe opisanie',
-    },
-    {
-      movie: '2',
-      title: 'Trailer 2',
-    },
-    {
-      movie: '3',
-      title: 'Trailer 3',
-    },
-    {
-      movie: '4',
-      title: 'Trailer 4',
-    },
-    {
-      movie: '5',
-      title: 'Trailer 5',
-    },
-  ];
-
   const CustomPrevArrow = ({ onClick }: { onClick: () => void }) => {
-    if (currentSlide === 0) { 
-      return null; 
+    if (currentSlide === 0) {
+      return null;
     }
     return (
       <div
@@ -50,14 +28,14 @@ export const MovieCarousel = () => {
           onClick();
         }}
       >
-        <span className={styles.arrow}>&#8249;</span> 
+        <span className={styles.arrow}>&#8249;</span>
       </div>
     );
   };
-
+  console.log(movies)
 
   const CustomNextArrow = ({ onClick }: { onClick: () => void }) => {
-    if (currentSlide === movies.length - 1) { 
+    if (!movies || !movies.length || currentSlide === movies.length - 1) {
       return null;
     }
     return (
@@ -74,13 +52,12 @@ export const MovieCarousel = () => {
       </div>
     );
   };
-
-
+  
   return (
     <Slider
       arrows
       infinite
-      slidesToShow={Math.min(4, movies.length)}
+      slidesToShow={Math.min(4, movies?.length || 0)}
       slidesToScroll={1}
       autoplaySpeed={2000}
       initialSlide={0}
@@ -88,8 +65,8 @@ export const MovieCarousel = () => {
       prevArrow={<CustomPrevArrow onClick={() => { }} />}
       nextArrow={<CustomNextArrow onClick={() => { }} />}
     >
-      {movies.map(() => (
-        <SelectionMovie />
+      {movies?.map((movie) => (
+         <SelectionMovie key={movie.id} image={movie.imageName}/>
       ))}
     </Slider>
   );

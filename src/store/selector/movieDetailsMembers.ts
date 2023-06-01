@@ -1,3 +1,3 @@
 import { RootState } from "../types";
 
-export const getMovieDetailsMembers = (state: RootState) => state.movieDetailsMember;
+export const getMovieMembers = (state: RootState) => state.movieDetailsMember?.movieDetailsMembers;

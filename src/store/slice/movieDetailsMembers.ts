@@ -3,7 +3,7 @@ import { MovieDetailsMembers } from "../types";
 import { getMovieDetailsMembers } from "../actions/members";
 
 export interface State {
-    movieDetailsMembers: MovieDetailsMembers | null;
+    movieDetailsMembers: MovieDetailsMembers[] | null;
     loading: boolean;
     error: string|null;
 }
@@ -26,7 +26,7 @@ const movieDetailsMembersSlice = createSlice({
             })
             .addCase(getMovieDetailsMembers.fulfilled, (state, action) => {
                 state.loading = false;
-                state.movieDetailsMembers= action.payload;
+                state.movieDetailsMembers = action.payload;
             })
             .addCase(getMovieDetailsMembers.rejected, (state, action) => {
                 state.loading = false;

@@ -4,11 +4,10 @@ import { getMovie, useAppSelector } from '../../store';
 
 interface IProps {
   videoId: string;
+  image: string;
 }
 
-export const Trailer: FunctionComponent<IProps> = ({ videoId }) => {
-const movie = useAppSelector(getMovie);
-
+export const Trailer: FunctionComponent<IProps> = ({ videoId, image }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handlePlayClick = () => {
@@ -19,17 +18,13 @@ const movie = useAppSelector(getMovie);
     setIsExpanded(false);
   };
 
-  const domain = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:12120';
-
-  const imageUrl = `${domain}/api/films/images/${(movie?.movieDetails?.imageName || '')}.jpg`;
-
   return (
     <div className={isExpanded ? styles.modalOverlay : ''}>
       {!isExpanded ? (
         <div className={styles.container} onClick={handlePlayClick}>
           <img
             className={styles.picture}
-            src={imageUrl}
+            src={`http://localhost:12120/api/films/images/${image}`}
             alt="Trailer Thumbnail"
           />
           <div className={styles.title}></div>

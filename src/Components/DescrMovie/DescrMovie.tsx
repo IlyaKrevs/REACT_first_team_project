@@ -30,13 +30,12 @@ interface Props {
   country: {
     nameRU: string;
   };
-  members: MovieDetailsMembers[];
+  members: MovieDetailsMembers[] | null;
 }
 
 export const DescrMovie: FunctionComponent<Props> = ({ nameRU, year, duration, ageRating, rating, genres, country: { nameRU: countryNameRU }, members }) => {
   const [showDetails, setShowDetails] = useState(false);
   const text = useAppSelector(getText);
-
   const toggleDetails = () => {
     setShowDetails(!showDetails);
   };
@@ -50,7 +49,7 @@ export const DescrMovie: FunctionComponent<Props> = ({ nameRU, year, duration, a
   const closeModal = () => {
     setModalOpen(false);
   };
-  
+
   return (
     <>
       <div className={styles.descr}>
@@ -76,16 +75,14 @@ export const DescrMovie: FunctionComponent<Props> = ({ nameRU, year, duration, a
             <div className={styles.inner}>{rating}</div>
             <div className={styles.text}>Рейтинг Иви</div>
           </div>
-          {members && members.map(({ id, member: { nameRU, imageName }, idProfession }) => (
-            idProfession === 4 && (
-
-              <Link key={id} to={ROUTE.PERSON} className={styles.link}>
-                <div className={styles.inner}>
-                  {imageName && <img className={styles.photo} src={imageName} alt='photo' />}
-                </div>
-                <div className={styles.name}>{nameRU}</div>
-              </Link>
-            )))}
+          {members && members.map(({ id, member: { nameRU, imageName }, }) => (    
+            <Link key={id} to={ROUTE.PERSON} className={styles.link}>
+              <div className={styles.inner}>
+                {imageName && <img className={styles.photo} src={imageName} alt='photo' />}
+              </div>
+              <div className={styles.name}>{nameRU}</div>
+            </Link>
+          ))}
         </div>
       </div>
       <div className={styles.descrFilm}>

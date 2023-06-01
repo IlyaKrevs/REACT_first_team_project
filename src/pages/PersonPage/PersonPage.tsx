@@ -1,16 +1,27 @@
 import { Wrapper } from '../../Components/Wrapper/Wrapper';
 import styles from './personPage.module.css';
 import PersonHeader from '../../Components/PersonHeader/PersonHeader';
-import { FullFilmography } from '../../Components';
+import { FullFilmography, PersonItem } from '../../Components';
 import { MainMovies } from '../../Components/MainMovies/MainMovies';
 import { useState } from 'react';
+import { getMovie } from '../../store';
+import { useAppSelector } from '../../store';
+import { getMovieMembers } from '../../store/selector';
+import { log } from 'console';
 
 export const PersonPage = () => {
+    const movie = useAppSelector(getMovie);
+    const person = useAppSelector(getMovieMembers);
     const [showDetails, setShowDetails] = useState(false);
     const toggleDetails = () => {
         setShowDetails(!showDetails);
     };
+    const [value, setValue] = useState('');
 
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(event.target.value);
+    };
+  
     return (
         <section className={styles.personPage}>
             <Wrapper>
@@ -45,10 +56,11 @@ export const PersonPage = () => {
                     <h2 className={styles.comment}>Комментарии</h2>
                     <form className={styles.form}>
                         <div className={styles.input}>
-                            <input type='text' value='' placeholder='Расскажите первым о персоне'></input>
+                            <input type='text' value={value} onChange={handleChange}placeholder='Расскажите первым о персоне'></input>
                         </div>
                         <button className={styles.btn}>Отправить</button>
                     </form>
+                    {movie && <PersonItem image={movie?.imageName} name={''}/>}
                 </div>
             </Wrapper>
         </section>

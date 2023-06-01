@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { IMovieDetails, IMovieInfo } from "../types/movie";
+import { IMovie, IMovieDetails, IMovieInfo, IMovies } from "../types/movie";
 
 export const getMovieInfo = createAsyncThunk<IMovieInfo, number, { rejectValue: string }>(
   'movies/getMovieInfo',
@@ -25,5 +25,18 @@ export const getMovieDetails = createAsyncThunk<IMovieDetails, number, { rejectV
     }
   }
 );
+
+export const getAllMovies = createAsyncThunk<IMovie[], number, { rejectValue: string }>(
+  'movies/getMovies',
+  async (id: number, {rejectWithValue}) => {
+    try {
+      const response = await fetch(`http://localhost:12123/api/films/part/${id}`);
+      return await response.json();
+    } catch (error) {
+      return rejectWithValue('Произошла ошибка при загрузке информации о фильме.');
+    }
+  }
+);
+
 
 

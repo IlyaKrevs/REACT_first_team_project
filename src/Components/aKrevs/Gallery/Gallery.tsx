@@ -18,15 +18,14 @@ const Gallery = ({ children, titleText }: GalleryProps) => {
 
     const isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian)
 
-    let currentText: string | undefined;
+    let currentText;
 
-if (isRussian && titleText.nameRU) {
-    currentText = titleText.nameRU[0].toUpperCase() + titleText.nameRU.slice(1);
-} else if (!isRussian && titleText.nameEN) {
-    currentText = titleText.nameEN[0].toUpperCase() + titleText.nameEN.slice(1);
-} else {
-    currentText = undefined; 
-}
+    if (isRussian) {
+        currentText = titleText.nameRU[0].toUpperCase() + titleText.nameRU.slice(1);
+    } else {
+        currentText = titleText.nameEN[0].toUpperCase() + titleText.nameEN.slice(1);
+    }
+
 
 
     return (
@@ -37,7 +36,7 @@ if (isRussian && titleText.nameRU) {
                 <Arrow size='medium' direction='right' />
             </div>
 
-            <Carousel children={children} type='classic' emptyItem={true} />
+            <Carousel children={children} emptyItem={true} />
 
         </div>
     );

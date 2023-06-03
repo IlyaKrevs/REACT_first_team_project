@@ -7,30 +7,34 @@ import HomePageTop10 from './HomePageContent/HomePageTop10/HomePageTop10';
 import FilmCard from '../../Components/aKrevs/FilmCard/FilmCard';
 import React from 'react';
 
+type StateArrProps = {
+    title: {
+        id: number,
+        nameRU: string,
+        nameEN: string,
+    },
+    items: React.ReactNode[]
+}[];
+
 
 const HomePage = () => {
 
     const { useState, useEffect } = React;
 
-
-    let emptyArr: {
-        title: {
-            id: number,
-            nameRU: string,
-            nameEN: string,
-        },
-        items: React.ReactNode[]
-    }[] = [];
-    let [showGallery, setShowGallery] = useState(emptyArr);
+    let emptyArr: StateArrProps = [];
+    let [showGallerysArr, setShowGallerysArr] = useState(emptyArr);
 
 
 
     let howMuchGallery = 2;
 
-    function makeGalleryState(countOfGallery: number) {
+    async function makeGalleryState(countOfGallery: number) {
 
         let genresArr: any[] = [];
-        fetch('http://localhost:12120/api/genres')
+        let generatedStateArr: any = [];
+        let firstGenreID = 1;
+
+        await fetch('http://localhost:12120/api/genres')
             .then(response => response.json())
             .then(data => {
                 genresArr = data;
@@ -40,13 +44,13 @@ const HomePage = () => {
 
         for (let i = 0; i < countOfGallery; i++) {
 
-            fetch('http://localhost:12120/api/films/filter', {
+            await fetch('http://localhost:12120/api/films/filter', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    "arrIdGenres": [i + 1],
+                    "arrIdGenres": [firstGenreID],
                     "part": 1,
                 })
             })
@@ -55,20 +59,21 @@ const HomePage = () => {
 
                 .then(data => {
                     let myItemsArr: React.ReactNode[] = [];
-                    for (let k = 0; k < 20; k++) {
+                    for (let k = 0; k < data.length; k++) {
                         myItemsArr.push(<FilmCard key={k} fullObj={data[k]} />)
                     }
 
                     let result = {
-                        title: genresArr[i],
+                        title: genresArr[firstGenreID++ - 1],
                         items: myItemsArr,
                     }
-
-                    setShowGallery((state: any[]) => [...state, result])
+                    generatedStateArr.push(result)
                 })
         }
-
+        setShowGallerysArr(generatedStateArr)
     }
+
+
 
     useEffect(() => {
         makeGalleryState(howMuchGallery)
@@ -93,7 +98,7 @@ const HomePage = () => {
             </PageSection>
 
 
-            {showGallery.length === howMuchGallery && showGallery.map(item => {
+            {showGallerysArr.length === howMuchGallery && showGallerysArr.map(item => {
                 return <PageSection>
                     <Gallery children={item.items} titleText={item.title} />
                 </PageSection>

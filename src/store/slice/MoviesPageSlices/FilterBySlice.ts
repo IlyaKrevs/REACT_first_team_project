@@ -5,7 +5,10 @@ const MoviesFilterBy = createSlice({
     initialState: {
         currentViewScreen: '',
         currentFiltersParams: [],
-        currentSortParams: '',
+        currentSortParams: {
+            showText: 'По рейтингу',
+            queryParam: 'ratign',
+        },
     },
     reducers: {
         setCurrentViewScreen: (state: any, action) => {

@@ -8,6 +8,9 @@
 
     cursor: pointer;
     transition: .2s;
+
+    height: 275px;
+    width: 154px;
 }
 
 .item:hover {

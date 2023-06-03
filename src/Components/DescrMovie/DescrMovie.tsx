@@ -5,35 +5,29 @@ import { RatingModal } from '../RatingModal/RatingModal';
 import styles from './styles.module.css';
 import { useAppSelector } from '../../store';
 import { getText } from '../../store/selector';
-import { MovieDetailsMembers } from '../../store/types';
+import { Country, Genre, IMovieDetails, MovieDetailsMembers } from '../../store/types';
 
 interface Props {
-  nameRU: string;
-  year: number;
-  duration: number;
-  ageRating: string;
-  idCountry: number;
-  rating: number;
-  text: string;
-  genres: {
     id: number;
     nameRU: string;
     nameEN: string;
-    createdAt: string;
-    updatedAt: string;
-    FilmGenre: {
-      id: number;
-      idFilm: number;
-      idGenre: number;
-    };
-  }[];
-  country: {
-    nameRU: string;
-  };
-  members: MovieDetailsMembers[] | null;
+    year: number;
+    ageRating: string;
+    duration: number;
+    imageName: string;
+    rating: number;
+    countRating: number;
+    idCountry: number;
+    idFilm: number;
+    error: string | null;
+    loading: boolean;
+    movieDetails: IMovieDetails | null;
+    country: Country;
+    genres: Genre[];
+    members: MovieDetailsMembers[] | null;
 }
 
-export const DescrMovie: FunctionComponent<Props> = ({ nameRU, year, duration, ageRating, rating, genres, country: { nameRU: countryNameRU }, members }) => {
+export const DescrMovie: FunctionComponent<Props> = ({ nameRU, year, duration, ageRating, rating, genres, country: { nameRU: countryNameRU }, members, imageName }) => {
   const [showDetails, setShowDetails] = useState(false);
   const text = useAppSelector(getText);
   const toggleDetails = () => {
@@ -62,7 +56,7 @@ export const DescrMovie: FunctionComponent<Props> = ({ nameRU, year, duration, a
           </ul>
           <ul className={styles.list}>
             <li className={styles.item}>{countryNameRU}&nbsp;</li>
-            {genres.map(({ id, nameRU }) => (
+            {genres && genres.map(({ id, nameRU }) => (
               <li key={id} className={styles.item}>{nameRU}&nbsp;</li>
             ))}
           </ul>
@@ -75,10 +69,10 @@ export const DescrMovie: FunctionComponent<Props> = ({ nameRU, year, duration, a
             <div className={styles.inner}>{rating}</div>
             <div className={styles.text}>Рейтинг Иви</div>
           </div>
-          {members && members.map(({ id, member: { nameRU, imageName }, }) => (    
+         {members && members.map(({ id, member: { nameRU, imageName }, }) => (
             <Link key={id} to={ROUTE.PERSON} className={styles.link}>
               <div className={styles.inner}>
-                {imageName && <img className={styles.photo} src={imageName} alt='photo' />}
+               <img className={styles.photo} src={`http://localhost:12120/api/members/images/${imageName}`} alt='photo' />
               </div>
               <div className={styles.name}>{nameRU}</div>
             </Link>

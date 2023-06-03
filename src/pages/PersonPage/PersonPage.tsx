@@ -12,6 +12,7 @@ import { log } from 'console';
 export const PersonPage = () => {
     const movie = useAppSelector(getMovie);
     const person = useAppSelector(getMovieMembers);
+    const members = useAppSelector(getMovieMembers);
     const [showDetails, setShowDetails] = useState(false);
     const toggleDetails = () => {
         setShowDetails(!showDetails);
@@ -60,7 +61,7 @@ export const PersonPage = () => {
                         </div>
                         <button className={styles.btn}>Отправить</button>
                     </form>
-                    {movie && <PersonItem image={movie?.imageName} name={''}/>}
+                  <PersonItem nameRU={''} text={''} />
                 </div>
             </Wrapper>
         </section>

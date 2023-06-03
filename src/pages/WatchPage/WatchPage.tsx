@@ -26,23 +26,29 @@ export const WatchPage = () => {
       dispatch(getMovieDetailsMembers(movieId));
       dispatch(getAllMovies(1));
     }
-
   }, [dispatch, id]);
 
   return (
     <div className={styles.descr}>
       <Wrapper>
-        <div className={styles.wrapper}>
+          <div className={styles.wrapper}>
           <div className={styles.videoPlayerContainer}>
-            {trailer ? <VideoPlayer url={trailer} /> : ''}
+            {trailer && <VideoPlayer url={trailer} />}
           </div>
           <div className={styles.descriptionContainer}>
-            {movie && <DescrMovie
-            members={members} {...movie}
-            text={''}
-            country={{
-              nameRU: movie.country.nameRU
-            }}/>}
+            {movie && 
+              <DescrMovie
+                members={members}
+                {...movie}
+                country={{
+                  id: 0,
+                  nameRU: movie.country?.nameRU || '',
+                  nameEN: '',
+                  createdAt: '',
+                  updatedAt: ''
+                }}
+              />
+            }
           </div>
         </div>
         <div className={styles.carousel}>
@@ -59,7 +65,7 @@ export const WatchPage = () => {
               Актёры и создатели
             </Link>
           </h2>
-          <Person />
+         {members && <Person/>}
         </div>
         <div className={styles.person}>
           <h2 className={styles.title}>
@@ -67,7 +73,7 @@ export const WatchPage = () => {
               <span className={styles.linkTitle}>Трейлеры</span>
             </Link> и доп. материалы
           </h2>
-          {movie && <Trailer videoId={''} image={movie?.imageName} />}
+         {movie && <Trailer image={movie.imageName} />}
         </div>
         <div className={styles.person}>
           <h2 className={styles.title}>Фильм в подборках</h2>

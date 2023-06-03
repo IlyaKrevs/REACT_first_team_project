@@ -52,7 +52,7 @@ export const MovieCarousel = () => {
       </div>
     );
   };
-  
+
   return (
     <Slider
       arrows
@@ -66,7 +66,7 @@ export const MovieCarousel = () => {
       nextArrow={<CustomNextArrow onClick={() => { }} />}
     >
       {movies?.map((movie) => (
-         <SelectionMovie key={movie.id} image={movie.imageName}/>
+        <SelectionMovie key={movie.id} image={movie.imageName} />
       ))}
     </Slider>
   );

@@ -37,4 +37,4 @@ const movieDetailsMembersSlice = createSlice({
 
 export const {
     reducer: movieDetailsMembersReducer,
-  } = movieDetailsMembersSlice;
+} = movieDetailsMembersSlice;

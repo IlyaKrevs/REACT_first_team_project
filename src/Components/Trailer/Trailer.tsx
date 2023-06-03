@@ -1,14 +1,15 @@
 import { FunctionComponent, useState } from 'react';
 import styles from './styles.module.css';
-import { getMovie, useAppSelector } from '../../store';
+import { useAppSelector } from '../../store';
+import { getTrailer } from '../../store/selector';
 
 interface IProps {
-  videoId: string;
   image: string;
 }
 
-export const Trailer: FunctionComponent<IProps> = ({ videoId, image }) => {
+export const Trailer: FunctionComponent<IProps> = ({ image }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const trailer = useAppSelector(getTrailer);
 
   const handlePlayClick = () => {
     setIsExpanded(true);
@@ -35,7 +36,7 @@ export const Trailer: FunctionComponent<IProps> = ({ videoId, image }) => {
           <div className={styles.modalContent}>
             <iframe
               className={styles.frame}
-              src={`https://www.youtube.com/embed/${videoId}`}
+              src={trailer}
               allowFullScreen
               title="Trailer"
             ></iframe>

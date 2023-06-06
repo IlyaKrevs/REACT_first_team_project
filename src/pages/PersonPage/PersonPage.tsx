@@ -1,18 +1,14 @@
 import { Wrapper } from '../../Components/Wrapper/Wrapper';
 import styles from './personPage.module.css';
 import PersonHeader from '../../Components/PersonHeader/PersonHeader';
-import { FullFilmography, PersonItem } from '../../Components';
-import { MainMovies } from '../../Components/MainMovies/MainMovies';
-import { useState } from 'react';
-import { getMovie } from '../../store';
+import { FullFilmography } from '../../Components';
+import { useRef, useState } from 'react';
 import { useAppSelector } from '../../store';
-import { getMovieMembers } from '../../store/selector';
-import { log } from 'console';
+import { getMember } from '../../store/selector';
+import { PersonCarousel } from '../../Components/PersonCarousel/PersonCarousel';
 
 export const PersonPage = () => {
-    const movie = useAppSelector(getMovie);
-    const person = useAppSelector(getMovieMembers);
-    const members = useAppSelector(getMovieMembers);
+    const member = useAppSelector(getMember);
     const [showDetails, setShowDetails] = useState(false);
     const toggleDetails = () => {
         setShowDetails(!showDetails);
@@ -22,31 +18,34 @@ export const PersonPage = () => {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
     };
-  
+
+    const biographyRef = useRef<HTMLHeadingElement>(null);
+
+    const scrollToBiography = () => {
+        if (biographyRef.current) {
+            biographyRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <section className={styles.personPage}>
             <Wrapper>
                 <div className={styles.wrapper}>
                     <div className='container'>
                         <div className={styles.container}>
-                            <PersonHeader
-                                name="Джейми Фокс"
-                                avatar="https://thumbs.dfs.ivi.ru/storage38/contents/8/e/24e1139aa5f577b53513c3baaebecd.jpg/120x144/?q=85"
-                                enName="" />
+                            {member && <PersonHeader
+                                name={member.member.nameRU}
+                                avatar={`http://localhost:12120/api/members/images/${member.member.imageName}`}
+                                enName={member.profession.nameRU}
+                                scrollToBiography={scrollToBiography} />}
                         </div>
                     </div>
-                    <MainMovies />
                     <FullFilmography />
                     <div className={styles.biography}>
-                        <h2 className={styles.title}>Биография</h2>
+                        <h2 ref={biographyRef} className={styles.title}>Биография</h2>
                         <p className={`${styles.text} ${showDetails ? styles.expanded : ''}`}>
-                            Елена родилась 5 марта 1961 года на Украине, в городе Новоград-Волынском Житомирской области в семье военнослужащего и сотрудницы научно-исследовательского института. Из-за службы отца Яковлевы часто переезжали с места на место. В итоге школу Лена окончила вообще в Харькове, затем работала библиотекарем, картографом. А в 19 лет решила воплотить свою мечту в жизнь и отправилась в Москву, поступать в театральный. Яковлева стала студенткой РАТИ (ГИТИСа) с первой попытки – ее приняли в мастерскую Владимира Андреева. После учебы начинающую актрису радушно приняли в труппу театра «Современник». Но через пару лет Елена по предложению Валерия Фокина перешла в театр имени Ермоловой, где играла три года, а потом опять вернулась в «Современник», который покинула только в 2011-м.
-
-                            Впервые в кино Яковлева появилась на экране в 1983-м в фильме Георгия Юнгвальд-Хилькевича «Двое под одним зонтом: Апрельская сказка». Затем четыре года не появлялась в кино – вплоть до 1987 года, когда Яковлева начала много сниматься, сыграв в фильмах «Плюмбум, или Опасная игра» (1987) «Время летать» (1987), «Два берега» (1987), «Верными останемся» (1988), «Шаг» (1988). Всесоюзная слава пришла к ней в 28 лет, когда в 1989 году вышла драма Петра Тодоровского «Интердевочка». Елена Яковлева сыграла в фильме главную героиню – Таню Зайцеву, валютную проститутку, которая мечтает вырваться из замкнутого круга – выйти замуж за иностранца, уехать заграницу и стать респектабельной дамой. Но получив все, о чем мечтала, она понимает, что ей не хватает самого главного – счастья. В этом советском фильме Елене пришлось проявить актерскую смелость – и сниматься обнаженной – в то время такая «натура» была еще большой редкость на экране. «Еще до «Интердевочки» предлагали сценарии по темам откровения, развязности, распущенности. От всего этого я отказывалась и согласилась (и не ошиблась) сняться только у Тодоровского», – признается актриса. Любопытно, что основным кандидатом на главную роль первоначально была Татьяна Догилева – именно «под нее» писал сценарий Владимир Кунин. Но в итоге роль досталась Яковлевой и прославила ее в каждом уголке Советского союза. Фильм не только стал событием того времени (назван лучшим фильмом по опросу журнала «Советский экран» в 1990 году), но и до сих пор занимает по посещаемости 63-е место среди отечественных фильмов за всю историю советского кинопроката. После такого триумфа востребованность актрисы резко возросла. Она часто снималась, но ни одна картина так и не превзошла успех «Интердевочки». Впоследствии режиссер Петр Тодоровский снял Елена Яковлеву еще в трех своих лента: «Анкор, еще анкор!» (1992), «Какая чудная игра» (1995) и «Ретро втроем» (1998).
-
-                            С началом 2000-х годов Яковлева не затерялась, как многие советские актеры. Новая волна популярности захлестнула актрису, когда она воплотила на экране образ героини современных детективов – Насти Каменской в многочисленных сериалах под общим названием «Каменская». Отважная женщина, майор милиции, распутывает дела любой сложности и выводит на чистую воду самых расчетливых преступников.
-
-                            Яковлева также ведет ток-шоу на федеральных каналах и снимается в рекламе. Елена замужем за актером Валерием Шальных. В 1992 году 31-летняя актриса стала мамой – на свет появился сын Денис.</p>
+                            {member?.member.text}
+                        </p>
                         {!showDetails && (
                             <span className={styles.toggle} onClick={toggleDetails}>Читать дальше</span>
                         )}
@@ -54,14 +53,15 @@ export const PersonPage = () => {
                             <span className={styles.toggle} onClick={toggleDetails}>Свернуть</span>
                         )}
                     </div>
-                    <h2 className={styles.comment}>Комментарии</h2>
+                    <h2 className={styles.title}>Комментарии</h2>
                     <form className={styles.form}>
                         <div className={styles.input}>
-                            <input type='text' value={value} onChange={handleChange}placeholder='Расскажите первым о персоне'></input>
+                            <input type='text' value={value} onChange={handleChange} placeholder='Расскажите первым о персоне'></input>
                         </div>
                         <button className={styles.btn}>Отправить</button>
                     </form>
-                  <PersonItem nameRU={''} text={''} />
+                    <h2 className={styles.title}>Популярные персоны</h2>
+                    <PersonCarousel />
                 </div>
             </Wrapper>
         </section>

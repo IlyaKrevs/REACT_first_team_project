@@ -7,6 +7,7 @@
 
 .personList {
     display: flex;
+    justify-content: space-between;
 }
 
 .image {

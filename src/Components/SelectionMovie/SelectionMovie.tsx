@@ -1,21 +1,26 @@
+import { Link, generatePath } from 'react-router-dom';
+import { IMovie } from '../../store/types';
 import styles from './styles.module.css';
+import { ROUTE } from '../../router';
 
 interface IProps {
-    image: string;
+    movie: IMovie;
 }
 
-export const SelectionMovie = ({ image }: IProps) => {
+export const SelectionMovie = ({ movie }: IProps) => {
 
     return (
         <div className={styles.selection}>
             <div className={styles.container}>
-                <img
-                    className={styles.picture}
-                    src={`http://localhost:12120/api/films/images/${image}`}
-                    alt=""
-                />
+                <Link to={generatePath(`${ROUTE.HOME + ROUTE.MOVIES}`)}>
+                    <img
+                        className={styles.picture}
+                        src={`http://localhost:12120/api/films/images/${movie.imageName}`}
+                        alt='movie'
+                    />
+                </Link>
                 <div className={styles.title}>
-                    Dramma
+                    {movie.nameEN}
                 </div>
             </div>
         </div>

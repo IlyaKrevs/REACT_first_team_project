@@ -1,4 +1,4 @@
-.person {
+.movie {
     padding-bottom: 40px;
 }
 
@@ -16,17 +16,8 @@
     font-style: normal;
     height: 20px;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    margin-bottom: 0;
+    margin-top: 8px;
     transition-property: color;
+    word-wrap: break-word;
 }
-
-.subtitle {
-    font-size: 13px;
-    line-height: 16px;
-    font-weight: 400;
-    height: 16px;
-    color: #a5a1b2;
-    opacity: 1;
-}
+  

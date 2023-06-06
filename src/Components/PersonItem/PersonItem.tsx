@@ -1,27 +1,21 @@
-import { Link } from 'react-router-dom';
+import { Link, generatePath } from 'react-router-dom';
 import { ROUTE } from '../../router';
 import styles from './styles.module.css';
-import { useAppSelector } from '../../store';
-import { getMovieMembers } from '../../store/selector';
+import { MovieDetailsMembers } from '../../store/types';
 
 interface IProps {
-  nameRU: string;
-  text: string;
-  //imageName: string;
-
+  member: MovieDetailsMembers;
 }
 
-export const PersonItem = ({  }: IProps) => {
-  const member = useAppSelector(getMovieMembers);
+export const PersonItem = ({ member}: IProps) => {
 
   return (
     <div className={styles.person}>
-      <h2 className={styles.title}>Популярные персоны</h2>
-      <Link to={ROUTE.PERSON}>
-        <img className={styles.photo} src={`http://localhost:12120/api/films/images/`} />
+      <Link to={generatePath(`${ROUTE.HOME + ROUTE.PERSON}`, { id: member.id })}>
+        <img className={styles.photo} src={`http://localhost:12120/api/members/images/${member.member.imageName}`} />
         <div className={styles.descr}>
-          <div className={styles.title}>{}</div>
-          <div className={styles.subtitle}>{}</div>
+          <div className={styles.name}>{member.member.nameRU}</div>
+          <div className={styles.subtitle}>{member.profession.nameRU}</div>
         </div>
       </Link>
     </div>

@@ -1,16 +1,19 @@
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent, useRef, useState } from 'react';
 import styles from './styles.module.css';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../../store';
+import { getMember } from '../../store/selector';
 
 interface IProps {
   avatar: string;
   name: string;
   enName: string;
+  scrollToBiography: () => void;
 }
 
-const PersonHeader: FunctionComponent<IProps> = ({ avatar, name, enName }) => {
+const PersonHeader: FunctionComponent<IProps> = ({ avatar, name, enName, scrollToBiography }) => {
   const [showDetails, setShowDetails] = useState(false);
-
+  const member = useAppSelector(getMember);
   const toggleDetails = () => {
     setShowDetails(!showDetails);
   };
@@ -24,12 +27,9 @@ const PersonHeader: FunctionComponent<IProps> = ({ avatar, name, enName }) => {
         <h2 className={styles.name}>{name}</h2>
         <span className={styles.alternate}>{enName}</span>
       </div>
-      <div className={styles.biography}>
+      <div className={styles.biography} >
         <p className={`${styles.text} ${showDetails ? styles.expanded : ''}`}>
-          Анатолий Хостикоев – советский и украинский актер театра и кино. Народный артист УССР. Снимался в фильмах
-          «Миллион в брачной корзине» Всеволода Шиловского, «Каменная душа» Станислава Клименко, «Похороны на втором
-          этаже» Александра Сташкова и Елены Аминовой, сериале «Роксолана» Бориса Небиеридзе, сериале «Сердцу не
-          прикажешь».
+          {member?.member.text}
         </p>
         {!showDetails && (
           <span className={styles.toggle} onClick={toggleDetails}>
@@ -42,8 +42,10 @@ const PersonHeader: FunctionComponent<IProps> = ({ avatar, name, enName }) => {
           </span>
         )}
       </div>
-      <div className={styles.anchor}>
-        <Link to="" className={styles.text}>Биография</Link>
+      <div className={styles.anchor} >
+        <Link to="" className={styles.text} onClick={scrollToBiography}>
+          Биография
+        </Link>
       </div>
     </div>
   );

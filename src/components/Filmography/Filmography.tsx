@@ -1,48 +1,41 @@
 import React from 'react';
 import styles from './filmography.module.css';
-import { Link } from 'react-router-dom';
-import { IPersonFilms } from '../../types/IPersonFilms';
+import { Link, generatePath } from 'react-router-dom';
 import { ROUTE } from '../../router';
+import { IMovie } from '../../store/types';
 
 
 interface IProps {
-    movie: IPersonFilms;
+    movie: IMovie;
 }
 
 const FilmographyItem: React.FC<IProps> = ({ movie }) => {
 
     return (
-        <Link
-            to={`/${ROUTE.WATCH}/:id`}
-            className={styles.item}
-        >
+        <Link to={generatePath(`${ROUTE.HOME + ROUTE.WATCH}`, { id: movie.id })} className={styles.item}>
             <div className={styles.photo}>
-                <img src={movie.image} alt='movie' className={styles.img}/>
+                <img src={`http://localhost:12120/api/films/images/${movie.imageName}`}
+                    alt='movie' className={styles.img} />
             </div>
             <div className={styles.body}>
                 <div className={styles.info}>
-                    {movie.year &&
-                        <div className={styles.year}>
-                            <span>2023</span>
-                        </div>}
-                    <div className={styles.title}>
-                        {
-                            movie.name.length > 16
-                                ? movie.name.slice(0, 16) + '...'
-                                : movie.name
-                        }
+                    <div className={styles.year}>
+                        <span>{movie.year}</span>
                     </div>
-                    {movie.rating && <div className={styles.rating}>
+                    <div className={styles.title}>
+                        {movie.nameRU}
+                    </div>
+                    <div className={styles.rating}>
                         Рейтинг Иви:
                         <span>
                             {movie.rating}
                         </span>
-                    </div>}
+                    </div>
                 </div>
                 <button
                     className={styles.btn}
                 >
-                    Поподробнее
+                    Смотреть
                 </button>
             </div>
         </Link>

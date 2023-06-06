@@ -9,17 +9,20 @@ export * from "./RatingModal/RatingModal";
 export * from "./Person/Person";
 export * from "./Trailer/Trailer";
 export * from "./PlotMovie/PlotMovie";
-export * from "./MovieCarousel/MovieCarousel";
+export * from "./SelectionCarousel/SelectionCarousel";
 export * from "./Comments/Comments";
 export * from ".//Registration/Registration";
 export * from "./Portal/Portal";
 export * from "./Reviews/Reviews";
 export * from "./AllDevices/AllDevices";
-export * from "./MainMovies/styles.module.css";
 export * from "./FullFilmography/FullFilmography";
 export * from "./Tabs/Tabs";
 export * from "./SelectionMovie/SelectionMovie";
 export * from "./PersonItem/PersonItem";
+export * from "./PersonCarousel/PersonCarousel";
+export * from "./MovieItem/MovieItem";
+
+
 
 
 

@@ -1,5 +1,5 @@
-import { Link, useParams } from 'react-router-dom';
-import { AllDevices, Comments, DescrMovie, MovieCarousel, Person, PlotMovie, Reviews, Trailer, VideoPlayer } from '../../Components';
+import { Link, generatePath, useParams } from 'react-router-dom';
+import { AllDevices, Comments, DescrMovie, Person, PlotMovie, Reviews, SelectionCarousel, SelectionMovie, Trailer, VideoPlayer } from '../../Components';
 import { ROUTE } from '../../router';
 import styles from './styles.module.css';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Gallery from '../../Components/aKrevs/Gallery/Gallery';
 import { getMovie, getMovieMembers, getTrailer } from '../../store/selector';
 import { getMovieDetailsMembers } from '../../store/actions/members';
+import { MoviesCarousel } from '../../Components/MoviesCarousel/MoviesCarousel';
 
 export const WatchPage = () => {
   const dispatch = useAppDispatch();
@@ -31,12 +32,12 @@ export const WatchPage = () => {
   return (
     <div className={styles.descr}>
       <Wrapper>
-          <div className={styles.wrapper}>
+        <div className={styles.wrapper}>
           <div className={styles.videoPlayerContainer}>
             {trailer && <VideoPlayer url={trailer} />}
           </div>
           <div className={styles.descriptionContainer}>
-            {movie && 
+            {movie &&
               <DescrMovie
                 members={members}
                 {...movie}
@@ -53,19 +54,18 @@ export const WatchPage = () => {
         </div>
         <div className={styles.carousel}>
           <h2 className={styles.titleMov}>С фильмом «Идеальная жена» смотрят</h2>
-          <Gallery children={[]} titleText={{
-            id: 0,
-            nameRU: '',
-            nameEN: ''
-          }} />
+          <MoviesCarousel />
         </div>
         <div className={styles.person}>
           <h2 className={styles.title}>
-            <Link to={ROUTE.PERSON} className={styles.linkTitle}>
+            <Link to={generatePath(`${ROUTE.HOME + ROUTE.PERSON}`, { id })} className={styles.linkTitle}>
               Актёры и создатели
             </Link>
           </h2>
-         {members && <Person/>}
+          {members && 
+          <Link to={generatePath(`${ROUTE.HOME + ROUTE.PERSON}`, { id })} className={styles.linkTitle}>
+            <Person />
+          </Link>}
         </div>
         <div className={styles.person}>
           <h2 className={styles.title}>
@@ -73,11 +73,11 @@ export const WatchPage = () => {
               <span className={styles.linkTitle}>Трейлеры</span>
             </Link> и доп. материалы
           </h2>
-         {movie && <Trailer image={movie.imageName} />}
+          {movie && <Trailer image={movie.imageName} />}
         </div>
         <div className={styles.person}>
           <h2 className={styles.title}>Фильм в подборках</h2>
-          <MovieCarousel />
+          <SelectionCarousel />
         </div>
         <div className={styles.person}>
           <div className={styles.wrap}>

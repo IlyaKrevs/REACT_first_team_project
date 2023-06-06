@@ -3,11 +3,11 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styles from './styles.module.css';
 import { useState } from 'react';
-import { SelectionMovie } from '..';
+import { MovieItem, PersonItem } from '..';
 import { useAppSelector } from '../../store';
 import { getMovies } from '../../store/selector';
 
-export const MovieCarousel = () => {
+export const MoviesCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const movies = useAppSelector(getMovies);
   const handleSlideChange = (index: number) => {
@@ -32,7 +32,6 @@ export const MovieCarousel = () => {
       </div>
     );
   };
-  console.log(movies)
 
   const CustomNextArrow = ({ onClick }: { onClick: () => void }) => {
     if (!movies || !movies.length || currentSlide === movies.length - 1) {
@@ -57,7 +56,7 @@ export const MovieCarousel = () => {
     <Slider
       arrows
       infinite
-      slidesToShow={Math.min(4, movies?.length || 0)}
+      slidesToShow={Math.min(7, movies?.length || 0)}
       slidesToScroll={1}
       autoplaySpeed={2000}
       initialSlide={0}
@@ -66,7 +65,7 @@ export const MovieCarousel = () => {
       nextArrow={<CustomNextArrow onClick={() => { }} />}
     >
       {movies?.map((movie) => (
-        <SelectionMovie key={movie.id} image={movie.imageName} />
+        <MovieItem key={movie.id} movie={movie}  />
       ))}
     </Slider>
   );

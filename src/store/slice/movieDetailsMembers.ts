@@ -5,7 +5,7 @@ import { getMovieDetailsMembers } from "../actions/members";
 export interface State {
     movieDetailsMembers: MovieDetailsMembers[] | null;
     loading: boolean;
-    error: string|null;
+    error: string | null;
 }
 
 const initialState: State = {
@@ -17,7 +17,22 @@ const initialState: State = {
 const movieDetailsMembersSlice = createSlice({
     name: "movieDetailsMembers",
     initialState,
-    reducers: {},
+    reducers: {
+        // Добавляем новый редьюсер для фильтрации актеров
+        filterMovieDetailsMembers: (state, action) => {
+            const memberIdToFilter = action.payload;
+            if (state.movieDetailsMembers) {
+                const filteredMembers = state.movieDetailsMembers.filter(
+                    (member) => member.id === memberIdToFilter
+                );
+                if (filteredMembers.length > 0) {
+                    state.movieDetailsMembers = filteredMembers;
+                } else {
+                    state.movieDetailsMembers = null;
+                }
+            }
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getMovieDetailsMembers.pending, (state) => {
@@ -30,7 +45,7 @@ const movieDetailsMembersSlice = createSlice({
             })
             .addCase(getMovieDetailsMembers.rejected, (state, action) => {
                 state.loading = false;
-                state.error = action.error.message || 'Error occurred';
+                state.error = action.error.message || "Error occurred";
             });
     },
 });
@@ -38,3 +53,5 @@ const movieDetailsMembersSlice = createSlice({
 export const {
     reducer: movieDetailsMembersReducer,
 } = movieDetailsMembersSlice;
+
+export const { filterMovieDetailsMembers } = movieDetailsMembersSlice.actions;

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, generatePath } from 'react-router-dom';
 import { ROUTE } from '../../router';
 import styles from './styles.module.css';
 import { useAppSelector } from '../../store';
@@ -9,19 +9,24 @@ export const Person = () => {
 
   return (
     <div className={styles.personList}>
+      <div className={styles.list}>
       {members && members.map((member) => (
         <div key={member.id} className={styles.person}>
-          <Link to={ROUTE.PERSON}>
             <div className={styles.image}>
-            <img className={styles.photo} src={`http://localhost:12120/api/members/images/${member.member.imageName}`} alt='photo' />
+              <img className={styles.photo} src={`http://localhost:12120/api/members/images/${member.member.imageName}`} alt='photo' />
             </div>
             <div className={styles.text}>
               <div className={styles.title}>{member.member.nameRU}</div>
               <div className={styles.extra}>{member.profession.nameRU}</div>
             </div>
-          </Link>
         </div>
       ))}
+      </div>
+      <div className={styles.more}>
+        <Link to={ROUTE.PERSON}>
+          <div className={styles.more_text}>Ещё</div>
+        </Link>
+      </div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, generatePath } from 'react-router-dom';
 import { FunctionComponent, useState } from 'react';
 import { ROUTE } from '../../router';
 import { RatingModal } from '../RatingModal/RatingModal';
@@ -8,23 +8,23 @@ import { getText } from '../../store/selector';
 import { Country, Genre, IMovieDetails, MovieDetailsMembers } from '../../store/types';
 
 interface Props {
-    id: number;
-    nameRU: string;
-    nameEN: string;
-    year: number;
-    ageRating: string;
-    duration: number;
-    imageName: string;
-    rating: number;
-    countRating: number;
-    idCountry: number;
-    idFilm: number;
-    error: string | null;
-    loading: boolean;
-    movieDetails: IMovieDetails | null;
-    country: Country;
-    genres: Genre[];
-    members: MovieDetailsMembers[] | null;
+  id: number;
+  nameRU: string;
+  nameEN: string;
+  year: number;
+  ageRating: string;
+  duration: number;
+  imageName: string;
+  rating: number;
+  countRating: number;
+  idCountry: number;
+  idFilm: number;
+  error: string | null;
+  loading: boolean;
+  movieDetails: IMovieDetails | null;
+  country: Country;
+  genres: Genre[];
+  members: MovieDetailsMembers[] | null;
 }
 
 export const DescrMovie: FunctionComponent<Props> = ({ nameRU, year, duration, ageRating, rating, genres, country: { nameRU: countryNameRU }, members, imageName }) => {
@@ -69,10 +69,10 @@ export const DescrMovie: FunctionComponent<Props> = ({ nameRU, year, duration, a
             <div className={styles.inner}>{rating}</div>
             <div className={styles.text}>Рейтинг Иви</div>
           </div>
-         {members && members.map(({ id, member: { nameRU, imageName }, }) => (
-            <Link key={id} to={ROUTE.PERSON} className={styles.link}>
+          {members && members.slice(0, 4).map(({ id, member: { nameRU, imageName }, }) => (
+            <Link to={generatePath(`${ROUTE.HOME + ROUTE.PERSON}`, { id })} className={styles.link}>
               <div className={styles.inner}>
-               <img className={styles.photo} src={`http://localhost:12120/api/members/images/${imageName}`} alt='photo' />
+                <img className={styles.photo} src={`http://localhost:12120/api/members/images/${imageName}`} alt='photo' />
               </div>
               <div className={styles.name}>{nameRU}</div>
             </Link>
@@ -130,7 +130,7 @@ export const DescrMovie: FunctionComponent<Props> = ({ nameRU, year, duration, a
           <div className={styles.figure}>{rating}</div>
           <div className={styles.ratingIvi}>Рейтинг Иви</div>
         </div>
-        <button className={styles.number}>ценить</button>
+        <button className={styles.number}>Оценить</button>
       </div>
       {isModalOpen && <RatingModal closeModal={closeModal} />}
     </>

@@ -19,6 +19,7 @@ export const store = configureStore({
         movieInfo: movieInfoReducer,
         movies: moviesReducer,
         movieDetailsMember: movieDetailsMembersReducer,
+        filterMovieDetailsMembers: movieDetailsMembersReducer,
         LanguageSwitch: LanguageSwitchSlice,
         HeaderShowDropDown: showDropDownSlice,
         HeaderMovingList: movingListSlice,

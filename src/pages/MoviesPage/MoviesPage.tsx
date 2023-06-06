@@ -5,7 +5,7 @@ import PageSection from '../../Components/aKrevs/PageSection/PageSection';
 import SortDropMenu from '../../Components/aKrevs/SortDropMenu/SortDropMenu';
 import CrumbsContainer from '../../Components/aKrevs/CrumbsContainer/CrumbsContainer';
 import FiltersContainer from '../../Components/aKrevs/FiltersContainer/FiltersContainer';
-import FilmCard, { FilmCardProps } from '../../Components/aKrevs/FilmCard/FilmCard';
+import FilmCard from '../../Components/aKrevs/FilmCard/FilmCard';
 import { useSelector } from 'react-redux';
 import RectangleBtn from '../../Components/aKrevs/Buttons/RectangleBtn/RectangleBtn';
 

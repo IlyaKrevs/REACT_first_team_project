@@ -1,16 +1,16 @@
 import { Link, generatePath, useParams } from 'react-router-dom';
-import { AllDevices, Comments, DescrMovie, Person, PlotMovie, Reviews, SelectionCarousel, SelectionMovie, Trailer, VideoPlayer } from '../../Components';
+import { AllDevices, Comments, DescrMovie, Person, PlotMovie, Reviews, SelectionCarousel, Trailer, VideoPlayer } from '../../Components';
 import { ROUTE } from '../../router';
 import styles from './styles.module.css';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getAllMovies, getMovieDetails, getMovieInfo, useAppDispatch, useAppSelector } from '../../store';
 import { Wrapper } from '../../Components/Wrapper/Wrapper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Gallery from '../../Components/aKrevs/Gallery/Gallery';
 import { getMovie, getMovieMembers, getTrailer } from '../../store/selector';
 import { getMovieDetailsMembers } from '../../store/actions/members';
 import { MoviesCarousel } from '../../Components/MoviesCarousel/MoviesCarousel';
+import { ModalPage } from '../ModalPage/ModalPage';
 
 export const WatchPage = () => {
   const dispatch = useAppDispatch();
@@ -18,7 +18,14 @@ export const WatchPage = () => {
   const trailer = useAppSelector(getTrailer);
   const movie = useAppSelector(getMovie);
   const members = useAppSelector(getMovieMembers);
-
+  const [isModalOpen, setModalOpen] = useState(false);
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+  
   useEffect(() => {
     if (id) {
       const movieId = parseInt(id, 10);
@@ -62,10 +69,16 @@ export const WatchPage = () => {
               Актёры и создатели
             </Link>
           </h2>
-          {members && 
-          <Link to={generatePath(`${ROUTE.HOME + ROUTE.PERSON}`, { id })} className={styles.linkTitle}>
-            <Person />
-          </Link>}
+          {members &&
+            <div className={styles.more}>
+              <Link to={generatePath(`${ROUTE.HOME + ROUTE.PERSON}`, { id })} className={styles.linkTitle}>
+                <Person />
+              </Link>
+              <div className={styles.more_text} onClick={openModal}>
+                <div className={styles.txt}>Ещё</div>
+              </div>
+              {isModalOpen && movie && <ModalPage closeModal={closeModal} movie={movie} />}
+            </div>}
         </div>
         <div className={styles.person}>
           <h2 className={styles.title}>

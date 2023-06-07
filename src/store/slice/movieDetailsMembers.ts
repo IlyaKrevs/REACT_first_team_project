@@ -18,7 +18,6 @@ const movieDetailsMembersSlice = createSlice({
     name: "movieDetailsMembers",
     initialState,
     reducers: {
-        // Добавляем новый редьюсер для фильтрации актеров
         filterMovieDetailsMembers: (state, action) => {
             const memberIdToFilter = action.payload;
             if (state.movieDetailsMembers) {

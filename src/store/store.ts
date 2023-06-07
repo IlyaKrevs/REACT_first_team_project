@@ -11,14 +11,18 @@ import { movieDetailsReducer } from "./slice";
 import { movieInfoReducer } from "./slice/movieInfoSlice";
 import { moviesReducer } from "./slice/moviesSlice";
 import { movieDetailsMembersReducer } from "./slice/movieDetailsMembers";
+import { movieAllMembersReducer } from "./slice/movieAllMembersSlice";
+import { commentsSliceReducer } from "./slice/commentsSlice";
 
 
 export const store = configureStore({
     reducer: {
+        comments: commentsSliceReducer,
         movieDetails: movieDetailsReducer,
         movieInfo: movieInfoReducer,
         movies: moviesReducer,
         movieDetailsMember: movieDetailsMembersReducer,
+        movieAllMembers: movieAllMembersReducer,
         filterMovieDetailsMembers: movieDetailsMembersReducer,
         LanguageSwitch: LanguageSwitchSlice,
         HeaderShowDropDown: showDropDownSlice,

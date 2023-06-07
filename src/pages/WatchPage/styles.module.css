@@ -148,3 +148,37 @@
     font-style: normal;
     color: #a5a1b2;
 }
+
+.more {
+  display: flex;
+  justify-content: space-between;
+}
+
+.more_text {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; 
+    overflow: hidden; 
+    text-align: center;
+    cursor: pointer;
+    background-color: #1f1b2e;
+    font-weight: 400;
+    color: #a5a1b2;
+    &:hover {
+        color: white;
+        transition-duration: .4s;
+    }
+}
+
+.txt {
+    position: relative;
+    top: 45px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #1f1b2e;
+    &:hover {
+        background-color: #262139;
+        transition-duration: .4s;
+    }
+}
+

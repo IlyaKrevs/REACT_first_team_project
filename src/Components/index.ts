@@ -21,6 +21,11 @@ export * from "./SelectionMovie/SelectionMovie";
 export * from "./PersonItem/PersonItem";
 export * from "./PersonCarousel/PersonCarousel";
 export * from "./MovieItem/MovieItem";
+export * from "./TabsModal/TabsModal";
+export * from "./AllPersons/AllPersons";
+export * from "./Form/Form";
+
+
 
 
 

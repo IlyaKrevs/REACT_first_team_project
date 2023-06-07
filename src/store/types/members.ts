@@ -22,3 +22,11 @@ export interface MovieDetailsMembers {
     updatedAt: string;
   };
 }
+
+export interface MovieAllMembers {
+  id: number;
+  nameRU: string;
+  nameEN: string;
+  createdAt: string;
+  updatedAt: string;
+}

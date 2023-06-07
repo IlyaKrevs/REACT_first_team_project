@@ -31,8 +31,6 @@ export const Reviews = () => {
                 <Registration onClick={handleClose}>
                 </Registration>
             )}
-
-
         </div>
     )
 }

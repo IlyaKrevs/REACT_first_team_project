@@ -3,24 +3,30 @@ import styles from './styles.module.css';
 import { ROUTE } from '../../router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsDown, faThumbsUp } from '@fortawesome/free-regular-svg-icons';
+import { useAppSelector } from '../../store';
+import { selectComments } from '../../store/selector/commentsSelector';
 import { useState } from 'react';
 import { Registration } from '../Registration/Registration';
 
 export const Comments = () => {
     const [showModal, setShowModal] = useState(false);
+    const comments = useAppSelector(selectComments);
+
     const handleClose = () => {
         setShowModal((prevShowModal) => !prevShowModal);
     };
 
     return (
         <div className={styles.comments}>
-            <Link to={ROUTE.COMMENTS}>
-                <div className={styles.item}>
-                    <div className={styles.author}>sivilenok</div>
-                    <div className={styles.text}>Чудесный и добрый фильм! Фильм о простых и добрых людях)</div>
-                    <div className={styles.date}>4 августа 2022</div>
-                </div>
-            </Link>
+            {comments.map((comment) => (
+                <Link to={ROUTE.COMMENTS} key={comment.id}>
+                    <div className={styles.item}>
+                        <div className={styles.author}>{comment.author}</div>
+                        <div className={styles.text}>{comment.text}</div>
+                        <div className={styles.date}>{comment.date}</div>
+                    </div>
+                </Link>
+            ))}
             <div className={styles.vote}>
                 <button className={styles.btn} onClick={handleClose}>
                     <FontAwesomeIcon icon={faThumbsUp} className={styles.icon} />
@@ -36,5 +42,5 @@ export const Comments = () => {
                 </Registration>
             )}
         </div>
-    )
+    );
 }

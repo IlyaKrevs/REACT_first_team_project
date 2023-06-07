@@ -3,7 +3,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styles from './styles.module.css';
 import { useState } from 'react';
-import { MovieItem, PersonItem } from '..';
+import { MovieItem } from '..';
 import { useAppSelector } from '../../store';
 import { getMovies } from '../../store/selector';
 

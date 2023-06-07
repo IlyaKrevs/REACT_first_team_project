@@ -1,23 +1,37 @@
 import React from 'react';
 import classes from './FilterRangeItem.module.css';
+import { useSelector } from 'react-redux';
 
 
 interface FilterRangeItemProps {
-    title: string,
+    title: {
+        nameRU: string,
+        nameEN: string,
+    },
     max: number,
     step: number,
+    callback: (arg: number) => void,
 }
 
-const FilterRangeItem = ({ title, max, step }: FilterRangeItemProps) => {
+const FilterRangeItem = ({ title, max, step, callback }: FilterRangeItemProps) => {
 
-    const { useState } = React;
+    let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian)
 
-    let [currentRangeValue, setCurrentRangeValue] = useState('5');
+    const { useState, useEffect } = React;
+
+    let [currentRangeValue, setCurrentRangeValue] = useState('0');
+
+
+
+
+    useEffect(() => {
+        callback(+currentRangeValue)
+    }, [currentRangeValue])
 
     return (
         <div className={classes.mainContainer}>
             <div className={classes.titleContainer}>
-                {title}
+                {isRussian ? title.nameRU : title.nameEN}
             </div>
             <div className={classes.inputContainer}>
                 <input type="range"

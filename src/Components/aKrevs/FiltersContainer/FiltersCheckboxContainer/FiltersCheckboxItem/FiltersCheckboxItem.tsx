@@ -7,7 +7,6 @@ interface FiltersCheckboxItemProps {
         id: number,
         nameRU: string,
         nameEN: string,
-        updatedAt: string,
     },
     callback: (arg: number) => void,
     currentState: number[]

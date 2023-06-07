@@ -16,7 +16,6 @@ interface FilterItemDropDownListProps {
         id: number,
         nameRU: string,
         nameEN: string,
-        updatedAt: string,
     }[],
     dropDownType: 'checkbox' | 'radio',
     callback: (arg: number[]) => void,
@@ -50,6 +49,9 @@ const FilterItemDropDownList = ({ basicTitle, showValue, dropDownType, callback 
     let emptyArr: number[] = [];
     let [localCheckBoxValue, setLocalCheckboxValue] = useState(emptyArr);
 
+
+
+
     function setLocalFiltersCALLBACK(value: number): void {
         let myArr = [...localCheckBoxValue];
         if (myArr.includes(value)) {
@@ -68,11 +70,40 @@ const FilterItemDropDownList = ({ basicTitle, showValue, dropDownType, callback 
         setLocalRadioValue(arg)
     }
 
+
+
+
+
     const { useEffect } = React;
 
     useEffect(() => {
         callback(localCheckBoxValue)
     }, [localCheckBoxValue])
+
+
+
+
+
+    function createShowTextArr(idArr: number[], fullObj: {
+        id: number,
+        nameRU: string,
+        nameEN: string,
+    }[]) {
+
+        let currentShowTextArr: string[] = [];
+
+
+        for (let i = 0; i < idArr.length; i++) {
+            for (let j = 0; j < fullObj.length; j++) {
+
+                if (idArr[i] === fullObj[j].id) {
+                    currentShowTextArr.push(isRussian ? fullObj[j].nameRU : fullObj[j].nameEN)
+                }
+            }
+        }
+
+        return currentShowTextArr
+    }
 
 
     return (
@@ -85,7 +116,10 @@ const FilterItemDropDownList = ({ basicTitle, showValue, dropDownType, callback 
                 <div className={classes.basicTitle}>
                     {currentTitle}
                     <div className={classes.subTitle}>
-                        {localCheckBoxValue.join(', ') || localRadioValue}
+                        {createShowTextArr(localCheckBoxValue, showValue)
+                            .map(item => item[0].toUpperCase() + item.slice(1))
+                            .sort()
+                            .join(', ') || localRadioValue}
                     </div>
                 </div>
 

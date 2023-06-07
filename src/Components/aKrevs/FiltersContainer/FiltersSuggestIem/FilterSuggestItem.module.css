@@ -50,14 +50,26 @@
     background-color: #312b45;
 
     border-radius: 8px;
+
+    z-index: 150;
 }
 
 .dropDownItem {
     padding: 10px;
     border-radius: 8px;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .dropDownItem:hover {
     background-color: #554b78;
+}
+
+.nameRUContainer {}
+
+.nameENContainer {
+    font-size: 13px;
+    color: hsla(0, 0%, 100%, .48);
 }

@@ -11,7 +11,6 @@ interface FiltersCheckboxContainerProps {
         id: number,
         nameRU: string,
         nameEN: string,
-        updatedAt: string,
     }[],
 }
 

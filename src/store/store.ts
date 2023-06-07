@@ -7,7 +7,7 @@ import movieReducer from './slice/moviesSlice';
 import showDropDownSlice from './slice/HeaderSlices/showDropDownSlice';
 import movingListSlice from "./slice/HeaderSlices/movingListSlice";
 import MoviesFilterBy from './slice/MoviesPageSlices/FilterBySlice';
-import serverDataGenres from './slice/serverDataSlice/genresSlice';
+import serverData from './slice/serverDataSlice/dataSlice'
 
 
 
@@ -18,7 +18,7 @@ export const store = configureStore({
         HeaderShowDropDown: showDropDownSlice,
         HeaderMovingList: movingListSlice,
         MoviesFilterBy: MoviesFilterBy,
-        AllGenres: serverDataGenres,
+        AllData: serverData,
     },
 });
 

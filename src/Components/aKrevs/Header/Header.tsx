@@ -20,7 +20,7 @@ const Header = () => {
   let currentPosition = showDropDownSelector.currentPosition;
 
 
-  let allGenresSelector = useSelector((state: any) => state.AllGenres.allServerGenres)
+  let allGenresSelector = useSelector((state: any) => state.AllData.allServerGenres)
 
 
 

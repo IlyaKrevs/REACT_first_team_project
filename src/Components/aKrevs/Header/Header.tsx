@@ -84,7 +84,7 @@ const Header = () => {
       {currentType &&
         <HeaderDropDownMain>
 
-          {currentType === 'movies' && allGenresSelector.length &&
+          {currentType === 'movies' && (allGenresSelector.length > 0) &&
             <DropDownMovieScreen
               firstList={showFirstList}
               secondList={showSecondList}

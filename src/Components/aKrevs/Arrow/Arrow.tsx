@@ -35,7 +35,6 @@ const Arrow = ({ direction, size }: ArrowProps) => {
 
     return (
         <div className={[classes.arrow, changeDir, changeSize].join(' ')}>
-
         </div>
 
     );

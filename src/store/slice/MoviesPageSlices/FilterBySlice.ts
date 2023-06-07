@@ -4,7 +4,7 @@ const MoviesFilterBy = createSlice({
     name: 'filtersBy',
     initialState: {
         currentViewScreen: '',
-        currentFiltersParams: [],
+        currentGenresParams: [],
         currentSortParams: {
             showText: 'По рейтингу',
             queryParam: 'ratign',
@@ -17,13 +17,8 @@ const MoviesFilterBy = createSlice({
         resetCurrentViewScreen: (state: any, action) => {
             state.currentViewScreen = '';
         },
-        setCurrentFiltersParams: (state: any, action) => {
-            if (state.currentFiltersParams.find((item: string) => item === action.payload.value)) {
-                state.currentFiltersParams = state.currentFiltersParams.filter((item: string) => item !== action.payload.value).sort();
-            } else {
-                state.currentFiltersParams.push(action.payload.value);
-                state.currentFiltersParams = state.currentFiltersParams.sort();
-            }
+        setCurrentGenresParams: (state: any, action) => {
+            state.currentGenresParams = action.payload.value;
         },
         setCurrentSortParams: (state: any, action) => {
             state.currentSortParams = action.payload.value;
@@ -32,5 +27,5 @@ const MoviesFilterBy = createSlice({
 });
 
 
-export const { setCurrentViewScreen, resetCurrentViewScreen, setCurrentFiltersParams, setCurrentSortParams } = MoviesFilterBy.actions;
+export const { setCurrentViewScreen, resetCurrentViewScreen, setCurrentGenresParams, setCurrentSortParams } = MoviesFilterBy.actions;
 export default MoviesFilterBy.reducer;

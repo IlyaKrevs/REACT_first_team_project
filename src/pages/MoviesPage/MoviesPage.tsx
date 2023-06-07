@@ -51,12 +51,12 @@ const MoviesPage = () => {
 
 
     let sortingType = useSelector((state: any) => state.MoviesFilterBy.currentSortParams.queryParam)
-
+    let idArrSelector = useSelector((state: any) => state.MoviesFilterBy.currentGenresParams)
 
     let queryBody: queryBody = {
         part: currentPart,
 
-        idArr: null,
+        idArr: idArrSelector,
         idCountriesArr: null,
         ratingStart: null,
         countRatingStart: null,
@@ -65,6 +65,9 @@ const MoviesPage = () => {
         arrMembers: null,
         typeSorting: sortingType,
     }
+
+
+
 
 
     async function giveMeFilms(askBody: queryBody) {
@@ -97,6 +100,7 @@ const MoviesPage = () => {
 
 
 
+
     useEffect(() => {
         giveMeFilms(queryBody)
     }, [currentPart])
@@ -106,7 +110,7 @@ const MoviesPage = () => {
             setCurrentShowArr([])
             setCurrentPart(firstPart)
         }
-    }, [sortingType])
+    }, [sortingType,])
 
 
 

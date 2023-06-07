@@ -1,4 +1,3 @@
-import React from 'react';
 import TitleText from '../../../Text/TitleText/TitleText';
 import classes from './HeaderList.module.css';
 import HeaderListItem from './HeaderListItem/HeaderListItem';

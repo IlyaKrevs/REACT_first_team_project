@@ -1,0 +1,26 @@
+.tabs {
+    width: 100%;
+    display: flex;
+    margin-top: 16px;
+    border-bottom: 1px solid #eee8e857;
+    margin-bottom: 32px;
+}
+
+.tab {
+    padding: 0 0 12px;
+    margin-right: 20px;
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: top;
+    color: #e2e1e1c9;
+    &:hover {
+        color: #fff;
+    }
+}
+
+.active {
+    border-bottom: 3px solid  #ea003d;
+    color: #fff;
+    transition-duration: .4s;
+}
+

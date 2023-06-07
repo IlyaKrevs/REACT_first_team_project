@@ -1,0 +1,97 @@
+.container {
+    position: relative;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    padding-right: 0px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; 
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.frame {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  width: 948px;
+  height: 533px;
+  border-radius: 12px;
+}
+
+.modalContent {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 100%;
+}
+
+.closeButton {
+    position: absolute;
+    top: 30%;
+    right: 0;
+    font-size: 30px;
+    line-height: 20px;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    font-style: normal;
+    color: #d9d7e0;
+}
+
+.subtitle {
+    flex-shrink: 0;
+    margin-right: 10px;
+    color: #a5a1b2;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+    font-style: normal;
+    height: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.picture {
+    width: 286px;
+    height: 150px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    transition: transform 0.3s ease;
+    object-fit: cover;
+}
+
+.picture:hover {
+    transform: scale(1.05);
+}
+

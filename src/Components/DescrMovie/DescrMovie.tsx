@@ -1,16 +1,35 @@
-import { Link } from 'react-router-dom';
-import styles from './styles.module.css';
-
-
-import { useState } from 'react';
+import { Link, generatePath } from 'react-router-dom';
+import { FunctionComponent, useState } from 'react';
 import { ROUTE } from '../../router';
 import { RatingModal } from '../RatingModal/RatingModal';
-import { actor } from '../../assets';
+import styles from './styles.module.css';
+import { useAppSelector } from '../../store';
+import { getText } from '../../store/selector';
+import { Country, Genre, IMovieDetails, MovieDetailsMembers } from '../../store/types';
 
+interface Props {
+  id: number;
+  nameRU: string;
+  nameEN: string;
+  year: number;
+  ageRating: string;
+  duration: number;
+  imageName: string;
+  rating: number;
+  countRating: number;
+  idCountry: number;
+  idFilm: number;
+  error: string | null;
+  loading: boolean;
+  movieDetails: IMovieDetails | null;
+  country: Country;
+  genres: Genre[];
+  members: MovieDetailsMembers[] | null;
+}
 
-export const DescrMovie = () => {
+export const DescrMovie: FunctionComponent<Props> = ({ nameRU, year, duration, ageRating, rating, genres, country: { nameRU: countryNameRU }, members, imageName }) => {
   const [showDetails, setShowDetails] = useState(false);
-
+  const text = useAppSelector(getText);
   const toggleDetails = () => {
     setShowDetails(!showDetails);
   };
@@ -26,59 +45,43 @@ export const DescrMovie = () => {
   };
 
   return (
-    <div className={styles.descr}>
-      <h1 className={styles.title}>30 Seconds To Mars</h1>
-      <div className={styles.info}>
-        <ul className={styles.list}>
-          <li className={styles.item}>2023</li>
-          <li className={styles.item}>1 ч. 17 мин.</li>
-          <li className={styles.item}>16+</li>
-        </ul>
-        <ul className={styles.list}>
-          <li className={styles.item}>США</li>
-          <li className={styles.item}>Триллер</li>
-          <li className={styles.item}>Зарубежный</li>
-        </ul>
-        <ul className={styles.list}>
-          <div className={styles.icons}>FullHD</div>
-        </ul>
-      </div>
-      <div className={styles.wrapper}>
-        <div className={styles.wrap}>
-          <div className={styles.inner}>6,9</div>
-          <div className={styles.text}>Рейтинг Иви</div>
+    <>
+      <div className={styles.descr}>
+        <h1 className={styles.title}>{nameRU}</h1>
+        <div className={styles.info}>
+          <ul className={styles.list}>
+            {[year, duration, ageRating].map((item) => (
+              <li key={item} className={styles.item}>{item}&nbsp;</li>
+            ))}
+          </ul>
+          <ul className={styles.list}>
+            <li className={styles.item}>{countryNameRU}&nbsp;</li>
+            {genres && genres.map(({ id, nameRU }) => (
+              <li key={id} className={styles.item}>{nameRU}&nbsp;</li>
+            ))}
+          </ul>
+          <ul className={styles.list}>
+            <div className={styles.icons}>FullHD</div>
+          </ul>
         </div>
-        <Link to={ROUTE.PERSON} className={styles.link}>
-          <div className={styles.inner}>
-            <img className={styles.photo} src={actor} alt='photo' />
+        <div className={styles.wrapper}>
+          <div className={styles.wrap}>
+            <div className={styles.inner}>{rating}</div>
+            <div className={styles.text}>Рейтинг Иви</div>
           </div>
-          <div className={styles.name}>Еламан Есентаев</div>
-        </Link>
-        <Link to={ROUTE.PERSON} className={styles.link}>
-          <div className={styles.inner}>
-            <img className={styles.photo} src={actor} alt='photo' />
-          </div>
-          <div className={styles.name}>Еламан Есентаев</div>
-        </Link>
-        <Link to={ROUTE.PERSON} className={styles.link}>
-          <div className={styles.inner}>
-            <img className={styles.photo} src={actor} alt='photo' />
-          </div>
-          <div className={styles.name}>Еламан Есентаев</div>
-        </Link>
-        <Link to={ROUTE.PERSON} className={styles.link}>
-          <div className={styles.inner}>
-            <img className={styles.photo} src={actor} alt='photo' />
-          </div>
-          <div className={styles.name}>Еламан Есентаев</div>
-        </Link>
+          {members && members.slice(0, 4).map(({ id, member: { nameRU, imageName }, }) => (
+            <Link to={generatePath(`${ROUTE.HOME + ROUTE.PERSON}`, { id })} className={styles.link}>
+              <div className={styles.inner}>
+                <img className={styles.photo} src={`http://localhost:12120/api/members/images/${imageName}`} alt='photo' />
+              </div>
+              <div className={styles.name}>{nameRU}</div>
+            </Link>
+          ))}
+        </div>
       </div>
       <div className={styles.descrFilm}>
         <div className={styles.film}>
-          <p>Вожатые Кайрат, Болат и Дастан воссоединяются, чтобы возобновить работу детского лагеря после пандемии.
-            Их планам мешает дочь инвестора Жанна, которая хочет продать «Ауыл Кэмп», не приносящий прибыли.
-            Душевная комедия для всей семьи.
-          </p>
+          <p>{text}</p>
           {!showDetails && (
             <div className={styles.toggle} onClick={toggleDetails}>
               Детали о фильме
@@ -86,31 +89,34 @@ export const DescrMovie = () => {
           )}
           {showDetails && (
             <>
-              <p>Летний лагерь «Ауыл Кэмп» всегда был любимым местом отдыха детей из Казахстана, но после пандемии коронавируса учреждение почти не приносит прибыли.
-                Жанна, дочь инвестора, хочет закрыть лагерь, но троица вожатых убеждает её повременить с решением. Кайрат, Болат и Дастан намерены вернуть месту былую славу.
-                Друзьям предстоит объединить разобщённых детей, приехавших отдохнуть, и спасти «Ауыл Кэмп».
-              </p>
-              <p>Чтобы узнать, как будут развиваться события, смотри онлайн на Иви «Каникулы off-line 3».
-              </p>
-              <p>Приглашаем посмотреть фильм «Каникулы off-line 3 (на казахском языке с русскими субтитрами)»
-                в нашем онлайн-кинотеатре в хорошем HD качестве. Приятного просмотра!
-              </p>
+              <p>{text}</p>
               <div className={styles.component}>
-                <div className={styles.options}>
-                  <div className={styles.film}>Языки</div>
-                  <div className={styles.values}>Казахский</div>
-                </div>
-                <div className={styles.options}>
-                  <div className={styles.film}>Изображение и звук.
-                    <span> Фактическое качество зависит от устройства и ограничений правообладателя.</span>
+                {[
+                  {
+                    title: 'Языки',
+                    value: 'Казахский',
+                  },
+                  {
+                    title: (
+                      <div className={styles.descrText}>
+                        <span className={styles.film}>Изображение и звук.</span> Фактическое качество зависит от устройства и ограничений правообладателя.
+                      </div>
+                    ),
+                    icons: ['FullHD', 'HD', '1080', '720'],
+                  },
+                ].map((item, index) => (
+                  <div key={index} className={styles.options}>
+                    <div className={styles.film}>{item.title}</div>
+                    {item.value && <div className={styles.values}>{item.value}</div>}
+                    {item.icons && (
+                      <div className={styles.badges}>
+                        {item.icons.map((icon, index) => (
+                          <div key={index} className={styles.icons}>{icon}</div>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                  <div className={styles.badges}>
-                    <div className={styles.icons}>FullHD</div>
-                    <div className={styles.icons}>HD</div>
-                    <div className={styles.icons}>1080</div>
-                    <div className={styles.icons}>720</div>
-                  </div>
-                </div>
+                ))}
               </div>
             </>
           )}
@@ -121,13 +127,12 @@ export const DescrMovie = () => {
       </div>
       <div className={styles.rating} onClick={openModal}>
         <div className={styles.ratingWrap}>
-          <div className={styles.figure}>6,7</div>
+          <div className={styles.figure}>{rating}</div>
           <div className={styles.ratingIvi}>Рейтинг Иви</div>
         </div>
-        <button className={styles.number}>6.0</button>
+        <button className={styles.number}>Оценить</button>
       </div>
       {isModalOpen && <RatingModal closeModal={closeModal} />}
-
-    </div>
+    </>
   );
 };

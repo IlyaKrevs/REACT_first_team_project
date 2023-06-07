@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const serverData = createSlice({
-    name: 'serverDataGenres',
+    name: 'serverData',
     initialState: {
         allServerGenres: [],
         allServerCountries: [],

@@ -1,51 +1,44 @@
 import React from 'react';
-
 import styles from './filmography.module.css';
-import { NavLink } from 'react-router-dom';
+import { Link, generatePath } from 'react-router-dom';
+import { ROUTE } from '../../router';
+import { IMovie } from '../../store/types';
 
 
-import { IPersonFilms } from '../../types/IPersonFilms';
-import ButtonLink from '../UI/ButtonLink/ButtonLink';
-
-
-type PropsType = {
-    movie: IPersonFilms
+interface IProps {
+    movie: IMovie;
 }
 
-const FilmographyItem: React.FC<PropsType> = ({ movie }) => {
+const FilmographyItem: React.FC<IProps> = ({ movie }) => {
 
     return (
-        <NavLink
-            to={`/MoviePage/${movie.id}/${movie.name}`}
-            className={styles.item}
-        >
+        <Link to={generatePath(`${ROUTE.HOME + ROUTE.WATCH}`, { id: movie.id })} className={styles.item}>
             <div className={styles.photo}>
-                <div className={styles.img}></div>
+                <img src={`http://localhost:12120/api/films/images/${movie.imageName}`}
+                    alt='movie' className={styles.img} />
             </div>
             <div className={styles.body}>
                 <div className={styles.info}>
-                    <div className={styles.title}>
-                        {
-                            movie.name.length > 16
-                                ? movie.name.slice(0, 16) + '...'
-                                : movie.name
-                        }
+                    <div className={styles.year}>
+                        <span>{movie.year}</span>
                     </div>
-                    {movie.rating && <div className={styles.rating}>
+                    <div className={styles.title}>
+                        {movie.nameRU}
+                    </div>
+                    <div className={styles.rating}>
                         Рейтинг Иви:
                         <span>
                             {movie.rating}
                         </span>
-                    </div>}
+                    </div>
                 </div>
-                <ButtonLink
-                    to={`/MoviePage/${movie.id}/${movie.name}`}
+                <button
                     className={styles.btn}
                 >
                     Смотреть
-                </ButtonLink>
+                </button>
             </div>
-        </NavLink>
+        </Link>
     )
 }
 export default FilmographyItem;

@@ -1,19 +1,41 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { MoviesState } from "../types/movies";
+import { IMovie } from "../types";
+import { getAllMovies } from "../actions/movies";
 
-const initialState: MoviesState = {
-    all: [],
+export interface State {
+    movies: IMovie[] | null;
+    loading: boolean;
+    error: string|null;
 }
+
+const initialState: State = {
+    movies: [],
+    loading: false,
+    error: null,
+};
 
 const moviesSlice = createSlice({
     name: "movies",
-    initialState: initialState,
+    initialState,
     reducers: {
-        setAllMovies: (state, action) => {
-            state.all = action.payload;
-        },
-    }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(getAllMovies.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getAllMovies.fulfilled, (state, action) => {
+                state.loading = false;
+                state.movies = action.payload;
+            }) 
+            .addCase(getAllMovies.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message || 'Error occurred';
+            });
+    },
 });
 
-export const { setAllMovies } = moviesSlice.actions;
-export default moviesSlice.reducer;
+export const {
+    reducer: moviesReducer,
+} = moviesSlice;

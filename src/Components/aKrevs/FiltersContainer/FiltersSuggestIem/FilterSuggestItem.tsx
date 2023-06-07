@@ -67,6 +67,7 @@ const FilterSuggestItem = ({ title, findArr, callback }: FilterSuggestItemProps)
 
     }, [currentInputValue])
 
+    
     useEffect(() => {
         if (currentInputValue === '') {
             callback(0)

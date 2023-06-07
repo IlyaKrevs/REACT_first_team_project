@@ -1,5 +1,3 @@
-import React from 'react';
-
 import classes from './FilmCardHoverContainer.module.css'
 import FilmCardHoverTopContainer from './Content/FilmCardHoverTopContainer/FilmCardHoverTopContainer';
 import FilmCardHoverMiddleContainer from './Content/FilmCardHoverMiddleContainer/FilmCardHoverMiddleContainer';

@@ -1,4 +1,3 @@
-import React from 'react';
 import classes from './FilmCardHoverTopContainer.module.css'
 import FilmCardRatingLine from '../../RatingLine/FilmCardRatingLine';
 import { FilmCardProps } from '../../../../FilmCard';
@@ -19,7 +18,6 @@ const FilmCardHoverTopContainer = ({ fullObj }: FilmCardProps) => {
         <div className={classes.container}>
             <div className={classes.text}>{showRating}</div>
             <div className={classes.ratingContainer}>
-
                 {progressArr.map((item, index) => {
                     return <FilmCardRatingLine key={index} size={thisSize} progressValue={item} />
                 })}

@@ -1,0 +1,23 @@
+.movie {
+    padding-bottom: 40px;
+}
+
+.photo {
+    border-radius: 8px;
+    width: 130px;
+    height: 200px;
+}
+
+.name {
+    color: #d9d7e0;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    font-style: normal;
+    height: 20px;
+    overflow: hidden;
+    margin-top: 8px;
+    transition-property: color;
+    word-wrap: break-word;
+}
+  

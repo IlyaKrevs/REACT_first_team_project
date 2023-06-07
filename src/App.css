@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Arial:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Helvetica&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Free+Sans&display=swap');
 
 * {
   padding: 0;
@@ -37,8 +35,6 @@ aside {
 
 html,
 body {
-  height: 100%;
-  width: 100%;
   font-size: 100%;
   line-height: 1;
   font-size: 14px;
@@ -94,9 +90,6 @@ h6 {
   font-weight: inherit;
 }
 
-
-.App {}
-
 .mainWrapper {
   display: flex;
   flex-direction: column;
@@ -104,4 +97,8 @@ h6 {
   justify-content: space-between;
 
   background-color: rgba(16, 14, 25, 1);
+}
+
+.slick-track {
+  height: 250px;
 }

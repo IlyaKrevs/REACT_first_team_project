@@ -1,0 +1,90 @@
+.comments {
+    position: relative;
+    width: 286px;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    white-space: initial;
+    background-color: #1f1b2e;
+    margin: 20px 0;
+    border-radius: 8px;
+    padding: 20px 20px 52px;
+    overflow: hidden;
+}
+
+.author {
+    color: #a5a1b2;
+    margin-bottom: 8px;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 700;
+    font-style: normal;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    min-height: 16px;
+}
+
+.text {
+    display: block;
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    height: 66px;
+    line-clamp: 3;
+    white-space: normal;
+    box-orient: vertical;
+    color: #fff;
+    font-style: normal;
+    overflow: hidden;
+}
+
+.date {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    color: #a5a1b2;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.vote {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;  
+    display: flex;  
+}
+
+.btn {
+    transition: color 400ms;
+    cursor: pointer;
+    font-size: 0;
+    position: relative;
+    background-color: transparent;
+
+}
+
+.value {
+    box-sizing: border-box;
+    color: #a5a1b2;
+    padding-left: 8px;
+    padding-right: 8px;
+    min-width: 42px;
+    text-align: center;
+    &:hover {
+        color: #73a32f;
+    }
+}
+
+.icon {
+    color: rgba(126,121,143,.72);
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    line-height: 16px;
+    &:hover {
+        color: rgba(122, 116, 142, 0.92);
+    }
+}

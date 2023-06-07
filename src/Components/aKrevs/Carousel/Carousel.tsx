@@ -1,8 +1,7 @@
-import React from 'react';
 import classes from './Carousel.module.css';
-
 import FilmCardEmpty from '../FilmCard/FilmCardEmpty';
 import Arrow from '../Arrow/Arrow';
+import React from 'react';
 
 interface CarouselProps {
     children: React.ReactNode[] | null,

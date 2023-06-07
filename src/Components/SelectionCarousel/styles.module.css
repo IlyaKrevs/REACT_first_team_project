@@ -1,0 +1,24 @@
+.customArrow {
+  z-index: 1;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  margin-top: -22px;
+  transform: translate(-100%, -50%);
+  color: rgba(255, 255, 255, .72);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+  &:hover {
+    color: white;
+  }
+}
+
+.prevArrow {
+  left: -22px;
+}
+
+.nextArrow {
+  right: -60px;
+}
+

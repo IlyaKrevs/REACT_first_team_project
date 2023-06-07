@@ -1,9 +1,5 @@
-import React from 'react';
-
 import classes from './FilmCardImageWrapper.module.css'
 import { FilmCardProps } from '../../FilmCard';
-
-
 
 
 const FilmCardImageWrapper = ({ fullObj }: FilmCardProps) => {

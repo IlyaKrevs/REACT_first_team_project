@@ -1,5 +1,4 @@
 import React from 'react';
-
 import classes from './FilmCardHoverContentItem.module.css'
 
 interface ItemProps {

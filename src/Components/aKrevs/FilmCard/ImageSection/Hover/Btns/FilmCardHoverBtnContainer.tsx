@@ -1,4 +1,3 @@
-import React from 'react';
 import FilmCardHoverBtn from './FilmCardHoverBtn';
 
 import classes from './FilmCardHoverBtnContainer.module.css'
@@ -49,7 +48,6 @@ const FilmCardHoverBtnContainer = () => {
                 return <FilmCardHoverBtn key={index} icon={item.icon} tooltipText={item.text} />
             })}
         </div>
-
     );
 };
 

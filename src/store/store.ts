@@ -1,19 +1,29 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
 
 import LanguageSwitchSlice from "./slice/HeaderSlices/LanguageSwitchSlice";
 
-import movieReducer from './slice/moviesSlice';
 import showDropDownSlice from './slice/HeaderSlices/showDropDownSlice';
 import movingListSlice from "./slice/HeaderSlices/movingListSlice";
-import MoviesFilterBy from './slice/MoviesPageSlices/FilterBySlice';
 import serverDataGenres from './slice/serverDataSlice/genresSlice';
 
+import MoviesFilterBy from './slice/MoviesPageSlices/FilterBySlice'
+import { movieDetailsReducer } from "./slice";
+import { movieInfoReducer } from "./slice/movieInfoSlice";
+import { moviesReducer } from "./slice/moviesSlice";
+import { movieDetailsMembersReducer } from "./slice/movieDetailsMembers";
+import { movieAllMembersReducer } from "./slice/movieAllMembersSlice";
+import { commentsSliceReducer } from "./slice/commentsSlice";
 
 
 export const store = configureStore({
     reducer: {
-        movies: movieReducer,
+        comments: commentsSliceReducer,
+        movieDetails: movieDetailsReducer,
+        movieInfo: movieInfoReducer,
+        movies: moviesReducer,
+        movieDetailsMember: movieDetailsMembersReducer,
+        movieAllMembers: movieAllMembersReducer,
+        filterMovieDetailsMembers: movieDetailsMembersReducer,
         LanguageSwitch: LanguageSwitchSlice,
         HeaderShowDropDown: showDropDownSlice,
         HeaderMovingList: movingListSlice,
@@ -22,8 +32,3 @@ export const store = configureStore({
     },
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-
-type AppDispatch = typeof store.dispatch;
-
-export const useAppDispatch = () => useDispatch<AppDispatch>();

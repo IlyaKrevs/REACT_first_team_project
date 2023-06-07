@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './Header.module.css';
-
 import HeaderTop from './HeaderTop/HeaderTop';
 import HeaderDropDownMain from './HeaderDropDown/HeaderDropDownMain/HeaderDropDownMain';
 import DropDownMovieScreen from './HeaderDropDown/HeaderDropDownMain/MovieScreen/DropDownMovieScreen';

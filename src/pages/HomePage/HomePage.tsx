@@ -1,6 +1,3 @@
-import React from 'react';
-import classes from './HomePage.module.css';
-
 import PageSection from '../../Components/aKrevs/PageSection/PageSection';
 import BigSlider from '../../Components/aKrevs/BigSlider/BigSlider';
 import Gallery from '../../Components/aKrevs/Gallery/Gallery';
@@ -8,6 +5,7 @@ import TeaserBtnsContainer from './HomePageContent/TeaserBtnsContainer/TeaserBtn
 import HomePageClause from './HomePageContent/HomePageClause/HomePageClause';
 import HomePageTop10 from './HomePageContent/HomePageTop10/HomePageTop10';
 import FilmCard from '../../Components/aKrevs/FilmCard/FilmCard';
+import React from 'react';
 
 type StateArrProps = {
     title: {

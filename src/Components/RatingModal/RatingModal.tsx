@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 import { Wrapper } from '../Wrapper/Wrapper';
-
-
+import { Portal } from '../Portal/Portal';
+import { TargetPortal } from '../../config';
+import { Link } from 'react-router-dom';
 
 interface IProps {
     closeModal: () => void;
@@ -32,48 +33,49 @@ export const RatingModal = ({ closeModal }: IProps) => {
     }, [ratingAccepted]);
 
     return (
-        <div className={styles.modal}>
-
-            <a href="#" className={styles.close} onClick={closeModal}>
-                &times;
-            </a>
-            {ratingAccepted ? (
-                <div className={styles.modalContent}>
-                    <Wrapper>
-                        <div className={styles.icon}>
-                            <div className={styles.checkmark}></div>
-                        </div>
-                        <div className={styles.title}>Ваша оценка принята</div>
-                        <div className={styles.subtitle}>
-                            Спасибо, что поделились своим мнением
-                        </div>
-                    </Wrapper>
-                </div>
-            ) : (
-                <div className={styles.modalContent}>
-                    <Wrapper>
-                        <div className={styles.title}>Ваша оценка</div>
-                        <div className={styles.subtitle}>Оценки улучшают рекомендации</div>
-                        <div className={styles.selector}>
-                            <div className={styles.selectorBox}>
-                                {ratingOptions.map((option) => (
-                                    <a
-                                        key={option}
-                                        className={rating === option ? styles.selected : ''}
-                                        onClick={() => handleRatingChange(option)}
-                                    >
-                                        {option}
-                                    </a>
-                                ))}
+        <Portal target={TargetPortal.MODAL}>
+            <div className={styles.modal}>
+                <Link to="#" className={styles.close} onClick={closeModal}>
+                    &times;
+                </Link>
+                {ratingAccepted ? (
+                    <div className={styles.modalContent}>
+                        <Wrapper>
+                            <div className={styles.icon}>
+                                <div className={styles.checkmark}></div>
                             </div>
-                            <div className={styles.selectorBlock}>
-                                <div className={styles.left}>очень плохо</div>
-                                <div className={styles.right}>отлично</div>
+                            <div className={styles.title}>Ваша оценка принята</div>
+                            <div className={styles.subtitle}>
+                                Спасибо, что поделились своим мнением
                             </div>
-                        </div>
-                    </Wrapper>
-                </div>
-            )}
-        </div>
+                        </Wrapper>
+                    </div>
+                ) : (
+                    <div className={styles.modalContent}>
+                        <Wrapper>
+                            <div className={styles.title}>Ваша оценка</div>
+                            <div className={styles.subtitle}>Оценки улучшают рекомендации</div>
+                            <div className={styles.selector}>
+                                <div className={styles.selectorBox}>
+                                    {ratingOptions.map((option) => (
+                                        <a
+                                            key={option}
+                                            className={rating === option ? styles.selected : ''}
+                                            onClick={() => handleRatingChange(option)}
+                                        >
+                                            {option}
+                                        </a>
+                                    ))}
+                                </div>
+                                <div className={styles.selectorBlock}>
+                                    <div className={styles.left}>очень плохо</div>
+                                    <div className={styles.right}>отлично</div>
+                                </div>
+                            </div>
+                        </Wrapper>
+                    </div>
+                )}
+            </div>
+        </Portal>
     );
 };

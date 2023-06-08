@@ -8,6 +8,7 @@ import { setCurrentViewScreen } from '../../../../../store/slice/MoviesPageSlice
 import FiltersRadioContainer from '../../FiltersRadioContainer/FiltersRadioContainer';
 
 interface FilterItemDropDownListProps {
+    globalValue: number[],
     basicTitle: {
         nameRU: string,
         nameEN: string,
@@ -21,7 +22,7 @@ interface FilterItemDropDownListProps {
     callback: (arg: number[]) => void,
 }
 
-const FilterItemDropDownList = ({ basicTitle, showValue, dropDownType, callback }: FilterItemDropDownListProps) => {
+const FilterItemDropDownList = ({ globalValue, basicTitle, showValue, dropDownType, callback }: FilterItemDropDownListProps) => {
 
     let currentViewScreen = useSelector((state: any) => state.MoviesFilterBy.currentViewScreen);
     let dispatch = useDispatch();
@@ -47,7 +48,7 @@ const FilterItemDropDownList = ({ basicTitle, showValue, dropDownType, callback 
     const { useState } = React;
 
     let emptyArr: number[] = [];
-    let [localCheckBoxValue, setLocalCheckboxValue] = useState(emptyArr);
+    let [localCheckBoxValue, setLocalCheckboxValue] = useState(globalValue.length ? globalValue : emptyArr);
 
 
 
@@ -76,10 +77,12 @@ const FilterItemDropDownList = ({ basicTitle, showValue, dropDownType, callback 
 
     const { useEffect } = React;
 
-    useEffect(() => {
-        callback(localCheckBoxValue)
-    }, [localCheckBoxValue])
 
+    useEffect(() => {
+
+        callback(localCheckBoxValue)
+
+    }, [localCheckBoxValue])
 
 
 

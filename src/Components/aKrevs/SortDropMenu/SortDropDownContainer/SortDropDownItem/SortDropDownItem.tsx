@@ -8,33 +8,21 @@ import { resetCurrentViewScreen } from '../../../../../store/slice/MoviesPageSli
 interface SortDropDownItemProps {
     text: string,
     queryParam: string,
+    currentTextID: number,
 }
 
-const SortDropDownItem = ({ text, queryParam }: SortDropDownItemProps) => {
+const SortDropDownItem = ({ text, queryParam, currentTextID }: SortDropDownItemProps) => {
 
-    const { useEffect } = React;
 
     let dispatch = useDispatch();
     let currentSortBy = useSelector((state: any) => state.MoviesFilterBy.currentSortParams);
 
-    let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian)
+
 
     let isSelected: any;
     if (currentSortBy.queryParam === queryParam) {
         isSelected = true;
     }
-
-
-    // useEffect(() => {
-    //     if (isSelected) {
-    //         dispatch(setCurrentSortParams({
-    //             value: {
-    //                 showText: currentSortBy.showText,
-    //                 queryParam: currentSortBy.queryParam,
-    //             }
-    //         }))
-    //     }
-    // }, [isRussian])
 
     return (
         <div
@@ -42,7 +30,7 @@ const SortDropDownItem = ({ text, queryParam }: SortDropDownItemProps) => {
                 e.stopPropagation();
                 dispatch(setCurrentSortParams({
                     value: {
-                        showText: text,
+                        showText: currentTextID,
                         queryParam: queryParam,
                     }
                 }))

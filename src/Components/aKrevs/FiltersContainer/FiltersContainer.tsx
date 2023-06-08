@@ -131,15 +131,21 @@ const FiltersContainer = () => {
         dispatch(setCurrentActorParams({ value: arg }))
     }
 
+    let globalGenresValue = useSelector((state: any) => state.MoviesFilterBy.currentGenresParams)
+    let globalCountriesValue = useSelector((state: any) => state.MoviesFilterBy.currentCountryParams)
+
+
     return (
         <div className={classes.mainContainer}>
             <div className={classes.specialContainer}>
                 <FilterItemDropDownList
+                    globalValue={globalGenresValue}
                     basicTitle={genresTitle}
                     showValue={allGenresSelector}
                     callback={giveMeGenresParamsCALLBACK}
                     dropDownType='checkbox' />
                 <FilterItemDropDownList
+                    globalValue={globalCountriesValue}
                     basicTitle={countryTitle}
                     showValue={allCountriesSelector}
                     callback={giveMeCountriesParamsCALLBACK}

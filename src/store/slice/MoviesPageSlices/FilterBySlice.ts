@@ -5,14 +5,14 @@ const MoviesFilterBy = createSlice({
     name: 'filtersBy',
     initialState: {
         currentViewScreen: '',
-        currentGenresParams: [],
-        currentCountryParams: [],
+        currentGenresParams: '',
+        currentCountryParams: '',
         currentStartRatingParams: number,
         currentCountRatingParams: number,
         currentDirectorFilmParams: {},
         currentActorParams: {},
         currentSortParams: {
-            showText: 'По рейтингу',
+            showText: 0,
             queryParam: 'rating',
         },
     },

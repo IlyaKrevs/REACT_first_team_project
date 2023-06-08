@@ -75,6 +75,7 @@ const HomePageTop10 = () => {
 
             myArr.push({
                 image: top10Arr[i].imageName,
+                id: top10Arr[i].id,
                 firstNumber: myNumber,
                 secondNumber: myTemp,
             })
@@ -88,7 +89,7 @@ const HomePageTop10 = () => {
         let myArr: React.ReactNode[] = [];
 
         createTop10ItemsObject().map((item, index) => {
-            myArr.push(<Top10Item key={index} image={item.image} firstNumber={item.firstNumber} secondNumber={item.secondNumber} />)
+            myArr.push(<Top10Item key={index} id={item.id} image={item.image} firstNumber={item.firstNumber} secondNumber={item.secondNumber} />)
         })
 
         return myArr;

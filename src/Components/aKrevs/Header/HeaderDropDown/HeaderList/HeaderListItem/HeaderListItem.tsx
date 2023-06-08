@@ -1,6 +1,9 @@
 import React from 'react';
 import classes from './HeaderListITem.module.css'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentGenresParams } from '../../../../../../store/slice/MoviesPageSlices/FilterBySlice';
+import { Link } from 'react-router-dom';
+import { ROUTE } from '../../../../../../router/routes';
 
 interface liProps {
     fullObj: string | any
@@ -28,12 +31,17 @@ const HeaderListItem = ({ fullObj }: liProps) => {
         showText = fullObj
     }
 
+    let dispatch = useDispatch();
 
 
     return (
-        <li className={classes.liItem}>
-            {showText}
-        </li>
+        <Link to={ROUTE.MOVIES}>
+            <li className={classes.liItem}
+                onClick={() => dispatch(setCurrentGenresParams({ value: [fullObj.id] }))}
+            >
+                {showText}
+            </li>
+        </Link>
     );
 };
 

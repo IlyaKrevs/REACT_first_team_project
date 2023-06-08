@@ -4,16 +4,16 @@ import { number, string } from "prop-types";
 const MoviesFilterBy = createSlice({
     name: 'filtersBy',
     initialState: {
-        currentViewScreen: string,
-        currentGenresParams: [],
-        currentCountryParams: [],
+        currentViewScreen: '',
+        currentGenresParams: '',
+        currentCountryParams: '',
         currentStartRatingParams: number,
         currentCountRatingParams: number,
         currentDirectorFilmParams: {},
         currentActorParams: {},
         currentSortParams: {
-            showText: 'По рейтингу',
-            queryParam: 'ratign',
+            showText: 0,
+            queryParam: 'rating',
         },
     },
     reducers: {

@@ -5,7 +5,7 @@ import classes from './SortDropMenu.module.css';
 import Arrow from '../Arrow/Arrow';
 import SortDropDownContainer, { SortDropDownContainerProps } from './SortDropDownContainer/SortDropDownContainer';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentSortParams, setCurrentViewScreen } from '../../../store/slice/MoviesPageSlices/FilterBySlice';
+import { setCurrentViewScreen } from '../../../store/slice/MoviesPageSlices/FilterBySlice';
 
 const SortDropMenu = () => {
 
@@ -17,7 +17,7 @@ const SortDropMenu = () => {
     let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian);
 
     let currentViewStatus = useSelector((state: any) => state.MoviesFilterBy.currentViewScreen);
-    let currentSortParams = useSelector((state: any) => state.MoviesFilterBy.currentSortParams);
+    let currentSortParams = useSelector((state: any) => state.MoviesFilterBy.currentSortParams.showText);
 
 
 
@@ -42,8 +42,16 @@ const SortDropMenu = () => {
     let sortTypeRU: string[] = ['По рейтингу', 'По годам', 'По количесту оценок', 'По алфавиту',]
     let sortTypeEN: string[] = ['By rating', 'By years', 'By number of ratings', 'By alphabet',]
 
-    let sortQueryParamRU: string[] = ['ratign', 'year', 'countRating', 'alphabetRU']
-    let sortQueryParamEN: string[] = ['ratign', 'year', 'countRating', 'alphabetEN']
+    let sortQueryParamRU: string[] = ['rating', 'year', 'countRating', 'alphabetRU']
+    let sortQueryParamEN: string[] = ['rating', 'year', 'countRating', 'alphabetEN']
+
+    let currentTitleText;
+    if (isRussian) {
+        currentTitleText = sortTypeRU;
+    } else {
+        currentTitleText = sortTypeEN;
+    }
+
 
     let sortParamsObject = {
         sortTypeRU,
@@ -53,22 +61,6 @@ const SortDropMenu = () => {
     }
 
 
-    const { useState, useEffect } = React;
-
-    let [titleText, setTitleText] = useState(currentSortParams.showText)
-
-    useEffect(() => {
-        setTitleText(currentSortParams.showText)
-        if (isRussian) {
-            if (!sortTypeRU.includes(titleText)) {
-                setTitleText(sortTypeRU[sortTypeEN.indexOf(currentSortParams.showText)])
-            }
-        } else {
-            if (!sortTypeEN.includes(titleText)) {
-                setTitleText(sortTypeEN[sortTypeRU.indexOf(currentSortParams.showText)])
-            }
-        }
-    }, [isRussian, currentSortParams.showText])
 
     return (
         <div
@@ -83,7 +75,7 @@ const SortDropMenu = () => {
                     {dropMenuIcon}
                 </div>
 
-                <div className={classes.currentSelectionValue}>{titleText}</div>
+                <div className={classes.currentSelectionValue}>{currentTitleText[currentSortParams]}</div>
 
                 <Arrow size='medium' direction={directionArrow} />
             </div>

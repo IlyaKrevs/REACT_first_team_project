@@ -13,7 +13,11 @@ interface FilterSuggestItemProps {
         nameRU: string,
         nameEN: string,
     }[],
-    callback: (arg: number) => void,
+    professionId: number,
+    callback: (arg: {
+        idMember: number | null,
+        idProfession: number | null,
+    }) => void,
 }
 
 type desiredArr = {
@@ -22,7 +26,7 @@ type desiredArr = {
     nameEN: string,
 }
 
-const FilterSuggestItem = ({ title, findArr, callback }: FilterSuggestItemProps) => {
+const FilterSuggestItem = ({ title, findArr, professionId, callback }: FilterSuggestItemProps) => {
 
     let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian);
 
@@ -67,13 +71,18 @@ const FilterSuggestItem = ({ title, findArr, callback }: FilterSuggestItemProps)
 
     }, [currentInputValue])
 
-    
+
     useEffect(() => {
         if (currentInputValue === '') {
-            callback(0)
+            callback({
+                idMember: null,
+                idProfession: null,
+            })
         } else {
-            callback(chosenItem)
-            console.log(chosenItem)
+            callback({
+                idMember: chosenItem,
+                idProfession: professionId,
+            })
         }
     }, [chosenItem, currentInputValue])
 

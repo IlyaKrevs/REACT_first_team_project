@@ -3,7 +3,10 @@ import classes from './Gallery.module.css';
 import Carousel from '../Carousel/Carousel';
 import TitleText from '../Text/TitleText/TitleText';
 import Arrow from '../Arrow/Arrow';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { ROUTE } from '../../../router/routes';
+import { setCurrentGenresParams } from '../../../store/slice/MoviesPageSlices/FilterBySlice';
 
 interface GalleryProps {
   children: React.ReactNode[];
@@ -26,11 +29,20 @@ const Gallery = ({ children, titleText }: GalleryProps) => {
     }
   }
 
+
+  let dispatch = useDispatch();
+
+
+
   return (
     <div className={classes.mainContainer}>
-      <div className={classes.galleryTitleContainer}>
-        <TitleText type="medium" text={currentText || ''} />
-        <Arrow size="medium" direction="right" />
+      <div className={classes.galleryTitleContainer}
+        onClick={() => dispatch(setCurrentGenresParams({ value: [titleText.id] }))}
+      >
+        <Link className={classes.linkSpecial} to={ROUTE.MOVIES}>
+          <TitleText type="medium" text={currentText} />
+          <Arrow size="medium" direction="right" />
+        </Link>
       </div>
       <Carousel children={children} emptyItem={true} />
     </div>

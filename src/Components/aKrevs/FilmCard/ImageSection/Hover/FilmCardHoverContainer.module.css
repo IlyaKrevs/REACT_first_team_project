@@ -14,6 +14,7 @@
     transition: .2s;
 
     opacity: 0;
+    border-radius: 8px;
 }
 
 .hoverContainer:hover {

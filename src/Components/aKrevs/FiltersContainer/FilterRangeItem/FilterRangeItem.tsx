@@ -19,7 +19,7 @@ const FilterRangeItem = ({ title, max, step, callback }: FilterRangeItemProps) =
 
     const { useState, useEffect } = React;
 
-    let [currentRangeValue, setCurrentRangeValue] = useState('0');
+    let [currentRangeValue, setCurrentRangeValue] = useState('1');
 
 
 
@@ -35,7 +35,7 @@ const FilterRangeItem = ({ title, max, step, callback }: FilterRangeItemProps) =
             </div>
             <div className={classes.inputContainer}>
                 <input type="range"
-                    min={0}
+                    min={1}
                     max={max}
                     step={step}
                     value={currentRangeValue}

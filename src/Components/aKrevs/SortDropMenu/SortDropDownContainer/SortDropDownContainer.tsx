@@ -46,7 +46,7 @@ const SortDropDownContainer = ({ sortParamsObject }: SortDropDownContainerProps)
             <div className={classes.dropDownNotActiveItem}>{currentLanguage}</div>
 
             {currentArrText.map((item, index) => {
-                return <SortDropDownItem text={item} queryParam={currentArrQuery[index]} />
+                return <SortDropDownItem currentTextID={index} text={item} queryParam={currentArrQuery[index]} />
             })}
 
         </div>

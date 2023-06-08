@@ -1,5 +1,5 @@
 .item {
-    min-width: 154px;
+
     border-radius: 8px;
 
     display: flex;
@@ -10,7 +10,7 @@
     transition: .2s;
 
     height: 275px;
-    width: 154px;
+    width: 151px;
 }
 
 .item:hover {

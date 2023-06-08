@@ -116,24 +116,36 @@ const FiltersContainer = () => {
     }, [])
 
 
-    function giveDirectorParamsCALLBACK(arg: number) {
+    function giveDirectorParamsCALLBACK(arg: {
+        idMember: number | null,
+        idProfession: number | null,
+    }) {
         dispatch(setCurrentDirectorFilmParams({ value: arg }))
     }
 
 
-    function giveActorParamsCALLBACK(arg: number) {
+    function giveActorParamsCALLBACK(arg: {
+        idMember: number | null,
+        idProfession: number | null,
+    }) {
         dispatch(setCurrentActorParams({ value: arg }))
     }
+
+    let globalGenresValue = useSelector((state: any) => state.MoviesFilterBy.currentGenresParams)
+    let globalCountriesValue = useSelector((state: any) => state.MoviesFilterBy.currentCountryParams)
+
 
     return (
         <div className={classes.mainContainer}>
             <div className={classes.specialContainer}>
                 <FilterItemDropDownList
+                    globalValue={globalGenresValue}
                     basicTitle={genresTitle}
                     showValue={allGenresSelector}
                     callback={giveMeGenresParamsCALLBACK}
                     dropDownType='checkbox' />
                 <FilterItemDropDownList
+                    globalValue={globalCountriesValue}
                     basicTitle={countryTitle}
                     showValue={allCountriesSelector}
                     callback={giveMeCountriesParamsCALLBACK}
@@ -151,7 +163,7 @@ const FiltersContainer = () => {
                 <FilterRangeItem
                     title={countRatingObj}
                     callback={giveMeCountOfRatingCALLBACK}
-                    max={500000}
+                    max={500001}
                     step={5000}
                 />
             </div>
@@ -159,11 +171,13 @@ const FiltersContainer = () => {
                 <FilterSuggestItem
                     title={direcotrsTitleObj}
                     findArr={direcotrsArr}
+                    professionId={diretcorID}
                     callback={giveDirectorParamsCALLBACK}
                 />
                 <FilterSuggestItem
                     title={actorsTitleObj}
                     findArr={actorArr}
+                    professionId={actorID}
                     callback={giveActorParamsCALLBACK}
 
                 />

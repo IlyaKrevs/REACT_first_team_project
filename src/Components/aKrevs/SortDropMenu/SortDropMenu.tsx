@@ -42,8 +42,8 @@ const SortDropMenu = () => {
     let sortTypeRU: string[] = ['По рейтингу', 'По годам', 'По количесту оценок', 'По алфавиту',]
     let sortTypeEN: string[] = ['By rating', 'By years', 'By number of ratings', 'By alphabet',]
 
-    let sortQueryParamRU: string[] = ['ratign', 'year', 'countRating', 'alphabetRU']
-    let sortQueryParamEN: string[] = ['ratign', 'year', 'countRating', 'alphabetEN']
+    let sortQueryParamRU: string[] = ['rating', 'year', 'countRating', 'alphabetRU']
+    let sortQueryParamEN: string[] = ['rating', 'year', 'countRating', 'alphabetEN']
 
     let sortParamsObject = {
         sortTypeRU,

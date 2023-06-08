@@ -116,12 +116,18 @@ const FiltersContainer = () => {
     }, [])
 
 
-    function giveDirectorParamsCALLBACK(arg: number) {
+    function giveDirectorParamsCALLBACK(arg: {
+        idMember: number | null,
+        idProfession: number | null,
+    }) {
         dispatch(setCurrentDirectorFilmParams({ value: arg }))
     }
 
 
-    function giveActorParamsCALLBACK(arg: number) {
+    function giveActorParamsCALLBACK(arg: {
+        idMember: number | null,
+        idProfession: number | null,
+    }) {
         dispatch(setCurrentActorParams({ value: arg }))
     }
 
@@ -151,7 +157,7 @@ const FiltersContainer = () => {
                 <FilterRangeItem
                     title={countRatingObj}
                     callback={giveMeCountOfRatingCALLBACK}
-                    max={500000}
+                    max={500001}
                     step={5000}
                 />
             </div>
@@ -159,11 +165,13 @@ const FiltersContainer = () => {
                 <FilterSuggestItem
                     title={direcotrsTitleObj}
                     findArr={direcotrsArr}
+                    professionId={diretcorID}
                     callback={giveDirectorParamsCALLBACK}
                 />
                 <FilterSuggestItem
                     title={actorsTitleObj}
                     findArr={actorArr}
+                    professionId={actorID}
                     callback={giveActorParamsCALLBACK}
 
                 />

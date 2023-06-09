@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 
 interface FilterSuggestItemProps {
+    globalValue: any,
     title: {
         nameRU: string,
         nameEN: string,
@@ -17,7 +18,7 @@ interface FilterSuggestItemProps {
     callback: (arg: {
         idMember: number | null,
         idProfession: number | null,
-    }) => void,
+    } | []) => void,
 }
 
 type desiredArr = {
@@ -26,7 +27,7 @@ type desiredArr = {
     nameEN: string,
 }
 
-const FilterSuggestItem = ({ title, findArr, professionId, callback }: FilterSuggestItemProps) => {
+const FilterSuggestItem = ({ globalValue, title, findArr, professionId, callback }: FilterSuggestItemProps) => {
 
     let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian);
 
@@ -47,6 +48,11 @@ const FilterSuggestItem = ({ title, findArr, professionId, callback }: FilterSug
     let [chosenItem, setChosenItem] = useState(myIdNumber)
 
 
+    useEffect(() => {
+        if (globalValue.length === 0 && currentInputValue !== '') {
+            setCurrentInputValue('')
+        }
+    }, [globalValue])
 
 
 
@@ -72,12 +78,10 @@ const FilterSuggestItem = ({ title, findArr, professionId, callback }: FilterSug
     }, [currentInputValue])
 
 
+
     useEffect(() => {
         if (currentInputValue === '') {
-            callback({
-                idMember: null,
-                idProfession: null,
-            })
+            callback([])
         } else {
             callback({
                 idMember: chosenItem,

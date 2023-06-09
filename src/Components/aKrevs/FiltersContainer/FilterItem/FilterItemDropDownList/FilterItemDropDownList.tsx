@@ -45,10 +45,14 @@ const FilterItemDropDownList = ({ globalValue, basicTitle, showValue, dropDownTy
 
 
 
-    const { useState } = React;
+    const { useState, useEffect } = React;
 
     let emptyArr: number[] = [];
     let [localCheckBoxValue, setLocalCheckboxValue] = useState(globalValue.length ? globalValue : emptyArr);
+
+
+
+
 
 
 
@@ -74,17 +78,17 @@ const FilterItemDropDownList = ({ globalValue, basicTitle, showValue, dropDownTy
 
 
 
-
-    const { useEffect } = React;
-
-
     useEffect(() => {
 
         callback(localCheckBoxValue)
 
     }, [localCheckBoxValue])
 
-
+    useEffect(() => {
+        if (!globalValue.length) {
+            setLocalCheckboxValue(globalValue)
+        }
+    }, [globalValue])
 
 
     function createShowTextArr(idArr: number[], fullObj: {

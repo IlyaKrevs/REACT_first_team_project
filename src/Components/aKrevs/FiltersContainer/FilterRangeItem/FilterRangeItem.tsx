@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 
 interface FilterRangeItemProps {
+    globalValue: string,
     title: {
         nameRU: string,
         nameEN: string,
@@ -13,20 +14,11 @@ interface FilterRangeItemProps {
     callback: (arg: number) => void,
 }
 
-const FilterRangeItem = ({ title, max, step, callback }: FilterRangeItemProps) => {
+const FilterRangeItem = ({ globalValue, title, max, step, callback }: FilterRangeItemProps) => {
 
     let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian)
 
-    const { useState, useEffect } = React;
 
-    let [currentRangeValue, setCurrentRangeValue] = useState('1');
-
-
-
-
-    useEffect(() => {
-        callback(+currentRangeValue)
-    }, [currentRangeValue])
 
     return (
         <div className={classes.mainContainer}>
@@ -38,10 +30,10 @@ const FilterRangeItem = ({ title, max, step, callback }: FilterRangeItemProps) =
                     min={1}
                     max={max}
                     step={step}
-                    value={currentRangeValue}
-                    onChange={(e) => setCurrentRangeValue(e.currentTarget.value)}
+                    value={globalValue}
+                    onChange={(e) => callback(+e.currentTarget.value)}
                 />
-                {currentRangeValue.length > 1 ? currentRangeValue + '+' : currentRangeValue + '.0+'}
+                {+globalValue > 1 ? +globalValue + '+' : +globalValue + '.0+'}
             </div>
         </div>
     );

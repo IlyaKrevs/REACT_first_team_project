@@ -12,6 +12,7 @@ import { setCurrentStartRatingParams } from '../../../store/slice/MoviesPageSlic
 import { setCurrentCountRatignParams } from '../../../store/slice/MoviesPageSlices/FilterBySlice';
 import { setCurrentDirectorFilmParams } from '../../../store/slice/MoviesPageSlices/FilterBySlice';
 import { setCurrentActorParams } from '../../../store/slice/MoviesPageSlices/FilterBySlice';
+import RectangleBtn from '../Buttons/RectangleBtn/RectangleBtn';
 
 const FiltersContainer = () => {
 
@@ -119,7 +120,7 @@ const FiltersContainer = () => {
     function giveDirectorParamsCALLBACK(arg: {
         idMember: number | null,
         idProfession: number | null,
-    }) {
+    } | []) {
         dispatch(setCurrentDirectorFilmParams({ value: arg }))
     }
 
@@ -127,12 +128,43 @@ const FiltersContainer = () => {
     function giveActorParamsCALLBACK(arg: {
         idMember: number | null,
         idProfession: number | null,
-    }) {
+    } | []) {
         dispatch(setCurrentActorParams({ value: arg }))
     }
 
     let globalGenresValue = useSelector((state: any) => state.MoviesFilterBy.currentGenresParams)
     let globalCountriesValue = useSelector((state: any) => state.MoviesFilterBy.currentCountryParams)
+    let globalStartRatingValue = useSelector((state: any) => state.MoviesFilterBy.currentStartRatingParams)
+    let globalCountRatingValue = useSelector((state: any) => state.MoviesFilterBy.currentCountRatingParams)
+    let globalDirectorValue = useSelector((state: any) => state.MoviesFilterBy.currentDirectorFilmParams)
+    let globalActorValue = useSelector((state: any) => state.MoviesFilterBy.currentActorParams)
+
+
+    let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian)
+
+    let resetBtnTextRU = 'Сбросить все';
+    let resetBtnTextEN = 'Reset all';
+    let currentBtnText;
+
+    if (isRussian) {
+        currentBtnText = resetBtnTextRU;
+    } else {
+        currentBtnText = resetBtnTextEN;
+    }
+
+
+
+
+
+    function resetAllParams() {
+        dispatch(setCurrentGenresParams({ value: [] }))
+        dispatch(setCurrentCountryParams({ value: [] }))
+        dispatch(setCurrentStartRatingParams({ value: 1 }))
+        dispatch(setCurrentCountRatignParams({ value: 1 }))
+        dispatch(setCurrentDirectorFilmParams({ value: '' }))
+        dispatch(setCurrentActorParams({ value: '' }))
+    }
+
 
 
     return (
@@ -156,11 +188,13 @@ const FiltersContainer = () => {
             </div>
             <div className={classes.specialContainer}>
                 <FilterRangeItem
+                    globalValue={globalStartRatingValue}
                     title={startRatingObj}
                     callback={giveMeStartRatingParamsCALLBACK}
                     max={10}
                     step={0.1} />
                 <FilterRangeItem
+                    globalValue={globalCountRatingValue}
                     title={countRatingObj}
                     callback={giveMeCountOfRatingCALLBACK}
                     max={500001}
@@ -169,18 +203,28 @@ const FiltersContainer = () => {
             </div>
             <div className={classes.specialContainer}>
                 <FilterSuggestItem
+                    globalValue={globalDirectorValue}
                     title={direcotrsTitleObj}
                     findArr={direcotrsArr}
                     professionId={diretcorID}
                     callback={giveDirectorParamsCALLBACK}
                 />
                 <FilterSuggestItem
+                    globalValue={globalActorValue}
                     title={actorsTitleObj}
                     findArr={actorArr}
                     professionId={actorID}
                     callback={giveActorParamsCALLBACK}
 
                 />
+            </div>
+
+            <div className={classes.specialContainer}>
+                <div onClick={() => {
+                    resetAllParams()
+                }}>
+                    <RectangleBtn color='light' text={currentBtnText} />
+                </div>
             </div>
         </div>
     );

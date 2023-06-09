@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { number, string } from "prop-types";
+
 
 const MoviesFilterBy = createSlice({
     name: 'filtersBy',
@@ -7,8 +7,8 @@ const MoviesFilterBy = createSlice({
         currentViewScreen: '',
         currentGenresParams: '',
         currentCountryParams: '',
-        currentStartRatingParams: number,
-        currentCountRatingParams: number,
+        currentStartRatingParams: 1,
+        currentCountRatingParams: 1,
         currentDirectorFilmParams: {},
         currentActorParams: {},
         currentSortParams: {

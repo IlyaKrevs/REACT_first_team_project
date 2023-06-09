@@ -43,8 +43,6 @@ const FiltersCheckboxItem = ({ fullObj, callback, currentState }: FiltersCheckbo
     }
 
 
-
-
     return (
         <div
             onClick={() => callback(fullObj.id)}

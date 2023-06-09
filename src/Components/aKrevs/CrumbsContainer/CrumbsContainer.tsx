@@ -39,7 +39,6 @@ const CrumbsContainer = () => {
             text: myArr[i],
             link: myArr[i],
         })
-
     }
 
     let allGenresSelector = useSelector((state: any) => state.AllData.allServerGenres)
@@ -83,6 +82,66 @@ const CrumbsContainer = () => {
         myArr = myArr.join(', ');
         return myArr
     }
+
+
+
+
+
+
+
+
+
+
+    function createArrForURL(startArr: any) {
+        let myArr;
+        if (Array.isArray(startArr)) {
+
+
+            myArr = startArr.map(item => {
+                let myTemp = item.nameEN;
+                return myTemp
+            })
+        }
+        return myArr || null;
+    }
+
+
+
+    let myGenresLink = createArrForURL(allChosenGenresArr)
+    let myCountriesLink = createArrForURL(allChosenCountriesArr)
+
+
+
+    function createFinalLink(genresArr: any, countriesArr: any) {
+
+        let finalArr;
+
+        if (genresArr.length && countriesArr.length) {
+            finalArr = genresArr.join('+') + '/' + countriesArr.join('+')
+        } else if (genresArr.length) {
+            finalArr = genresArr.join('+');
+        } else if (countriesArr.length) {
+            finalArr = countriesArr.join('+');
+        }
+
+
+        return finalArr
+    }
+
+    console.log(createFinalLink(myGenresLink, myCountriesLink))
+
+
+
+
+    // let linkHistory = useNavigate();
+    const { useEffect } = React;
+
+    // useEffect(() => {
+    //     console.log([currentGenresSelector.length ? [currentGenresSelector].join('+') : null, currentCountriesSelector ? [currentCountriesSelector].join('+') : null].join('/'))
+    // }, [currentGenresSelector, currentCountriesSelector])
+
+
+
 
     return (
         <div className={classes.mainContainer}>

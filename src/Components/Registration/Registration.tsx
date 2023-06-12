@@ -1,8 +1,15 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import styles from './styles.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { SignInUserType } from "../../api/types/signInUserType";
+import { getToken } from "../../api/getToken";
+import { signInAction } from "../../store/actions/signInAction";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { getUser } from "../../store/selector/userSelector";
+import { ROUTE } from "../../router";
+import { SubmitHandler } from 'react-hook-form';
 
 interface IProps {
     children: ReactNode;
@@ -12,19 +19,37 @@ interface IProps {
 export const Registration = ({ children, onClick }: IProps) => {
     const [email, setEmail] = useState('');
     const [isButtonEnabled, setIsButtonEnabled] = useState(false);
-
-    const handleEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const inputValue = e.target.value;
-        setEmail(inputValue);
-        setIsButtonEnabled(inputValue.trim().length > 0);
-    }
-
     const handleClose = () => {
         onClick();
-        
     }
 
-    return ( 
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [tokenError, setTokenError] = useState<string>();
+    const dispatch = useAppDispatch();
+    const { isAuth } = useAppSelector(getUser);
+    const navigate = useNavigate();
+
+    const onSubmit: SubmitHandler<SignInUserType> = (data) => {
+        setIsLoading(true);
+        getToken(data)
+            .then(() => {
+                dispatch(signInAction());
+                setIsLoading(false);
+            })
+            .catch((error) => {
+                setIsLoading(false);
+                setTokenError(error.data?.message || error.response?.data?.message);
+            });
+    };
+
+    useEffect(() => {
+        if (isAuth) {
+            navigate(`${ROUTE.HOME}`, { replace: true });
+        }
+    }, [isAuth, navigate]);
+
+
+    return (
         <div className={styles.registration}>
             <div className={styles.header}>Вход или регистрация</div>
             <button className={styles.close} onClick={handleClose}>
@@ -40,11 +65,12 @@ export const Registration = ({ children, onClick }: IProps) => {
                             <div className={styles.subtitle}>чтобы поставить лайк</div>
                         </div>
                         <div className={styles.input}>
-                            <FontAwesomeIcon icon={faUser} style={{color: "rgba(31,27,46,.16)"}} className={styles.icon}/>                            
-                            <input className={styles.login} 
+                            <FontAwesomeIcon icon={faUser} style={{ color: "rgba(31,27,46,.16)" }} className={styles.icon} />
+                            <input
+                                className={styles.login}
                                 placeholder="Через email или телефон"
                                 value={email}
-                                onChange={handleEmailInput}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div className={styles.list}>

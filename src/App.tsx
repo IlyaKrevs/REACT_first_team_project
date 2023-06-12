@@ -5,8 +5,6 @@ import { router } from './router';
 import { useDispatch } from 'react-redux';
 import { setAllGenresFromServer } from './store/slice/serverDataSlice/dataSlice';
 
-
-
 export const App = () => {
 
   const { useEffect } = React;
@@ -20,8 +18,6 @@ export const App = () => {
         value: data,
       })));
   }
-
-
 
   useEffect(() => {
     giveMeAllGernresArr();

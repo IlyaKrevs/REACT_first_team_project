@@ -12,12 +12,13 @@ import { movieInfoReducer } from "./slice/movieInfoSlice";
 import { moviesReducer } from "./slice/moviesSlice";
 import { movieDetailsMembersReducer } from "./slice/movieDetailsMembers";
 import { movieAllMembersReducer } from "./slice/movieAllMembersSlice";
-import { commentsSliceReducer } from "./slice/commentsSlice";
+import { commentsReducer } from "./slice/commentsSlice";
+import { userReducer } from "./slice/userSlice";
 
 
 export const store = configureStore({
     reducer: {
-        comments: commentsSliceReducer,
+        comments: commentsReducer,
         movieDetails: movieDetailsReducer,
         movieInfo: movieInfoReducer,
         movies: moviesReducer,
@@ -29,6 +30,7 @@ export const store = configureStore({
         HeaderMovingList: movingListSlice,
         MoviesFilterBy: MoviesFilterBy,
         AllData: serverData,
+        user: userReducer,
     },
 });
 

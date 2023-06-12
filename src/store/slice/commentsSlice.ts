@@ -36,5 +36,7 @@ const commentsSlice = createSlice({
   },
 });
 
+export const {
+  reducer: commentsReducer,
+} = commentsSlice ;
 export const { addComment, deleteComment } = commentsSlice.actions;
-export const commentsSliceReducer = commentsSlice.reducer;

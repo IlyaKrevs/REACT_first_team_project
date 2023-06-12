@@ -6,8 +6,6 @@ import { faThumbsDown, faThumbsUp } from '@fortawesome/free-regular-svg-icons';
 import { useState } from 'react';
 import { Registration } from '../Registration/Registration';
 import { deleteComment } from '../../store/slice/commentsSlice';
-import { useAppSelector } from '../../store';
-import { selectComments } from '../../store/selector/commentsSelector';
 import { useDispatch } from 'react-redux';
 
 interface Comment {
@@ -31,7 +29,6 @@ export const Comments = ({ comment }: { comment: Comment }) => {
 
   return (
     <div className={styles.comments}>
-
       <div className={styles.wrap}>
         <div className={styles.author}>{comment.author}</div>
         <button className={styles.button} onClick={() => handleDeleteComment(comment.id)}>

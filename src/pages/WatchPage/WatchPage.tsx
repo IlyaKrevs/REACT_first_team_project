@@ -119,7 +119,7 @@ export const WatchPage = () => {
             </div>
             <div className={styles.subtitle}>о фильме</div>
             {comments.map((comment) => (
-              <Comments comment={comment} key={comment.id} />
+              <Comments key={comment.id} comment={comment} />
             ))}
           </Link>
         </div>

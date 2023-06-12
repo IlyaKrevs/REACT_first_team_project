@@ -40,10 +40,13 @@ const MoviesPage = () => {
 
     const { useState, useEffect } = React;
 
-    let [currentPart, setCurrentPart] = useState(1);
+    let firstPart = 1;
+    let [currentPart, setCurrentPart] = useState(firstPart);
 
-    let emptyArr: any = []
+    let emptyArr: any = [];
     let [currentShowArr, setCurrentShowArr] = useState(emptyArr);
+    let [canRender, setCanRender] = useState(false);
+
 
 
 
@@ -69,7 +72,7 @@ const MoviesPage = () => {
         let emptyArr: any = []
         let generatedStateArr: any = [];
 
-        await await fetch('http://localhost:12120/api/films/filter', {
+        fetch('http://localhost:12120/api/films/filter', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -80,17 +83,33 @@ const MoviesPage = () => {
             .then(data => {
                 emptyArr = data;
             })
-
-        for (let i = 0; i < emptyArr.length; i++) {
-            generatedStateArr.push(<FilmCard key={i} fullObj={emptyArr[i]} />)
-        }
-
-        setCurrentShowArr(generatedStateArr)
+            .then(() => {
+                for (let i = 0; i < emptyArr.length; i++) {
+                    generatedStateArr.push(<FilmCard key={i} fullObj={emptyArr[i]} />)
+                }
+                return generatedStateArr
+            })
+            .then((item) => {
+                setCurrentShowArr((state: any) => [...state, item])
+            })
+            .then(() => setCanRender(true))
     }
 
+
+
     useEffect(() => {
-        giveMeFilms(queryBody);
+        giveMeFilms(queryBody)
+    }, [currentPart])
+
+    useEffect(() => {
+        if (currentShowArr.length) {
+            setCurrentShowArr([])
+            setCurrentPart(firstPart)
+        }
     }, [sortingType])
+
+
+
 
 
     return (
@@ -112,9 +131,9 @@ const MoviesPage = () => {
             <PageSection>
                 <div className={classes.specialContainer}>
                     <div className={classes.moviesPageShowFilms}>
-                        {currentShowArr && currentShowArr}
+                        {canRender && currentShowArr}
                     </div>
-                    <div onClick={() => giveMeFilms(queryBody)}>
+                    <div onClick={() => setCurrentPart(state => state + 1)}>
                         <RectangleBtn text={currentBtnText} color='light' />
                     </div>
                 </div>

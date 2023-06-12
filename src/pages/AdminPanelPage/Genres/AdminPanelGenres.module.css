@@ -57,4 +57,43 @@
 
 
 
-.panelContainer {}
+.panelContainer {
+    padding: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+
+.inputMainContainer {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.inputTitle {}
+
+.inputField {
+    height: 25px;
+    padding: 3px 5px;
+}
+
+
+
+.myBtn {
+    height: 30px;
+    border-radius: 8px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.myBtn:hover {
+    background-color: rgb(95, 95, 203);
+}
+
+.myBtn:active {
+    background-color: rgb(177, 61, 61);
+}

@@ -9,7 +9,7 @@ import PageSection from '../../../Components/aKrevs/PageSection/PageSection';
 
 const AdminPanelFilms = () => {
 
-    let authToken = 'Bearer' + ' ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1haWxAbWFpbC5pbyIsImlkIjoxLCJyb2xlIjp7ImlkIjoxLCJuYW1lIjoiQURNSU4iLCJkZXNjcmlwdGlvbiI6ItCw0LTQvNC40L3QuNGB0YLRgNCw0YLQvtGAIiwiY3JlYXRlZEF0IjoiMjAyMy0wNi0wMlQxNzowMToxOC45MTZaIiwidXBkYXRlZEF0IjoiMjAyMy0wNi0wMlQxNzowMToxOC45MTZaIn0sImlhdCI6MTY4NjUxMzcyNSwiZXhwIjoxNjg2NjAwMTI1fQ.JStFncIWwafYslCkPUhDKjMgPn2ys-_dnu7C3EJ-zSo';
+    let authToken = 'Bearer' + ' ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1haWxAbWFpbC5pbyIsImlkIjoxLCJyb2xlIjp7ImlkIjoxLCJuYW1lIjoiQURNSU4iLCJkZXNjcmlwdGlvbiI6ItCw0LTQvNC40L3QuNGB0YLRgNCw0YLQvtGAIiwiY3JlYXRlZEF0IjoiMjAyMy0wNi0wMlQxNzowMToxOC45MTZaIiwidXBkYXRlZEF0IjoiMjAyMy0wNi0wMlQxNzowMToxOC45MTZaIn0sImlhdCI6MTY4NjU5ODIyNiwiZXhwIjoxNjg2Njg0NjI2fQ.uHBFUWJ5-OrApWuq5BWLcg9w8CnTDTIjgYMAZuB5xIc';
 
 
 
@@ -469,7 +469,7 @@ const AdminPanelFilms = () => {
 
                         <div className={classes.inputMainContainer}>
                             <div className={classes.inputTitle}>
-                                id удаялемого фильма:
+                                id удаляемого фильма:
                             </div>
                             <input type="text"
                                 className={classes.inputField}

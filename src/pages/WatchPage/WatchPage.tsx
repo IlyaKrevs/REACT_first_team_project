@@ -25,7 +25,7 @@ export const WatchPage = () => {
   const closeModal = () => {
     setModalOpen(false);
   };
-  
+
   useEffect(() => {
     if (id) {
       const movieId = parseInt(id, 10);

@@ -36,20 +36,16 @@ const AdminPanelPage = () => {
     }
 
 
-
-    let allCountriesSelector = useSelector((state: any) => state.AllData.allServerCountries)
-    let allGenresSelector = useSelector((state: any) => state.AllData.allServerGenres)
-
     useEffect(() => {
         giveMeArrFrom(allCountriesURL)
             .then(item => setAllCountries(item));
-    }, [allCountriesSelector])
+    },)
 
 
     useEffect(() => {
         giveMeArrFrom(allGenresURL)
             .then(item => setAllGenres(item));
-    }, [allGenresSelector])
+    },)
 
     return (
 
@@ -62,17 +58,6 @@ const AdminPanelPage = () => {
             <AdminPanelFilms />
 
             <AdminPanelGenres />
-
-
-
-
-
-
-
-
-
-
-
 
 
 

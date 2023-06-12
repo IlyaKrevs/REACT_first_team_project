@@ -22,3 +22,13 @@
 .btnsGap {
     gap: 10px;
 }
+
+@media (width < 710px) {
+    .smallSize {
+        width: auto;
+    }
+
+    .halfSize {
+        width: auto;
+    }
+}

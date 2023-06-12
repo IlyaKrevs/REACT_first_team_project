@@ -16,3 +16,11 @@
     display: flex;
     gap: 15px;
 }
+
+@media (width < 710px) {
+    .specialContainer {
+        flex-direction: column;
+    }
+
+
+}

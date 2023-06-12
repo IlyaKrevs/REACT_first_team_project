@@ -25,3 +25,10 @@
     line-height: 20px;
     font-weight: 500;
 }
+
+@media (width < 1240px) {
+    .mainContainer {
+        display: none;
+    }
+
+}

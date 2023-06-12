@@ -36,3 +36,9 @@
     line-height: 20px;
 
 }
+
+@media (width < 1240px) {
+    .text {
+        width: 100%;
+    }
+}

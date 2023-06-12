@@ -26,3 +26,15 @@
     top: calc(50% - 20px);
     right: -25px;
 }
+
+
+@media (width < 1240px) {
+    .lenta {
+        overflow: hidden;
+        overflow-x: scroll;
+    }
+
+    .lenta::-webkit-scrollbar {
+        display: none;
+    }
+}

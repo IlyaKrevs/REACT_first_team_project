@@ -7,3 +7,16 @@
     display: flex;
     gap: 10px;
 }
+
+
+@media (width < 710px) {
+    .mainContainer {
+        width: auto;
+    }
+
+    .smallContainer {
+        width: auto;
+        justify-content: center;
+    }
+
+}

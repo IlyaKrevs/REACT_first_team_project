@@ -1,10 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-
 export interface Comment {
   author: string;
   date: string;
-  id: number;
+  id: string;
   text: string;
 }
 
@@ -12,8 +11,15 @@ interface CommentsState {
   comments: Comment[];
 }
 
-const initialState: CommentsState = {
-  comments: [],
+const savedComments = localStorage.getItem('comments');
+const initialStateWithSavedComments: CommentsState = {
+  comments: savedComments ? JSON.parse(savedComments) : [],
+};
+
+const initialState = initialStateWithSavedComments;
+
+const saveCommentsToLocalStorage = (comments: Comment[]) => {
+  localStorage.setItem('comments', JSON.stringify(comments));
 };
 
 const commentsSlice = createSlice({
@@ -22,12 +28,13 @@ const commentsSlice = createSlice({
   reducers: {
     addComment: (state, action: PayloadAction<Comment>) => {
       state.comments.push(action.payload);
+      saveCommentsToLocalStorage(state.comments);
+    },
+    deleteComment: (state, action: PayloadAction<string>) => {
+      state.comments = state.comments.filter(comment => comment.id !== action.payload);
     },
   },
 });
 
-export const { addComment } = commentsSlice.actions;
-
-export const {
-    reducer: commentsSliceReducer,
-} = commentsSlice;
+export const { addComment, deleteComment } = commentsSlice.actions;
+export const commentsSliceReducer = commentsSlice.reducer;

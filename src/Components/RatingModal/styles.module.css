@@ -17,7 +17,7 @@
 .modalContent {
     position: absolute;
     top: 40%;
-    right: 40%;
+    right: 45%;
 }
 
 .ratingContent {
@@ -30,7 +30,6 @@
     top: 32px;
     width: 20px;
     font-weight: 400;
-    font-style: normal;
     font-size: 20px;
     line-height: 20px;
     color: #a5a1b2;

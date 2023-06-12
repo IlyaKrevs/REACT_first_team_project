@@ -7,14 +7,11 @@ import {
 
 
 import { ROUTE } from "./routes";
-import { Layout } from "../Components";
+import { Layout, Modal } from "../Components";
 import { PersonPage, WatchPage } from "../pages";
 import HomePage from "../pages/HomePage/HomePage";
 import MoviesPage from "../pages/MoviesPage/MoviesPage";
 import AdminPanelPage from "../pages/AdminPanelPage/AdminPanelPage";
-
-
-
 
 export const router = createBrowserRouter(
   createRoutesFromElements(

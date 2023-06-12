@@ -38,9 +38,11 @@ body {
   font-size: 100%;
   line-height: 1;
   font-size: 14px;
+
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+
 }
 
 input,
@@ -65,7 +67,6 @@ button::-moz-focus-inner {
 a,
 a:visited {
   text-decoration: none;
-  color: inherit;
 }
 
 a:hover {
@@ -95,10 +96,8 @@ h6 {
   flex-direction: column;
   min-height: 100vh;
   justify-content: space-between;
-
-  background-color: rgba(16, 14, 25, 1);
 }
 
 .slick-track {
-  height: 250px;
+  height: auto;
 }

@@ -1,5 +1,5 @@
 import { Link, generatePath } from 'react-router-dom';
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import { ROUTE } from '../../router';
 import { RatingModal } from '../RatingModal/RatingModal';
 import styles from './styles.module.css';
@@ -44,6 +44,18 @@ export const DescrMovie: FunctionComponent<Props> = ({ nameRU, year, duration, a
     setModalOpen(false);
   };
 
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isModalOpen]);
+  
   return (
     <>
       <div className={styles.descr}>
@@ -70,7 +82,7 @@ export const DescrMovie: FunctionComponent<Props> = ({ nameRU, year, duration, a
             <div className={styles.text}>Рейтинг Иви</div>
           </div>
           {members && members.slice(0, 4).map(({ id, member: { nameRU, imageName }, }) => (
-            <Link to={generatePath(`${ROUTE.HOME + ROUTE.PERSON}`, { id })} className={styles.link}>
+            <Link key={id} to={generatePath(`${ROUTE.HOME + ROUTE.PERSON}`, { id })} className={styles.link}>
               <div className={styles.inner}>
                 <img className={styles.photo} src={`http://localhost:12120/api/members/images/${imageName}`} alt='photo' />
               </div>

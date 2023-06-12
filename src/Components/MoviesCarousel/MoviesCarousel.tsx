@@ -8,8 +8,12 @@ import { useAppSelector } from '../../store';
 import { getMovies } from '../../store/selector';
 
 export const MoviesCarousel = () => {
+
   const [currentSlide, setCurrentSlide] = useState(0);
+
   const movies = useAppSelector(getMovies);
+
+
   const handleSlideChange = (index: number) => {
     setCurrentSlide(index);
   };
@@ -28,7 +32,9 @@ export const MoviesCarousel = () => {
           onClick();
         }}
       >
-        <span className={styles.arrow}>&#8249;</span>
+        <span className={styles.arrow}>
+          &#8249;
+        </span>
       </div>
     );
   };
@@ -47,7 +53,9 @@ export const MoviesCarousel = () => {
           onClick();
         }}
       >
-        <span className={styles.arrow}>&#8250;</span>
+        <span className={styles.arrow}>
+          &#8250;
+        </span>
       </div>
     );
   };
@@ -65,7 +73,7 @@ export const MoviesCarousel = () => {
       nextArrow={<CustomNextArrow onClick={() => { }} />}
     >
       {movies?.map((movie) => (
-        <MovieItem key={movie.id} movie={movie}  />
+        <MovieItem key={movie.id} movie={movie} />
       ))}
     </Slider>
   );

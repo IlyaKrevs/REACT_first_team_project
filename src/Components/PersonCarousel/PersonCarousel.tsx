@@ -28,7 +28,9 @@ export const PersonCarousel = () => {
           onClick();
         }}
       >
-        <span className={styles.arrow}>&#8249;</span>
+        <span className={styles.arrow}>
+          &#8249;
+        </span>
       </div>
     );
   };
@@ -47,7 +49,9 @@ export const PersonCarousel = () => {
           onClick();
         }}
       >
-        <span className={styles.arrow}>&#8250;</span>
+        <span className={styles.arrow}>
+          &#8250;
+        </span>
       </div>
     );
   };

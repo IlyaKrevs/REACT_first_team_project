@@ -3,6 +3,7 @@ import styles from './filmography.module.css';
 import { Link, generatePath } from 'react-router-dom';
 import { ROUTE } from '../../router';
 import { IMovie } from '../../store/types';
+import { useSelector } from 'react-redux';
 
 
 interface IProps {
@@ -11,32 +12,61 @@ interface IProps {
 
 const FilmographyItem: React.FC<IProps> = ({ movie }) => {
 
+    let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian);
+
+    let ratingIviRU = 'Рейтинг Иви:';
+    let ratingIviEN = 'Rating ivi';
+
+    let lookRU = 'Смотреть';
+    let lookEN = 'Look';
+
+    let currentRatingIviText;
+    let currentLookText;
+
+    if (isRussian) {
+        currentRatingIviText = ratingIviRU;
+        currentLookText = lookRU;
+    } else {
+        currentRatingIviText = ratingIviEN;
+        currentLookText = lookEN;
+    }
+
+
     return (
         <Link to={generatePath(`${ROUTE.HOME + ROUTE.WATCH}`, { id: movie.id })} className={styles.item}>
             <div className={styles.photo}>
                 <img src={`http://localhost:12120/api/films/images/${movie.imageName}`}
                     alt='movie' className={styles.img} />
             </div>
+
             <div className={styles.body}>
                 <div className={styles.info}>
                     <div className={styles.year}>
-                        <span>{movie.year}</span>
+                        <span>
+                            {movie.year}
+                        </span>
                     </div>
+
                     <div className={styles.title}>
-                        {movie.nameRU}
+                        {isRussian ? movie.nameRU : movie.nameEN}
                     </div>
+
                     <div className={styles.rating}>
-                        Рейтинг Иви:
+                        {currentRatingIviText + ' '}
+
                         <span>
                             {movie.rating}
                         </span>
+
                     </div>
                 </div>
+
                 <button
                     className={styles.btn}
                 >
-                    Смотреть
+                    {currentLookText}
                 </button>
+
             </div>
         </Link>
     )

@@ -21,5 +21,9 @@
   .nextArrow {
     right: -60px;
   }
+
+  .arrow {
+    color: rgba(255, 255, 255, .72);
+  }
   
   

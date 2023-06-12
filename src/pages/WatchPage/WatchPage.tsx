@@ -1,4 +1,4 @@
-import { Link, generatePath, useParams } from 'react-router-dom';
+import { Link, generatePath, useLocation, useParams } from 'react-router-dom';
 import { AllDevices, Comments, DescrMovie, Person, PlotMovie, Reviews, SelectionCarousel, Trailer, VideoPlayer } from '../../Components';
 import { ROUTE } from '../../router';
 import styles from './styles.module.css';
@@ -10,15 +10,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getMovie, getMovieMembers, getTrailer } from '../../store/selector';
 import { getMovieDetailsMembers } from '../../store/actions/members';
 import { MoviesCarousel } from '../../Components/MoviesCarousel/MoviesCarousel';
+
 import { ModalPage } from '../ModalPage/ModalPage';
 import { useSelector } from 'react-redux';
 
+import { Modal } from '../../Components/Modal/Modal';
+import { selectComments } from '../../store/selector/commentsSelector';
+
+
 export const WatchPage = () => {
   const dispatch = useAppDispatch();
+  const location = useLocation();
   const { id } = useParams();
   const trailer = useAppSelector(getTrailer);
   const movie = useAppSelector(getMovie);
   const members = useAppSelector(getMovieMembers);
+  const comments = useAppSelector(selectComments);
   const [isModalOpen, setModalOpen] = useState(false);
   const openModal = () => {
     setModalOpen(true);
@@ -181,7 +188,11 @@ export const WatchPage = () => {
                 <div className={styles.txt}>{isRussian ? 'Ещё' : 'More'}</div>
               </div>
 
+
               {isModalOpen && movie && <ModalPage closeModal={closeModal} movie={movie} />}
+
+              {isModalOpen && movie && <Modal closeModal={closeModal} />}
+
             </div>}
         </div>
 
@@ -232,6 +243,7 @@ export const WatchPage = () => {
 
 
         <div className={styles.person}>
+
           <div className={styles.list}>
             <div className={styles.wrap}>
               <h2 className={styles.title}>
@@ -264,6 +276,26 @@ export const WatchPage = () => {
           </div>
 
           <Comments />
+
+          <Link
+            to={{ pathname: location.pathname, search: '?tab=Reviews' }} className={styles.linkTitle}>
+            <div className={styles.list}>
+              <div className={styles.wrap}>
+                <h2 className={styles.title}>
+                  <span className={styles.linkTitle} onClick={openModal}>Отзывы</span>
+                  {isModalOpen && movie && <Modal closeModal={closeModal} />}
+                </h2>
+                <div className={styles.quantity}>12</div>
+              </div>
+              <button className={styles.btn} onClick={openModal}>Оставить отзыв</button>
+              {isModalOpen && movie && <Modal closeModal={closeModal} />}
+            </div>
+            <div className={styles.subtitle}>о фильме</div>
+            {comments.map((comment) => (
+              <Comments comment={comment} key={comment.id} />
+            ))}
+          </Link>
+
         </div>
 
 

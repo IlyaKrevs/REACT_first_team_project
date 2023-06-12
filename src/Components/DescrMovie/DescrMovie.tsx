@@ -1,5 +1,5 @@
 import { Link, generatePath } from 'react-router-dom';
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import { ROUTE } from '../../router';
 import { RatingModal } from '../RatingModal/RatingModal';
 import styles from './styles.module.css';
@@ -59,6 +59,7 @@ export const DescrMovie: FunctionComponent<Props> = (
   };
 
 
+
   let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian);
 
   let ratingIviTextRU = 'Рейтинг Иви';
@@ -106,6 +107,20 @@ export const DescrMovie: FunctionComponent<Props> = (
 
 
 
+
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isModalOpen]);
+  
 
   return (
     <>
@@ -163,6 +178,7 @@ export const DescrMovie: FunctionComponent<Props> = (
           </div>
 
 
+
           {members && members.slice(0, 4).map((
             { id,
               member: {
@@ -173,6 +189,10 @@ export const DescrMovie: FunctionComponent<Props> = (
             }) => (
             <Link to={generatePath(`${ROUTE.HOME + ROUTE.PERSON}`, { id })}
               className={styles.link}>
+
+
+          {members && members.slice(0, 4).map(({ id, member: { nameRU, imageName }, }) => (
+            <Link key={id} to={generatePath(`${ROUTE.HOME + ROUTE.PERSON}`, { id })} className={styles.link}>
 
               <div className={styles.inner}>
                 <img className={styles.photo}

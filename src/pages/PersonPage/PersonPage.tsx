@@ -31,6 +31,7 @@ export const PersonPage = () => {
         }
     };
 
+
     let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian)
 
 
@@ -77,10 +78,21 @@ export const PersonPage = () => {
     }
 
 
+
+
     return (
         <section className={styles.personPage}>
             <Wrapper>
+                <div className={styles.container}>
+                    {member && <PersonHeader
+                        name={member.member.nameRU}
+                        avatar={`http://localhost:12120/api/members/images/${member.member.imageName}`}
+                        enName={member.profession.nameRU}
+                        scrollToBiography={scrollToBiography}
+                        closeModal={() => { }} />}
+                </div>
                 <div className={styles.wrapper}>
+
 
 
                     <div className='container'>
@@ -92,6 +104,7 @@ export const PersonPage = () => {
                                 scrollToBiography={scrollToBiography} />}
                         </div>
                     </div>
+
 
 
                     <FullFilmography />

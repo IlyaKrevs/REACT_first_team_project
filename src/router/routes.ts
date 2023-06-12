@@ -4,4 +4,5 @@ export enum ROUTE {
   WATCH = "watch",
   PERSON = "person",
   COMMENTS = "comments",
+  ADMINPANEL = "adminpanel"
 }

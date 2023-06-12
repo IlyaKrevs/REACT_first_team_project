@@ -7,6 +7,7 @@
     gap: 12px;
     margin-bottom: 32px;
     overflow: hidden;
+    border-radius: 8px;
     border-radius: 8px
 }
 
@@ -18,6 +19,7 @@
     padding: 10px;
     border-radius: 8px;
 }
+
 
 .btn {
     background-color: #ea003d;
@@ -33,12 +35,12 @@
         color: #fff;
         background-color: #e1164c8d;
         transition-duration: .4s;
-        
+
     }
 }
 
 .icon {
-    width: 20px; 
+    width: 20px;
     padding: 2px;
     border-radius: 4px;
     color: white;
@@ -51,9 +53,9 @@
     margin-top: 28px;
 }
 
-.vote { 
+.vote {
     display: flex;
-    align-items: center;  
+    align-items: center;
 }
 
 .button {
@@ -72,17 +74,19 @@
     padding-right: 8px;
     min-width: 42px;
     text-align: center;
+
     &:hover {
         color: #73a32f;
     }
 }
 
 .like {
-    color: rgba(126,121,143,.72);
+    color: rgba(126, 121, 143, .72);
     width: 16px;
     height: 16px;
     font-size: 16px;
     line-height: 16px;
+
     &:hover {
         color: #ea003d;
     }

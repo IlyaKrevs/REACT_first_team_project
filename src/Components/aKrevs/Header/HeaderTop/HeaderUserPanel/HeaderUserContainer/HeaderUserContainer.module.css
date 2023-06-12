@@ -3,3 +3,9 @@
     align-items: center;
     gap: 16px;
 }
+
+@media (width < 1240px) {
+    .container {
+        justify-content: space-between;
+    }
+}

@@ -3,3 +3,9 @@
     gap: 12px;
     justify-content: flex-end;
 }
+
+@media (width < 710px) {
+    .socialContainer {
+        justify-content: center;
+    }
+}

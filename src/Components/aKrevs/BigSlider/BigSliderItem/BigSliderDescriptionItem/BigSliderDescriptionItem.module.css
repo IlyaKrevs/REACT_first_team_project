@@ -41,10 +41,17 @@
 }
 
 .ghLink:hover {
-    
+
     color: green;
 }
 
 .ghLink:visited {
     color: unset;
+}
+
+@media (width < 1240px) {
+    .descriptionItem {
+        padding: 25px;
+        white-space: nowrap;
+    }
 }

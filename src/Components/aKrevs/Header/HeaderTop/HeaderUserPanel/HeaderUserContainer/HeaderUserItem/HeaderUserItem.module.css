@@ -21,3 +21,9 @@
         fill: white;
     }
 }
+
+@media (width < 1240px) {
+    .mainContainer {
+        display: none;
+    }
+}

@@ -1,0 +1,65 @@
+.mainContainer {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.createPanel {
+    background-color: #9e8c8c;
+    height: 500px;
+    width: 50%;
+}
+
+.readPanel {
+    background-color: rgb(56, 56, 171);
+    height: 500px;
+    width: 50%;
+}
+
+.updatePanel {
+    background-color: rgb(95, 167, 59);
+    height: 500px;
+    width: 50%;
+}
+
+.deletePanel {
+    background-color: rgb(175, 73, 166);
+    height: 500px;
+    width: 50%;
+}
+
+
+.info {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    gap: 10px;
+}
+
+.localTitle {
+    color: white;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.infoItemContainer {
+    width: 100%;
+
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.infoItem {
+    width: 240px;
+
+    padding: 5px;
+    background-color: #cac3c3;
+    border-radius: 4px;
+}
+
+
+.bigTitle {
+    color: white;
+}

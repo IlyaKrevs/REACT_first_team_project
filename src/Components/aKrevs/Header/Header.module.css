@@ -3,3 +3,10 @@
     position: relative;
     margin: 0 auto;
 }
+
+
+@media (width < 1240px) {
+    .headerContainer {
+        width: 100%;
+    }
+}

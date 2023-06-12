@@ -30,6 +30,10 @@ export const RatingModal = ({ closeModal }: IProps) => {
         } else {
             document.body.style.overflow = '';
         }
+
+        return () => {
+            document.body.style.overflow = '';
+        };
     }, [ratingAccepted]);
 
     return (

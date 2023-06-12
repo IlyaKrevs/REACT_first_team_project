@@ -8,20 +8,35 @@ import { setCurrentViewScreen } from '../../../../../store/slice/MoviesPageSlice
 import FiltersRadioContainer from '../../FiltersRadioContainer/FiltersRadioContainer';
 
 interface FilterItemDropDownListProps {
-    basicTitle: string,
+    globalValue: number[],
+    basicTitle: {
+        nameRU: string,
+        nameEN: string,
+    },
+    showValue: {
+        id: number,
+        nameRU: string,
+        nameEN: string,
+    }[],
     dropDownType: 'checkbox' | 'radio',
+    callback: (arg: number[]) => void,
 }
 
-const FilterItemDropDownList = ({ basicTitle, dropDownType }: FilterItemDropDownListProps) => {
+const FilterItemDropDownList = ({ globalValue, basicTitle, showValue, dropDownType, callback }: FilterItemDropDownListProps) => {
 
     let currentViewScreen = useSelector((state: any) => state.MoviesFilterBy.currentViewScreen);
     let dispatch = useDispatch();
 
 
+    let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian);
+
+    let currentTitle;
+    currentTitle = isRussian ? basicTitle.nameRU : basicTitle.nameEN;
+
 
     let isOpen;
     let arrowDirection;
-    if (currentViewScreen === basicTitle) {
+    if (currentViewScreen === currentTitle) {
         isOpen = classes.isOpenStyle
         arrowDirection = 'up'
     } else {
@@ -30,12 +45,19 @@ const FilterItemDropDownList = ({ basicTitle, dropDownType }: FilterItemDropDown
 
 
 
-    const { useState } = React;
+    const { useState, useEffect } = React;
 
-    let emptyArr: string[] = [];
-    let [localCheckBoxValue, setLocalCheckboxValue] = useState(emptyArr);
+    let emptyArr: number[] = [];
+    let [localCheckBoxValue, setLocalCheckboxValue] = useState(globalValue.length ? globalValue : emptyArr);
 
-    function setLocalFiltersCALLBACK(value: string): void {
+
+
+
+
+
+
+
+    function setLocalFiltersCALLBACK(value: number): void {
         let myArr = [...localCheckBoxValue];
         if (myArr.includes(value)) {
             myArr = myArr.filter(item => item !== value)
@@ -46,23 +68,65 @@ const FilterItemDropDownList = ({ basicTitle, dropDownType }: FilterItemDropDown
         }
     }
 
-    let [localRadioValue, setLocalRadioValue] = useState('');
+    let firstLocalRadioValue: number | null = null;
+    let [localRadioValue, setLocalRadioValue] = useState(firstLocalRadioValue);
 
-    function setLocalRadioValueCALLBACK(arg: string) {
+    function setLocalRadioValueCALLBACK(arg: any) {
         setLocalRadioValue(arg)
     }
+
+
+
+
+    useEffect(() => {
+
+        callback(localCheckBoxValue)
+
+    }, [localCheckBoxValue])
+
+    useEffect(() => {
+        if (!globalValue.length) {
+            setLocalCheckboxValue(globalValue)
+        }
+    }, [globalValue])
+
+
+    function createShowTextArr(idArr: number[], fullObj: {
+        id: number,
+        nameRU: string,
+        nameEN: string,
+    }[]) {
+
+        let currentShowTextArr: string[] = [];
+
+
+        for (let i = 0; i < idArr.length; i++) {
+            for (let j = 0; j < fullObj.length; j++) {
+
+                if (idArr[i] === fullObj[j].id) {
+                    currentShowTextArr.push(isRussian ? fullObj[j].nameRU : fullObj[j].nameEN)
+                }
+            }
+        }
+
+        return currentShowTextArr
+    }
+
 
     return (
         <div onClick={(e) => {
             e.stopPropagation();
-            dispatch(setCurrentViewScreen({ value: basicTitle }))
+            dispatch(setCurrentViewScreen({ value: basicTitle.nameEN }))
         }}
             className={[classes.mainContainer, isOpen].join(' ')}>
             <div className={classes.basicContent}>
                 <div className={classes.basicTitle}>
-                    {basicTitle}
+                    {currentTitle}
                     <div className={classes.subTitle}>
-                        {localCheckBoxValue.join(', ') || localRadioValue}
+                        {createShowTextArr(localCheckBoxValue, showValue)
+                            .map(item => item[0].toUpperCase() + item.slice(1))
+                            .sort()
+                            .join(', ') || localRadioValue}
                     </div>
                 </div>
 
@@ -70,19 +134,20 @@ const FilterItemDropDownList = ({ basicTitle, dropDownType }: FilterItemDropDown
             </div>
 
 
-            {currentViewScreen === basicTitle &&
+            {currentViewScreen === basicTitle.nameEN &&
                 <div className={classes.dropDownContainer}>
                     {dropDownType === 'checkbox' &&
                         <FiltersCheckboxContainer
                             callback={setLocalFiltersCALLBACK}
                             currentState={localCheckBoxValue}
+                            showValue={showValue}
                         />}
 
-                    {dropDownType === 'radio' &&
+                    {/* {dropDownType === 'radio' &&
                         <FiltersRadioContainer
                             callback={setLocalRadioValueCALLBACK}
                             currentState={localRadioValue}
-                        />}
+                        />} */}
                 </div>
             }
         </div>

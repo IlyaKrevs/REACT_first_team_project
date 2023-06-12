@@ -1,13 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const MoviesFilterBy = createSlice({
     name: 'filtersBy',
     initialState: {
         currentViewScreen: '',
-        currentFiltersParams: [],
+        currentGenresParams: '',
+        currentCountryParams: '',
+        currentStartRatingParams: 1,
+        currentCountRatingParams: 1,
+        currentDirectorFilmParams: {},
+        currentActorParams: {},
         currentSortParams: {
-            showText: 'По рейтингу',
-            queryParam: 'ratign',
+            showText: 0,
+            queryParam: 'rating',
         },
     },
     reducers: {
@@ -17,14 +23,25 @@ const MoviesFilterBy = createSlice({
         resetCurrentViewScreen: (state: any, action) => {
             state.currentViewScreen = '';
         },
-        setCurrentFiltersParams: (state: any, action) => {
-            if (state.currentFiltersParams.find((item: string) => item === action.payload.value)) {
-                state.currentFiltersParams = state.currentFiltersParams.filter((item: string) => item !== action.payload.value).sort();
-            } else {
-                state.currentFiltersParams.push(action.payload.value);
-                state.currentFiltersParams = state.currentFiltersParams.sort();
-            }
+        setCurrentGenresParams: (state: any, action) => {
+            state.currentGenresParams = action.payload.value;
         },
+        setCurrentCountryParams: (state: any, action) => {
+            state.currentCountryParams = action.payload.value;
+        },
+        setCurrentStartRatingParams: (state: any, action) => {
+            state.currentStartRatingParams = action.payload.value;
+        },
+        setCurrentCountRatignParams: (state: any, action) => {
+            state.currentCountRatingParams = action.payload.value;
+        },
+        setCurrentDirectorFilmParams: (state: any, action) => {
+            state.currentDirectorFilmParams = action.payload.value;
+        },
+        setCurrentActorParams: (state: any, action) => {
+            state.currentActorParams = action.payload.value;
+        },
+
         setCurrentSortParams: (state: any, action) => {
             state.currentSortParams = action.payload.value;
         },
@@ -32,5 +49,5 @@ const MoviesFilterBy = createSlice({
 });
 
 
-export const { setCurrentViewScreen, resetCurrentViewScreen, setCurrentFiltersParams, setCurrentSortParams } = MoviesFilterBy.actions;
+export const { setCurrentViewScreen, resetCurrentViewScreen, setCurrentGenresParams, setCurrentCountryParams, setCurrentStartRatingParams, setCurrentCountRatignParams, setCurrentDirectorFilmParams, setCurrentActorParams, setCurrentSortParams } = MoviesFilterBy.actions;
 export default MoviesFilterBy.reducer;

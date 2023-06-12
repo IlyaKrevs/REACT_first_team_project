@@ -2,32 +2,39 @@ import { useState } from 'react';
 import styles from './styles.module.css';
 import { AllPersons } from '../AllPersons/AllPersons';
 import { Form } from '../Form/Form';
+import { Link, Location, useLocation } from 'react-router-dom';
 
 export const TabsModal = () => {
-  const [activeTab, setActiveTab] = useState('Creators');
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState(getActiveTabFromUrl(location));
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
   };
+  function getActiveTabFromUrl(location: Location) {
+    const searchParams = new URLSearchParams(location.search);
+    return searchParams.get('tab') || 'Creators';
+  }
 
   return (
     <div>
       <div className={styles.tabs}>
-        <div
+        <Link
+          to={{ pathname: location.pathname, search: '?tab=Creators' }}
           className={`${styles.tab} ${activeTab === 'Creators' ? styles.active : ''}`}
           onClick={() => handleTabClick('Creators')}
         >
           Создатели
-        </div>
-        <div
+        </Link>
+        <Link
+          to={{ pathname: location.pathname, search: '?tab=Reviews' }}
           className={`${styles.tab} ${activeTab === 'Reviews' ? styles.active : ''}`}
           onClick={() => handleTabClick('Reviews')}
         >
           Отзывы
-        </div>
+        </Link>
       </div>
-
       {activeTab === 'Creators' && <AllPersons />}
-      {activeTab === 'Reviews' && <Form/>}
+      {activeTab === 'Reviews' && <Form />}
     </div>
   );
 };

@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
 import classes from './FilmCard.module.css'
 import FilmCardImageSection from './ImageSection/FilmCardImageSection';
 import FilmCardTextSection from './TextSection/FilmCardTextSection';
+import { ROUTE } from '../../../router/routes';
 
 
 export interface FilmCardProps {
@@ -37,12 +39,14 @@ const FilmCard = ({ fullObj }: FilmCardProps) => {
 
 
     return (
-        <div className={classes.item}>
+        <Link to={`${ROUTE.HOME}${ROUTE.WATCH}/${fullObj.id}`}>
+            <div className={classes.item}>
 
-            <FilmCardImageSection fullObj={fullObj} />
+                <FilmCardImageSection fullObj={fullObj} />
 
-            <FilmCardTextSection fullObj={fullObj} />
-        </div>
+                <FilmCardTextSection fullObj={fullObj} />
+            </div>
+        </Link>
     );
 };
 

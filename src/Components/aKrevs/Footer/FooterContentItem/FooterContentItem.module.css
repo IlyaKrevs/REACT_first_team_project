@@ -3,3 +3,13 @@
     padding: 48px 0;
     border-top: 1px solid hsla(0, 0%, 100%, .1);
 }
+
+
+@media (width < 710px) {
+    .content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+}

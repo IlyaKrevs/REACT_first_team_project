@@ -31,3 +31,34 @@
     width: 40%;
     z-index: 55;
 }
+
+
+
+@media (width < 1240px) {
+    .logoContainer {
+        display: none;
+    }
+
+    .headerTop {
+        gap: 20px;
+    }
+
+    .leftContainer {
+        gap: 0;
+    }
+}
+
+
+@media (width < 710px) {
+    .headerTop {
+        flex-direction: column;
+        padding: 12px;
+        height: 100%;
+    }
+
+    .rightContainer {
+        width: 100%;
+        z-index: 55;
+        order: -1;
+    }
+}

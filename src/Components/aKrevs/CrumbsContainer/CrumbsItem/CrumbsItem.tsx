@@ -1,19 +1,23 @@
 import React from 'react';
 import classes from './CrumbsItem.module.css';
+import { Link } from 'react-router-dom';
 
 interface CrumbsItemProps {
-    text: string,
-    link?: string | null,
+    text: string | null,
+    link?: boolean,
+    linkTo: string,
 }
 
-const CrumbsItem = ({ text, link }: CrumbsItemProps) => {
+const CrumbsItem = ({ text, link, linkTo }: CrumbsItemProps) => {
     return (
         <li className={classes.crumbsLiItem}>
 
             {!link ? text :
-                <a className={classes.crumbsLink} href={link}>
+                <Link
+                    className={classes.crumbsLink}
+                    to={linkTo}>
                     {text}
-                </a>
+                </Link>
             }
         </li>
     );

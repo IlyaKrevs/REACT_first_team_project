@@ -20,8 +20,9 @@ const FiltersCheckboxContainer = ({ callback, showValue, currentState }: Filters
 
     return (
         <div className={classes.mainContainer}>
-            {showValue.map(item => {
+            {showValue.map((item, index) => {
                 return <FiltersCheckboxItem
+                    key={index}
                     fullObj={item}
                     callback={callback}
                     currentState={currentState}

@@ -8,3 +8,10 @@
     width: 1240px;
     margin: 0 auto;
 }
+
+@media (width < 1240px) {
+    .innerContainer {
+        width: 100%;
+        padding: 0 12px;
+    }
+}

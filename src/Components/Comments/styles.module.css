@@ -6,9 +6,9 @@
     vertical-align: top;
     white-space: initial;
     background-color: #1f1b2e;
-    margin: 20px 0;
+    margin: 20px 20px 10px 0;
     border-radius: 8px;
-    padding: 20px 20px 52px;
+    padding: 20px;
     overflow: hidden;
 }
 
@@ -40,9 +40,6 @@
 }
 
 .date {
-    position: absolute;
-    left: 20px;
-    bottom: 20px;
     color: #a5a1b2;
     font-size: 13px;
     line-height: 16px;
@@ -51,7 +48,6 @@
 }
 
 .vote {
-    position: absolute;
     right: 20px;
     bottom: 20px;  
     display: flex;  
@@ -87,4 +83,23 @@
     &:hover {
         color: rgba(122, 116, 142, 0.92);
     }
+}
+
+.wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    width: 20px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: #a5a1b2;
+    background-color: transparent;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
 }

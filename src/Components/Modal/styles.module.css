@@ -65,6 +65,8 @@
 }
 
 .close {
+    position: relative;
+    left: 20px;
     color: rgba(255, 255, 255, .72);
     width: 50px;
     color: rgba(255, 255, 255, .72);

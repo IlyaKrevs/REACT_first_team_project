@@ -125,3 +125,8 @@ input {
         transition-duration: .4s;
     }
 }
+
+.container {
+    width: 50%;
+    margin-left: 0;
+}

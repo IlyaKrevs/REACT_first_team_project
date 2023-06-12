@@ -27,19 +27,19 @@ export const PersonPage = () => {
         }
     };
 
+
     return (
         <section className={styles.personPage}>
             <Wrapper>
+                <div className={styles.container}>
+                    {member && <PersonHeader
+                        name={member.member.nameRU}
+                        avatar={`http://localhost:12120/api/members/images/${member.member.imageName}`}
+                        enName={member.profession.nameRU}
+                        scrollToBiography={scrollToBiography}
+                        closeModal={() => { }} />}
+                </div>
                 <div className={styles.wrapper}>
-                    <div className='container'>
-                        <div className={styles.container}>
-                            {member && <PersonHeader
-                                name={member.member.nameRU}
-                                avatar={`http://localhost:12120/api/members/images/${member.member.imageName}`}
-                                enName={member.profession.nameRU}
-                                scrollToBiography={scrollToBiography} />}
-                        </div>
-                    </div>
                     <FullFilmography />
                     <div className={styles.biography}>
                         <h2 ref={biographyRef} className={styles.title}>Биография</h2>

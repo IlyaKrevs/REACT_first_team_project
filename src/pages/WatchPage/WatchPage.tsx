@@ -1,4 +1,4 @@
-import { Link, generatePath, useParams } from 'react-router-dom';
+import { Link, generatePath, useLocation, useParams } from 'react-router-dom';
 import { AllDevices, Comments, DescrMovie, Person, PlotMovie, Reviews, SelectionCarousel, Trailer, VideoPlayer } from '../../Components';
 import { ROUTE } from '../../router';
 import styles from './styles.module.css';
@@ -10,14 +10,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getMovie, getMovieMembers, getTrailer } from '../../store/selector';
 import { getMovieDetailsMembers } from '../../store/actions/members';
 import { MoviesCarousel } from '../../Components/MoviesCarousel/MoviesCarousel';
-import { ModalPage } from '../ModalPage/ModalPage';
+import { Modal } from '../../Components/Modal/Modal';
+import { selectComments } from '../../store/selector/commentsSelector';
 
 export const WatchPage = () => {
   const dispatch = useAppDispatch();
+  const location = useLocation();
   const { id } = useParams();
   const trailer = useAppSelector(getTrailer);
   const movie = useAppSelector(getMovie);
   const members = useAppSelector(getMovieMembers);
+  const comments = useAppSelector(selectComments);
   const [isModalOpen, setModalOpen] = useState(false);
   const openModal = () => {
     setModalOpen(true);
@@ -25,7 +28,7 @@ export const WatchPage = () => {
   const closeModal = () => {
     setModalOpen(false);
   };
-  
+
   useEffect(() => {
     if (id) {
       const movieId = parseInt(id, 10);
@@ -77,7 +80,7 @@ export const WatchPage = () => {
               <div className={styles.more_text} onClick={openModal}>
                 <div className={styles.txt}>Ещё</div>
               </div>
-              {isModalOpen && movie && <ModalPage closeModal={closeModal} movie={movie} />}
+              {isModalOpen && movie && <Modal closeModal={closeModal} />}
             </div>}
         </div>
         <div className={styles.person}>
@@ -101,21 +104,24 @@ export const WatchPage = () => {
           <PlotMovie />
         </div>
         <div className={styles.person}>
-          <div className={styles.list}>
-            <div className={styles.wrap}>
-              <h2 className={styles.title}>
-                <Link to={ROUTE.PERSON} className={styles.linkTitle}>
-                  <span className={styles.linkTitle}>Отзывы</span>
-                </Link>
-              </h2>
-              <div className={styles.quantity}>12</div>
+          <Link
+            to={{ pathname: location.pathname, search: '?tab=Reviews' }} className={styles.linkTitle}>
+            <div className={styles.list}>
+              <div className={styles.wrap}>
+                <h2 className={styles.title}>
+                  <span className={styles.linkTitle} onClick={openModal}>Отзывы</span>
+                  {isModalOpen && movie && <Modal closeModal={closeModal} />}
+                </h2>
+                <div className={styles.quantity}>12</div>
+              </div>
+              <button className={styles.btn} onClick={openModal}>Оставить отзыв</button>
+              {isModalOpen && movie && <Modal closeModal={closeModal} />}
             </div>
-            <Link to={ROUTE.COMMENTS} className={styles.linkTitle}>
-              <button className={styles.btn}>Оставить отзыв</button>
-            </Link>
-          </div>
-          <div className={styles.subtitle}>о фильме</div>
-          <Comments />
+            <div className={styles.subtitle}>о фильме</div>
+            {comments.map((comment) => (
+              <Comments comment={comment} key={comment.id} />
+            ))}
+          </Link>
         </div>
         <div className={styles.person}>
           <div className={styles.list}>

@@ -24,6 +24,8 @@ export * from "./MovieItem/MovieItem";
 export * from "./TabsModal/TabsModal";
 export * from "./AllPersons/AllPersons";
 export * from "./Form/Form";
+export * from "./Modal/Modal";
+
 
 
 

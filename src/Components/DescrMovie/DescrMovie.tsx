@@ -274,7 +274,7 @@ export const DescrMovie: FunctionComponent<Props> = (
         <div className={styles.ratingWrap}>
 
           <div className={styles.figure}>
-            {rating}
+            {Math.round(rating * 10) / 10}
           </div>
 
           <div className={styles.ratingIvi}>

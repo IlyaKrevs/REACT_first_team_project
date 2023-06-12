@@ -2,3 +2,10 @@
     display: flex;
     gap: 12px;
 }
+
+@media (width < 710px) {
+    .mainContainer {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

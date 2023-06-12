@@ -3,6 +3,7 @@ import classes from './CrumbsContainer.module.css';
 import CrumbsItem from './CrumbsItem/CrumbsItem';
 import TitleText from '../Text/TitleText/TitleText';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 interface CrumbsContainerProps {
 
@@ -17,7 +18,7 @@ type localUsageArr = {
 const CrumbsContainer = () => {
 
 
-    let myArr = ['Мой Иви', 'Фильмы', 'Казино', 'Блекджек',];
+
 
     let basicTitlesRU = ['Все жанры', 'Все страны',]
     let basicTitlesEN = ['All genres', 'All countries',]
@@ -32,14 +33,9 @@ const CrumbsContainer = () => {
         showTitleArr = basicTitlesEN;
     }
 
-    let mapArr = [];
+    let mapArr: any[] = [];
 
-    for (let i = 0; i < myArr.length; i++) {
-        mapArr.push({
-            text: myArr[i],
-            link: myArr[i],
-        })
-    }
+
 
     let allGenresSelector = useSelector((state: any) => state.AllData.allServerGenres)
     let allCountriesSelector = useSelector((state: any) => state.AllData.allServerCountries)
@@ -87,11 +83,6 @@ const CrumbsContainer = () => {
 
 
 
-
-
-
-
-
     function createArrForURL(startArr: any) {
         let myArr;
         if (Array.isArray(startArr)) {
@@ -113,7 +104,6 @@ const CrumbsContainer = () => {
 
 
     function createFinalLink(genresArr: any, countriesArr: any) {
-
         let finalArr;
 
         if (genresArr.length && countriesArr.length) {
@@ -124,30 +114,48 @@ const CrumbsContainer = () => {
             finalArr = countriesArr.join('+');
         }
 
-
-        return finalArr
+        return (finalArr ? finalArr : '')
     }
 
-    console.log(createFinalLink(myGenresLink, myCountriesLink))
 
 
-
-
-    // let linkHistory = useNavigate();
+    let linkHistory = useNavigate();
     const { useEffect } = React;
 
-    // useEffect(() => {
-    //     console.log([currentGenresSelector.length ? [currentGenresSelector].join('+') : null, currentCountriesSelector ? [currentCountriesSelector].join('+') : null].join('/'))
-    // }, [currentGenresSelector, currentCountriesSelector])
+    useEffect(() => {
+        if (createFinalLink(myGenresLink, myCountriesLink).length) {
+            linkHistory('filters/' + createFinalLink(myGenresLink, myCountriesLink))
+        } else {
+            linkHistory('')
+        }
+    }, [currentGenresSelector, currentCountriesSelector])
 
+    let myArr: any = ['Мой Иви', 'Фильмы', createShowElems(allChosenGenresArr).length ? createShowElems(allChosenGenresArr) : null];
 
+    for (let i = 0; i < myArr.length; i++) {
+        mapArr.push({
+            text: myArr[i],
+        })
+        mapArr = mapArr.filter(item => item.text !== null)
+    }
 
 
     return (
         <div className={classes.mainContainer}>
             <ul className={classes.crumbsUL}>
-                {mapArr.map((item, index) => {
-                    return <CrumbsItem key={index} text={item.text} link={item.link} />
+                {mapArr.map((item, index, arr) => {
+                    let linkValue = true;
+                    if (index === arr.length - 1) {
+                        linkValue = false
+                    }
+                    let linkToValue: string = '';
+                    if (index === 0) {
+                        linkToValue = '/';
+                    } else if (index === 1) {
+                        linkToValue = '/movies'
+                    }
+
+                    return <CrumbsItem key={index} text={item.text} link={linkValue} linkTo={linkToValue} />
                 }
                 )}
             </ul>

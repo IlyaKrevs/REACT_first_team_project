@@ -63,3 +63,12 @@
 .englishChoose {
     margin-left: 35px;
 }
+
+
+@media (width < 1240px) {
+    .mainContainer {
+
+        margin: 0;
+        gap: 10px;
+    }
+}

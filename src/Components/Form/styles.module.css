@@ -13,16 +13,14 @@
     width: 100%;
     height: 40px;
     overflow: hidden;
-    border-radius: 8px
-}
-
-input {
+    border-radius: 8px;
     background-color: #d9d7e0;
     color: #1f1b2e;
     width: 100%;
     height: 40px;
     padding: 10px;
 }
+
 
 .btn {
     background-color: #ea003d;
@@ -38,12 +36,12 @@ input {
         color: #fff;
         background-color: #e1164c8d;
         transition-duration: .4s;
-        
+
     }
 }
 
 .icon {
-    width: 20px; 
+    width: 20px;
     padding: 2px;
     border-radius: 4px;
     color: white;
@@ -62,9 +60,9 @@ input {
     margin-top: 28px;
 }
 
-.vote { 
+.vote {
     display: flex;
-    align-items: center;  
+    align-items: center;
 }
 
 .button {
@@ -83,17 +81,19 @@ input {
     padding-right: 8px;
     min-width: 42px;
     text-align: center;
+
     &:hover {
         color: #73a32f;
     }
 }
 
 .like {
-    color: rgba(126,121,143,.72);
+    color: rgba(126, 121, 143, .72);
     width: 16px;
     height: 16px;
     font-size: 16px;
     line-height: 16px;
+
     &:hover {
         color: #ea003d;
     }

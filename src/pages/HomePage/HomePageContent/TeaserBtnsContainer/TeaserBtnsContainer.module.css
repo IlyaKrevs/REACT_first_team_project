@@ -2,3 +2,9 @@
     display: flex;
     gap: 20px;
 }
+
+@media (width < 1240px) {
+    .teaserBtnsContainer {
+        display: none;
+    }
+}

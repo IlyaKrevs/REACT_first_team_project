@@ -1,4 +1,4 @@
-import { Link, generatePath, useParams } from 'react-router-dom';
+import { Link, generatePath, useLocation, useParams } from 'react-router-dom';
 import { AllDevices, Comments, DescrMovie, Person, PlotMovie, Reviews, SelectionCarousel, Trailer, VideoPlayer } from '../../Components';
 import { ROUTE } from '../../router';
 import styles from './styles.module.css';
@@ -7,11 +7,13 @@ import { useEffect, useState } from 'react';
 import { getAllMovies, getMovieDetails, getMovieInfo, useAppDispatch, useAppSelector } from '../../store';
 import { Wrapper } from '../../Components/Wrapper/Wrapper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { getMovie, getMovieMembers, getTrailer } from '../../store/selector';
+import { getMember, getMovie, getMovieMembers, getTrailer } from '../../store/selector';
 import { getMovieDetailsMembers } from '../../store/actions/members';
 import { MoviesCarousel } from '../../Components/MoviesCarousel/MoviesCarousel';
-import { ModalPage } from '../ModalPage/ModalPage';
 import { useSelector } from 'react-redux';
+import { Modal } from '../../Components/Modal/Modal';
+import { selectComments } from '../../store/selector/commentsSelector';
+import { getComments } from '../../store/actions/comments';
 
 export const WatchPage = () => {
   const dispatch = useAppDispatch();
@@ -19,7 +21,10 @@ export const WatchPage = () => {
   const trailer = useAppSelector(getTrailer);
   const movie = useAppSelector(getMovie);
   const members = useAppSelector(getMovieMembers);
+  const member = useAppSelector(getMember);
   const [isModalOpen, setModalOpen] = useState(false);
+  const location = useLocation();
+  const comments = useAppSelector(selectComments);
   const openModal = () => {
     setModalOpen(true);
   };
@@ -34,11 +39,9 @@ export const WatchPage = () => {
       dispatch(getMovieInfo(movieId));
       dispatch(getMovieDetailsMembers(movieId));
       dispatch(getAllMovies(1));
+      dispatch(getComments(movieId));
     }
   }, [dispatch, id]);
-
-  let test = 'asdasd';
-
 
   let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian)
 
@@ -173,7 +176,7 @@ export const WatchPage = () => {
 
           {members &&
             <div className={styles.more}>
-              <Link to={generatePath(`${ROUTE.HOME + ROUTE.PERSON}`, { id })} className={styles.linkTitle}>
+              <Link to={generatePath(`${ROUTE.HOME + ROUTE.PERSON}`, { id: member?.id })} className={styles.linkTitle}>
                 <Person />
               </Link>
 
@@ -181,7 +184,7 @@ export const WatchPage = () => {
                 <div className={styles.txt}>{isRussian ? 'Ещё' : 'More'}</div>
               </div>
 
-              {isModalOpen && movie && <ModalPage closeModal={closeModal} movie={movie} />}
+              {isModalOpen && movie && <Modal closeModal={closeModal} />}
             </div>}
         </div>
 
@@ -237,11 +240,12 @@ export const WatchPage = () => {
               <h2 className={styles.title}>
 
 
-                <Link to={ROUTE.PERSON} className={styles.linkTitle}>
+                <div className={styles.linkTitle} onClick={openModal}>
                   <span className={styles.linkTitle}>
                     {currentReviewsText}
                   </span>
-                </Link>
+                  {isModalOpen && movie && <Modal closeModal={closeModal} />}
+                </div>
 
               </h2>
 
@@ -251,21 +255,24 @@ export const WatchPage = () => {
 
             </div>
 
-            <Link to={ROUTE.COMMENTS} className={styles.linkTitle}>
-              <button className={styles.btn}>
-                {currentFeedbackText}
-              </button>
-            </Link>
+            <button className={styles.btn} onClick={openModal}>
+              {currentFeedbackText}
+            </button>
+            {isModalOpen && movie && <Modal closeModal={closeModal} />}
 
           </div>
 
           <div className={styles.subtitle}>
             {currentAboutFilmText}
           </div>
+          <Link
+            to={{ pathname: location.pathname, search: '?tab=Reviews' }} className={styles.linkTitle}>
+            {comments && comments.map((comment) => (
+              <Comments key={comment.id} comment={comment} />
+            ))}
 
-          <Comments />
+          </Link>
         </div>
-
 
 
         <div className={styles.person}>

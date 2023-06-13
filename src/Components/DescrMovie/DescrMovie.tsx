@@ -4,7 +4,7 @@ import { ROUTE } from '../../router';
 import { RatingModal } from '../RatingModal/RatingModal';
 import styles from './styles.module.css';
 import { useAppSelector } from '../../store';
-import { getText } from '../../store/selector';
+import { getMember, getText } from '../../store/selector';
 import { Country, Genre, IMovieDetails, MovieDetailsMembers } from '../../store/types';
 import { useSelector } from 'react-redux';
 
@@ -40,10 +40,10 @@ export const DescrMovie: FunctionComponent<Props> = (
       nameRU: countryNameRU,
       nameEN: countryNameEN,
     },
-    members,
-    imageName }) => {
+    members}) => {
   const [showDetails, setShowDetails] = useState(false);
   const text = useAppSelector(getText);
+  const member = useAppSelector(getMember);
   const toggleDetails = () => {
     setShowDetails(!showDetails);
   };
@@ -171,8 +171,7 @@ export const DescrMovie: FunctionComponent<Props> = (
                 nameEN
               },
             }) => (
-            <Link to={generatePath(`${ROUTE.HOME + ROUTE.PERSON}`, { id })}
-              className={styles.link}>
+              <Link to={generatePath(`${ROUTE.HOME + ROUTE.PERSON}`, { id: member?.id })} className={styles.link}>
 
               <div className={styles.inner}>
                 <img className={styles.photo}

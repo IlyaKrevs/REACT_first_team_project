@@ -170,21 +170,4 @@
     }
 }
 
-.enter {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    align-items: baseline;
-    color: #a5a1b2;
-   
-
-    & > a {
-      font-size: inherit;
-      line-height: inherit;
-      color: #a5a1b2;
-      &:hover {
-        color: #fff;
-        font-size: 18px; 
-      }
-    }
-  }
+  

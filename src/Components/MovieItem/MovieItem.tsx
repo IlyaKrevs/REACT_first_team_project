@@ -12,8 +12,6 @@ export const MovieItem = ({ movie }: IProps) => {
 
     let isRussian = useSelector((state: any) => state.LanguageSwitch.isRussian)
 
-
-
     return (
         <div className={styles.movie}>
             <Link to={generatePath(`${ROUTE.HOME + ROUTE.WATCH}` + '/' + movie.id)}>

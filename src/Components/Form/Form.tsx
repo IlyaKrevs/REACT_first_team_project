@@ -2,56 +2,41 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './styles.module.css';
 import { faThumbsDown, faThumbsUp, faUser } from '@fortawesome/free-regular-svg-icons';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../store';
 import { selectComments } from '../../store/selector/commentsSelector';
-import { addComment } from '../../store/slice/commentsSlice';
-
-interface Comment {
-    id: number;
-    text: string;
-    author: string;
-    date: string;
-}
 
 export const Form = () => {
     const [value, setValue] = useState('');
-    const dispatch = useDispatch();
     const comments = useAppSelector(selectComments);
-
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
     };
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (event: any) => {
         event.preventDefault();
-        const newComment: Comment = {
-            id: comments.length + 1,
-            text: value,
-            author: 'Ольга',
-            date: '9 октября 2017',
-        };
-        dispatch(addComment(newComment));
-        setValue('');
+        const newComment: Comment[] = [];
     };
 
     return (
         <div className={styles.reviews}>
-            <form className={styles.form} onSubmit={handleSubmit}>
+            <div className={styles.comment}>
                 <FontAwesomeIcon icon={faUser} className={styles.icon} />
-                <div className={styles.input}>
-                    <input type='text' value={value} onChange={handleChange} placeholder='Расскажите первым о персоне' />
-                </div>
-                <button className={styles.btn} type="submit">Отправить</button>
-            </form>
-            {comments.length > 0 && (
+                <input type='text' value={value} placeholder='Расскажите первым о персоне' className={styles.review} onChange={handleChange} />
+                <button className={styles.btn} type="submit" onClick={handleSubmit}>Отправить</button>
+            </div>
                 <ul className={styles.comments}>
-                    {comments.map((comment) => (
+                    {comments?.map((comment) => (
                         <li key={comment.id} className={styles.item}>
                             <div className={styles.wrap}>
                                 <FontAwesomeIcon icon={faUser} className={styles.icon} />
                                 <div className={styles.wrapper}>
-                                    <div className={styles.name}>{comment.author} {comment.date}</div>
+                                    <div className={styles.list}>
+                                        <div className={styles.author}>{comment.idUser}</div>
+                                        <div className={styles.date}>{comment.idFilm}</div>
+                                        <button className={styles.button}>
+                                            &times;
+                                        </button>
+                                    </div>                                    
                                     <div className={styles.text}>{comment.text}</div>
                                 </div>
                             </div>
@@ -67,7 +52,6 @@ export const Form = () => {
                         </li>
                     ))}
                 </ul>
-            )}
         </div>
     );
 };

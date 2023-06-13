@@ -2,25 +2,22 @@
     display: block;
 }
 
-.form {
+.comment {
     display: flex;
     gap: 12px;
     margin-bottom: 32px;
-    width: 100%;
+    overflow: hidden;
+    border-radius: 8px
 }
 
-.input {
-    width: 100%;
-    height: 40px;
-    overflow: hidden;
-    border-radius: 8px;
+.review {
     background-color: #d9d7e0;
     color: #1f1b2e;
     width: 100%;
     height: 40px;
     padding: 10px;
+    border-radius: 8px;
 }
-
 
 .btn {
     background-color: #ea003d;
@@ -36,22 +33,16 @@
         color: #fff;
         background-color: #e1164c8d;
         transition-duration: .4s;
-
+        
     }
 }
 
 .icon {
-    width: 20px;
+    width: 20px; 
     padding: 2px;
     border-radius: 4px;
     color: white;
     background-color: #1f1b2e;
-}
-
-.comment {
-    width: 200px;
-    height: 100px;
-    color: white;
 }
 
 .item {
@@ -60,9 +51,9 @@
     margin-top: 28px;
 }
 
-.vote {
+.vote { 
     display: flex;
-    align-items: center;
+    align-items: center;  
 }
 
 .button {
@@ -81,25 +72,23 @@
     padding-right: 8px;
     min-width: 42px;
     text-align: center;
-
     &:hover {
         color: #73a32f;
     }
 }
 
 .like {
-    color: rgba(126, 121, 143, .72);
+    color: rgba(126,121,143,.72);
     width: 16px;
     height: 16px;
     font-size: 16px;
     line-height: 16px;
-
     &:hover {
         color: #ea003d;
     }
 }
 
-.name {
+.author {
     color: #a5a1b2;
     font-size: 13px;
     font-style: normal;
@@ -117,4 +106,26 @@
     font-size: 14px;
     font-style: normal;
     line-height: 22px;
+}
+
+.list{
+    display: flex;
+    gap: 10px;
+}
+
+.button {
+    width: 20px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: #a5a1b2;
+    background-color: transparent;
+}
+
+.date {
+    color: #a5a1b2;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+    font-style: normal;
 }

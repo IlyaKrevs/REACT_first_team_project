@@ -65,6 +65,8 @@
 }
 
 .close {
+    position: relative;
+    left: 20px;
     color: rgba(255, 255, 255, .72);
     width: 50px;
     color: rgba(255, 255, 255, .72);
@@ -77,7 +79,10 @@
 .back {
     display: flex;
     gap: 10px;
+    width: 100px;
     padding-top: 50px;
+    color: rgba(255, 255, 255, .72);
+    background: transparent;
 }
 
 

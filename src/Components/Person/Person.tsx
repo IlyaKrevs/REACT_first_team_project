@@ -24,7 +24,6 @@ export const Person = () => {
                 alt='photo' />
             </div>
 
-
             <div className={styles.text}>
               <div className={styles.title}>
                 {isRussian ? member.member.nameRU : member.member.nameEN}

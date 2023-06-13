@@ -1,33 +1,43 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-
-
-export interface Comment {
-  author: string;
-  date: string;
-  id: number;
-  text: string;
-}
+import { createSlice } from "@reduxjs/toolkit";
+import { Comment } from "../types/comments";
+import { getComments } from "../actions/comments";
 
 interface CommentsState {
-  comments: Comment[];
+  comments: Comment[] | null;
+  loading: boolean;
+  error: string | null;
 }
 
 const initialState: CommentsState = {
-  comments: [],
+  comments: null,
+  loading: false,
+  error: null,
 };
 
 const commentsSlice = createSlice({
   name: 'comments',
   initialState,
-  reducers: {
-    addComment: (state, action: PayloadAction<Comment>) => {
-      state.comments.push(action.payload);
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getComments.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(getComments.fulfilled, (state, action) => {
+      state.loading = false;
+      state.comments = action.payload;
+    });
+    builder.addCase(getComments.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message || "Error occurred";
+    });
   },
 });
 
-export const { addComment } = commentsSlice.actions;
-
 export const {
-    reducer: commentsSliceReducer,
+  reducer: commentsReducer,
 } = commentsSlice;
+
+export const commentsActions = {
+  getComments,
+};

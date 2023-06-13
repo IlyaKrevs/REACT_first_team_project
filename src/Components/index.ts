@@ -11,7 +11,7 @@ export * from "./Trailer/Trailer";
 export * from "./PlotMovie/PlotMovie";
 export * from "./SelectionCarousel/SelectionCarousel";
 export * from "./Comments/Comments";
-export * from ".//Registration/Registration";
+export * from "./Registration/Registration";
 export * from "./Portal/Portal";
 export * from "./Reviews/Reviews";
 export * from "./AllDevices/AllDevices";
@@ -24,6 +24,9 @@ export * from "./MovieItem/MovieItem";
 export * from "./TabsModal/TabsModal";
 export * from "./AllPersons/AllPersons";
 export * from "./Form/Form";
+export * from "./SingIn/SingIn";
+
+
 
 
 

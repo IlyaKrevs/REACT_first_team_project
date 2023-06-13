@@ -94,6 +94,7 @@ const MoviesPage = () => {
             .then(response => response.json())
             .then(data => {
                 emptyArr = data;
+                console.log(data)
             })
             .then(() => {
                 for (let i = 0; i < emptyArr.length; i++) {

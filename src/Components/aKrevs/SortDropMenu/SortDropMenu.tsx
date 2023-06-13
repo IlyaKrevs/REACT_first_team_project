@@ -27,7 +27,7 @@ const SortDropMenu = () => {
 
 
 
-    let directionArrow;
+    let directionArrow: 'down' | 'up';
     if (currentViewStatus !== 'Sort') {
         directionArrow = 'down';
     } else {

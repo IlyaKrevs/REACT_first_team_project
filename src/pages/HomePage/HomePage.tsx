@@ -26,7 +26,7 @@ const HomePage = () => {
 
 
 
-    let howMuchGallery = 2;
+    let howMuchGallery: number = 2;
 
     async function makeGalleryState(countOfGallery: number) {
 

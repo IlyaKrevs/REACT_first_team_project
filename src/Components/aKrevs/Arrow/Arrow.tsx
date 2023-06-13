@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Arrow.module.css';
 
 interface ArrowProps {
-    direction: 'left' | 'up' | 'right' | 'down' | string,
+    direction: 'left' | 'up' | 'right' | 'down',
     size: 'big' | 'medium' | 'small'
 }
 

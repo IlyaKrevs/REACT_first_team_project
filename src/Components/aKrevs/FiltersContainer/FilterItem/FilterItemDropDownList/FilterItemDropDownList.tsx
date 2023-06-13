@@ -35,7 +35,7 @@ const FilterItemDropDownList = ({ globalValue, basicTitle, showValue, dropDownTy
 
 
     let isOpen;
-    let arrowDirection;
+    let arrowDirection: 'up' | 'down';
     if (currentViewScreen === currentTitle) {
         isOpen = classes.isOpenStyle
         arrowDirection = 'up'

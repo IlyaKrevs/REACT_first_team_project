@@ -2,7 +2,7 @@ import { SerializedError } from '@reduxjs/toolkit';
 
 type Role = 'User' | 'Admin';
 
-interface IRole {
+export interface IRole {
   id: string;
   type: Role;
 }

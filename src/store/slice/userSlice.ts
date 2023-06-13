@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { LocalStorage } from '../../config/localStorage';
 import { signInAction } from '../actions/signInAction';
 import { IUser } from '../types/user';
@@ -36,8 +36,8 @@ const userSlice = createSlice({
         state.isAuth = false;
         state.error = null;
       })
-      .addCase(signInAction.fulfilled, (state, action) => {
-        state.loadingState = action.meta.requestStatus;
+      .addCase(signInAction.fulfilled, (state, action: PayloadAction<any>) => {
+        state.loadingState = 'fulfilled';
         const { email, id, role } = action.payload;
         state.email = email;
         state.id = id;

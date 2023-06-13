@@ -4,16 +4,17 @@ import { IUserResponse } from "./types/userResponse";
 
 const apiPath = endpoints.signIn;
 
-export const userSignIn = async (): Promise<IUserResponse> => {
+export const userSignIn = async () => {
   const accessToken = localStorage.getItem(LocalStorage.AccessToken);
-  
+
   if (accessToken) {
     const response = await fetch(apiPath, {
+      method: 'post',
       headers: {
         Authorization: `Bearer ${accessToken}`
       }
     });
-    
+
     if (response.ok) {
       const data: IUserResponse = await response.json();
       return data;

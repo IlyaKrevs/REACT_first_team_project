@@ -8,12 +8,11 @@ interface QuerryParamsType {
 
 // функция выполняет запрос на аутентификацию, извлекает токен из ответа и сохраняет его для дальнейшего использования
 
-export const getToken = async (queryParams: QuerryParamsType): Promise<string> => {
-  const { email, password } = queryParams;
+export const getToken = async (querryParams: QuerryParamsType): Promise<string> => {
 
   const params = {
-    email: email.trim(),
-    password: password.trim(),
+    email: querryParams.email.trim(),
+    password: querryParams.password.trim(),
   };
 
   const response = await fetch(endpoints.signIn, {
@@ -24,11 +23,11 @@ export const getToken = async (queryParams: QuerryParamsType): Promise<string> =
     body: JSON.stringify(params),
   });
 
-  if (response.ok) {
+  if (response) {
     const data = await response.json();
-    const token = data.value;
+    const token = data.token;
     localStorage.setItem(LocalStorage.AccessToken, token);
-    return token;
+    return data;
   } else {
     throw new Error('Failed to get token');
   }

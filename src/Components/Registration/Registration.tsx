@@ -28,8 +28,6 @@ export const Registration = ({ children, onClick }: IProps) => {
     resolver: yupResolver(schema),
   });
 
-  const [isButtonEnabled, setIsButtonEnabled] = useState(false);
-
   const handleClose = () => {
     onClick();
   }
@@ -76,7 +74,7 @@ export const Registration = ({ children, onClick }: IProps) => {
                 placeholder="Через email или телефон"
                 {...register('email')}
                 id="email"
-                autoComplete="current-email" 
+                autoComplete="off"
                 aria-invalid={errors.email?.message ? "true" : "false"}
               />
             </div>
@@ -86,8 +84,8 @@ export const Registration = ({ children, onClick }: IProps) => {
                 className={styles.login}
                 placeholder="Ваше имя"
                 {...register('profileName')}
+                autoComplete="off"
                 id="profileName"
-                autoComplete="current-profileName" 
                 aria-invalid={errors.profileName?.message ? "true" : "false"}
               />
             </div>
@@ -100,8 +98,9 @@ export const Registration = ({ children, onClick }: IProps) => {
                   placeholder="Пароль"
                   {...register('password')}
                   id="password"
-                  autoComplete="current-password" 
+                  autoComplete="new-password"
                   aria-invalid={errors.password?.message ? "true" : "false"}
+                  value={password}
                   onInput={({ currentTarget }) => {
                     setPassword(currentTarget.value);
                   }}
